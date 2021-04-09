@@ -1,6 +1,8 @@
 import { Head } from '@components/Head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import { Text } from "@chakra-ui/react"
+
 
 export default function Home() {
   return (
@@ -9,9 +11,9 @@ export default function Home() {
     <div className="container">
       <main>
         <Header title="CU Boulder: Tuition Calculator" />
-        <p className="description">
+        <Text>
          coming soon
-        </p>
+        </Text>
       </main>
       <Footer />
     </div>

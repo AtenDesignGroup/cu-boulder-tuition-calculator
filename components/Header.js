@@ -1,3 +1,5 @@
+import { Heading } from "@chakra-ui/react"
+
 export default function Header({ title }) {
-  return <h1 className="title">{title}</h1>
+  return <Heading as='h1'>{title}</Heading>
 }
