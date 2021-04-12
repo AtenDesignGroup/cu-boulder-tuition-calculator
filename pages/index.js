@@ -1,27 +1,18 @@
 import { getSiteSettings } from '@/lib/api'
-
-import { Head } from '@/components/Head'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { Text } from "@chakra-ui/react"
 import { Layout } from '@/components/Layout'
+import { Text, Flex } from "@chakra-ui/react"
 
 export default function Home({siteSettings}) {
   return (
-    <>
-    <Head title={siteSettings.seoSettings.title} description={siteSettings.seoSettings.description} />
-    <Layout>
-    <div className="container">
-      <main>
+    <Layout siteSettings={siteSettings}>
+      <Flex paddingY={'5rem'} flex='1' flexDir='column' justifyContent='center' alignItems='center'>
         <Header title={siteSettings.title} />
         <Text>
          coming soon
         </Text>
-      </main>
-      <Footer />
-    </div>
+      </Flex>
     </Layout>
-    </>
   )
 }
 
