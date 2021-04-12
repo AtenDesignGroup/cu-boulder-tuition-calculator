@@ -1,8 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import cuTheme from '@theme/index'
+import cuTheme from '@/theme/index'
 
-import '@styles/globals.css'
-
+import '@/styles/globals.css'
 
 function MyApp ({ Component, pageProps }) {
   return (

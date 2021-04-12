@@ -2,6 +2,7 @@
   "name": "cu-boulder-tuition-calculator",
   "version": "0.1.0",
   "private": true,
+  "author": "Brent Robbins <brent@atendesigngroup.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +12,9 @@
     "@chakra-ui/react": "^1.5.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^2.7.1",
+    "@sanity/image-url": "^0.140.22",
     "framer-motion": "^4.1.3",
     "next": "10.1.3",
     "next-google-fonts": "^2.2.0",
