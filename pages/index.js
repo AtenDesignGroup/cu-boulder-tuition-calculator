@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import { Layout } from '@/components/Layout'
 import { Text, Flex, Box } from "@chakra-ui/react"
 import { Question } from '@/components/Question'
-import {Form} from '@/components/form'
+import {Form} from '@/components/Form'
 
 export default function Home({siteSettings}) {
   return (
