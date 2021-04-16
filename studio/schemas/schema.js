@@ -26,6 +26,7 @@ import iframe from './objects/iframe'
 import link from './objects/link'
 import singleLink from './objects/singleLink'
 import vimeo from './objects/vimeo'
+import comment from './documents/comment'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -39,6 +40,7 @@ export default createSchema({
     category,
     page,
     home,
+    comment,
     tag,
     author,
     bodyPortableText,

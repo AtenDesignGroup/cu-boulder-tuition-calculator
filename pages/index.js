@@ -1,7 +1,9 @@
 import { getSiteSettings } from '@/lib/api'
 import Header from '@/components/Header'
 import { Layout } from '@/components/Layout'
-import { Text, Flex } from "@chakra-ui/react"
+import { Text, Flex, Box } from "@chakra-ui/react"
+import { Question } from '@/components/Question'
+import {Form} from '@/components/form'
 
 export default function Home({siteSettings}) {
   return (
@@ -11,11 +13,15 @@ export default function Home({siteSettings}) {
         <Text>
          coming soon
         </Text>
+
+        <Box mt='4rem' width='full'><Question /></Box>
       </Flex>
     </Layout>
   )
 }
-
+// <Box>
+// <Form _id='feedback' />
+// </Box>
 export async function getStaticProps() {
   const siteSettings = await getSiteSettings()
   return {
