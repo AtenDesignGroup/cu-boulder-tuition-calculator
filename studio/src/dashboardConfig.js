@@ -11,17 +11,17 @@ export default {
               description:
                 'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
               sites: [
+                // {
+                //   buildHookId: '604f4f9b64e222b1128efe36',
+                //   title: 'Sanity Studio',
+                //   name: 'sanity-gatsby-base-site-screencast-demo-studio',
+                //   apiId: '4a1d8367-6613-4e4f-8dc4-8795be819271'
+                // },
                 {
-                  buildHookId: '604f4f9b64e222b1128efe36',
-                  title: 'Sanity Studio',
-                  name: 'sanity-gatsby-base-site-screencast-demo-studio',
-                  apiId: '4a1d8367-6613-4e4f-8dc4-8795be819271'
-                },
-                {
-                  buildHookId: '604f4f9ba9112ec9224fa1c6',
-                  title: 'Frontend Website',
-                  name: 'sanity-gatsby-base-site-screencast-demo',
-                  apiId: 'fe708f97-dc22-4d9c-8b04-4f67f6642487'
+                  buildHookId: '6079d02d809b1749b6a87376',
+                  title: 'Website',
+                  name: 'cu-boulder-tuition-calculator',
+                  apiId: '8fed8594-8808-42d4-991d-157a75246a0b'
                 }
               ]
             }
@@ -30,10 +30,10 @@ export default {
         data: [
           {
             title: 'GitHub repo',
-            value: 'https://github.com/brentrobbins/sanity-gatsby-base-site-screencast-demo',
+            value: 'https://github.com/AtenDesignGroup/cu-boulder-tuition-calculator',
             category: 'Code'
           },
-          {title: 'Frontend', value: 'https://sanity-gatsby-base-site-screencast-demo.netlify.app', category: 'apps'}
+          {title: 'Website', value: 'https://cu-boulder-tuition-calculator.netlify.app/', category: 'apps'}
         ]
       }
     },
