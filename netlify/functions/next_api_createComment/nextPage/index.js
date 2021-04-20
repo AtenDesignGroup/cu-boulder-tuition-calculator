@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "VJyF");
+/******/ 	return __webpack_require__(__webpack_require__.s = "1C2g");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1604,6 +1604,61 @@ try {
 
 module.exports = __webpack_require__("E2Bn");
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "1C2g":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GX0O");
+/* harmony import */ var next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KqAr");
+/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fkL1");
+/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Skye");
+var private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t("Skye", 1);
+/* harmony import */ var next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("CpcB");
+/* harmony import */ var next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4__);
+
+        
+      const { processEnv } = __webpack_require__("fXeI")
+      processEnv([{"path":".env.local","contents":"NEXT_PUBLIC_SANITY_PROJECT_ID=\"ly576ako\"\nNEXT_PUBLIC_SANITY_DATASET=\"production\"\n# Sanity Token - Website Preview (Read+Write)\nSANITY_API_TOKEN=\"sk4rhR7IJlGryhK62UHhQiatbzeoHk0KxbJMkvxsObUhZMWcpDzWm2pQRZBvr9CYrnc9t55UrxbSy23p5WkI29IPWgm1fvenMx4IiqruNQzDm7YmvlKxHIhEOvGeJsg915zICsZRS1bdApsgbb5qJFINMoRGcaRGuothqSIj8OqL4MYtN2UN\"\nSANITY_PREVIEW_SECRET=\"\""}])
+    
+        
+        const runtimeConfig = {}
+        
+        
+        
+        
+
+        
+
+        const combinedRewrites = Array.isArray(private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites)
+          ? private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites
+          : []
+
+        if (!Array.isArray(private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites)) {
+          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites.beforeFiles)
+          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites.afterFiles)
+          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites.fallback)
+        }
+
+        const apiHandler = Object(next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4__["getApiHandler"])({
+          pageModule: __webpack_require__("8ghb"),
+          rewrites: combinedRewrites,
+          i18n: undefined,
+          page: "/api/createComment",
+          basePath: "",
+          pageIsDynamic: false,
+          encodedPreviewProps: {previewModeId:"0ae1174389e8071d656869ed8f7e6821",previewModeSigningKey:"b18762c470211b15d1d9f60f01fcc9bf07c9269d4c8a064aab1fab96e3f193f3",previewModeEncryptionKey:"76c54f7dcef7bdcfd5cc43ef295d5b50d825208afb1ebbfd2ca89108ba960fd5"},
+          experimental: {
+            onError: next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__["default"],
+            initServer: next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__["default"],
+          }
+        })
+        /* harmony default export */ __webpack_exports__["default"] = (apiHandler);
+      
 
 /***/ }),
 
@@ -12417,61 +12472,6 @@ function extend() {
 /***/ (function(module, exports) {
 
 module.exports = require("tty");
-
-/***/ }),
-
-/***/ "VJyF":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GX0O");
-/* harmony import */ var next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KqAr");
-/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fkL1");
-/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Skye");
-var private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t("Skye", 1);
-/* harmony import */ var next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("CpcB");
-/* harmony import */ var next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4__);
-
-        
-      const { processEnv } = __webpack_require__("fXeI")
-      processEnv([{"path":".env.local","contents":"NEXT_PUBLIC_SANITY_PROJECT_ID=\"ly576ako\"\nNEXT_PUBLIC_SANITY_DATASET=\"production\"\n# Sanity Token - Website Preview (Read+Write)\nSANITY_API_TOKEN=\"sk4rhR7IJlGryhK62UHhQiatbzeoHk0KxbJMkvxsObUhZMWcpDzWm2pQRZBvr9CYrnc9t55UrxbSy23p5WkI29IPWgm1fvenMx4IiqruNQzDm7YmvlKxHIhEOvGeJsg915zICsZRS1bdApsgbb5qJFINMoRGcaRGuothqSIj8OqL4MYtN2UN\"\nSANITY_PREVIEW_SECRET=\"\""}])
-    
-        
-        const runtimeConfig = {}
-        
-        
-        
-        
-
-        
-
-        const combinedRewrites = Array.isArray(private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites)
-          ? private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites
-          : []
-
-        if (!Array.isArray(private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites)) {
-          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites.beforeFiles)
-          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites.afterFiles)
-          combinedRewrites.push(...private_dot_next_routes_manifest_json__WEBPACK_IMPORTED_MODULE_3__.rewrites.fallback)
-        }
-
-        const apiHandler = Object(next_dist_build_webpack_loaders_next_serverless_loader_api_handler__WEBPACK_IMPORTED_MODULE_4__["getApiHandler"])({
-          pageModule: __webpack_require__("8ghb"),
-          rewrites: combinedRewrites,
-          i18n: undefined,
-          page: "/api/createComment",
-          basePath: "",
-          pageIsDynamic: false,
-          encodedPreviewProps: {previewModeId:"83ed22dda45e051add9d04438ef196c4",previewModeSigningKey:"cd9e5be21a7b715b4c36c059cfbdc7cdfbee8482e905bbfb746d9eeca1ef8c4c",previewModeEncryptionKey:"21b34f5ca163499a14e9f7fec18d099ea7cf447a12d120b321c5da3a1271b4cd"},
-          experimental: {
-            onError: next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__["default"],
-            initServer: next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__["default"],
-          }
-        })
-        /* harmony default export */ __webpack_exports__["default"] = (apiHandler);
-      
 
 /***/ }),
 

@@ -1,0 +1,6 @@
+.next
+dist
+.netlify
+public/studio
+studio/node_modules
+node_modules
