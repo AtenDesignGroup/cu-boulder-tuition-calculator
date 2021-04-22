@@ -40,7 +40,7 @@ export default {
     {name: 'project-users', layout: {height: 'auto'}},
     {
       name: 'document-list',
-      options: {title: 'Recent blog posts', order: '_createdAt desc', types: ['post']},
+      options: {title: 'Recent questions', order: '_createdAt desc', types: ['question']},
       layout: {width: 'medium'}
     }
   ]
