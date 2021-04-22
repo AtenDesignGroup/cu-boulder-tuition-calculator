@@ -6,10 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
 
 // document schemas
-import page from './documents/page'
-import home from './documents/home'
 import siteSettings from './documents/siteSettings'
-import navigation from './documents/navigation'
 import calculator from './documents/calculator'
 import question from './documents/question'
 import comment from './documents/comment'
@@ -28,6 +25,8 @@ import vimeo from './objects/vimeo'
 import optionSet from './objects/optionSet'
 import option from './objects/option'
 import optionLogic from './objects/optionLogic'
+import category from './documents/category'
+import lineItem from './objects/lineItem'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -37,8 +36,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     siteSettings,
-    page,
-    home,
+    category,
     calculator,
     question,
     comment,
@@ -46,7 +44,6 @@ export default createSchema({
     mainImage,
     richDate,
     siteLink,
-    navigation,
     seo,
     youtube,
     pdfFile,
@@ -56,6 +53,7 @@ export default createSchema({
     vimeo,
     option,
     optionSet,
-    optionLogic
+    optionLogic,
+    lineItem
   ])
 })

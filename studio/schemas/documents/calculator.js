@@ -32,6 +32,18 @@ export default {
             type: 'question'
           }]
         }]
+    },
+    {
+      name: 'categories',
+      title: 'Result Categories',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{
+            type: 'category'
+          }]
+        }]
     }
   ]
 }

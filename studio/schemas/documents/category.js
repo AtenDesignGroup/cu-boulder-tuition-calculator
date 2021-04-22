@@ -1,12 +1,12 @@
 import React from 'react'
-const Icon = () => <span style={{fontSize: "1.5rem"}}>{"🗂"}</span>
+// const Icon = () => <span style={{fontSize: '1.5rem'}}>{'?'}</span>
+import {FcFolder} from 'react-icons/fc'
 
 export default {
   name: 'category',
   type: 'document',
   title: 'Category',
-  icon: Icon,
-  liveEdit: false,
+  icon: FcFolder,
   fields: [
     {
       name: 'title',
@@ -15,34 +15,18 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      description: 'DO NOT change this or it will break your site.',
-      options: {
-        source: 'title',
-        maxLength: 96
-      },
-      validation: Rule => Rule.required()
+      name: 'description',
+      type: 'text',
+      title: 'Description',
+      rows: 3
     },
     {
-      title: 'SEO Settings',
-      name: 'seoSettings',
-      type: 'seo'
-      // validation: Rule => Rule.required()
+      name: 'lineItems',
+      title: 'Line Items',
+      type: 'array',
+      of: [{
+        type: 'lineItem'
+      }]
     }
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      subtitle: 'slug.current',
-    },
-    prepare (selection) {
-      const {title, subtitle} = selection
-      return {
-        title: `${title}`,
-        subtitle: `/blog/category/${subtitle}`,
-      }
-    }
-  }
+  ]
 }

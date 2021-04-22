@@ -71,75 +71,25 @@ export default () =>
             .documentId('siteSettings')
         ),
       S.divider(),
-
       S.listItem()
         .title('Tuition Calculator')
         .icon(FcCalculator)
         .schemaType('calculator')
-        // .child(S.documentTypeList('calculator').title('calculator')),
         .child(
           S.editor()
             .schemaType('calculator')
             .documentId('tuitionCalculator')
             .title('Tuition Calculator')
         ),
-
       S.listItem()
         .title('Questions')
         .icon(FcQuestions)
         .schemaType('question')
         .child(S.documentTypeList('question').title('Question')),
-      // S.listItem()
-      //   // Give it a title
-      //   .title('Pages')
-      //   .child(
-      //     // Make a list in the second pane called Portfolio
-      //     S.list()
-      //       .title('Pages')
-      //       .items([
-      //         // Add the first list item
-      //         S.listItem()
-      //           .title('Home page')
-      //           // .icon(MdLocalOffer)
-      //           .schemaType('home')
-      //           .child(
-      //             S.editor()
-      //               .schemaType('home')
-      //               .documentId('home')
-      //               .title('Home page')
-      //           ),
-      //         S.listItem()
-      //           .title('Super Pages')
-      //           // .icon(MdLocalOffer)
-      //           .schemaType('page')
-      //           .child(S.documentTypeList('page').title('Super Pages'))
-      //       ])
-      //   ),
-      // S.listItem()
-      //   // Give it a title
-      //   .title('Navigation')
-      //   .child(
-      //     // Make a list in the second pane called Portfolio
-      //     S.list()
-      //       .title('Navigation')
-      //       .items([
-      //         // Add the first list item
-      //         S.listItem()
-      //           .title('Main Nav')
-      //           // .icon(MdLocalOffer)
-      //           .schemaType('navigation')
-      //           .child(
-      //             S.editor()
-      //               .schemaType('navigation')
-      //               .documentId('mainNav')
-      //               .title('Main Nav')
-      //           )
-      //       ])
-      //   ),
 
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['question', 'comment', 'calculator', 'siteSettings', 'home', 'page', 'navigation'].includes(
+          !['question', 'comment', 'calculator', 'siteSettings'].includes(
             listItem.getId()
           )
       )

@@ -15,13 +15,15 @@ export default {
       name: 'logicSourceQuestion',
       type: 'reference',
       description: 'If this question equals the following value(s) then show.',
-      to: [{type: 'question'}]
+      to: [{type: 'question'}],
+      validation: Rule => Rule.required()
     },
     {
       name: 'logicSourceValue',
       type: 'string',
       title: 'Show Value',
-      description: 'When this question equals this value (make sure you use the Machine Value), show these options. You can only enter one value.'
+      description: 'When this question equals this value (make sure you use the Machine Value), show these options. You can only enter one value.',
+      validation: Rule => Rule.required()
     }
   ],
   preview: {
