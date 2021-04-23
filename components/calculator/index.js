@@ -23,14 +23,14 @@ export function Calculator ({ tuitionCalculator, questions }) {
     <Flex paddingY={'5rem'} flex='1' flexDir='column' justifyContent='center' alignItems='center'>
 
       <Heading mb='2'>{tuitionCalculator.title}</Heading>
-      <Text>{tuitionCalculator.description}</Text>
+      {/* <Text>{tuitionCalculator.description}</Text> */}
 
       <Box maxW='860px' mx='auto'>
         {questions.map(question =>
 
           <Box key={question._id}>
             <Heading>{question.title}</Heading>
-            <Text>{question.description}</Text>
+            {/* <Text>{question.description}</Text> */}
 
             <Box mb='12'>
               <form onSubmit={handleSubmit(onSubmit)}>

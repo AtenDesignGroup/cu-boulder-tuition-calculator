@@ -16,7 +16,7 @@ export default {
     },
     {
       name: 'description',
-      type: 'text',
+      type: 'bodyPortableText',
       title: 'Description',
       rows: 3
     },

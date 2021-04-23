@@ -27,7 +27,7 @@ export default function Home ({ pageData, preview, cookies }) {
 export async function getStaticProps ({ preview = false }) {
   const pageData = await getHomePage(preview)
   return {
-    props: { pageData, preview },
-    revalidate: 1
+    props: { pageData, preview }
+    // revalidate: 1
   }
 }
