@@ -39,6 +39,14 @@ export default {
       }]
     },
     {
+      name: 'categories',
+      title: 'Value Category',
+      type: 'reference',
+      to: [{
+        type: 'category'
+      }]
+    },
+    {
       name: 'valueLabel',
       type: 'string',
       title: 'Value Label',

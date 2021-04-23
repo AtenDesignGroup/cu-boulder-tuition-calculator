@@ -1,34 +1,33 @@
-import { getSiteSettings } from '@/lib/api'
-import Header from '@/components/Header'
-import { Layout } from '@/components/Layout'
-import { Text, Flex, Box } from '@chakra-ui/react'
-// import { Question } from '@/components/Question'
-// import { Form } from '@/components/Form'
+import Error from 'next/error'
+import { useRouter } from 'next/router'
+import { getHomePage } from '@/lib/sanity-api'
 
-export default function Home ({ siteSettings }) {
+import { Layout } from '@/components/Layout'
+
+import { Calculator } from '@/components/calculator'
+
+export default function Home ({ pageData, preview, cookies }) {
+  const router = useRouter()
+
+  if (!router.isFallback && !pageData) {
+    return <Error statusCode={404} />
+  }
+
+  const siteSettings = pageData[0] && pageData[0].siteSettings
+  const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
+  const { questions } = tuitionCalculator
+
   return (
     <Layout siteSettings={siteSettings}>
-      <Flex paddingY={'5rem'} flex='1' flexDir='column' justifyContent='center' alignItems='center'>
-        <Header title={siteSettings.title} />
-        <Text>coming soon</Text>
-
-      </Flex>
+      {(tuitionCalculator && questions) && <Calculator tuitionCalculator={tuitionCalculator} questions={questions} />}
     </Layout>
   )
 }
 
-// <Box>
-// <Form _id='feedback' />
-// </Box>
-
-// <Box mt='4rem' width='full'>
-// <Question />
-// </Box>
-
-export async function getStaticProps () {
-  const siteSettings = await getSiteSettings()
+export async function getStaticProps ({ preview = false }) {
+  const pageData = await getHomePage(preview)
   return {
-    props: { siteSettings },
+    props: { pageData, preview },
     revalidate: 1
   }
 }
