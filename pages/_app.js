@@ -5,7 +5,15 @@ import cuTheme from '@/theme/index'
 
 import '@/styles/globals.css'
 
-createStore({})
+createStore(
+  {
+    calculator: {
+      currentQuestion: 0,
+      showResults: false,
+      questions: []
+    }
+  }
+)
 // createStore(
 //   {
 //     tuitionCalculator: {

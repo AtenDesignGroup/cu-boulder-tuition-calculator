@@ -8,6 +8,8 @@
       "@/lib/*": ["lib/*"],
       "@/api/*": ["api/*"],
       "@/hooks/*": ["hooks/*"],
+      "@/utils/*": ["utils/*"],
     }
-  }
+  },
+  "exclude": ["/node_modules/**/*","/studio/**/*"]
 }
