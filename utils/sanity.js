@@ -15,7 +15,8 @@ const config = {
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  useCdn: process.env.NODE_ENV === 'production'
+  useCdn: true
+  // useCdn: process.env.NODE_ENV === 'production'
   /**
    * Set useCdn to `false` if your application require the freshest possible
    * data always (potentially slightly slower and a bit more expensive).
@@ -61,7 +62,8 @@ export const sanityClient = createClient(config)
 
 export const previewClient = createClient({
   ...config,
-  useCdn: false
+  useCdn: true
+  // useCdn: false
 })
 
 // Helper function for easily switching between normal client and preview client

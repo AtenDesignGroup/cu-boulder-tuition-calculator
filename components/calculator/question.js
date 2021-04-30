@@ -1,42 +1,101 @@
-import { useRef } from 'react'
-import { useForm } from 'react-hook-form'
+// import { useRef } from 'react'
+// import { useForm } from 'react-hook-form'
 import { useStateMachine } from 'little-state-machine'
+import { isStringEmpty } from '@/utils/helpers'
 import updateAction from '@/hooks/updateAction'
 import { Text as BodyText } from '@/components/serializers/text'
-import { Text, Flex, Heading, Box, Select, Button } from '@chakra-ui/react'
+import { Options } from '@/components/calculator/options'
+import { Text, Heading, Box, Button, Stack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
 
-export function Question ({ question, index, questionLength }) {
-  const { register, handleSubmit } = useForm()
+
+export function Question ({ question, index, questionLength, nextQ, prevQ, questions }) {
+  // console.log({ nextQ })
+  // console.log({ prevQ })
+  // const { register, handleSubmit } = useForm()
   const { actions, state } = useStateMachine({ updateAction })
-  const { currentQuestion, showResults, questions } = state.calculator
+  const { currentQuestion } = state.calculator
+  // const { currentQuestion, showResults, questions } = state.calculator
+  // const selectQuestionRef = useRef()
 
-  const selectQuestionRef = useRef()
+  // Using the question's logic to show or hide
+  const questionLogic = () => {
+    let showQuestion = false
+    if (question.optionLogics === undefined || question?.optionLogics?.length === 0) {
+      showQuestion = true
+    } else {
+      // console.log({ question })
+      showQuestion = question?.optionLogics && question?.optionLogics?.map(logic =>
+        state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer === logic.logicSourceValue
+      )[0]
+    }
+    return showQuestion
+  }
+
+  const showQ = (q) => {
+    // console.log({ q })
+    let showQuestion = false
+    if (q?.optionLogics === undefined || q?.optionLogics?.length === 0) {
+      showQuestion = true
+    } else {
+      // console.log({ question })
+      showQuestion = q?.optionLogics && q?.optionLogics?.map(logic =>
+        state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer === logic.logicSourceValue
+      )[0]
+    }
+    return showQuestion
+  }
+  // console.log(questionLogic())
 
   const nextQuestion = () => {
-    console.log('nextQuestion')
+    // console.clear()
+    let i = currentQuestion
+    let showQuestion = false
+    do {
+      i += 1
+      showQuestion = showQ(questions[i])
+    } while (showQuestion === false || i === questionLength)
+    i = (i === undefined || i > questionLength) ? questionLength : i
+    // console.log(i)
+
     actions.updateAction({
       ...state,
       calculator: {
         ...state.calculator,
-        currentQuestion: currentQuestion + 1
+        currentQuestion: (i === undefined || i > questionLength) ? questionLength : i
       }
     })
-    selectQuestionRef.current.focus()
+    // FIXME:
+    // selectQuestionRef.current.focus()
   }
+
+  // Button to advance the user to the previous question, not shown on the first question
   const prevQuestion = () => {
-    console.log('prevQuestion')
+    // console.clear()
+    let i = currentQuestion
+    let showQuestion = false
+    do {
+      i -= 1
+      // console.log(questions[i])
+      // console.log(showQ(questions[i]))
+      showQuestion = showQ(questions[i])
+    } while (showQuestion === false)
+    // console.log({ i })
     actions.updateAction({
       ...state,
       calculator: {
         ...state.calculator,
-        currentQuestion: currentQuestion - 1
+        currentQuestion: (i === undefined || i < 0) ? 0 : i
       }
     })
-    selectQuestionRef.current.focus()
+    // FIXME:
+    //  selectQuestionRef.current.focus()
   }
+
+  // Button function to show the Results, only seen on the last question
   const seeResults = () => {
-    console.log('seeshowResults')
+    // console.log('seeshowResults')
     actions.updateAction({
       ...state,
       calculator: {
@@ -46,28 +105,7 @@ export function Question ({ question, index, questionLength }) {
     })
   }
 
-  const selectUpdate = (val, id) => {
-    console.log(val, id)
-    actions.updateAction({
-      ...state,
-      calculator: {
-        ...state.calculator,
-        questions: {
-          ...state.calculator.questions,
-          [id]: {
-            answer: val
-          }
-        }
-      }
-    })
-  }
-  // console.log({ currentQuestion })
-  // console.log({ state })
-  // console.log({ questionLength })
-  // console.log({ question })
-  const slugify = (val) => {
-    return val.replace(/ /g, '-').replace(/[^\w\s]/gi, '-').toLowerCase()
-  }
+  // Animation Variants (Framer Motion)
   const variants = {
     initial: { opacity: 0, x: -50, display: 'none' },
     animate: {
@@ -81,7 +119,7 @@ export function Question ({ question, index, questionLength }) {
       display: 'none'
     }
   }
-
+  // console.log(state?.calculator?.questions[question?._id]?.answer)
   return (
     <motion.div
       key={index}
@@ -90,73 +128,24 @@ export function Question ({ question, index, questionLength }) {
       initial='initial'
       animate={currentQuestion === index ? 'animate' : 'initial'}
     >
-      <Heading mb='4'>{question.title}</Heading>
-      <BodyText blocks={question.description} />
 
-      {/*
-        QUESTION - Logic
-        question.optionLogics.map(logic =>
-          question ID: logic.logicSourceQuestion._ref
-          question value: logic.logicSourceQuestion.logicSourceValue
-
-          state.calculator['logic.logicSourceQuestion._ref']
-          )
-      */}
-      {
-        question?.optionLogics && question?.optionLogics?.map(logic => {
-          let showQ = state.calculator.questions[logic.logicSourceQuestion._ref].answer === logic.logicSourceValue
-          console.clear()
-          console.log(state.calculator.questions[logic.logicSourceQuestion._ref])
-          console.log(logic.logicSourceValue)
-          console.log({ showQ })
-        }
-        )
-      }
-      <Box background='#e1e1e1' p='4'>
-        <pre>
-          {JSON.stringify(question.optionLogics, 0, 2)}
-        </pre>
-      </Box>
 
       <Box mb='12' mt='4'>
-        {question.optionSets.map(optionSet =>
-          <Box key={optionSet._key} mb='4'>
-            <Text color='#cecece'>{optionSet.title}</Text>
-            <Select {...register(`question-${slugify(question.title).toLowerCase()}-${optionSet._key}`)} defaultValue={`question-${slugify(question.title).toLowerCase()}-${optionSet._key}`}
-              placeholder='Select a value...' ref={selectQuestionRef}
-              onChange={(e) => selectUpdate(e.currentTarget.value, question._id)}
-            >
-              {optionSet.options.map(option =>
-                <option value={option.value.current} key={option._key}>
-                  {option.title} - {option.value.current}
-                </option>
-              )}
-            </Select>
-          </Box>)}
-        questionLength: {questionLength}
-        currentQuestion: {currentQuestion}
+        <Options question={question} title={question.title} description={question.description} />
 
-        {currentQuestion > 0 &&
-        <Button onClick={() => prevQuestion()}>Previous</Button> }
+        <Stack direction='row' spacing={4} align='center'>
 
-        {questionLength > currentQuestion &&
-        <Button onClick={() => nextQuestion()}>Next</Button> }
+          {currentQuestion > 0 &&
+          <Button onClick={() => prevQuestion()} leftIcon={<HiChevronLeft />} variant="outline">Previous</Button> }
 
-        {questionLength === currentQuestion &&
-          <Button onClick={() => seeResults()}>See showResults</Button> }
+          {questionLength > currentQuestion &&
+          <Button onClick={() => nextQuestion()} isDisabled={isStringEmpty(state?.calculator?.questions[question?._id]?.answer) ? true : false} rightIcon={<HiChevronRight />} variant="outline">Next</Button> }
 
-      </Box>
+          {questionLength === currentQuestion &&
+          <Button onClick={() => seeResults()} isDisabled={isStringEmpty(state?.calculator?.questions[question?._id]?.answer) ? true : false}>See showResults</Button> }
 
-      {showResults &&
-      <Box mb='6'>
-        <Heading>showResults</Heading>
-      </Box>}
+        </Stack>
 
-      <Box background='#e1e1e1' p='4'>
-        <Heading>Questions</Heading>
-        <pre>
-          {JSON.stringify(questions, 0, 2)}
-        </pre>
       </Box>
 
     </motion.div>

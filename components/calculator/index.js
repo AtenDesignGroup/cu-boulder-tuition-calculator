@@ -1,10 +1,17 @@
+import { useStateMachine } from 'little-state-machine'
+
 import { AnimatePresence } from 'framer-motion'
 import { Text as BodyText } from '@/components/serializers/text'
 
 import { Question } from '@/components/calculator/question'
+import { Results } from '@/components/calculator/results'
 import { Flex, Heading, Box } from '@chakra-ui/react'
 
 export function Calculator ({ tuitionCalculator, questions }) {
+  // console.log({ questions })
+  // console.log({ tuitionCalculator })
+  const { state } = useStateMachine()
+  const { showResults } = state.calculator
   const questionLength = questions?.length - 1
 
   return (
@@ -15,9 +22,16 @@ export function Calculator ({ tuitionCalculator, questions }) {
 
       <Box mt='10'>
         <AnimatePresence>
-          {questions.map((question, i) =>
-            <Question key={question._id} question={question} index={i} questionLength={questionLength} />)}
+          {questions.map((question, index) => {
+            let prev = questions[index - 1]
+            let next = questions[index + 1]
+            return (
+              <Question key={question._id} question={question} index={index} questionLength={questionLength}
+                nextQ={next || null} prevQ={prev || null} questions={questions} />
+            )
+          })}
         </AnimatePresence>
+        {showResults && <Results />}
       </Box>
 
     </Flex>

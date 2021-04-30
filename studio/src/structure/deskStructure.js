@@ -89,7 +89,7 @@ export default () =>
 
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['question', 'comment', 'calculator', 'siteSettings'].includes(
+          !['question', 'calculator', 'siteSettings'].includes(
             listItem.getId()
           )
       )
