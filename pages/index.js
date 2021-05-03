@@ -17,7 +17,6 @@ export default function Home ({ pageData, preview, cookies }) {
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
   const { questions } = tuitionCalculator
 
-  // console.log(pageData[0].tuitionCalculator)
   return (
     <Layout siteSettings={siteSettings}>
       {(tuitionCalculator && questions) && <Calculator tuitionCalculator={tuitionCalculator} questions={questions} />}

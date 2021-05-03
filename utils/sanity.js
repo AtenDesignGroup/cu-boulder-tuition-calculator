@@ -15,7 +15,8 @@ const config = {
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  useCdn: true
+  useCdn: true,
+  token: process.env.SANITY_API_TOKEN,
   // useCdn: process.env.NODE_ENV === 'production'
   /**
    * Set useCdn to `false` if your application require the freshest possible
