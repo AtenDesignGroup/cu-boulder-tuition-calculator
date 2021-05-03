@@ -31,7 +31,7 @@ export function Layout({ children, siteSettings }) {
       <Flex height="100vh" flexDir="column">
         {children}
         <Box paddingY={'5rem'}  width='100%' maxW='860px' mx='auto'>
-        <Button ref={btnRef} colorScheme="blue" onClick={onOpen} display='inline-block' isFullWidth={false}>
+        <Button ref={btnRef} colorScheme="blue" onClick={onOpen} display='inline-block' isFullWidth={false} variant="outline">
           Debug
         </Button>
         </Box>
