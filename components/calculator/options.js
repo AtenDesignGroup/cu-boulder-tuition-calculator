@@ -60,7 +60,7 @@ export function Options ({ question, title, description }) {
 
   // console.log(question?.optionSets)
   return (
-    <>
+    <div>
     {optionSetsLength === 1 ? (
       <FormControl id={question?.optionSets[0]._key} key={question?.optionSets[0]._key} mb='6'>
           {/* TODO: clean up {question?.optionSets[0].title} - key: {question?.optionSets[0]._key} */}
@@ -106,6 +106,6 @@ export function Options ({ question, title, description }) {
           </Select>
         </FormControl>
     ))}
-    </>
+    </div>
   )
 }

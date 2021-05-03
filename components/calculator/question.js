@@ -132,15 +132,15 @@ export function Question ({ question, index, questionLength, nextQ, prevQ, quest
       <Box mb='12' mt='4'>
         <Options question={question} title={question.title} description={question.description} />
 
-        <Stack direction='row' spacing={4} align='center' suppressHydrationWarning={true}>
+        <Stack direction='row' spacing={4} align='center'>
 
-          {process.browser && currentQuestion > 0 &&
+          {currentQuestion > 0 &&
           <Button onClick={() => prevQuestion()} leftIcon={<HiChevronLeft />} variant="outline">Previous</Button> }
 
-          {(process.browser && (questionLength > currentQuestion)) &&
+          {questionLength > currentQuestion &&
           <Button onClick={() => nextQuestion()} isDisabled={isStringEmpty(state?.calculator?.questions[question?._id]?.answer) ? true : false} rightIcon={<HiChevronRight />} variant="outline">Next</Button> }
 
-          {(process.browser && (questionLength === currentQuestion)) &&
+          {questionLength === currentQuestion &&
           <Button onClick={() => seeResults()} isDisabled={isStringEmpty(state?.calculator?.questions[question?._id]?.answer) ? true : false}>See showResults</Button> }
 
         </Stack>

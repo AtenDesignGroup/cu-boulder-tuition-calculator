@@ -15,17 +15,14 @@ export function Calculator ({ tuitionCalculator, questions }) {
   const { showResults } = state.calculator
   const questionLength = questions?.length - 1
 
-  useEffect(() => {
-    state.renderClientSideComponent = true;
-  });
-
   return (
     <Flex paddingY={'5rem'} flex='1' flexDir='column' width='100%' maxW='860px' mx='auto'>
 
       <Heading mb='2'>{tuitionCalculator.title}</Heading>
       <BodyText blocks={tuitionCalculator.description} />
 
-      <Box mt='10'>
+      <Box mt='10' suppressHydrationWarning={true}>
+      {process.browser && (<>
         <AnimatePresence>
           {questions.map((question, index) => {
             let prev = questions[index - 1]
@@ -37,6 +34,7 @@ export function Calculator ({ tuitionCalculator, questions }) {
           })}
         </AnimatePresence>
         {showResults && <Results />}
+      </>)}
       </Box>
 
     </Flex>

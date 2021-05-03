@@ -23354,15 +23354,6 @@ exports.commonSuffix = commonSuffix;
 
 /***/ }),
 
-/***/ 5095:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-var e=__webpack_require__(7294);function t(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var n=t(__webpack_require__(9008)),o=!1;exports.s=function(t){var l=t.href,r=e.useRef(!1),s=e.useState(!1)[1];return e.useEffect(function(){r.current||(o=!0,r.current=!0,s(!0))},[]),e.createElement(n.default,null,e.createElement("link",{rel:"preconnect",href:"https://fonts.gstatic.com",crossOrigin:"anonymous","data-next-google-fonts":"preconnect",key:"next-google-fonts__preconnect"}),e.createElement("link",{rel:"preload",as:"style",href:l,"data-next-google-fonts":"preload",key:"next-google-fonts__preload"}),e.createElement("link",{href:l,rel:"stylesheet",media:o?"all":"print","data-next-google-fonts":"style",key:"next-google-fonts__style"}),e.createElement("noscript",null,e.createElement("link",{href:l,rel:"stylesheet","data-next-google-fonts":"style-no-js",key:"next-google-fonts__style-no-js"})))};
-//# sourceMappingURL=index.js.map
-
-
-/***/ }),
-
 /***/ 3253:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -32779,7 +32770,7 @@ const cuTheme = extendTheme({
   },
   breakpoints: theme_breakpoints,
   fonts: {
-    heading: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
+    heading: `"Roboto Condensed",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
     body: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`
   },
   // components: {
@@ -32851,6 +32842,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+
 (0,little_state_machine/* createStore */.MT)({
   calculator: {
     currentQuestion: 0,
@@ -32915,7 +32909,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 8514:
+/***/ 8273:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33004,10 +32998,7 @@ async function getHomePage(preview) {
 var react = __webpack_require__(7294);
 // EXTERNAL MODULE: ./node_modules/next/head.js
 var head = __webpack_require__(9008);
-// EXTERNAL MODULE: ./node_modules/next-google-fonts/dist/index.js
-var dist = __webpack_require__(5095);
 ;// CONCATENATED MODULE: ./components/Head.js
-
 
 
 
@@ -33016,10 +33007,8 @@ const Head = ({
   children,
   title,
   description
-}) => /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-  children: [/*#__PURE__*/jsx_runtime.jsx(dist/* GoogleFonts */.s, {
-    href: "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&display=swap"
-  }), /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
+}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
     children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
       charSet: "UTF-8"
     }), /*#__PURE__*/jsx_runtime.jsx("meta", {
@@ -33040,7 +33029,7 @@ const Head = ({
       rel: "preconnect",
       href: "https://cdn.sanity.io"
     }), children]
-  })]
+  })
 });
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/system/dist/esm/forward-ref.js
 /**
@@ -34110,10 +34099,10 @@ function HiChevronDown (props) {
   return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z","clipRule":"evenodd"}}]})(props);
 };
 function HiChevronLeft (props) {
-  return (0,cjs.GenIcon)({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z","clipRule":"evenodd"}}]})(props);
+  return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z","clipRule":"evenodd"}}]})(props);
 };
 function HiChevronRight (props) {
-  return (0,cjs.GenIcon)({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z","clipRule":"evenodd"}}]})(props);
+  return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z","clipRule":"evenodd"}}]})(props);
 };
 function HiChevronUp (props) {
   return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z","clipRule":"evenodd"}}]})(props);
@@ -36560,7 +36549,7 @@ function loadFeatures(features) {
 
 
 // EXTERNAL MODULE: ./node_modules/hey-listen/dist/index.js
-var hey_listen_dist = __webpack_require__(1320);
+var dist = __webpack_require__(1320);
 ;// CONCATENATED MODULE: ./node_modules/framer-motion/dist/es/context/LazyContext.js
 
 
@@ -38604,7 +38593,7 @@ function findSpring(_a) {
     var _b = _a.duration, duration = _b === void 0 ? 800 : _b, _c = _a.bounce, bounce = _c === void 0 ? 0.25 : _c, _d = _a.velocity, velocity = _d === void 0 ? 0 : _d, _e = _a.mass, mass = _e === void 0 ? 1 : _e;
     var envelope;
     var derivative;
-    (0,hey_listen_dist/* warning */.Kp)(duration <= maxDuration * 1000, "Spring duration must be 10 seconds or less");
+    (0,dist/* warning */.Kp)(duration <= maxDuration * 1000, "Spring duration must be 10 seconds or less");
     var dampingRatio = 1 - bounce;
     dampingRatio = clamp_clamp(minDamping, maxDamping, dampingRatio);
     duration = clamp_clamp(minDuration, maxDuration, duration / 1000);
@@ -38944,9 +38933,9 @@ var notAnimatable = function (color) {
 var mixColor = function (from, to) {
     var fromColorType = getColorType(from);
     var toColorType = getColorType(to);
-    (0,hey_listen_dist/* invariant */.kG)(!!fromColorType, notAnimatable(from));
-    (0,hey_listen_dist/* invariant */.kG)(!!toColorType, notAnimatable(to));
-    (0,hey_listen_dist/* invariant */.kG)(fromColorType.transform === toColorType.transform, "Both colors must be hex/RGBA, OR both must be HSLA.");
+    (0,dist/* invariant */.kG)(!!fromColorType, notAnimatable(from));
+    (0,dist/* invariant */.kG)(!!toColorType, notAnimatable(to));
+    (0,dist/* invariant */.kG)(fromColorType.transform === toColorType.transform, "Both colors must be hex/RGBA, OR both must be HSLA.");
     var fromColor = fromColorType.parse(from);
     var toColor = toColorType.parse(to);
     var blended = __assign({}, fromColor);
@@ -39130,7 +39119,7 @@ var mixComplex = function (origin, target) {
     var template = complex.createTransformer(target);
     var originStats = mix_complex_analyse(origin);
     var targetStats = mix_complex_analyse(target);
-    (0,hey_listen_dist/* invariant */.kG)(originStats.numHSL === targetStats.numHSL &&
+    (0,dist/* invariant */.kG)(originStats.numHSL === targetStats.numHSL &&
         originStats.numRGB === targetStats.numRGB &&
         originStats.numNumbers >= targetStats.numNumbers, "Complex values '" + origin + "' and '" + target + "' too different to mix. Ensure all colors are of the same type.");
     return pipe(mixArray(originStats.parsed, targetStats.parsed), template);
@@ -39216,8 +39205,8 @@ function slowInterpolate(input, mixers) {
 function interpolate(input, output, _a) {
     var _b = _a === void 0 ? {} : _a, _c = _b.clamp, isClamp = _c === void 0 ? true : _c, ease = _b.ease, mixer = _b.mixer;
     var inputLength = input.length;
-    (0,hey_listen_dist/* invariant */.kG)(inputLength === output.length, 'Both input and output ranges must be the same length');
-    (0,hey_listen_dist/* invariant */.kG)(!ease || !Array.isArray(ease) || ease.length === inputLength - 1, 'Array of easing functions must be of length `input.length - 1`, as it applies to the transitions **between** the defined values.');
+    (0,dist/* invariant */.kG)(inputLength === output.length, 'Both input and output ranges must be the same length');
+    (0,dist/* invariant */.kG)(!ease || !Array.isArray(ease) || ease.length === inputLength - 1, 'Array of easing functions must be of length `input.length - 1`, as it applies to the transitions **between** the defined values.');
     if (input[0] > input[inputLength - 1]) {
         input = [].concat(input);
         output = [].concat(output);
@@ -39698,13 +39687,13 @@ var easingLookup = {
 var easingDefinitionToFunction = function (definition) {
     if (Array.isArray(definition)) {
         // If cubic bezier definition, create bezier curve
-        (0,hey_listen_dist/* invariant */.kG)(definition.length === 4, "Cubic bezier arrays must contain four numerical values.");
+        (0,dist/* invariant */.kG)(definition.length === 4, "Cubic bezier arrays must contain four numerical values.");
         var _a = tslib_es6_read(definition, 4), x1 = _a[0], y1 = _a[1], x2 = _a[2], y2 = _a[3];
         return cubicBezier(x1, y1, x2, y2);
     }
     else if (typeof definition === "string") {
         // Else lookup from table
-        (0,hey_listen_dist/* invariant */.kG)(easingLookup[definition] !== undefined, "Invalid easing type '" + definition + "'");
+        (0,dist/* invariant */.kG)(easingLookup[definition] !== undefined, "Invalid easing type '" + definition + "'");
         return easingLookup[definition];
     }
     return definition;
@@ -39919,7 +39908,7 @@ function convertTransitionToAnimationOptions(_a) {
      * TODO: These options are officially removed from the API.
      */
     if (yoyo || loop || flip) {
-        (0,hey_listen_dist/* warning */.Kp)(!legacyRepeatWarning, "yoyo, loop and flip have been removed from the API. Replace with repeat and repeatType options.");
+        (0,dist/* warning */.Kp)(!legacyRepeatWarning, "yoyo, loop and flip have been removed from the API. Replace with repeat and repeatType options.");
         legacyRepeatWarning = true;
         if (yoyo) {
             options.repeatType = "reverse";
@@ -39994,7 +39983,7 @@ function getAnimation(key, value, target, transition, onComplete) {
         target = getZeroUnit(origin);
     }
     var isOriginAnimatable = isAnimatable(key, origin);
-    (0,hey_listen_dist/* warning */.Kp)(isOriginAnimatable === isTargetAnimatable, "You are trying to animate " + key + " from \"" + origin + "\" to \"" + target + "\". " + origin + " is not an animatable value - to enable this animation set " + origin + " to a value animatable to " + target + " via the `style` property.");
+    (0,dist/* warning */.Kp)(isOriginAnimatable === isTargetAnimatable, "You are trying to animate " + key + " from \"" + origin + "\" to \"" + target + "\". " + origin + " is not an animatable value - to enable this animation set " + origin + " to a value animatable to " + target + " via the `style` property.");
     function start() {
         var options = {
             from: origin,
@@ -42050,7 +42039,7 @@ var VisualElementDragControls = /** @class */ (function () {
     VisualElementDragControls.prototype.resolveRefConstraints = function (layoutBox, constraints) {
         var _a = this.props, onMeasureDragConstraints = _a.onMeasureDragConstraints, transformPagePoint = _a.transformPagePoint;
         var constraintsElement = constraints.current;
-        (0,hey_listen_dist/* invariant */.kG)(constraintsElement !== null, "If `dragConstraints` is set as a React ref, that ref must be passed to another component's `ref` prop.");
+        (0,dist/* invariant */.kG)(constraintsElement !== null, "If `dragConstraints` is set as a React ref, that ref must be passed to another component's `ref` prop.");
         this.constraintsBox = getBoundingBox(constraintsElement, transformPagePoint);
         var measuredConstraints = calcViewportConstraints(layoutBox, this.constraintsBox);
         /**
@@ -42475,7 +42464,7 @@ function parseCSSVariable(current) {
 var maxDepth = 4;
 function getVariableValue(current, element, depth) {
     if (depth === void 0) { depth = 1; }
-    (0,hey_listen_dist/* invariant */.kG)(depth <= maxDepth, "Max CSS variable fallback depth detected in property \"" + current + "\". This may indicate a circular fallback dependency.");
+    (0,dist/* invariant */.kG)(depth <= maxDepth, "Max CSS variable fallback depth detected in property \"" + current + "\". This may indicate a circular fallback dependency.");
     var _a = tslib_es6_read(parseCSSVariable(current), 2), token = _a[0], fallback = _a[1];
     // No CSS variable detected
     if (!token)
@@ -44089,11 +44078,11 @@ var checkAndConvertChangedValueTypes = function (visualElement, target, origin, 
             for (var i = to[0] === null ? 1 : 0; i < numKeyframes; i++) {
                 if (!toType) {
                     toType = findDimensionValueType(to[i]);
-                    (0,hey_listen_dist/* invariant */.kG)(toType === fromType ||
+                    (0,dist/* invariant */.kG)(toType === fromType ||
                         (isNumOrPxType(fromType) && isNumOrPxType(toType)), "Keyframes must be of the same dimension as the current value");
                 }
                 else {
-                    (0,hey_listen_dist/* invariant */.kG)(findDimensionValueType(to[i]) === toType, "All keyframes must be of the same type");
+                    (0,dist/* invariant */.kG)(findDimensionValueType(to[i]) === toType, "All keyframes must be of the same type");
                 }
             }
         }
@@ -46310,16 +46299,6 @@ function text_Text({
     serializers: serializers_serializers
   }) : null;
 }
-;// CONCATENATED MODULE: ./utils/helpers.js
-const isStringEmpty = val => {
-  if (val === undefined || val === null || val === '') {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-
 ;// CONCATENATED MODULE: ./node_modules/react-hook-form/dist/index.esm.js
 
 
@@ -48991,7 +48970,6 @@ function question_objectSpread(target) { for (var i = 1; i < arguments.length; i
 
 function question_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import { useRef } from 'react'
 // import { useForm } from 'react-hook-form'
 
 
@@ -49157,22 +49135,8 @@ function Question({
         direction: "row",
         spacing: 4,
         align: "center",
-        children: [currentQuestion > 0 && /*#__PURE__*/jsx_runtime.jsx(Button, {
-          onClick: () => prevQuestion(),
-          leftIcon: /*#__PURE__*/jsx_runtime.jsx(HiChevronLeft, {}),
-          variant: "outline",
-          children: "Previous"
-        }), questionLength > currentQuestion && /*#__PURE__*/jsx_runtime.jsx(Button, {
-          onClick: () => nextQuestion(),
-          isDisabled: isStringEmpty(state === null || state === void 0 ? void 0 : (_state$calculator3 = state.calculator) === null || _state$calculator3 === void 0 ? void 0 : (_state$calculator3$qu = _state$calculator3.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator3$qu === void 0 ? void 0 : _state$calculator3$qu.answer) ? true : false,
-          rightIcon: /*#__PURE__*/jsx_runtime.jsx(HiChevronRight, {}),
-          variant: "outline",
-          children: "Next"
-        }), questionLength === currentQuestion && /*#__PURE__*/jsx_runtime.jsx(Button, {
-          onClick: () => seeResults(),
-          isDisabled: isStringEmpty(state === null || state === void 0 ? void 0 : (_state$calculator4 = state.calculator) === null || _state$calculator4 === void 0 ? void 0 : (_state$calculator4$qu = _state$calculator4.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator4$qu === void 0 ? void 0 : _state$calculator4$qu.answer) ? true : false,
-          children: "See showResults"
-        })]
+        suppressHydrationWarning: true,
+        children: [ false && /*#__PURE__*/0,  false && /*#__PURE__*/0,  false && /*#__PURE__*/0]
       })]
     })
   }, index);
@@ -49204,6 +49168,7 @@ function Results() {
 
 
 
+
 function Calculator({
   tuitionCalculator,
   questions
@@ -49217,6 +49182,9 @@ function Calculator({
     showResults
   } = state.calculator;
   const questionLength = (questions === null || questions === void 0 ? void 0 : questions.length) - 1;
+  (0,react.useEffect)(() => {
+    state.renderClientSideComponent = true;
+  });
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
     paddingY: '5rem',
     flex: "1",
@@ -49289,14 +49257,14 @@ async function getStaticProps({
     props: {
       pageData,
       preview
-    } // revalidate: 1
-
+    },
+    revalidate: 1
   };
 }
 
 /***/ }),
 
-/***/ 6226:
+/***/ 1579:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49307,7 +49275,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_t5ykcS82uXmF2esSrkw1N_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2225e2b0def07916193e904a84263e7f6b_22_2C_22previewModeSigningKey_22_3A_229dab063a44f2ddd169ccd97b88954adb4a25817bca6fadedb9c0129bd1786bfc_22_2C_22previewModeEncryptionKey_22_3A_226048d6d74f8ff0dfaa8ae7d49cd38e069142f11897a0f4bfa929e260e9e8c039_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_NxbzVgVPm_FxuBW9XZ3V_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_222dc849c132c02ca1884903ccf8e4b5ad_22_2C_22previewModeSigningKey_22_3A_22af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d_22_2C_22previewModeEncryptionKey_22_3A_227bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -49324,12 +49292,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/t5ykcS82uXmF2esSrkw1N/_buildManifest.js","static/t5ykcS82uXmF2esSrkw1N/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-06b3bb9ceb13bb81ad38.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/5-c46c4357924bad186a95.js","static/chunks/pages/index-4156e7d9cd8abbeedfca.js"],"/_app":["static/chunks/webpack-06b3bb9ceb13bb81ad38.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/262-7d74fc3d18eff9bf3fe7.js","static/css/ba7e3f30deec5be3e120.css","static/chunks/pages/_app-0c4e5200c0bbf757f3e1.js"],"/_error":["static/chunks/webpack-06b3bb9ceb13bb81ad38.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/-NxbzVgVPm_FxuBW9XZ3V/_buildManifest.js","static/-NxbzVgVPm_FxuBW9XZ3V/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-bcb0c69ed1b678c3d1e1.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/609-f3057f9ccb688473772c.js","static/chunks/pages/index-f449e57925d53b88b05e.js"],"/_app":["static/chunks/webpack-bcb0c69ed1b678c3d1e1.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-a902d365176f926e1d68.js"],"/_error":["static/chunks/webpack-bcb0c69ed1b678c3d1e1.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=t5ykcS82uXmF2esSrkw1N&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2225e2b0def07916193e904a84263e7f6b%22%2C%22previewModeSigningKey%22%3A%229dab063a44f2ddd169ccd97b88954adb4a25817bca6fadedb9c0129bd1786bfc%22%2C%22previewModeEncryptionKey%22%3A%226048d6d74f8ff0dfaa8ae7d49cd38e069142f11897a0f4bfa929e260e9e8c039%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=-NxbzVgVPm_FxuBW9XZ3V&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%222dc849c132c02ca1884903ccf8e4b5ad%22%2C%22previewModeSigningKey%22%3A%22af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d%22%2C%22previewModeEncryptionKey%22%3A%227bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -49349,10 +49317,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(8514)
+      const compMod = __webpack_require__(8273)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_t5ykcS82uXmF2esSrkw1N_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2225e2b0def07916193e904a84263e7f6b_22_2C_22previewModeSigningKey_22_3A_229dab063a44f2ddd169ccd97b88954adb4a25817bca6fadedb9c0129bd1786bfc_22_2C_22previewModeEncryptionKey_22_3A_226048d6d74f8ff0dfaa8ae7d49cd38e069142f11897a0f4bfa929e260e9e8c039_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_NxbzVgVPm_FxuBW9XZ3V_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_222dc849c132c02ca1884903ccf8e4b5ad_22_2C_22previewModeSigningKey_22_3A_22af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d_22_2C_22previewModeEncryptionKey_22_3A_227bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -49400,11 +49368,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "t5ykcS82uXmF2esSrkw1N",
-        escapedBuildId: "t5ykcS82uXmF2esSrkw1N",
+        buildId: "-NxbzVgVPm_FxuBW9XZ3V",
+        escapedBuildId: "\-NxbzVgVPm_FxuBW9XZ3V",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"25e2b0def07916193e904a84263e7f6b",previewModeSigningKey:"9dab063a44f2ddd169ccd97b88954adb4a25817bca6fadedb9c0129bd1786bfc",previewModeEncryptionKey:"6048d6d74f8ff0dfaa8ae7d49cd38e069142f11897a0f4bfa929e260e9e8c039"}
+        encodedPreviewProps: {previewModeId:"2dc849c132c02ca1884903ccf8e4b5ad",previewModeSigningKey:"af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d",previewModeEncryptionKey:"7bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf"}
       })
       
     
@@ -67339,7 +67307,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(6226);
+/******/ 	var __webpack_exports__ = __webpack_require__(1579);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
