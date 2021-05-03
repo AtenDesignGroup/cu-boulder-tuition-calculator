@@ -1,12 +1,12 @@
 {
   "root": true,
+  "api": {
+    "projectId": "85juwyag",
+    "dataset": "production"
+  },
   "project": {
     "name": "CU Boulder",
     "domainName": ""
-  },
-  "api": {
-    "projectId": "ly576ako",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
