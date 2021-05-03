@@ -25,7 +25,7 @@ const cuTheme = extendTheme({
   },
   breakpoints,
   fonts: {
-    heading: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
+    heading: `"Roboto Condensed",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
     body: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`
 
   },

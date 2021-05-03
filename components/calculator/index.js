@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useStateMachine } from 'little-state-machine'
 
 import { AnimatePresence } from 'framer-motion'
@@ -13,6 +14,10 @@ export function Calculator ({ tuitionCalculator, questions }) {
   const { state } = useStateMachine()
   const { showResults } = state.calculator
   const questionLength = questions?.length - 1
+
+  useEffect(() => {
+    state.renderClientSideComponent = true;
+  });
 
   return (
     <Flex paddingY={'5rem'} flex='1' flexDir='column' width='100%' maxW='860px' mx='auto'>

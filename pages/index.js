@@ -7,6 +7,7 @@ import { Layout } from '@/components/Layout'
 import { Calculator } from '@/components/calculator'
 
 export default function Home ({ pageData, preview, cookies }) {
+
   const router = useRouter()
 
   if (!router.isFallback && !pageData) {
@@ -27,7 +28,7 @@ export default function Home ({ pageData, preview, cookies }) {
 export async function getStaticProps ({ preview = false }) {
   const pageData = await getHomePage(preview)
   return {
-    props: { pageData, preview }
-    // revalidate: 1
+    props: { pageData, preview },
+    revalidate: 1
   }
 }

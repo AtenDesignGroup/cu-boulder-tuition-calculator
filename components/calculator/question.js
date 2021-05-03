@@ -1,4 +1,3 @@
-// import { useRef } from 'react'
 // import { useForm } from 'react-hook-form'
 import { useStateMachine } from 'little-state-machine'
 import { isStringEmpty } from '@/utils/helpers'
@@ -133,15 +132,15 @@ export function Question ({ question, index, questionLength, nextQ, prevQ, quest
       <Box mb='12' mt='4'>
         <Options question={question} title={question.title} description={question.description} />
 
-        <Stack direction='row' spacing={4} align='center'>
+        <Stack direction='row' spacing={4} align='center' suppressHydrationWarning={true}>
 
-          {currentQuestion > 0 &&
+          {process.browser && currentQuestion > 0 &&
           <Button onClick={() => prevQuestion()} leftIcon={<HiChevronLeft />} variant="outline">Previous</Button> }
 
-          {questionLength > currentQuestion &&
+          {(process.browser && (questionLength > currentQuestion)) &&
           <Button onClick={() => nextQuestion()} isDisabled={isStringEmpty(state?.calculator?.questions[question?._id]?.answer) ? true : false} rightIcon={<HiChevronRight />} variant="outline">Next</Button> }
 
-          {questionLength === currentQuestion &&
+          {(process.browser && (questionLength === currentQuestion)) &&
           <Button onClick={() => seeResults()} isDisabled={isStringEmpty(state?.calculator?.questions[question?._id]?.answer) ? true : false}>See showResults</Button> }
 
         </Stack>

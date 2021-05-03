@@ -11,5 +11,5 @@
       "@/utils/*": ["utils/*"],
     }
   },
-  "exclude": ["/node_modules/**/*","/studio/**/*"]
+  "exclude": ["/node_modules/**/*","/netlify/**/*","/studio/**/*"]
 }
