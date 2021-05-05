@@ -9,6 +9,7 @@ export default {
   title: 'calculator',
   icon: FcCalculator,
   __experimental_actions: ['update', 'publish'],
+  liveEdit: false,
   fields: [
     {
       name: 'title',

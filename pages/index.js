@@ -2,7 +2,7 @@ import Error from 'next/error'
 import { useRouter } from 'next/router'
 import { getHomePage } from '@/lib/sanity-api'
 
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/layout'
 
 import { Calculator } from '@/components/calculator'
 

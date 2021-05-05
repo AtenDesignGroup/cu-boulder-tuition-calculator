@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 
-import { Head } from '@/components/Head'
-import Footer from '@/components/Footer'
+import { Head } from '@/components/head'
+import Footer from '@/components/footer'
 import { Debug } from '@/components/calculator/debug'
 import {
   Text,

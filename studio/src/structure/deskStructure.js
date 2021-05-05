@@ -1,7 +1,7 @@
 import React from 'react'
 import S from '@sanity/desk-tool/structure-builder'
 
-import {FcQuestions, FcCalculator, FcFolder} from 'react-icons/fc'
+import {FcQuestions, FcCalculator, FcFolder, FcSettings} from 'react-icons/fc'
 
 // import IframePreview from '../previews/IframePreview'
 
@@ -22,7 +22,16 @@ export default () =>
   S.list()
     .title('Content')
     .items([
-
+      S.listItem()
+      .title('App Settings')
+      .icon(FcSettings)
+      .schemaType('siteSettings')
+      .child(
+        S.editor()
+          .schemaType('siteSettings')
+          .documentId('siteSettings')
+          .title('App Settings')
+      ),
       S.listItem()
         .title('Tuition Calculator')
         .icon(FcCalculator)
@@ -46,7 +55,7 @@ export default () =>
         S.divider(),
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['question', 'calculator', 'category'].includes(
+          !['question', 'calculator', 'category', 'siteSettings', 'media.tag'].includes(
             listItem.getId()
           )
       )

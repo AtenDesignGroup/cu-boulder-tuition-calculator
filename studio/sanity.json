@@ -19,6 +19,7 @@
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
     "@sanity/rich-date-input",
+    "media",
     "json-to-docs"
   ],
   "parts": [

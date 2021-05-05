@@ -7,6 +7,7 @@ export default {
   type: 'document',
   title: 'Category',
   icon: FcFolder,
+  liveEdit: false,
   fields: [
     {
       name: 'title',

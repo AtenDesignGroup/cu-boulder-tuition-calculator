@@ -3,12 +3,9 @@ import { useForm } from 'react-hook-form'
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { Text as BodyText } from '@/components/serializers/text'
-
-
 import { Heading, Box, Select, FormControl, FormLabel } from '@chakra-ui/react'
 
 export function Options ({ question, title, description }) {
-  // console.log({ question })
   const { register, handleSubmit } = useForm()
   const { actions, state } = useStateMachine({ updateAction })
   const { currentQuestion, showResults, questions } = state.calculator
@@ -19,6 +16,7 @@ export function Options ({ question, title, description }) {
     return val === false;
   }
 
+  // When the question has been updated/changed focus will be re-set to the Select
   useEffect(() => {
     selectQuestionRef?.current && selectQuestionRef.current.focus();
   }, [currentQuestion])
@@ -59,52 +57,42 @@ export function Options ({ question, title, description }) {
   }
 
   return (
-    <div>
+    <>
     {optionSetsLength === 1 ? (
       <FormControl id={question?.optionSets[0]._key} key={question?.optionSets[0]._key} mb='6'>
-          {/* TODO: clean up {question?.optionSets[0].title} - key: {question?.optionSets[0]._key} */}
           <FormLabel><Heading mb='6'>{title}</Heading></FormLabel>
-
           <Box mb='4'><BodyText blocks={description} /></Box>
-
           <Select
             {...register(`${question._id}`)}
-
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
             placeholder='Select a value...'
             ref={selectQuestionRef}
             onChange={(e) => selectUpdate(e.currentTarget.value, question)}>
-
             {question?.optionSets[0].options.map(option =>
               <option value={option.value.current} key={option._key}>
                 {option.title}
               </option>
             )}
-
           </Select>
         </FormControl>
     ):(
       question?.optionSets.map(optionSet => questionLogic(optionSet) &&
         <FormControl id={optionSet._key} key={optionSet._key} mb='6'>
         <FormLabel><Heading mb='6'>{title}</Heading></FormLabel>
-
         <Box mb='4'><BodyText blocks={description} /></Box>
-
           <Select
             {...register(`${question._id}`)}
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
             placeholder='Select a value...' ref={selectQuestionRef}
             onChange={(e) => selectUpdate(e.currentTarget.value, question)}>
-
             {optionSet.options.map(option =>
               <option value={option.value.current} key={option._key}>
                 {option.title}
               </option>
             )}
-
           </Select>
         </FormControl>
     ))}
-    </div>
+    </>
   )
 }

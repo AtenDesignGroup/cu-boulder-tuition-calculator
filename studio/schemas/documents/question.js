@@ -7,6 +7,7 @@ export default {
   type: 'document',
   title: 'Question',
   icon: FcQuestions,
+  liveEdit: false,
   fields: [
     {
       name: 'title',
