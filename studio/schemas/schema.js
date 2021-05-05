@@ -6,7 +6,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
 
 // document schemas
-import siteSettings from './documents/siteSettings'
 import calculator from './documents/calculator'
 import question from './documents/question'
 import comment from './documents/comment'
@@ -35,7 +34,6 @@ export default createSchema({
   // Then proceed to concatenate our our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    siteSettings,
     category,
     calculator,
     question,

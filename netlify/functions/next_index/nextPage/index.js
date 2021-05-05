@@ -848,12 +848,11 @@ function createContext(options) {
 __webpack_require__.d(__webpack_exports__, {
   "iv": function() { return /* reexport */ css; },
   "isStyleProp": function() { return /* reexport */ isStyleProp; },
-  "layoutPropNames": function() { return /* reexport */ layoutPropNames; },
   "propNames": function() { return /* reexport */ propNames; },
   "toCSSVar": function() { return /* reexport */ toCSSVar; }
 });
 
-// UNUSED EXPORTS: background, border, color, flexbox, getCss, getTransformGpuTemplate, getTransformTemplate, grid, layout, list, others, outline, position, shadow, space, systemProps, toNegativeVar, toVarDefinition, toVarReference, tokenToCSSVar, tokens, transform, transition, typography
+// UNUSED EXPORTS: background, border, color, flexbox, getCss, getTransformGpuTemplate, getTransformTemplate, grid, layout, layoutPropNames, list, others, outline, position, shadow, space, systemProps, toNegativeVar, toVarDefinition, toVarReference, tokenToCSSVar, tokens, transform, transition, typography
 
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
 var assertion = __webpack_require__(3808);
@@ -2805,7 +2804,6 @@ var GlobalStyle = () => {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "hj": function() { return /* binding */ isNumber; },
-/* harmony export */   "kJ": function() { return /* binding */ isArray; },
 /* harmony export */   "mf": function() { return /* binding */ isFunction; },
 /* harmony export */   "Kn": function() { return /* binding */ isObject; },
 /* harmony export */   "Qr": function() { return /* binding */ isEmptyObject; },
@@ -2814,7 +2812,7 @@ var GlobalStyle = () => {
 /* harmony export */   "Ts": function() { return /* binding */ __DEV__; },
 /* harmony export */   "Ys": function() { return /* binding */ __TEST__; }
 /* harmony export */ });
-/* unused harmony exports isNotNumber, isNumeric, isEmptyArray, isDefined, isUndefined, isNotEmptyObject, isNull, isEmpty, isRefObject, isInputEvent */
+/* unused harmony exports isNotNumber, isNumeric, isArray, isEmptyArray, isDefined, isUndefined, isNotEmptyObject, isNull, isEmpty, isRefObject, isInputEvent */
 // Number assertions
 function isNumber(value) {
   return typeof value === "number";
@@ -2891,10 +2889,9 @@ function isInputEvent(value) {
 /* harmony export */   "lZ": function() { return /* binding */ getOwnerDocument; },
 /* harmony export */   "jU": function() { return /* binding */ isBrowser; },
 /* harmony export */   "PB": function() { return /* binding */ dataAttr; },
-/* harmony export */   "Qm": function() { return /* binding */ ariaAttr; },
 /* harmony export */   "cx": function() { return /* binding */ cx; }
 /* harmony export */ });
-/* unused harmony exports getOwnerWindow, canUseDOM, getActiveElement, contains, addDomEvent, normalizeEventKey, getRelatedTarget, isRightClick */
+/* unused harmony exports getOwnerWindow, canUseDOM, ariaAttr, getActiveElement, contains, addDomEvent, normalizeEventKey, getRelatedTarget, isRightClick */
 function getOwnerWindow(node) {
   var _getOwnerDocument$def, _getOwnerDocument;
 
@@ -2970,10 +2967,9 @@ function isRightClick(event) {
 /* harmony export */   "v0": function() { return /* binding */ callAllHandlers; },
 /* harmony export */   "ZT": function() { return /* binding */ noop; },
 /* harmony export */   "ZK": function() { return /* binding */ warn; },
-/* harmony export */   "A4": function() { return /* binding */ scheduleMicrotask; },
 /* harmony export */   "zG": function() { return /* binding */ pipe; }
 /* harmony export */ });
-/* unused harmony exports callAll, compose, once, error, distance */
+/* unused harmony exports callAll, compose, once, error, scheduleMicrotask, distance */
 /* harmony import */ var _assertion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3808);
 /* eslint-disable no-nested-ternary */
 
@@ -3097,14 +3093,13 @@ function distance(a, b) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CE": function() { return /* binding */ omit; },
 /* harmony export */   "ei": function() { return /* binding */ pick; },
-/* harmony export */   "Vl": function() { return /* binding */ split; },
 /* harmony export */   "Wf": function() { return /* binding */ memoizedGet; },
 /* harmony export */   "lw": function() { return /* binding */ objectFilter; },
 /* harmony export */   "YU": function() { return /* binding */ filterUndefined; },
 /* harmony export */   "Yd": function() { return /* binding */ objectKeys; },
 /* harmony export */   "sq": function() { return /* binding */ fromEntries; }
 /* harmony export */ });
-/* unused harmony exports get, memoize, getWithDefault, getCSSVar */
+/* unused harmony exports split, get, memoize, getWithDefault, getCSSVar */
 /* harmony import */ var lodash_mergewith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8554);
 /* harmony import */ var lodash_mergewith__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_mergewith__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -11267,6 +11262,17 @@ module.exports = {
 	"yellowgreen": [154, 205, 50]
 };
 
+
+/***/ }),
+
+/***/ 8273:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(a,n){ true?!(__WEBPACK_AMD_DEFINE_FACTORY__ = (n),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+		__WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):0}(this,function(a,n,t){var e=function(a,n,t,e,i,r){function o(a){var n,t,e,i,r,o,s=a<0;if(a=Math.abs(a).toFixed(l.decimals),a+="",n=a.split("."),t=n[0],e=n.length>1?l.options.decimal+n[1]:"",l.options.useGrouping){for(i="",r=0,o=t.length;r<o;++r)0!==r&&r%3===0&&(i=l.options.separator+i),i=t[o-r-1]+i;t=i}return l.options.numerals.length&&(t=t.replace(/[0-9]/g,function(a){return l.options.numerals[+a]}),e=e.replace(/[0-9]/g,function(a){return l.options.numerals[+a]})),(s?"-":"")+l.options.prefix+t+e+l.options.suffix}function s(a,n,t,e){return t*(-Math.pow(2,-10*a/e)+1)*1024/1023+n}function u(a){return"number"==typeof a&&!isNaN(a)}var l=this;if(l.version=function(){return"1.9.3"},l.options={useEasing:!0,useGrouping:!0,separator:",",decimal:".",easingFn:s,formattingFn:o,prefix:"",suffix:"",numerals:[]},r&&"object"==typeof r)for(var m in l.options)r.hasOwnProperty(m)&&null!==r[m]&&(l.options[m]=r[m]);""===l.options.separator?l.options.useGrouping=!1:l.options.separator=""+l.options.separator;for(var d=0,c=["webkit","moz","ms","o"],f=0;f<c.length&&!window.requestAnimationFrame;++f)window.requestAnimationFrame=window[c[f]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[c[f]+"CancelAnimationFrame"]||window[c[f]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(a,n){var t=(new Date).getTime(),e=Math.max(0,16-(t-d)),i=window.setTimeout(function(){a(t+e)},e);return d=t+e,i}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(a){clearTimeout(a)}),l.initialize=function(){return!!l.initialized||(l.error="",l.d="string"==typeof a?document.getElementById(a):a,l.d?(l.startVal=Number(n),l.endVal=Number(t),u(l.startVal)&&u(l.endVal)?(l.decimals=Math.max(0,e||0),l.dec=Math.pow(10,l.decimals),l.duration=1e3*Number(i)||2e3,l.countDown=l.startVal>l.endVal,l.frameVal=l.startVal,l.initialized=!0,!0):(l.error="[CountUp] startVal ("+n+") or endVal ("+t+") is not a number",!1)):(l.error="[CountUp] target is null or undefined",!1))},l.printValue=function(a){var n=l.options.formattingFn(a);"INPUT"===l.d.tagName?this.d.value=n:"text"===l.d.tagName||"tspan"===l.d.tagName?this.d.textContent=n:this.d.innerHTML=n},l.count=function(a){l.startTime||(l.startTime=a),l.timestamp=a;var n=a-l.startTime;l.remaining=l.duration-n,l.options.useEasing?l.countDown?l.frameVal=l.startVal-l.options.easingFn(n,0,l.startVal-l.endVal,l.duration):l.frameVal=l.options.easingFn(n,l.startVal,l.endVal-l.startVal,l.duration):l.countDown?l.frameVal=l.startVal-(l.startVal-l.endVal)*(n/l.duration):l.frameVal=l.startVal+(l.endVal-l.startVal)*(n/l.duration),l.countDown?l.frameVal=l.frameVal<l.endVal?l.endVal:l.frameVal:l.frameVal=l.frameVal>l.endVal?l.endVal:l.frameVal,l.frameVal=Math.round(l.frameVal*l.dec)/l.dec,l.printValue(l.frameVal),n<l.duration?l.rAF=requestAnimationFrame(l.count):l.callback&&l.callback()},l.start=function(a){l.initialize()&&(l.callback=a,l.rAF=requestAnimationFrame(l.count))},l.pauseResume=function(){l.paused?(l.paused=!1,delete l.startTime,l.duration=l.remaining,l.startVal=l.frameVal,requestAnimationFrame(l.count)):(l.paused=!0,cancelAnimationFrame(l.rAF))},l.reset=function(){l.paused=!1,delete l.startTime,l.initialized=!1,l.initialize()&&(cancelAnimationFrame(l.rAF),l.printValue(l.startVal))},l.update=function(a){if(l.initialize()){if(a=Number(a),!u(a))return void(l.error="[CountUp] update() - new endVal is not a number: "+a);l.error="",a!==l.frameVal&&(cancelAnimationFrame(l.rAF),l.paused=!1,delete l.startTime,l.startVal=l.frameVal,l.endVal=a,l.countDown=l.startVal>l.endVal,l.rAF=requestAnimationFrame(l.count))}},l.initialize()&&l.printValue(l.startVal)};return e});
 
 /***/ }),
 
@@ -32909,7 +32915,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 8273:
+/***/ 8624:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33143,9 +33149,9 @@ function styled(component, options) {
   });
   return (0,emotion_styled_cjs.default)(component, styledOptions)(styleObject);
 }
-var system_chakra = styled;
+var chakra = styled;
 domElements.forEach(tag => {
-  system_chakra[tag] = system_chakra(tag);
+  chakra[tag] = chakra(tag);
 });
 //# sourceMappingURL=system.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
@@ -33189,7 +33195,7 @@ var Flex = /*#__PURE__*/forwardRef((props, ref) => {
     flexGrow: grow,
     flexShrink: shrink
   };
-  return /*#__PURE__*/react.createElement(system_chakra.div, _extends({
+  return /*#__PURE__*/react.createElement(chakra.div, _extends({
     ref: ref,
     __css: styles
   }, rest));
@@ -33384,7 +33390,7 @@ function text_objectWithoutPropertiesLoose(source, excluded) { if (source == nul
  *
  * @see Docs https://chakra-ui.com/docs/typography/text
  */
-var Text = /*#__PURE__*/forwardRef((props, ref) => {
+var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
   var styles = useStyleConfig("Text", props);
 
   var _omitThemingProps = system_utils_omitThemingProps(props),
@@ -33395,7 +33401,7 @@ var Text = /*#__PURE__*/forwardRef((props, ref) => {
     textDecoration: props.decoration,
     textTransform: props.casing
   });
-  return /*#__PURE__*/react.createElement(system_chakra.p, text_extends({
+  return /*#__PURE__*/react.createElement(chakra.p, text_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-text", props.className)
   }, aliasedProps, rest, {
@@ -33404,7 +33410,7 @@ var Text = /*#__PURE__*/forwardRef((props, ref) => {
 });
 
 if (assertion/* __DEV__ */.Ts) {
-  Text.displayName = "Text";
+  text_Text.displayName = "Text";
 }
 //# sourceMappingURL=text.js.map
 ;// CONCATENATED MODULE: ./components/Footer.js
@@ -33420,7 +33426,7 @@ function Footer() {
       justifyContent: "center",
       alignItems: "center",
       paddingY: "2rem",
-      children: /*#__PURE__*/jsx_runtime.jsx(Text, {
+      children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
         children: "Powered by Sanity.io"
       })
     })
@@ -33435,7 +33441,7 @@ function updateAction_objectSpread(target) { for (var i = 1; i < arguments.lengt
 
 function updateAction_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function updateAction(state, payload) {
+function updateAction_updateAction(state, payload) {
   // console.log('state:', state)
   // console.log('payload:', payload)
   return updateAction_objectSpread(updateAction_objectSpread({}, state), payload);
@@ -33455,10 +33461,10 @@ function box_objectWithoutPropertiesLoose(source, excluded) { if (source == null
  *
  * @see Docs https://chakra-ui.com/docs/layout/box
  */
-var Box = system_chakra("div");
+var box_Box = chakra("div");
 
 if (assertion/* __DEV__ */.Ts) {
-  Box.displayName = "Box";
+  box_Box.displayName = "Box";
 }
 /**
  * As a constraint, you can't pass size related props
@@ -33478,7 +33484,7 @@ var Square = /*#__PURE__*/forwardRef((props, ref) => {
     alignItems: "center",
     justifyContent: "center"
   } : {};
-  return /*#__PURE__*/react.createElement(Box, box_extends({
+  return /*#__PURE__*/react.createElement(box_Box, box_extends({
     ref: ref,
     boxSize: size,
     __css: box_extends({}, styles, {
@@ -33517,13 +33523,13 @@ function heading_objectWithoutPropertiesLoose(source, excluded) { if (source == 
 
 
 
-var Heading = /*#__PURE__*/forwardRef((props, ref) => {
+var heading_Heading = /*#__PURE__*/forwardRef((props, ref) => {
   var styles = useStyleConfig("Heading", props);
 
   var _omitThemingProps = system_utils_omitThemingProps(props),
       rest = heading_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
 
-  return /*#__PURE__*/react.createElement(system_chakra.h2, heading_extends({
+  return /*#__PURE__*/react.createElement(chakra.h2, heading_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-heading", props.className)
   }, rest, {
@@ -33532,7 +33538,7 @@ var Heading = /*#__PURE__*/forwardRef((props, ref) => {
 });
 
 if (assertion/* __DEV__ */.Ts) {
-  Heading.displayName = "Heading";
+  heading_Heading.displayName = "Heading";
 }
 //# sourceMappingURL=heading.js.map
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/refs.js
@@ -33603,7 +33609,7 @@ var visuallyHiddenStyle = {
  * elements on screen
  */
 
-var VisuallyHidden = system_chakra("span", {
+var VisuallyHidden = chakra("span", {
   baseStyle: visuallyHiddenStyle
 });
 
@@ -33617,7 +33623,7 @@ if (assertion/* __DEV__ */.Ts) {
  */
 
 
-var VisuallyHiddenInput = system_chakra("input", {
+var VisuallyHiddenInput = chakra("input", {
   baseStyle: visuallyHiddenStyle
 });
 
@@ -33677,7 +33683,7 @@ var Spinner = /*#__PURE__*/forwardRef((props, ref) => {
     animation: spin + " " + speed + " linear infinite"
   }, styles);
 
-  return /*#__PURE__*/react.createElement(system_chakra.div, spinner_extends({
+  return /*#__PURE__*/react.createElement(chakra.div, spinner_extends({
     ref: ref,
     __css: spinnerStyles,
     className: _className
@@ -33750,7 +33756,7 @@ var ButtonGroup = /*#__PURE__*/forwardRef((props, ref) => {
 
   return /*#__PURE__*/react.createElement(ButtonGroupProvider, {
     value: context
-  }, /*#__PURE__*/react.createElement(system_chakra.div, button_group_extends({
+  }, /*#__PURE__*/react.createElement(chakra.div, button_group_extends({
     ref: ref,
     role: "group",
     __css: groupStyles,
@@ -33831,7 +33837,7 @@ var Button = /*#__PURE__*/forwardRef((props, ref) => {
     setIsButton(node.tagName === "BUTTON");
   }, []);
   var defaultType = isButton ? "button" : undefined;
-  return /*#__PURE__*/react.createElement(system_chakra.button, button_extends({
+  return /*#__PURE__*/react.createElement(chakra.button, button_extends({
     disabled: isDisabled || isLoading,
     ref: mergeRefs(ref, refCallback),
     as: as,
@@ -33845,7 +33851,7 @@ var Button = /*#__PURE__*/forwardRef((props, ref) => {
   }, leftIcon), isLoading && spinnerPlacement === "start" && /*#__PURE__*/react.createElement(ButtonSpinner, {
     label: loadingText,
     placement: "start"
-  }, spinner), isLoading ? loadingText || /*#__PURE__*/react.createElement(system_chakra.span, {
+  }, spinner), isLoading ? loadingText || /*#__PURE__*/react.createElement(chakra.span, {
     opacity: 0
   }, children) : children, isLoading && spinnerPlacement === "end" && /*#__PURE__*/react.createElement(ButtonSpinner, {
     label: loadingText,
@@ -33873,7 +33879,7 @@ var ButtonIcon = props => {
 
   var _className = (0,dom.cx)("chakra-button__icon", className);
 
-  return /*#__PURE__*/react.createElement(system_chakra.span, button_extends({
+  return /*#__PURE__*/react.createElement(chakra.span, button_extends({
     display: "inline-flex",
     alignSelf: "center",
     flexShrink: 0
@@ -33913,7 +33919,7 @@ var ButtonSpinner = props => {
     lineHeight: "normal"
   }, __css);
 
-  return /*#__PURE__*/react.createElement(system_chakra.div, button_extends({
+  return /*#__PURE__*/react.createElement(chakra.div, button_extends({
     className: _className
   }, rest, {
     __css: spinnerStyles
@@ -33944,7 +33950,7 @@ var Code = /*#__PURE__*/forwardRef((props, ref) => {
   var _omitThemingProps = system_utils_omitThemingProps(props),
       rest = code_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
 
-  return /*#__PURE__*/react.createElement(system_chakra.code, code_extends({
+  return /*#__PURE__*/react.createElement(chakra.code, code_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-code", props.className)
   }, rest, {
@@ -35339,7 +35345,7 @@ function Debug() {
     actions,
     state
   } = (0,little_state_machine/* useStateMachine */.j_)({
-    updateAction: updateAction
+    updateAction: updateAction_updateAction
   });
   const {
     questions
@@ -35356,12 +35362,12 @@ function Debug() {
     }));
   };
 
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(box_Box, {
     p: "4",
     overflow: "auto",
     children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       justifyContent: "space-between",
-      children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+      children: [/*#__PURE__*/jsx_runtime.jsx(heading_Heading, {
         size: "lg",
         children: "My Data"
       }), /*#__PURE__*/jsx_runtime.jsx(Button, {
@@ -44369,7 +44375,7 @@ var featureBundle = __assign(__assign(__assign(__assign({}, animations), gesture
  *
  * @public
  */
-var motion = /*@__PURE__*/ createMotionProxy(function (Component, config) {
+var motion_motion = /*@__PURE__*/ createMotionProxy(function (Component, config) {
     return create_config_createDomMotionConfig(Component, config, featureBundle, create_visual_element_createDomVisualElement);
 });
 /**
@@ -44505,7 +44511,7 @@ var Slide = /*#__PURE__*/react.forwardRef((props, ref) => {
   var shouldExpand = unmountOnExit ? isOpen && unmountOnExit : true;
   return /*#__PURE__*/react.createElement(AnimatePresence, {
     custom: direction
-  }, shouldExpand && /*#__PURE__*/react.createElement(motion.div, slide_extends({
+  }, shouldExpand && /*#__PURE__*/react.createElement(motion_motion.div, slide_extends({
     ref: ref,
     initial: "exit",
     className: (0,dom.cx)("chakra-slide", className),
@@ -44590,14 +44596,14 @@ var Icon = /*#__PURE__*/forwardRef((props, ref) => {
 
 
   if (element && typeof element !== "string") {
-    return /*#__PURE__*/react.createElement(system_chakra.svg, icon_extends({
+    return /*#__PURE__*/react.createElement(chakra.svg, icon_extends({
       as: element
     }, shared, rest));
   }
 
   var _path = children != null ? children : fallbackIcon.path;
 
-  return /*#__PURE__*/react.createElement(system_chakra.svg, icon_extends({
+  return /*#__PURE__*/react.createElement(chakra.svg, icon_extends({
     verticalAlign: "middle",
     viewBox: _viewBox
   }, shared, rest), _path);
@@ -44651,7 +44657,7 @@ var CloseButton = /*#__PURE__*/forwardRef((props, ref) => {
     justifyContent: "center",
     flexShrink: 0
   };
-  return /*#__PURE__*/react.createElement(system_chakra.button, close_button_extends({
+  return /*#__PURE__*/react.createElement(chakra.button, close_button_extends({
     type: "button",
     "aria-label": "Close",
     ref: ref,
@@ -45187,7 +45193,7 @@ var Fade = /*#__PURE__*/react.forwardRef((props, ref) => {
       rest = fade_objectWithoutPropertiesLoose(props, ["unmountOnExit", "in", "className"]);
 
   var shouldExpand = unmountOnExit ? isOpen && unmountOnExit : true;
-  return /*#__PURE__*/react.createElement(AnimatePresence, null, shouldExpand && /*#__PURE__*/react.createElement(motion.div, fade_extends({
+  return /*#__PURE__*/react.createElement(AnimatePresence, null, shouldExpand && /*#__PURE__*/react.createElement(motion_motion.div, fade_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-fade", className)
   }, fadeConfig, {
@@ -45275,7 +45281,7 @@ var SlideFade = /*#__PURE__*/react.forwardRef((props, ref) => {
   });
   return /*#__PURE__*/react.createElement(AnimatePresence, {
     custom: custom
-  }, shouldExpand && /*#__PURE__*/react.createElement(motion.div, slide_fade_extends({
+  }, shouldExpand && /*#__PURE__*/react.createElement(motion_motion.div, slide_fade_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-offset-slide", className)
   }, motionProps, rest)));
@@ -45345,7 +45351,7 @@ var ScaleFade = /*#__PURE__*/react.forwardRef((props, ref) => {
   });
   return /*#__PURE__*/react.createElement(AnimatePresence, {
     custom: custom
-  }, show && /*#__PURE__*/react.createElement(motion.div, scale_fade_extends({
+  }, show && /*#__PURE__*/react.createElement(motion_motion.div, scale_fade_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-offset-slide", className)
   }, motionProps, rest)));
@@ -45385,7 +45391,7 @@ var modal_transition_transitions = {
   }),
   none: {}
 };
-var Motion = system_chakra(motion.section);
+var Motion = chakra(motion_motion.section);
 var ModalTransition = /*#__PURE__*/react.forwardRef((props, ref) => {
   var {
     preset
@@ -45687,7 +45693,7 @@ if (assertion/* __DEV__ */.Ts) {
   Modal.displayName = "Modal";
 }
 
-var modal_Motion = system_chakra(motion.div);
+var modal_Motion = chakra(motion_motion.div);
 /**
  * ModalContent is used to group modal's content. It has all the
  * necessary `aria-*` properties to indicate that it is a modal
@@ -45735,7 +45741,7 @@ var ModalContent = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     motionPreset
   } = useModalContext();
-  return /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(system_chakra.div, modal_extends({}, containerProps, {
+  return /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(chakra.div, modal_extends({}, containerProps, {
     className: "chakra-modal__content-container",
     __css: dialogContainerStyles
   }), /*#__PURE__*/react.createElement(ModalTransition, modal_extends({
@@ -45859,7 +45865,7 @@ var ModalHeader = /*#__PURE__*/forwardRef((props, ref) => {
     flex: 0
   }, styles.header);
 
-  return /*#__PURE__*/react.createElement(system_chakra.header, modal_extends({
+  return /*#__PURE__*/react.createElement(chakra.header, modal_extends({
     ref: ref,
     className: _className,
     id: headerId
@@ -45902,7 +45908,7 @@ var ModalBody = /*#__PURE__*/forwardRef((props, ref) => {
   var _className = (0,dom.cx)("chakra-modal__body", className);
 
   var styles = (0,providers/* useStyles */.yK)();
-  return /*#__PURE__*/react.createElement(system_chakra.div, modal_extends({
+  return /*#__PURE__*/react.createElement(chakra.div, modal_extends({
     ref: ref,
     className: _className,
     id: bodyId
@@ -45935,7 +45941,7 @@ var ModalFooter = /*#__PURE__*/forwardRef((props, ref) => {
     justifyContent: "flex-end"
   }, styles.footer);
 
-  return /*#__PURE__*/react.createElement(system_chakra.footer, modal_extends({
+  return /*#__PURE__*/react.createElement(chakra.footer, modal_extends({
     ref: ref
   }, rest, {
     __css: footerStyles,
@@ -46018,7 +46024,7 @@ function Drawer(props) {
     styleConfig: drawerStyleConfig
   }, rest), children));
 }
-var StyleSlide = system_chakra(Slide);
+var StyleSlide = chakra(Slide);
 
 /**
  * ModalContent is used to group modal's content. It has all the
@@ -46063,7 +46069,7 @@ var DrawerContent = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     placement
   } = useDrawerContext();
-  return /*#__PURE__*/react.createElement(system_chakra.div, drawer_extends({}, containerProps, {
+  return /*#__PURE__*/react.createElement(chakra.div, drawer_extends({}, containerProps, {
     className: "chakra-modal__content-container",
     __css: dialogContainerStyles
   }), /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(StyleSlide, drawer_extends({
@@ -46109,7 +46115,7 @@ function Layout({
     }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       height: "100vh",
       flexDir: "column",
-      children: [children, /*#__PURE__*/jsx_runtime.jsx(Box, {
+      children: [children, /*#__PURE__*/jsx_runtime.jsx(box_Box, {
         paddingY: '5rem',
         width: "100%",
         maxW: "860px",
@@ -46120,6 +46126,7 @@ function Layout({
           onClick: onOpen,
           display: "inline-block",
           isFullWidth: false,
+          variant: "outline",
           children: "Debug"
         })
       }), /*#__PURE__*/jsx_runtime.jsx(Footer, {})]
@@ -46287,7 +46294,7 @@ const serializers = {
 
 
 
-function text_Text({
+function serializers_text_Text({
   blocks
 }) {
   var _blocks$;
@@ -46595,7 +46602,7 @@ function deepEqual(object1, object2, isErrorObject) {
         object2 instanceof Date) {
         return object1 === object2;
     }
-    if (!react.isValidElement(object1)) {
+    if (!React.isValidElement(object1)) {
         const keys1 = Object.keys(object1);
         const keys2 = Object.keys(object2);
         if (keys1.length !== keys2.length) {
@@ -47056,7 +47063,7 @@ var isFunction = (value) => typeof value === 'function';
 
 var index_esm_isString = (value) => typeof value === 'string';
 
-var isMessage = (value) => index_esm_isString(value) || react.isValidElement(value);
+var isMessage = (value) => index_esm_isString(value) || React.isValidElement(value);
 
 var isRegex = (value) => value instanceof RegExp;
 
@@ -47258,27 +47265,27 @@ class Subject {
 }
 
 const isWindowUndefined = typeof window === UNDEFINED;
-function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_MODE.onChange, resolver, context, defaultValues = {}, shouldFocusError = true, shouldUnregister, criteriaMode, } = {}) {
-    const fieldsRef = react.useRef({});
-    const fieldsNamesRef = react.useRef(new Set());
-    const formStateSubjectRef = react.useRef(new Subject());
-    const unregisterFieldsNamesRef = react.useRef(new Set());
-    const watchSubjectRef = react.useRef(new Subject());
-    const controllerSubjectRef = react.useRef(new Subject());
-    const fieldArraySubjectRef = react.useRef(new Subject());
-    const fieldArrayDefaultValuesRef = react.useRef({});
-    const watchFieldsRef = react.useRef(new Set());
-    const isMountedRef = react.useRef(false);
-    const fieldsWithValidationRef = react.useRef({});
-    const validFieldsRef = react.useRef({});
-    const defaultValuesRef = react.useRef(defaultValues);
-    const isWatchAllRef = react.useRef(false);
-    const contextRef = react.useRef(context);
-    const resolverRef = react.useRef(resolver);
-    const fieldArrayNamesRef = react.useRef(new Set());
+function index_esm_useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_MODE.onChange, resolver, context, defaultValues = {}, shouldFocusError = true, shouldUnregister, criteriaMode, } = {}) {
+    const fieldsRef = React.useRef({});
+    const fieldsNamesRef = React.useRef(new Set());
+    const formStateSubjectRef = React.useRef(new Subject());
+    const unregisterFieldsNamesRef = React.useRef(new Set());
+    const watchSubjectRef = React.useRef(new Subject());
+    const controllerSubjectRef = React.useRef(new Subject());
+    const fieldArraySubjectRef = React.useRef(new Subject());
+    const fieldArrayDefaultValuesRef = React.useRef({});
+    const watchFieldsRef = React.useRef(new Set());
+    const isMountedRef = React.useRef(false);
+    const fieldsWithValidationRef = React.useRef({});
+    const validFieldsRef = React.useRef({});
+    const defaultValuesRef = React.useRef(defaultValues);
+    const isWatchAllRef = React.useRef(false);
+    const contextRef = React.useRef(context);
+    const resolverRef = React.useRef(resolver);
+    const fieldArrayNamesRef = React.useRef(new Set());
     const validationMode = getValidationModes(mode);
     const isValidateAllFieldCriteria = criteriaMode === VALIDATION_MODE.all;
-    const [formState, setFormState] = react.useState({
+    const [formState, setFormState] = React.useState({
         isDirty: false,
         isValidating: false,
         dirtyFields: {},
@@ -47290,7 +47297,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         isValid: !validationMode.isOnSubmit,
         errors: {},
     });
-    const readFormStateRef = react.useRef({
+    const readFormStateRef = React.useRef({
         isDirty: !isProxyEnabled,
         dirtyFields: !isProxyEnabled,
         touchedFields: !isProxyEnabled,
@@ -47298,13 +47305,13 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         isValid: !isProxyEnabled,
         errors: !isProxyEnabled,
     });
-    const formStateRef = react.useRef(formState);
+    const formStateRef = React.useRef(formState);
     contextRef.current = context;
     resolverRef.current = resolver;
     const getIsValid = () => (formStateRef.current.isValid =
         deepEqual(validFieldsRef.current, fieldsWithValidationRef.current) &&
             isEmptyObject(formStateRef.current.errors));
-    const shouldRenderBaseOnError = react.useCallback((name, error, shouldRender = false, state = {}, isValid, isWatched) => {
+    const shouldRenderBaseOnError = React.useCallback((name, error, shouldRender = false, state = {}, isValid, isWatched) => {
         const previousError = index_esm_get(formStateRef.current.errors, name);
         let shouldReRender = shouldRender ||
             !deepEqual(previousError, error, true) ||
@@ -47338,7 +47345,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
             isValidating: false,
         });
     }, []);
-    const setFieldValue = react.useCallback((name, rawValue, options = {}, shouldRender, shouldRegister) => {
+    const setFieldValue = React.useCallback((name, rawValue, options = {}, shouldRender, shouldRegister) => {
         shouldRegister && register(name);
         const _f = index_esm_get(fieldsRef.current, name, {})._f;
         if (_f) {
@@ -47377,12 +47384,12 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
             options.shouldValidate && trigger(name);
         }
     }, []);
-    const getIsDirty = react.useCallback((name, data) => {
+    const getIsDirty = React.useCallback((name, data) => {
         const formValues = getFieldsValues(fieldsRef);
         name && data && set(formValues, name, data);
         return !deepEqual(formValues, defaultValuesRef.current);
     }, []);
-    const updateAndGetDirtyState = react.useCallback((name, inputValue, shouldRender = true) => {
+    const updateAndGetDirtyState = React.useCallback((name, inputValue, shouldRender = true) => {
         if (readFormStateRef.current.isDirty ||
             readFormStateRef.current.dirtyFields) {
             const isFieldDirty = !deepEqual(index_esm_get(defaultValuesRef.current, name), inputValue);
@@ -47405,12 +47412,12 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         }
         return {};
     }, []);
-    const executeValidation = react.useCallback(async (name, skipReRender) => {
+    const executeValidation = React.useCallback(async (name, skipReRender) => {
         const error = (await validateField(index_esm_get(fieldsRef.current, name), isValidateAllFieldCriteria))[name];
         shouldRenderBaseOnError(name, error, skipReRender);
         return isUndefined(error);
     }, [isValidateAllFieldCriteria]);
-    const executeSchemaOrResolverValidation = react.useCallback(async (names, currentNames = []) => {
+    const executeSchemaOrResolverValidation = React.useCallback(async (names, currentNames = []) => {
         const { errors } = await resolverRef.current(getFieldsValues(fieldsRef, shouldUnregister ? {} : defaultValuesRef.current), contextRef.current, {
             criteriaMode,
             names: currentNames,
@@ -47445,7 +47452,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
             }
         }
     };
-    const trigger = react.useCallback(async (name) => {
+    const trigger = React.useCallback(async (name) => {
         const fields = isUndefined(name)
             ? Object.keys(fieldsRef.current)
             : Array.isArray(name)
@@ -47474,7 +47481,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         });
         return isValid;
     }, [executeSchemaOrResolverValidation, executeValidation]);
-    const setInternalValues = react.useCallback((name, value, options) => Object.entries(value).forEach(([inputKey, inputValue]) => {
+    const setInternalValues = React.useCallback((name, value, options) => Object.entries(value).forEach(([inputKey, inputValue]) => {
         const fieldName = `${name}.${inputKey}`;
         const field = index_esm_get(fieldsRef.current, fieldName);
         field && !field._f
@@ -47543,7 +47550,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         isFieldWatched(name) && formStateSubjectRef.current.next({});
         watchSubjectRef.current.next({ name, value });
     };
-    const handleChange = react.useCallback(async ({ type, target, target: { value, type: inputType } }) => {
+    const handleChange = React.useCallback(async ({ type, target, target: { value, type: inputType } }) => {
         let name = target.name;
         let error;
         let isValid;
@@ -47624,7 +47631,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
                 ? index_esm_get(values, fieldNames)
                 : fieldNames.map((name) => index_esm_get(values, name));
     };
-    const updateIsValid = react.useCallback(async (values = {}) => {
+    const updateIsValid = React.useCallback(async (values = {}) => {
         const previousIsValid = formStateRef.current.isValid;
         if (resolver) {
             const { errors } = await resolverRef.current(Object.assign(Object.assign({}, getFieldsValues(fieldsRef, shouldUnregister ? {} : defaultValuesRef.current)), values), contextRef.current, {
@@ -47657,7 +47664,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         });
         options && options.shouldFocus && ref && ref.focus && ref.focus();
     };
-    const watchInternal = react.useCallback((fieldNames, defaultValue, isGlobal) => {
+    const watchInternal = React.useCallback((fieldNames, defaultValue, isGlobal) => {
         const isArrayNames = Array.isArray(fieldNames);
         const fieldValues = isMountedRef.current
             ? getFieldsValues(fieldsRef, defaultValuesRef.current)
@@ -47738,7 +47745,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
             index_esm_get(fieldsRef.current, name)._f.value = getFieldValue(index_esm_get(fieldsRef.current, name));
         }
     };
-    const register = react.useCallback((name, options) => {
+    const register = React.useCallback((name, options) => {
         const isInitialRegister = !index_esm_get(fieldsRef.current, name);
         set(fieldsRef.current, name, {
             _f: Object.assign(Object.assign(Object.assign({}, (isInitialRegister
@@ -47764,7 +47771,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
                 },
             };
     }, [defaultValuesRef.current]);
-    const handleSubmit = react.useCallback((onValid, onInvalid) => async (e) => {
+    const handleSubmit = React.useCallback((onValid, onInvalid) => async (e) => {
         if (e) {
             e.preventDefault && e.preventDefault();
             e.persist && e.persist();
@@ -47810,7 +47817,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
             });
         }
     }, [shouldFocusError, isValidateAllFieldCriteria, criteriaMode]);
-    const resetFromState = react.useCallback(({ keepErrors, keepDirty, keepIsSubmitted, keepTouched, keepDefaultValues, keepIsValid, keepSubmitCount, }, values) => {
+    const resetFromState = React.useCallback(({ keepErrors, keepDirty, keepIsSubmitted, keepTouched, keepDefaultValues, keepIsValid, keepSubmitCount, }, values) => {
         if (!keepIsValid) {
             validFieldsRef.current = {};
             fieldsWithValidationRef.current = {};
@@ -47873,7 +47880,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         isMountedRef.current = false;
     };
     const setFocus = (name) => index_esm_get(fieldsRef.current, name)._f.ref.focus();
-    react.useEffect(() => {
+    React.useEffect(() => {
         const formStateSubscription = formStateSubjectRef.current.subscribe({
             next(formState = {}) {
                 if (shouldRenderFormState(formState, readFormStateRef.current, true)) {
@@ -47898,7 +47905,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
             useFieldArraySubscription.unsubscribe();
         };
     }, []);
-    react.useEffect(() => {
+    React.useEffect(() => {
         const isLiveInDom = (ref) => !index_esm_isHTMLElement(ref) || !document.contains(ref);
         isMountedRef.current = true;
         unregisterFieldsNamesRef.current.forEach((name) => {
@@ -47912,7 +47919,7 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         unregisterFieldsNamesRef.current = new Set();
     });
     return {
-        control: react.useMemo(() => ({
+        control: React.useMemo(() => ({
             register,
             isWatchAllRef,
             watchFieldsRef,
@@ -47937,14 +47944,14 @@ function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_
         trigger,
         register,
         handleSubmit,
-        watch: react.useCallback(watch, []),
-        setValue: react.useCallback(setValue, [setInternalValues]),
-        getValues: react.useCallback(getValues, []),
-        reset: react.useCallback(reset, []),
-        clearErrors: react.useCallback(clearErrors, []),
-        unregister: react.useCallback(unregister, []),
-        setError: react.useCallback(setError, []),
-        setFocus: react.useCallback(setFocus, []),
+        watch: React.useCallback(watch, []),
+        setValue: React.useCallback(setValue, [setInternalValues]),
+        getValues: React.useCallback(getValues, []),
+        reset: React.useCallback(reset, []),
+        clearErrors: React.useCallback(clearErrors, []),
+        unregister: React.useCallback(unregister, []),
+        setError: React.useCallback(setError, []),
+        setFocus: React.useCallback(setFocus, []),
     };
 }
 
@@ -47982,535 +47989,7 @@ function useWatch(props) {
 
 //# sourceMappingURL=index.esm.js.map
 
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/hooks/dist/esm/use-boolean.js
-
-
-/**
- * React hook to manage boolean (on - off) states
- *
- * @param initialState the initial boolean state value
- */
-function useBoolean(initialState) {
-  if (initialState === void 0) {
-    initialState = false;
-  }
-
-  var [value, setValue] = (0,react.useState)(initialState);
-  var on = (0,react.useCallback)(() => {
-    setValue(true);
-  }, []);
-  var off = (0,react.useCallback)(() => {
-    setValue(false);
-  }, []);
-  var toggle = (0,react.useCallback)(() => {
-    setValue(prev => !prev);
-  }, []);
-  return [value, {
-    on,
-    off,
-    toggle
-  }];
-}
-//# sourceMappingURL=use-boolean.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/form-control.js
-function form_control_extends() { form_control_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return form_control_extends.apply(this, arguments); }
-
-function form_control_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-var [FormControlProvider, useFormControlContext] = (0,context/* createContext */.k)({
-  strict: false,
-  name: "FormControlContext"
-});
-
-
-function useFormControlProvider(props) {
-  var {
-    id: idProp,
-    isRequired,
-    isInvalid,
-    isDisabled,
-    isReadOnly
-  } = props,
-      htmlProps = form_control_objectWithoutPropertiesLoose(props, ["id", "isRequired", "isInvalid", "isDisabled", "isReadOnly"]); // Generate all the required ids
-
-
-  var uuid = useId();
-  var id = idProp || "field-" + uuid;
-  var labelId = id + "-label";
-  var feedbackId = id + "-feedback";
-  var helpTextId = id + "-helptext";
-  /**
-   * Track whether the `FormErrorMessage` has been rendered.
-   * We use this to append its id the the `aria-describedby` of the `input`.
-   */
-
-  var [hasFeedbackText, setHasFeedbackText] = react.useState(false);
-  /**
-   * Track whether the `FormHelperText` has been rendered.
-   * We use this to append its id the the `aria-describedby` of the `input`.
-   */
-
-  var [hasHelpText, setHasHelpText] = react.useState(false); // Track whether the form element (e.g, `input`) has focus.
-
-  var [isFocused, setFocus] = useBoolean();
-  var getHelpTextProps = react.useCallback(function (props, forwardedRef) {
-    if (props === void 0) {
-      props = {};
-    }
-
-    if (forwardedRef === void 0) {
-      forwardedRef = null;
-    }
-
-    return form_control_extends({
-      id: helpTextId
-    }, props, {
-      /**
-       * Notify the field context when the help text is rendered on screen,
-       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
-       */
-      ref: mergeRefs(forwardedRef, node => {
-        if (!node) return;
-        setHasHelpText(true);
-      })
-    });
-  }, [helpTextId]);
-  var getLabelProps = react.useCallback(function (props, forwardedRef) {
-    var _props$id, _props$htmlFor;
-
-    if (props === void 0) {
-      props = {};
-    }
-
-    if (forwardedRef === void 0) {
-      forwardedRef = null;
-    }
-
-    return form_control_extends({}, props, {
-      ref: forwardedRef,
-      "data-focus": (0,dom/* dataAttr */.PB)(isFocused),
-      "data-disabled": (0,dom/* dataAttr */.PB)(isDisabled),
-      "data-invalid": (0,dom/* dataAttr */.PB)(isInvalid),
-      "data-readonly": (0,dom/* dataAttr */.PB)(isReadOnly),
-      id: (_props$id = props.id) != null ? _props$id : labelId,
-      htmlFor: (_props$htmlFor = props.htmlFor) != null ? _props$htmlFor : id
-    });
-  }, [id, isDisabled, isFocused, isInvalid, isReadOnly, labelId]);
-  var getErrorMessageProps = react.useCallback(function (props, forwardedRef) {
-    if (props === void 0) {
-      props = {};
-    }
-
-    if (forwardedRef === void 0) {
-      forwardedRef = null;
-    }
-
-    return form_control_extends({
-      id: feedbackId
-    }, props, {
-      /**
-       * Notify the field context when the error message is rendered on screen,
-       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
-       */
-      ref: mergeRefs(forwardedRef, node => {
-        if (!node) return;
-        setHasFeedbackText(true);
-      }),
-      "aria-live": "polite"
-    });
-  }, [feedbackId]);
-  var getRootProps = react.useCallback(function (props, forwardedRef) {
-    if (props === void 0) {
-      props = {};
-    }
-
-    if (forwardedRef === void 0) {
-      forwardedRef = null;
-    }
-
-    return form_control_extends({}, props, htmlProps, {
-      ref: forwardedRef,
-      role: "group"
-    });
-  }, [htmlProps]);
-  var getRequiredIndicatorProps = react.useCallback(function (props, forwardedRef) {
-    if (props === void 0) {
-      props = {};
-    }
-
-    if (forwardedRef === void 0) {
-      forwardedRef = null;
-    }
-
-    return form_control_extends({}, props, {
-      ref: forwardedRef,
-      role: "presentation",
-      "aria-hidden": true,
-      children: props.children || "*"
-    });
-  }, []);
-  var onFocus = react.useCallback(() => {
-    (0,esm_function/* scheduleMicrotask */.A4)(setFocus.on);
-  }, [setFocus]);
-  return {
-    isRequired: !!isRequired,
-    isInvalid: !!isInvalid,
-    isReadOnly: !!isReadOnly,
-    isDisabled: !!isDisabled,
-    isFocused: !!isFocused,
-    onFocus,
-    onBlur: setFocus.off,
-    hasFeedbackText,
-    setHasFeedbackText,
-    hasHelpText,
-    setHasHelpText,
-    id,
-    labelId,
-    feedbackId,
-    helpTextId,
-    htmlProps,
-    getHelpTextProps,
-    getErrorMessageProps,
-    getRootProps,
-    getLabelProps,
-    getRequiredIndicatorProps
-  };
-}
-
-/**
- * FormControl provides context such as
- * `isInvalid`, `isDisabled`, and `isRequired` to form elements.
- *
- * This is commonly used in form elements such as `input`,
- * `select`, `textarea`, etc.
- */
-var FormControl = /*#__PURE__*/forwardRef((props, ref) => {
-  var styles = useMultiStyleConfig("Form", props);
-  var ownProps = system_utils_omitThemingProps(props);
-
-  var _useFormControlProvid = useFormControlProvider(ownProps),
-      {
-    getRootProps
-  } = _useFormControlProvid,
-      context = form_control_objectWithoutPropertiesLoose(_useFormControlProvid, ["getRootProps", "htmlProps"]);
-
-  var className = (0,dom.cx)("chakra-form-control", props.className);
-  var contextValue = react.useMemo(() => context, [context]);
-  return /*#__PURE__*/react.createElement(FormControlProvider, {
-    value: contextValue
-  }, /*#__PURE__*/react.createElement(providers/* StylesProvider */.Fo, {
-    value: styles
-  }, /*#__PURE__*/react.createElement(system_chakra.div, form_control_extends({}, getRootProps({}, ref), {
-    className: className,
-    __css: {
-      width: "100%",
-      position: "relative"
-    }
-  }))));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  FormControl.displayName = "FormControl";
-}
-
-/**
- * FormHelperText
- *
- * Assistive component that conveys additional guidance
- * about the field, such as how it will be used and what
- * types in values should be provided.
- */
-var FormHelperText = /*#__PURE__*/forwardRef((props, ref) => {
-  var field = useFormControlContext();
-  var styles = (0,providers/* useStyles */.yK)();
-  var className = (0,dom.cx)("chakra-form__helper-text", props.className);
-  return /*#__PURE__*/react.createElement(system_chakra.div, form_control_extends({}, field == null ? void 0 : field.getHelpTextProps(props, ref), {
-    __css: styles.helperText,
-    className: className
-  }));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  FormHelperText.displayName = "FormHelperText";
-}
-//# sourceMappingURL=form-control.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/form-label.js
-function form_label_extends() { form_label_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return form_label_extends.apply(this, arguments); }
-
-function form_label_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-/**
- * Used to enhance the usability of form controls.
- *
- * It is used to inform users as to what information
- * is requested for a form field.
- *
- * ♿️ Accessibility: Every form field should have a form label.
- */
-var FormLabel = /*#__PURE__*/forwardRef((passedProps, ref) => {
-  var styles = useStyleConfig("FormLabel", passedProps);
-  var props = system_utils_omitThemingProps(passedProps);
-
-  var {
-    children,
-    requiredIndicator = /*#__PURE__*/react.createElement(RequiredIndicator, null)
-  } = props,
-      rest = form_label_objectWithoutPropertiesLoose(props, ["className", "children", "requiredIndicator"]);
-
-  var field = useFormControlContext();
-  return /*#__PURE__*/react.createElement(system_chakra.label, form_label_extends({}, field == null ? void 0 : field.getLabelProps(rest, ref), {
-    className: (0,dom.cx)("chakra-form__label", props.className),
-    __css: form_label_extends({
-      display: "block",
-      textAlign: "start"
-    }, styles)
-  }), children, field != null && field.isRequired ? requiredIndicator : null);
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  FormLabel.displayName = "FormLabel";
-}
-
-/**
- * Used to show a "required" text or an asterisks (*) to indicate that
- * a field is required.
- */
-var RequiredIndicator = /*#__PURE__*/forwardRef((props, ref) => {
-  var field = useFormControlContext();
-  var styles = (0,providers/* useStyles */.yK)();
-  if (!(field != null && field.isRequired)) return null;
-  var className = (0,dom.cx)("chakra-form__required-indicator", props.className);
-  return /*#__PURE__*/react.createElement(system_chakra.span, form_label_extends({}, field == null ? void 0 : field.getRequiredIndicatorProps(props, ref), {
-    __css: styles.requiredIndicator,
-    className: className
-  }));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  RequiredIndicator.displayName = "RequiredIndicator";
-}
-//# sourceMappingURL=form-label.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/use-form-control.js
-function use_form_control_extends() { use_form_control_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return use_form_control_extends.apply(this, arguments); }
-
-function use_form_control_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-/**
- * React hook that provides the props that should be spread on to
- * input fields (`input`, `select`, `textarea`, etc.).
- *
- * It provides a convenient way to control a form fields, validation
- * and helper text.
- */
-function useFormControl(props) {
-  var _useFormControlProps = useFormControlProps(props),
-      {
-    isDisabled,
-    isInvalid,
-    isReadOnly,
-    isRequired
-  } = _useFormControlProps,
-      rest = use_form_control_objectWithoutPropertiesLoose(_useFormControlProps, ["isDisabled", "isInvalid", "isReadOnly", "isRequired"]);
-
-  return use_form_control_extends({}, rest, {
-    disabled: isDisabled,
-    readOnly: isReadOnly,
-    required: isRequired,
-    "aria-invalid": (0,dom/* ariaAttr */.Qm)(isInvalid),
-    "aria-required": (0,dom/* ariaAttr */.Qm)(isRequired),
-    "aria-readonly": (0,dom/* ariaAttr */.Qm)(isReadOnly)
-  });
-}
-function useFormControlProps(props) {
-  var _ref, _ref2, _ref3;
-
-  var field = useFormControlContext();
-
-  var {
-    id,
-    disabled,
-    readOnly,
-    required,
-    isRequired,
-    isInvalid,
-    isReadOnly,
-    isDisabled,
-    onFocus,
-    onBlur
-  } = props,
-      rest = use_form_control_objectWithoutPropertiesLoose(props, ["id", "disabled", "readOnly", "required", "isRequired", "isInvalid", "isReadOnly", "isDisabled", "onFocus", "onBlur"]);
-
-  var labelIds = []; // Error message must be described first in all scenarios.
-
-  if (field != null && field.hasFeedbackText && field != null && field.isInvalid) {
-    labelIds.push(field.feedbackId);
-  }
-
-  if (field != null && field.hasHelpText) {
-    labelIds.push(field.helpTextId);
-  }
-
-  return use_form_control_extends({}, rest, {
-    "aria-describedby": labelIds.join(" ") || undefined,
-    id: id != null ? id : field == null ? void 0 : field.id,
-    isDisabled: (_ref = disabled != null ? disabled : isDisabled) != null ? _ref : field == null ? void 0 : field.isDisabled,
-    isReadOnly: (_ref2 = readOnly != null ? readOnly : isReadOnly) != null ? _ref2 : field == null ? void 0 : field.isReadOnly,
-    isRequired: (_ref3 = required != null ? required : isRequired) != null ? _ref3 : field == null ? void 0 : field.isRequired,
-    isInvalid: isInvalid != null ? isInvalid : field == null ? void 0 : field.isInvalid,
-    onFocus: (0,esm_function/* callAllHandlers */.v0)(field == null ? void 0 : field.onFocus, onFocus),
-    onBlur: (0,esm_function/* callAllHandlers */.v0)(field == null ? void 0 : field.onBlur, onBlur)
-  });
-}
-//# sourceMappingURL=use-form-control.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/select/dist/esm/select.js
-function select_extends() { select_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return select_extends.apply(this, arguments); }
-
-function select_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-var SelectField = /*#__PURE__*/forwardRef((props, ref) => {
-  var {
-    children,
-    placeholder,
-    className
-  } = props,
-      rest = select_objectWithoutPropertiesLoose(props, ["children", "placeholder", "className"]);
-
-  var ownProps = useFormControl(rest);
-  return /*#__PURE__*/react.createElement(system_chakra.select, select_extends({}, ownProps, {
-    ref: ref,
-    className: (0,dom.cx)("chakra-select", className)
-  }), placeholder && /*#__PURE__*/react.createElement("option", {
-    value: ""
-  }, placeholder), children);
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  SelectField.displayName = "SelectField";
-}
-
-/**
- * React component used to select one item from a list of options.
- */
-var Select = /*#__PURE__*/forwardRef((props, ref) => {
-  var styles = useMultiStyleConfig("Select", props);
-
-  var _omitThemingProps = system_utils_omitThemingProps(props),
-      {
-    rootProps,
-    placeholder,
-    icon,
-    color,
-    height,
-    h,
-    minH,
-    minHeight,
-    iconColor,
-    iconSize
-  } = _omitThemingProps,
-      rest = select_objectWithoutPropertiesLoose(_omitThemingProps, ["rootProps", "placeholder", "icon", "color", "height", "h", "minH", "minHeight", "iconColor", "iconSize", "isFullWidth"]);
-
-  var [layoutProps, otherProps] = (0,object/* split */.Vl)(rest, esm.layoutPropNames);
-  var rootStyles = {
-    width: "100%",
-    height: "fit-content",
-    position: "relative",
-    color
-  };
-  var fieldStyles = lodash_mergewith_default()({}, styles.field, {
-    paddingEnd: "2rem",
-    _focus: {
-      zIndex: "unset"
-    }
-  });
-  return /*#__PURE__*/react.createElement(system_chakra.div, select_extends({
-    className: "chakra-select__wrapper",
-    __css: rootStyles
-  }, layoutProps, rootProps), /*#__PURE__*/react.createElement(SelectField, select_extends({
-    ref: ref,
-    height: h != null ? h : height,
-    minH: minH != null ? minH : minHeight,
-    placeholder: placeholder
-  }, otherProps, {
-    __css: fieldStyles
-  }), props.children), /*#__PURE__*/react.createElement(SelectIcon, select_extends({
-    "data-disabled": props.isDisabled
-  }, (iconColor || color) && {
-    color: iconColor || color
-  }, {
-    __css: styles.icon
-  }, iconSize && {
-    fontSize: iconSize
-  }), icon));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  Select.displayName = "Select";
-}
-
-var DefaultIcon = props => /*#__PURE__*/react.createElement("svg", select_extends({
-  viewBox: "0 0 24 24"
-}, props), /*#__PURE__*/react.createElement("path", {
-  fill: "currentColor",
-  d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-}));
-var IconWrapper = system_chakra("div", {
-  baseStyle: {
-    position: "absolute",
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    pointerEvents: "none",
-    top: "50%",
-    transform: "translateY(-50%)"
-  }
-});
-
-var SelectIcon = props => {
-  var {
-    children = /*#__PURE__*/react.createElement(DefaultIcon, null)
-  } = props,
-      rest = select_objectWithoutPropertiesLoose(props, ["children"]);
-
-  var clone = /*#__PURE__*/react.cloneElement(children, {
-    role: "presentation",
-    className: "chakra-select__icon",
-    focusable: false,
-    "aria-hidden": true,
-    // force icon to adhere to `IconWrapper` styles
-    style: {
-      width: "1em",
-      height: "1em",
-      color: "currentColor"
-    }
-  });
-  return /*#__PURE__*/react.createElement(IconWrapper, select_extends({}, rest, {
-    className: "chakra-select__icon-wrapper"
-  }), /*#__PURE__*/react.isValidElement(children) ? clone : null);
-};
-
-if (assertion/* __DEV__ */.Ts) {
-  SelectIcon.displayName = "SelectIcon";
-}
-//# sourceMappingURL=select.js.map
 ;// CONCATENATED MODULE: ./components/calculator/options.js
-
 
 
 
@@ -48526,7 +48005,7 @@ function options_defineProperty(obj, key, value) { if (key in obj) { Object.defi
 
 
 
-function Options({
+function options_Options({
   question,
   title,
   description
@@ -48541,12 +48020,12 @@ function Options({
   const {
     actions,
     state
-  } = (0,little_state_machine/* useStateMachine */.j_)({
-    updateAction: updateAction
+  } = useStateMachine({
+    updateAction
   }); // const { currentQuestion, showResults, questions } = state.calculator
 
   const optionSetsLength = question === null || question === void 0 ? void 0 : (_question$optionSets = question.optionSets) === null || _question$optionSets === void 0 ? void 0 : _question$optionSets.length;
-  const selectQuestionRef = (0,react.useRef)();
+  const selectQuestionRef = useRef();
 
   function checkForFalse(val) {
     return val === false;
@@ -48597,26 +48076,26 @@ function Options({
   // console.log(question?.optionSets)
 
 
-  return /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-    children: optionSetsLength === 1 ? /*#__PURE__*/(0,jsx_runtime.jsxs)(FormControl, {
+  return /*#__PURE__*/_jsx("div", {
+    children: optionSetsLength === 1 ? /*#__PURE__*/_jsxs(FormControl, {
       id: question === null || question === void 0 ? void 0 : question.optionSets[0]._key,
       mb: "6",
-      children: [/*#__PURE__*/jsx_runtime.jsx(FormLabel, {
-        children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
+      children: [/*#__PURE__*/_jsx(FormLabel, {
+        children: /*#__PURE__*/_jsx(Heading, {
           mb: "6",
           children: title
         })
-      }), /*#__PURE__*/jsx_runtime.jsx(Box, {
+      }), /*#__PURE__*/_jsx(Box, {
         mb: "4",
-        children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+        children: /*#__PURE__*/_jsx(BodyText, {
           blocks: description
         })
-      }), /*#__PURE__*/jsx_runtime.jsx(Select, options_objectSpread(options_objectSpread({}, register(`${question._id}`)), {}, {
+      }), /*#__PURE__*/_jsx(Select, options_objectSpread(options_objectSpread({}, register(`${question._id}`)), {}, {
         value: `${state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer}`,
         placeholder: "Select a value...",
         ref: selectQuestionRef,
         onChange: e => selectUpdate(e.currentTarget.value, question),
-        children: question === null || question === void 0 ? void 0 : question.optionSets[0].options.map(option => /*#__PURE__*/jsx_runtime.jsx("option", {
+        children: question === null || question === void 0 ? void 0 : question.optionSets[0].options.map(option => /*#__PURE__*/_jsx("option", {
           value: option.value.current,
           children: option.title
         }, option._key))
@@ -48624,25 +48103,25 @@ function Options({
     }, question === null || question === void 0 ? void 0 : question.optionSets[0]._key) : question === null || question === void 0 ? void 0 : question.optionSets.map(optionSet => {
       var _state$calculator3, _state$calculator3$qu;
 
-      return questionLogic(optionSet) && /*#__PURE__*/(0,jsx_runtime.jsxs)(FormControl, {
+      return questionLogic(optionSet) && /*#__PURE__*/_jsxs(FormControl, {
         id: optionSet._key,
         mb: "6",
-        children: [/*#__PURE__*/jsx_runtime.jsx(FormLabel, {
-          children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
+        children: [/*#__PURE__*/_jsx(FormLabel, {
+          children: /*#__PURE__*/_jsx(Heading, {
             mb: "6",
             children: title
           })
-        }), /*#__PURE__*/jsx_runtime.jsx(Box, {
+        }), /*#__PURE__*/_jsx(Box, {
           mb: "4",
-          children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+          children: /*#__PURE__*/_jsx(BodyText, {
             blocks: description
           })
-        }), /*#__PURE__*/jsx_runtime.jsx(Select, options_objectSpread(options_objectSpread({}, register(`${question._id}`)), {}, {
+        }), /*#__PURE__*/_jsx(Select, options_objectSpread(options_objectSpread({}, register(`${question._id}`)), {}, {
           value: `${state === null || state === void 0 ? void 0 : (_state$calculator3 = state.calculator) === null || _state$calculator3 === void 0 ? void 0 : (_state$calculator3$qu = _state$calculator3.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator3$qu === void 0 ? void 0 : _state$calculator3$qu.answer}`,
           placeholder: "Select a value...",
           ref: selectQuestionRef,
           onChange: e => selectUpdate(e.currentTarget.value, question),
-          children: optionSet.options.map(option => /*#__PURE__*/jsx_runtime.jsx("option", {
+          children: optionSet.options.map(option => /*#__PURE__*/_jsx("option", {
             value: option.value.current,
             children: option.title
           }, option._key))
@@ -48651,326 +48130,8 @@ function Options({
     })
   });
 }
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/children.js
-
-/**
- * Gets only the valid children of a component,
- * and ignores any nullish or falsy child.
- *
- * @param children the children
- */
-
-function getValidChildren(children) {
-  return react.Children.toArray(children).filter(child => /*#__PURE__*/react.isValidElement(child));
-}
-//# sourceMappingURL=children.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/utils/dist/esm/responsive.js
-
-
-
-var breakpoints = Object.freeze(["base", "sm", "md", "lg", "xl", "2xl"]);
-function mapResponsive(prop, mapper) {
-  if ((0,assertion/* isArray */.kJ)(prop)) {
-    return prop.map(item => {
-      if (item === null) {
-        return null;
-      }
-
-      return mapper(item);
-    });
-  }
-
-  if ((0,assertion/* isObject */.Kn)(prop)) {
-    return (0,object/* objectKeys */.Yd)(prop).reduce((result, key) => {
-      result[key] = mapper(prop[key]);
-      return result;
-    }, {});
-  }
-
-  if (prop != null) {
-    return mapper(prop);
-  }
-
-  return null;
-}
-function objectToArrayNotation(obj, bps) {
-  if (bps === void 0) {
-    bps = breakpoints;
-  }
-
-  var result = bps.map(br => {
-    var _obj$br;
-
-    return (_obj$br = obj[br]) != null ? _obj$br : null;
-  });
-
-  while (getLastItem(result) === null) {
-    result.pop();
-  }
-
-  return result;
-}
-function arrayToObjectNotation(values, bps) {
-  if (bps === void 0) {
-    bps = breakpoints;
-  }
-
-  var result = {};
-  values.forEach((value, index) => {
-    var key = bps[index];
-    if (value == null) return;
-    result[key] = value;
-  });
-  return result;
-}
-function isResponsiveObjectLike(obj, bps) {
-  if (bps === void 0) {
-    bps = breakpoints;
-  }
-
-  var keys = Object.keys(obj);
-  return keys.length > 0 && keys.every(key => bps.includes(key));
-}
-/**
- * since breakpoints are defined as custom properties on an array, you may
- * `Object.keys(theme.breakpoints)` to retrieve both regular numeric indices
- * and custom breakpoints as string.
- *
- * This function returns true given a custom array property.
- */
-
-var isCustomBreakpoint = maybeBreakpoint => Number.isNaN(Number(maybeBreakpoint));
-//# sourceMappingURL=responsive.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/stack.utils.js
-
-
-/**
- * If we ever run into SSR issues with this, check this post to find a fix for it:
- * @see https://medium.com/@emmenko/patching-lobotomized-owl-selector-for-emotion-ssr-5a582a3c424c
- */
-var selector = "& > *:not(style) ~ *:not(style)";
-function getStackStyles(options) {
-  var {
-    spacing,
-    direction
-  } = options;
-  var directionStyles = {
-    column: {
-      marginTop: spacing,
-      marginEnd: 0,
-      marginBottom: 0,
-      marginStart: 0
-    },
-    row: {
-      marginTop: 0,
-      marginEnd: 0,
-      marginBottom: 0,
-      marginStart: spacing
-    },
-    "column-reverse": {
-      marginTop: 0,
-      marginEnd: 0,
-      marginBottom: spacing,
-      marginStart: 0
-    },
-    "row-reverse": {
-      marginTop: 0,
-      marginEnd: spacing,
-      marginBottom: 0,
-      marginStart: 0
-    }
-  };
-  return {
-    flexDirection: direction,
-    [selector]: mapResponsive(direction, value => directionStyles[value])
-  };
-}
-function getDividerStyles(options) {
-  var {
-    spacing,
-    direction
-  } = options;
-  var dividerStyles = {
-    column: {
-      my: spacing,
-      mx: 0,
-      borderLeftWidth: 0,
-      borderBottomWidth: "1px"
-    },
-    "column-reverse": {
-      my: spacing,
-      mx: 0,
-      borderLeftWidth: 0,
-      borderBottomWidth: "1px"
-    },
-    row: {
-      mx: spacing,
-      my: 0,
-      borderLeftWidth: "1px",
-      borderBottomWidth: 0
-    },
-    "row-reverse": {
-      mx: spacing,
-      my: 0,
-      borderLeftWidth: "1px",
-      borderBottomWidth: 0
-    }
-  };
-  return {
-    "&": mapResponsive(direction, value => dividerStyles[value])
-  };
-}
-//# sourceMappingURL=stack.utils.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/stack.js
-function stack_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function stack_extends() { stack_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return stack_extends.apply(this, arguments); }
-
-
-
-
-
-
-var StackDivider = props => /*#__PURE__*/React.createElement(chakra.div, stack_extends({
-  className: "chakra-stack__divider"
-}, props, {
-  __css: stack_extends({}, props["__css"], {
-    borderWidth: 0,
-    alignSelf: "stretch",
-    borderColor: "inherit",
-    width: "auto",
-    height: "auto"
-  })
-}));
-var StackItem = props => /*#__PURE__*/react.createElement(system_chakra.div, stack_extends({
-  className: "chakra-stack__item"
-}, props, {
-  __css: stack_extends({
-    display: "inline-block",
-    flex: "0 0 auto",
-    minWidth: 0
-  }, props["__css"])
-}));
-
-/**
- * Stacks help you easily create flexible and automatically distributed layouts
- *
- * You can stack elements in the horizontal or vertical direction,
- * and apply a space or/and divider between each element.
- *
- * It uses `display: flex` internally and renders a `div`.
- *
- * @see Docs https://chakra-ui.com/docs/layout/stack
- *
- */
-var Stack = /*#__PURE__*/forwardRef((props, ref) => {
-  var {
-    isInline,
-    direction: directionProp,
-    align,
-    justify,
-    spacing = "0.5rem",
-    wrap,
-    children,
-    divider,
-    className,
-    shouldWrapChildren
-  } = props,
-      rest = stack_objectWithoutPropertiesLoose(props, ["isInline", "direction", "align", "justify", "spacing", "wrap", "children", "divider", "className", "shouldWrapChildren"]);
-
-  var direction = isInline ? "row" : directionProp != null ? directionProp : "column";
-  var styles = react.useMemo(() => getStackStyles({
-    direction,
-    spacing
-  }), [direction, spacing]);
-  var dividerStyle = react.useMemo(() => getDividerStyles({
-    spacing,
-    direction
-  }), [spacing, direction]);
-  var hasDivider = !!divider;
-  var shouldUseChildren = !shouldWrapChildren && !hasDivider;
-  var validChildren = getValidChildren(children);
-  var clones = shouldUseChildren ? validChildren : validChildren.map((child, index) => {
-    var isLast = index + 1 === validChildren.length;
-    var wrappedChild = /*#__PURE__*/react.createElement(StackItem, {
-      key: index
-    }, child);
-
-    var _child = shouldWrapChildren ? wrappedChild : child;
-
-    if (!hasDivider) return _child;
-    var clonedDivider = /*#__PURE__*/react.cloneElement(divider, {
-      __css: dividerStyle
-    });
-
-    var _divider = isLast ? null : clonedDivider;
-
-    return /*#__PURE__*/react.createElement(react.Fragment, {
-      key: index
-    }, _child, _divider);
-  });
-
-  var _className = (0,dom.cx)("chakra-stack", className);
-
-  return /*#__PURE__*/react.createElement(system_chakra.div, stack_extends({
-    ref: ref,
-    display: "flex",
-    alignItems: align,
-    justifyContent: justify,
-    flexDirection: styles.flexDirection,
-    flexWrap: wrap,
-    className: _className,
-    __css: hasDivider ? {} : {
-      [selector]: styles[selector]
-    }
-  }, rest), clones);
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  Stack.displayName = "Stack";
-}
-/**
- * A view that arranges its children in a horizontal line.
- */
-
-
-var HStack = /*#__PURE__*/forwardRef((props, ref) => /*#__PURE__*/react.createElement(Stack, stack_extends({
-  align: "center"
-}, props, {
-  direction: "row",
-  ref: ref
-})));
-
-if (assertion/* __DEV__ */.Ts) {
-  HStack.displayName = "HStack";
-}
-/**
- * A view that arranges its children in a vertical line.
- */
-
-
-var VStack = /*#__PURE__*/forwardRef((props, ref) => /*#__PURE__*/react.createElement(Stack, stack_extends({
-  align: "center"
-}, props, {
-  direction: "column",
-  ref: ref
-})));
-
-if (assertion/* __DEV__ */.Ts) {
-  VStack.displayName = "VStack";
-}
-//# sourceMappingURL=stack.js.map
 ;// CONCATENATED MODULE: ./components/calculator/question.js
 
-
-
-function question_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function question_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { question_ownKeys(Object(source), true).forEach(function (key) { question_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { question_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function question_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// import { useForm } from 'react-hook-form'
 
 
 
@@ -48983,39 +48144,362 @@ function Question({
   question,
   index,
   questionLength,
-  nextQ,
-  prevQ,
   questions
 }) {
-  var _state$calculator3, _state$calculator3$qu, _state$calculator4, _state$calculator4$qu;
-
   // console.log({ nextQ })
   // console.log({ prevQ })
   // const { register, handleSubmit } = useForm()
   const {
     actions,
     state
-  } = (0,little_state_machine/* useStateMachine */.j_)({
-    updateAction: updateAction
+  } = useStateMachine({
+    updateAction
   });
   const {
     currentQuestion
-  } = state.calculator; // const { currentQuestion, showResults, questions } = state.calculator
-  // const selectQuestionRef = useRef()
-  // Using the question's logic to show or hide
+  } = state.calculator; // Animation Variants (Framer Motion)
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      x: -50,
+      display: 'none'
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      display: 'block'
+    },
+    removed: {
+      opacity: 0,
+      x: 50,
+      display: 'none'
+    }
+  }; // console.log(state?.calculator?.questions[question?._id]?.answer)
+
+  return /*#__PURE__*/_jsx(motion.div, {
+    variants: variants,
+    exit: "removed",
+    initial: "initial",
+    animate: currentQuestion === index ? 'animate' : 'initial',
+    children: /*#__PURE__*/_jsx(Box, {
+      mb: "12",
+      mt: "4",
+      children: /*#__PURE__*/_jsx(Options, {
+        question: question,
+        title: question.title,
+        description: question.description
+      })
+    })
+  }, index);
+}
+// EXTERNAL MODULE: ./node_modules/react-countup/build/index.js
+var build = __webpack_require__(7857);
+// EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
+var style = __webpack_require__(5988);
+;// CONCATENATED MODULE: ./components/counter/index.js
+
+
+
+// <CountUp delay={0.5} start={0} end={28886} decimals={0} decimal="" separator="," prefix="$" useEasing={true}  />
+
+
+function counter_Counter({
+  target,
+  duration
+}) {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+  return /*#__PURE__*/_jsxs("span", {
+    ref: ref,
+    className: _JSXStyle.dynamic([["3588283533", [duration]]]),
+    children: [/*#__PURE__*/_jsx(CountUp, {
+      start: 0,
+      end: inView ? target : 0,
+      duration: duration,
+      separator: ",",
+      prefix: "$",
+      useEasing: true,
+      children: ({
+        countUpRef
+      }) => /*#__PURE__*/_jsx("span", {
+        ref: countUpRef,
+        className: _JSXStyle.dynamic([["3588283533", [duration]]])
+      })
+    }), /*#__PURE__*/_jsx(_JSXStyle, {
+      id: "3588283533",
+      dynamic: [duration],
+      children: [".opacity-100.__jsx-style-dynamic-selector{opacity:1;}", ".opacity-0.__jsx-style-dynamic-selector{opacity:0;}", ".transform-show.__jsx-style-dynamic-selector{visibility:visible;}", ".transform-hide.__jsx-style-dynamic-selector{visibility:hidden;}", `.delay.__jsx-style-dynamic-selector{-webkit-transition-delay:${duration}s;transition-delay:${duration}s;}`, ".transform-hide.__jsx-style-dynamic-selector{-webkit-transform:translate3d(0,1rem,0);-ms-transform:translate3d(0,1rem,0);transform:translate3d(0,1rem,0);}", ".transform-show.__jsx-style-dynamic-selector{-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}"]
+    })]
+  });
+}
+;// CONCATENATED MODULE: ./components/calculator/results.js
+
+
+
+
+
+
+function Results() {
+  const {
+    state
+  } = useStateMachine();
+  const {
+    questions
+  } = state.calculator;
+  return /*#__PURE__*/_jsxs(Box, {
+    children: [/*#__PURE__*/_jsxs(Box, {
+      mb: 4,
+      children: [/*#__PURE__*/_jsx(Heading, {
+        size: "md",
+        mb: 4,
+        color: "gray.600",
+        children: "My Results"
+      }), /*#__PURE__*/_jsx(Heading, {
+        mb: 2,
+        children: "Estimated cost for one year (or one semester)"
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["Total ", /*#__PURE__*/_jsx(Counter, {
+          target: 28886,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "Includes: Tuition, fees, living on campus, and books and supplies are considered direct educational costs. Tuition, fees and on-campus housing are billed by the university on the tuition and fee bill."
+      }), ' ', /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "Direct costs are included in the Cost of Attendance for financial aid purposes."
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["Tuition ", /*#__PURE__*/_jsx(Counter, {
+          target: 10728,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "domestic Colorado resident undergraduate College of Arts & Sciences, All Others (Educ, ENVD, etc.), 15 credit hours, two semesters"
+      }), /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "If Colorado resident undergraduate, include this statement: This tuition rate assumes that you\u2019ve applied for and authorized the College Opportunity Fund stipend to reduce your tuition."
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["Mandatory Fees ", /*#__PURE__*/_jsx(Counter, {
+          target: 1738,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["Mandatory fees support student services, student activities, technology, capital construction and need-based financial aid. Fees are charged per semester and are based on your college level (undergraduate or graduate), citizenship, and the number of credit hours and classes in which you are enrolled. Visit ", /*#__PURE__*/_jsx("a", {
+          href: "https://www.colorado.edu/bursar/costs/mandatory-student-fees",
+          target: "_blank",
+          rel: "noreferrer noopener",
+          children: "Mandatory Student Fees"
+        }), " for details."]
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["On-Campus Housing and Meals ", /*#__PURE__*/_jsx(Counter, {
+          target: 15220,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["This cost is for a standard double room (roommate(s) and community bath) with 19 meals per week. Please visit ", /*#__PURE__*/_jsx("a", {
+          href: "https://www.colorado.edu/living/",
+          target: "_blank",
+          rel: "noreferrer noopener",
+          children: "Housing & Dining"
+        }), " to explore residence hall living."]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: [/*#__PURE__*/_jsx("a", {
+          href: "https://www.colorado.edu/living/",
+          target: "_blank",
+          rel: "noreferrer noopener",
+          children: "Housing Security Deposit"
+        }), " $300 (one-time deposit submitted with on-campus housing application)"]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: [/*#__PURE__*/_jsx("a", {
+          href: "https://living.colorado.edu/",
+          target: "_blank",
+          rel: "noreferrer noopener",
+          children: "Residential Academic Program"
+        }), " optional $425 per year"]
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["or Living with parents $4,626 or Off Campus ", /*#__PURE__*/_jsx(Counter, {
+          target: 13515,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "This estimate is determined by the Colorado Department of Education, the Office of Financial Aid and Off-Campus Housing & Neighborhood Relations for Cost of Attendance."
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["Books and Supplies ", /*#__PURE__*/_jsx(Counter, {
+          target: 1200,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "Costs for books and supplies vary widely depending on your college, school or program. This estimate is determined by the Colorado Department of Education and the Office of Financial Aid, and it is included in the Cost of Attendance. Books and supplies purchased from the CU Book Store (up to $1,500 per semester) can be charged to the tuition bill."
+      })]
+    }), /*#__PURE__*/_jsx(Box, {
+      mb: 8,
+      children: /*#__PURE__*/_jsxs(Heading, {
+        mb: 2,
+        children: ["Health Insurance ", /*#__PURE__*/_jsx(Counter, {
+          target: 3896,
+          duration: 2
+        }), " or BuffCare", ' ', /*#__PURE__*/_jsx(Counter, {
+          target: 225,
+          duration: 2
+        })]
+      })
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsx(Heading, {
+        mb: 2,
+        children: "Other Costs"
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["Personal Costs ", /*#__PURE__*/_jsx(Counter, {
+          target: 1440,
+          duration: 2
+        })]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["Transportation Costs ", /*#__PURE__*/_jsx(Counter, {
+          target: 1152,
+          duration: 2
+        }), " (if nonres, then", ' ', /*#__PURE__*/_jsx(Counter, {
+          target: 1814,
+          duration: 2
+        }), ")"]
+      }), /*#__PURE__*/_jsx(Text, {
+        mb: 3,
+        children: "Personal and transportation estimates are determined by the Colorado Department of Education and the Office of Financial Aid for Cost of Attendance."
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      mb: 8,
+      children: [/*#__PURE__*/_jsx(Heading, {
+        mb: 2,
+        children: "New Students:"
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["Application Fee: ", /*#__PURE__*/_jsx(Counter, {
+          target: 50,
+          duration: 2
+        }), " (undergrad domestic students), ", /*#__PURE__*/_jsx(Counter, {
+          target: 70,
+          duration: 2
+        }), " (undergrad international students)"]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["Confirmation Deposit ", /*#__PURE__*/_jsx(Counter, {
+          target: 200,
+          duration: 2
+        }), " (one-time deposit, confirms your intent to enroll)"]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["New Student Fee ", /*#__PURE__*/_jsx(Counter, {
+          target: 232,
+          duration: 2
+        }), " (one-time fee upon entering a degree program)"]
+      }), /*#__PURE__*/_jsxs(Text, {
+        mb: 3,
+        children: ["Parking Permit optional ", /*#__PURE__*/_jsx(Counter, {
+          target: 180,
+          duration: 2
+        }), "-", /*#__PURE__*/_jsx(Counter, {
+          target: 213,
+          duration: 2
+        })]
+      })]
+    })]
+  });
+}
+;// CONCATENATED MODULE: ./components/calculator/index.js
+
+
+
+
+function calculator_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function calculator_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { calculator_ownKeys(Object(source), true).forEach(function (key) { calculator_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { calculator_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function calculator_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+function Calculator({
+  tuitionCalculator,
+  questions
+}) {
+  var _state$calculator3, _state$calculator3$qu, _state$calculator4, _state$calculator4$qu;
+
+  const {
+    actions,
+    state
+  } = (0,little_state_machine/* useStateMachine */.j_)({
+    updateAction: updateAction_updateAction
+  });
+  const {
+    currentQuestion
+  } = state.calculator;
+  const {
+    showResults
+  } = state.calculator;
+  const questionLength = (questions === null || questions === void 0 ? void 0 : questions.length) - 1;
+  const {
+    0: currentQuestionID,
+    1: setCurrentQuestionID
+  } = (0,react.useState)(questions[currentQuestion]._id);
+  (0,react.useEffect)(() => {
+    setCurrentQuestionID(questions[currentQuestion]._id);
+  }, [currentQuestion]); // Using the question's logic to show or hide
 
   const questionLogic = () => {
-    var _question$optionLogic;
+    var _question, _question$optionLogic;
 
     let showQuestion = false;
 
-    if (question.optionLogics === undefined || (question === null || question === void 0 ? void 0 : (_question$optionLogic = question.optionLogics) === null || _question$optionLogic === void 0 ? void 0 : _question$optionLogic.length) === 0) {
+    if (question.optionLogics === undefined || ((_question = question) === null || _question === void 0 ? void 0 : (_question$optionLogic = _question.optionLogics) === null || _question$optionLogic === void 0 ? void 0 : _question$optionLogic.length) === 0) {
       showQuestion = true;
     } else {
-      var _question$optionLogic2;
+      var _question2, _question3, _question3$optionLogi;
 
       // console.log({ question })
-      showQuestion = (question === null || question === void 0 ? void 0 : question.optionLogics) && (question === null || question === void 0 ? void 0 : (_question$optionLogic2 = question.optionLogics) === null || _question$optionLogic2 === void 0 ? void 0 : _question$optionLogic2.map(logic => {
+      showQuestion = ((_question2 = question) === null || _question2 === void 0 ? void 0 : _question2.optionLogics) && ((_question3 = question) === null || _question3 === void 0 ? void 0 : (_question3$optionLogi = _question3.optionLogics) === null || _question3$optionLogi === void 0 ? void 0 : _question3$optionLogi.map(logic => {
         var _state$calculator, _state$calculator$que;
 
         return (state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue;
@@ -49060,8 +48544,8 @@ function Question({
 
     i = i === undefined || i > questionLength ? questionLength : i; // console.log(i)
 
-    actions.updateAction(question_objectSpread(question_objectSpread({}, state), {}, {
-      calculator: question_objectSpread(question_objectSpread({}, state.calculator), {}, {
+    actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
+      calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
         currentQuestion: i === undefined || i > questionLength ? questionLength : i
       })
     })); // FIXME:
@@ -49082,8 +48566,8 @@ function Question({
     } while (showQuestion === false); // console.log({ i })
 
 
-    actions.updateAction(question_objectSpread(question_objectSpread({}, state), {}, {
-      calculator: question_objectSpread(question_objectSpread({}, state.calculator), {}, {
+    actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
+      calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
         currentQuestion: i === undefined || i < 0 ? 0 : i
       })
     })); // FIXME:
@@ -49093,98 +48577,13 @@ function Question({
 
   const seeResults = () => {
     // console.log('seeshowResults')
-    actions.updateAction(question_objectSpread(question_objectSpread({}, state), {}, {
-      calculator: question_objectSpread(question_objectSpread({}, state.calculator), {}, {
+    actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
+      calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
         showResults: true
       })
     }));
-  }; // Animation Variants (Framer Motion)
+  };
 
-
-  const variants = {
-    initial: {
-      opacity: 0,
-      x: -50,
-      display: 'none'
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-      display: 'block'
-    },
-    removed: {
-      opacity: 0,
-      x: 50,
-      display: 'none'
-    }
-  }; // console.log(state?.calculator?.questions[question?._id]?.answer)
-
-  return /*#__PURE__*/jsx_runtime.jsx(motion.div, {
-    variants: variants,
-    exit: "removed",
-    initial: "initial",
-    animate: currentQuestion === index ? 'animate' : 'initial',
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
-      mb: "12",
-      mt: "4",
-      children: [/*#__PURE__*/jsx_runtime.jsx(Options, {
-        question: question,
-        title: question.title,
-        description: question.description
-      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Stack, {
-        direction: "row",
-        spacing: 4,
-        align: "center",
-        suppressHydrationWarning: true,
-        children: [ false && /*#__PURE__*/0,  false && /*#__PURE__*/0,  false && /*#__PURE__*/0]
-      })]
-    })
-  }, index);
-}
-;// CONCATENATED MODULE: ./components/calculator/results.js
-
-
-
-function Results() {
-  const {
-    state
-  } = (0,little_state_machine/* useStateMachine */.j_)();
-  const {
-    questions
-  } = state.calculator;
-  return /*#__PURE__*/jsx_runtime.jsx(Box, {
-    children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
-      size: "lg",
-      children: "My Results"
-    })
-  });
-}
-;// CONCATENATED MODULE: ./components/calculator/index.js
-
-
-
-
-
-
-
-
-
-function Calculator({
-  tuitionCalculator,
-  questions
-}) {
-  // console.log({ questions })
-  // console.log({ tuitionCalculator })
-  const {
-    state
-  } = (0,little_state_machine/* useStateMachine */.j_)();
-  const {
-    showResults
-  } = state.calculator;
-  const questionLength = (questions === null || questions === void 0 ? void 0 : questions.length) - 1;
-  (0,react.useEffect)(() => {
-    state.renderClientSideComponent = true;
-  });
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
     paddingY: '5rem',
     flex: "1",
@@ -49192,27 +48591,15 @@ function Calculator({
     width: "100%",
     maxW: "860px",
     mx: "auto",
-    children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+    children: [/*#__PURE__*/jsx_runtime.jsx(heading_Heading, {
       mb: "2",
       children: tuitionCalculator.title
-    }), /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+    }), /*#__PURE__*/jsx_runtime.jsx(serializers_text_Text, {
       blocks: tuitionCalculator.description
-    }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+    }), /*#__PURE__*/jsx_runtime.jsx(box_Box, {
       mt: "10",
-      children: [/*#__PURE__*/jsx_runtime.jsx(AnimatePresence, {
-        children: questions.map((question, index) => {
-          let prev = questions[index - 1];
-          let next = questions[index + 1];
-          return /*#__PURE__*/jsx_runtime.jsx(Question, {
-            question: question,
-            index: index,
-            questionLength: questionLength,
-            nextQ: next || null,
-            prevQ: prev || null,
-            questions: questions
-          }, question._id);
-        })
-      }), showResults && /*#__PURE__*/jsx_runtime.jsx(Results, {})]
+      suppressHydrationWarning: true,
+      children:  false && /*#__PURE__*/0
     })]
   });
 }
@@ -49257,14 +48644,14 @@ async function getStaticProps({
     props: {
       pageData,
       preview
-    },
-    revalidate: 1
+    } // revalidate: 1
+
   };
 }
 
 /***/ }),
 
-/***/ 1579:
+/***/ 8897:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49275,7 +48662,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_NxbzVgVPm_FxuBW9XZ3V_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_222dc849c132c02ca1884903ccf8e4b5ad_22_2C_22previewModeSigningKey_22_3A_22af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d_22_2C_22previewModeEncryptionKey_22_3A_227bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_a7c9f6GW59Nm9Xk5vT6QW_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_226054b15d69e162ec14306bd8589f4281_22_2C_22previewModeSigningKey_22_3A_22c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d_22_2C_22previewModeEncryptionKey_22_3A_22a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -49292,12 +48679,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/-NxbzVgVPm_FxuBW9XZ3V/_buildManifest.js","static/-NxbzVgVPm_FxuBW9XZ3V/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-bcb0c69ed1b678c3d1e1.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/609-f3057f9ccb688473772c.js","static/chunks/pages/index-f449e57925d53b88b05e.js"],"/_app":["static/chunks/webpack-bcb0c69ed1b678c3d1e1.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-a902d365176f926e1d68.js"],"/_error":["static/chunks/webpack-bcb0c69ed1b678c3d1e1.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/a7c9f6GW59Nm9Xk5vT6QW/_buildManifest.js","static/a7c9f6GW59Nm9Xk5vT6QW/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-2c66c916869c45b0ceb9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/792-e653f9235ab134a6f508.js","static/chunks/pages/index-0e92450398c52833b9e6.js"],"/_app":["static/chunks/webpack-2c66c916869c45b0ceb9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-a902d365176f926e1d68.js"],"/_error":["static/chunks/webpack-2c66c916869c45b0ceb9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=-NxbzVgVPm_FxuBW9XZ3V&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%222dc849c132c02ca1884903ccf8e4b5ad%22%2C%22previewModeSigningKey%22%3A%22af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d%22%2C%22previewModeEncryptionKey%22%3A%227bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=a7c9f6GW59Nm9Xk5vT6QW&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%226054b15d69e162ec14306bd8589f4281%22%2C%22previewModeSigningKey%22%3A%22c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d%22%2C%22previewModeEncryptionKey%22%3A%22a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -49317,10 +48704,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(8273)
+      const compMod = __webpack_require__(8624)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_NxbzVgVPm_FxuBW9XZ3V_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_222dc849c132c02ca1884903ccf8e4b5ad_22_2C_22previewModeSigningKey_22_3A_22af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d_22_2C_22previewModeEncryptionKey_22_3A_227bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_a7c9f6GW59Nm9Xk5vT6QW_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_226054b15d69e162ec14306bd8589f4281_22_2C_22previewModeSigningKey_22_3A_22c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d_22_2C_22previewModeEncryptionKey_22_3A_22a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -49368,11 +48755,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "-NxbzVgVPm_FxuBW9XZ3V",
-        escapedBuildId: "\-NxbzVgVPm_FxuBW9XZ3V",
+        buildId: "a7c9f6GW59Nm9Xk5vT6QW",
+        escapedBuildId: "a7c9f6GW59Nm9Xk5vT6QW",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"2dc849c132c02ca1884903ccf8e4b5ad",previewModeSigningKey:"af57313021f0f6bc7aa04e6de8d2b5f4e553bbb7c8995e661a2c867231730a4d",previewModeEncryptionKey:"7bc8b036d94d114504c3089e73db95993a36c6eb88e6f25b3a5ce91f614d7fbf"}
+        encodedPreviewProps: {previewModeId:"6054b15d69e162ec14306bd8589f4281",previewModeSigningKey:"c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d",previewModeEncryptionKey:"a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb"}
       })
       
     
@@ -56197,6 +55584,615 @@ function withSideEffect(reducePropsToState, handleStateChangeOnClient) {
 }
 
 module.exports = withSideEffect;
+
+
+/***/ }),
+
+/***/ 7857:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+__webpack_unused_export__ = ({ value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var PropTypes = _interopDefault(__webpack_require__(5697));
+var React = __webpack_require__(7294);
+var React__default = _interopDefault(React);
+var warning = _interopDefault(__webpack_require__(2473));
+var CountUp$1 = _interopDefault(__webpack_require__(8273));
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+var createCountUpInstance = function createCountUpInstance(el, props) {
+  var decimal = props.decimal,
+      decimals = props.decimals,
+      duration = props.duration,
+      easingFn = props.easingFn,
+      end = props.end,
+      formattingFn = props.formattingFn,
+      prefix = props.prefix,
+      separator = props.separator,
+      start = props.start,
+      suffix = props.suffix,
+      useEasing = props.useEasing;
+  return new CountUp$1(el, start, end, decimals, duration, {
+    decimal: decimal,
+    easingFn: easingFn,
+    formattingFn: formattingFn,
+    separator: separator,
+    prefix: prefix,
+    suffix: suffix,
+    useEasing: useEasing,
+    useGrouping: !!separator
+  });
+};
+
+var CountUp =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CountUp, _Component);
+
+  function CountUp() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, CountUp);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CountUp)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "createInstance", function () {
+      if (typeof _this.props.children === 'function') {
+        // Warn when user didn't use containerRef at all
+        warning(_this.containerRef.current && (_this.containerRef.current instanceof HTMLElement || _this.containerRef.current instanceof SVGTextElement || _this.containerRef.current instanceof SVGTSpanElement), "Couldn't find attached element to hook the CountUp instance into! Try to attach \"containerRef\" from the render prop to a an HTMLElement, eg. <span ref={containerRef} />.");
+      }
+
+      return createCountUpInstance(_this.containerRef.current, _this.props);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "pauseResume", function () {
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          reset = _assertThisInitialize.reset,
+          start = _assertThisInitialize.restart,
+          update = _assertThisInitialize.update;
+
+      var onPauseResume = _this.props.onPauseResume;
+
+      _this.instance.pauseResume();
+
+      onPauseResume({
+        reset: reset,
+        start: start,
+        update: update
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "reset", function () {
+      var _assertThisInitialize2 = _assertThisInitialized(_this),
+          pauseResume = _assertThisInitialize2.pauseResume,
+          start = _assertThisInitialize2.restart,
+          update = _assertThisInitialize2.update;
+
+      var onReset = _this.props.onReset;
+
+      _this.instance.reset();
+
+      onReset({
+        pauseResume: pauseResume,
+        start: start,
+        update: update
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "restart", function () {
+      _this.reset();
+
+      _this.start();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "start", function () {
+      var _assertThisInitialize3 = _assertThisInitialized(_this),
+          pauseResume = _assertThisInitialize3.pauseResume,
+          reset = _assertThisInitialize3.reset,
+          start = _assertThisInitialize3.restart,
+          update = _assertThisInitialize3.update;
+
+      var _this$props = _this.props,
+          delay = _this$props.delay,
+          onEnd = _this$props.onEnd,
+          onStart = _this$props.onStart;
+
+      var run = function run() {
+        return _this.instance.start(function () {
+          return onEnd({
+            pauseResume: pauseResume,
+            reset: reset,
+            start: start,
+            update: update
+          });
+        });
+      }; // Delay start if delay prop is properly set
+
+
+      if (delay > 0) {
+        _this.timeoutId = setTimeout(run, delay * 1000);
+      } else {
+        run();
+      }
+
+      onStart({
+        pauseResume: pauseResume,
+        reset: reset,
+        update: update
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "update", function (newEnd) {
+      var _assertThisInitialize4 = _assertThisInitialized(_this),
+          pauseResume = _assertThisInitialize4.pauseResume,
+          reset = _assertThisInitialize4.reset,
+          start = _assertThisInitialize4.restart;
+
+      var onUpdate = _this.props.onUpdate;
+
+      _this.instance.update(newEnd);
+
+      onUpdate({
+        pauseResume: pauseResume,
+        reset: reset,
+        start: start
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "containerRef", React__default.createRef());
+
+    return _this;
+  }
+
+  _createClass(CountUp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          delay = _this$props2.delay;
+      this.instance = this.createInstance(); // Don't invoke start if component is used as a render prop
+
+      if (typeof children === 'function' && delay !== 0) return; // Otherwise just start immediately
+
+      this.start();
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      var _this$props3 = this.props,
+          end = _this$props3.end,
+          start = _this$props3.start,
+          suffix = _this$props3.suffix,
+          prefix = _this$props3.prefix,
+          redraw = _this$props3.redraw,
+          duration = _this$props3.duration,
+          separator = _this$props3.separator,
+          decimals = _this$props3.decimals,
+          decimal = _this$props3.decimal;
+      var hasCertainPropsChanged = duration !== nextProps.duration || end !== nextProps.end || start !== nextProps.start || suffix !== nextProps.suffix || prefix !== nextProps.prefix || separator !== nextProps.separator || decimals !== nextProps.decimals || decimal !== nextProps.decimal;
+      return hasCertainPropsChanged || redraw;
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // If duration, suffix, prefix, separator or start has changed
+      // there's no way to update the values.
+      // So we need to re-create the CountUp instance in order to
+      // restart it.
+      var _this$props4 = this.props,
+          end = _this$props4.end,
+          start = _this$props4.start,
+          suffix = _this$props4.suffix,
+          prefix = _this$props4.prefix,
+          duration = _this$props4.duration,
+          separator = _this$props4.separator,
+          decimals = _this$props4.decimals,
+          decimal = _this$props4.decimal,
+          preserveValue = _this$props4.preserveValue;
+
+      if (duration !== prevProps.duration || start !== prevProps.start || suffix !== prevProps.suffix || prefix !== prevProps.prefix || separator !== prevProps.separator || decimals !== prevProps.decimals || decimal !== prevProps.decimal) {
+        this.instance.reset();
+        this.instance = this.createInstance();
+        this.start();
+      } // Only end value has changed, so reset and and re-animate with the updated
+      // end value.
+
+
+      if (end !== prevProps.end) {
+        if (!preserveValue) {
+          this.instance.reset();
+        }
+
+        this.instance.update(end);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+      }
+
+      this.instance.reset();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props5 = this.props,
+          children = _this$props5.children,
+          className = _this$props5.className,
+          style = _this$props5.style;
+      var containerRef = this.containerRef,
+          pauseResume = this.pauseResume,
+          reset = this.reset,
+          restart = this.restart,
+          update = this.update;
+
+      if (typeof children === 'function') {
+        return children({
+          countUpRef: containerRef,
+          pauseResume: pauseResume,
+          reset: reset,
+          start: restart,
+          update: update
+        });
+      }
+
+      return React__default.createElement("span", {
+        className: className,
+        ref: containerRef,
+        style: style
+      });
+    }
+  }]);
+
+  return CountUp;
+}(React.Component);
+
+_defineProperty(CountUp, "propTypes", {
+  decimal: PropTypes.string,
+  decimals: PropTypes.number,
+  delay: PropTypes.number,
+  easingFn: PropTypes.func,
+  end: PropTypes.number.isRequired,
+  formattingFn: PropTypes.func,
+  onEnd: PropTypes.func,
+  onStart: PropTypes.func,
+  prefix: PropTypes.string,
+  redraw: PropTypes.bool,
+  separator: PropTypes.string,
+  start: PropTypes.number,
+  startOnMount: PropTypes.bool,
+  suffix: PropTypes.string,
+  style: PropTypes.object,
+  useEasing: PropTypes.bool,
+  preserveValue: PropTypes.bool
+});
+
+_defineProperty(CountUp, "defaultProps", {
+  decimal: '.',
+  decimals: 0,
+  delay: null,
+  duration: null,
+  easingFn: null,
+  formattingFn: null,
+  onEnd: function onEnd() {},
+  onPauseResume: function onPauseResume() {},
+  onReset: function onReset() {},
+  onStart: function onStart() {},
+  onUpdate: function onUpdate() {},
+  prefix: '',
+  redraw: false,
+  separator: '',
+  start: 0,
+  startOnMount: true,
+  suffix: '',
+  style: undefined,
+  useEasing: true,
+  preserveValue: false
+});
+
+// and just sets the innerHTML of the element.
+
+var MOCK_ELEMENT = {
+  innerHTML: null
+};
+
+var useCountUp = function useCountUp(props) {
+  var _props = _objectSpread2({}, CountUp.defaultProps, {}, props);
+
+  var start = _props.start,
+      formattingFn = _props.formattingFn;
+
+  var _useState = React.useState(typeof formattingFn === 'function' ? formattingFn(start) : start),
+      _useState2 = _slicedToArray(_useState, 2),
+      count = _useState2[0],
+      setCount = _useState2[1];
+
+  var countUpRef = React.useRef(null);
+
+  var createInstance = function createInstance() {
+    var countUp = createCountUpInstance(MOCK_ELEMENT, _props);
+    var formattingFnRef = countUp.options.formattingFn;
+
+    countUp.options.formattingFn = function () {
+      var result = formattingFnRef.apply(void 0, arguments);
+      setCount(result);
+    };
+
+    return countUp;
+  };
+
+  var getCountUp = function getCountUp() {
+    var countUp = countUpRef.current;
+
+    if (countUp !== null) {
+      return countUp;
+    }
+
+    var newCountUp = createInstance();
+    countUpRef.current = newCountUp;
+    return newCountUp;
+  };
+
+  var reset = function reset() {
+    var onReset = _props.onReset;
+    getCountUp().reset();
+    onReset({
+      pauseResume: pauseResume,
+      start: restart,
+      update: update
+    });
+  };
+
+  var restart = function restart() {
+    var onStart = _props.onStart,
+        onEnd = _props.onEnd;
+    getCountUp().reset();
+    getCountUp().start(function () {
+      onEnd({
+        pauseResume: pauseResume,
+        reset: reset,
+        start: restart,
+        update: update
+      });
+    });
+    onStart({
+      pauseResume: pauseResume,
+      reset: reset,
+      update: update
+    });
+  };
+
+  var pauseResume = function pauseResume() {
+    var onPauseResume = _props.onPauseResume;
+    getCountUp().pauseResume();
+    onPauseResume({
+      reset: reset,
+      start: restart,
+      update: update
+    });
+  };
+
+  var update = function update(newEnd) {
+    var onUpdate = _props.onUpdate;
+    getCountUp().update(newEnd);
+    onUpdate({
+      pauseResume: pauseResume,
+      reset: reset,
+      start: restart
+    });
+  };
+
+  React.useEffect(function () {
+    var delay = _props.delay,
+        onStart = _props.onStart,
+        onEnd = _props.onEnd,
+        startOnMount = _props.startOnMount;
+
+    if (startOnMount) {
+      var timeout = setTimeout(function () {
+        onStart({
+          pauseResume: pauseResume,
+          reset: reset,
+          update: update
+        });
+        getCountUp().start(function () {
+          clearTimeout(timeout);
+          onEnd({
+            pauseResume: pauseResume,
+            reset: reset,
+            start: restart,
+            update: update
+          });
+        });
+      }, delay * 1000);
+    }
+
+    return reset;
+  }, []);
+  return {
+    countUp: count,
+    start: restart,
+    pauseResume: pauseResume,
+    reset: reset,
+    update: update
+  };
+};
+
+__webpack_unused_export__ = CountUp;
+__webpack_unused_export__ = useCountUp;
 
 
 /***/ }),
@@ -63993,6 +63989,14 @@ module.exports = __webpack_require__(5039)
 
 /***/ }),
 
+/***/ 5988:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+/* unused reexport */ __webpack_require__(7884)
+
+
+/***/ }),
+
 /***/ 8363:
 /***/ (function(__unused_webpack_module, exports) {
 
@@ -67037,6 +67041,76 @@ module.exports = __webpack_require__(1669).deprecate;
 
 /***/ }),
 
+/***/ 2473:
+/***/ (function(module) {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = "production" !== 'production';
+
+var warning = function() {};
+
+if (__DEV__) {
+  var printWarning = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+    var argIndex = 0;
+    var message = 'Warning: ' +
+      format.replace(/%s/g, function() {
+        return args[argIndex++];
+      });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  }
+
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+          '`warning(condition, format, ...args)` requires a warning ' +
+          'message argument'
+      );
+    }
+    if (!condition) {
+      printWarning.apply(null, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
+
+
+/***/ }),
+
 /***/ 2479:
 /***/ (function(module) {
 
@@ -67307,7 +67381,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(1579);
+/******/ 	var __webpack_exports__ = __webpack_require__(8897);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

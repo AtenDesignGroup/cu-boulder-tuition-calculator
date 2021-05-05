@@ -20,6 +20,11 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Deploy
 
+1st re-build
+```bash
+netlify build
+```
+
 Deploy preview
 
 ```bash
@@ -31,11 +36,6 @@ Deploy to production
 ```bash
 netlify deploy --prod -o
 ```
-
-## Build Status
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cd0cf571-b0bd-4af7-b861-8f38523b1d7f/deploy-status)](https://app.netlify.com/sites/cu-boulder-tuition-calculator/deploys)
-
 
 ## URLs
 

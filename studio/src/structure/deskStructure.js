@@ -1,53 +1,13 @@
 import React from 'react'
 import S from '@sanity/desk-tool/structure-builder'
-import {
-  MdSettings,
-  MdPerson,
-  MdPeople,
-  MdDescription,
-  MdLocalOffer,
-  FaNewspaper,
-  AiFillTags
-} from 'react-icons/md'
 
-// HiClipboardList
-// HiCalculator
-// HiQuestionMarkCircle
+import {FcQuestions, FcCalculator, FcFolder} from 'react-icons/fc'
 
-// FaEquals
+// import IframePreview from '../previews/IframePreview'
 
-// VscChecklist
-// VscGrabber =
-
-// FcCalculator
-// FcList or FcTodoList FcViewDetails
-// FcQuestions
-
-import {FcSettings, FcQuestions, FcCalculator, FcList, FcTodoList, FcViewDetails, FcSurvey} from 'react-icons/fc'
-
-import IframePreview from '../previews/IframePreview'
-
-// const QuestionIcon = () => <span style={{fontSize: '1.5rem'}}>{'?'}</span>
-// const CalculatorIcon = () => <span style={{fontSize: '1.5rem'}}>{'🧮'}</span>
-
-// TODO: Web preview configuration
 const remoteURL = 'https://cu-boulder-tuition-calculator.netlify.app/'
 const localURL = 'http://localhost:3000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
-
-// export const getDefaultDocumentNode = props => {
-//   const {schemaType} = props
-//   if (schemaType === 'post') {
-//     return S.document().views([
-//       S.view.form(),
-//       S.view
-//         .component(IframePreview)
-//         .title('Web preview')
-//         .options({previewURL})
-//     ])
-//   }
-//   return S.document().views([S.view.form()])
-// }
 
 /**
  * This defines how documents are grouped and listed out in the Studio.
@@ -62,15 +22,7 @@ export default () =>
   S.list()
     .title('Content')
     .items([
-      S.listItem()
-        .title('App Settings')
-        .icon(FcSettings)
-        .child(
-          S.editor()
-            .schemaType('siteSettings')
-            .documentId('siteSettings')
-        ),
-      S.divider(),
+
       S.listItem()
         .title('Tuition Calculator')
         .icon(FcCalculator)
@@ -86,10 +38,15 @@ export default () =>
         .icon(FcQuestions)
         .schemaType('question')
         .child(S.documentTypeList('question').title('Question')),
-
+      S.listItem()
+        .title('Categories')
+        .icon(FcFolder)
+        .schemaType('category')
+        .child(S.documentTypeList('category').title('Category')),
+        S.divider(),
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['question', 'calculator', 'siteSettings'].includes(
+          !['question', 'calculator', 'category'].includes(
             listItem.getId()
           )
       )

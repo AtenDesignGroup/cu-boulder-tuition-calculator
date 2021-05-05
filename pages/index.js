@@ -29,6 +29,6 @@ export async function getStaticProps ({ preview = false }) {
   const pageData = await getHomePage(preview)
   return {
     props: { pageData, preview },
-    revalidate: 1
+    // revalidate: 1
   }
 }
