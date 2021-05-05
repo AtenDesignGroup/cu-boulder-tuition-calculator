@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
@@ -11,13 +11,17 @@ export function Options ({ question, title, description }) {
   // console.log({ question })
   const { register, handleSubmit } = useForm()
   const { actions, state } = useStateMachine({ updateAction })
-  // const { currentQuestion, showResults, questions } = state.calculator
+  const { currentQuestion, showResults, questions } = state.calculator
   const optionSetsLength = question?.optionSets?.length
   const selectQuestionRef = useRef()
 
   function checkForFalse(val) {
     return val === false;
   }
+
+  useEffect(() => {
+    selectQuestionRef?.current && selectQuestionRef.current.focus();
+  }, [currentQuestion])
 
   // Using the question's logic to show or hide
   const questionLogic = (q) => {
@@ -53,12 +57,7 @@ export function Options ({ question, title, description }) {
       }
     })
   }
-  // Slugify a passed value
-  // const slugify = (val) => {
-  //   return val.replace(/ /g, '-').replace(/[^\w\s]/gi, '-').toLowerCase()
-  // }
 
-  // console.log(question?.optionSets)
   return (
     <div>
     {optionSetsLength === 1 ? (
