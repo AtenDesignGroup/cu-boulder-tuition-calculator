@@ -5,7 +5,7 @@ import {FcWorkflow} from 'react-icons/fc'
 
 export default {
   name: 'optionLogic',
-  title: 'Option Logic',
+  title: 'Option Text Logic',
   type: 'object',
   icon: FcWorkflow,
   // options: {collapsible: true, collapsed: false},
@@ -18,10 +18,14 @@ export default {
       to: [{type: 'question'}],
       validation: Rule => Rule.required()
     },
+    // TODO:
+    // Add the logic operator (===, !==, <, >, <=, >=)
+    //
     {
       name: 'logicSourceValue',
       type: 'string',
       title: 'Show Value',
+      // TODO: Need to update this
       description: 'When this question equals this value (make sure you use the Machine Value), show these options. You can only enter one value.',
       validation: Rule => Rule.required()
     }
@@ -33,10 +37,11 @@ export default {
     },
     prepare (selection) {
       const {source, value} = selection
-      console.log({source})
+      // console.log({source})
       return {
-        title: `Show when '${source}' = '${value}'`
-        // subtitle: `Machine value: ${value} :: Tuition $${tuitionValue || 0} Fees $${feesValue || 0}`
+        // TODO: Need to update this
+        title: `Show when '${source}'`,
+        subtitle: `=== '${value}'`
       }
     }
   }

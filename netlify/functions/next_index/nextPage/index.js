@@ -6780,7 +6780,7 @@ exports.reachTemplate = __webpack_require__(2183);
 
 exports.stringify = __webpack_require__(7894);
 
-exports.wait = __webpack_require__(6930);
+exports.wait = __webpack_require__(2039);
 
 
 /***/ }),
@@ -7178,7 +7178,7 @@ exports.keys = function (obj, options = {}) {
 
 /***/ }),
 
-/***/ 6930:
+/***/ 2039:
 /***/ (function(module) {
 
 "use strict";
@@ -32855,7 +32855,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   calculator: {
     currentQuestion: 0,
     showResults: false,
-    questions: []
+    questions: [],
+    results: [],
+    totalSemesters: 1,
+    totalCreditHours: 0
   }
 });
 
@@ -32915,7 +32918,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 8624:
+/***/ 6393:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32939,7 +32942,7 @@ var next_sanity_cjs_production_min = __webpack_require__(3253);
 ;// CONCATENATED MODULE: ./lib/sanity-queries.js
  // const $now = new Date().toISOString()
 
-const getHomePageQuery = next_sanity_cjs_production_min/* groq */.Ml`
+const getTuitionCalculatorQuery = next_sanity_cjs_production_min/* groq */.Ml`
  *[_type in ["siteSettings", "calculator"]]{
   "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
     ...,
@@ -32947,7 +32950,7 @@ const getHomePageQuery = next_sanity_cjs_production_min/* groq */.Ml`
     description,
     categories[] {
     _type == 'reference' => ^-> {
-        title
+        ...
       }
     },
     questions[] {
@@ -32997,14 +33000,14 @@ const getClient = usePreview => usePreview ? previewClient : sanityClient;
 const urlFor = source => createImageUrlBuilder(config).image(source);
 const usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(config);
 async function getHomePage(preview) {
-  const data = await getClient(preview).fetch(getHomePageQuery);
+  const data = await getClient(preview).fetch(getTuitionCalculatorQuery);
   return data;
 }
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(7294);
 // EXTERNAL MODULE: ./node_modules/next/head.js
 var head = __webpack_require__(9008);
-;// CONCATENATED MODULE: ./components/Head.js
+;// CONCATENATED MODULE: ./components/head.js
 
 
 
@@ -33173,7 +33176,7 @@ function flex_objectWithoutPropertiesLoose(source, excluded) { if (source == nul
  *
  * @see Docs https://chakra-ui.com/docs/layout/flex
  */
-var Flex = /*#__PURE__*/forwardRef((props, ref) => {
+var flex_Flex = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     direction,
     align,
@@ -33202,7 +33205,7 @@ var Flex = /*#__PURE__*/forwardRef((props, ref) => {
 });
 
 if (assertion/* __DEV__ */.Ts) {
-  Flex.displayName = "Flex";
+  flex_Flex.displayName = "Flex";
 }
 //# sourceMappingURL=flex.js.map
 // EXTERNAL MODULE: ./node_modules/lodash.mergewith/index.js
@@ -33413,13 +33416,13 @@ if (assertion/* __DEV__ */.Ts) {
   text_Text.displayName = "Text";
 }
 //# sourceMappingURL=text.js.map
-;// CONCATENATED MODULE: ./components/Footer.js
+;// CONCATENATED MODULE: ./components/footer.js
 
 
 
 function Footer() {
   return /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-    children: /*#__PURE__*/jsx_runtime.jsx(Flex, {
+    children: /*#__PURE__*/jsx_runtime.jsx(flex_Flex, {
       as: "footer",
       width: "100%",
       borderTop: "1px solid #eaeaea",
@@ -35357,7 +35360,10 @@ function Debug() {
       calculator: {
         currentQuestion: 0,
         showResults: false,
-        questions: []
+        questions: [],
+        results: [],
+        totalSemesters: 1,
+        totalCreditHours: 0
       }
     }));
   };
@@ -35365,7 +35371,7 @@ function Debug() {
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(box_Box, {
     p: "4",
     overflow: "auto",
-    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(flex_Flex, {
       justifyContent: "space-between",
       children: [/*#__PURE__*/jsx_runtime.jsx(heading_Heading, {
         size: "lg",
@@ -35381,7 +35387,7 @@ function Debug() {
     }), /*#__PURE__*/jsx_runtime.jsx(Code, {
       colorScheme: "gray.200",
       children: /*#__PURE__*/jsx_runtime.jsx("pre", {
-        children: JSON.stringify(questions, 0, 2)
+        children: JSON.stringify(state.calculator, 0, 2)
       })
     })]
   });
@@ -46087,7 +46093,7 @@ if (assertion/* __DEV__ */.Ts) {
 
 
 //# sourceMappingURL=drawer.js.map
-;// CONCATENATED MODULE: ./components/Layout.js
+;// CONCATENATED MODULE: ./components/layout.js
 
 
 
@@ -46112,7 +46118,7 @@ function Layout({
     children: [/*#__PURE__*/jsx_runtime.jsx(Head, {
       title: (siteSettings === null || siteSettings === void 0 ? void 0 : (_siteSettings$seoSett = siteSettings.seoSettings) === null || _siteSettings$seoSett === void 0 ? void 0 : _siteSettings$seoSett.title) || '',
       description: (siteSettings === null || siteSettings === void 0 ? void 0 : (_siteSettings$seoSett2 = siteSettings.seoSettings) === null || _siteSettings$seoSett2 === void 0 ? void 0 : _siteSettings$seoSett2.description) || ''
-    }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+    }), /*#__PURE__*/(0,jsx_runtime.jsxs)(flex_Flex, {
       height: "100vh",
       flexDir: "column",
       children: [children, /*#__PURE__*/jsx_runtime.jsx(box_Box, {
@@ -47993,6 +47999,7 @@ function useWatch(props) {
 
 
 
+
 function options_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function options_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { options_ownKeys(Object(source), true).forEach(function (key) { options_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { options_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -48012,7 +48019,6 @@ function options_Options({
 }) {
   var _question$optionSets, _state$calculator2, _state$calculator2$qu;
 
-  // console.log({ question })
   const {
     register,
     handleSubmit
@@ -48022,15 +48028,23 @@ function options_Options({
     state
   } = useStateMachine({
     updateAction
-  }); // const { currentQuestion, showResults, questions } = state.calculator
-
+  });
+  const {
+    currentQuestion,
+    showResults,
+    questions
+  } = state.calculator;
   const optionSetsLength = question === null || question === void 0 ? void 0 : (_question$optionSets = question.optionSets) === null || _question$optionSets === void 0 ? void 0 : _question$optionSets.length;
   const selectQuestionRef = useRef();
 
   function checkForFalse(val) {
     return val === false;
-  } // Using the question's logic to show or hide
+  } // When the question has been updated/changed focus will be re-set to the Select
 
+
+  useEffect(() => {
+    (selectQuestionRef === null || selectQuestionRef === void 0 ? void 0 : selectQuestionRef.current) && selectQuestionRef.current.focus();
+  }, [currentQuestion]); // Using the question's logic to show or hide
 
   const questionLogic = q => {
     var _q$optionLogics;
@@ -48069,14 +48083,9 @@ function options_Options({
         })
       })
     }));
-  }; // Slugify a passed value
-  // const slugify = (val) => {
-  //   return val.replace(/ /g, '-').replace(/[^\w\s]/gi, '-').toLowerCase()
-  // }
-  // console.log(question?.optionSets)
+  };
 
-
-  return /*#__PURE__*/_jsx("div", {
+  return /*#__PURE__*/_jsx(_Fragment, {
     children: optionSetsLength === 1 ? /*#__PURE__*/_jsxs(FormControl, {
       id: question === null || question === void 0 ? void 0 : question.optionSets[0]._key,
       mb: "6",
@@ -48195,6 +48204,88 @@ function Question({
 }
 // EXTERNAL MODULE: ./node_modules/react-countup/build/index.js
 var build = __webpack_require__(7857);
+;// CONCATENATED MODULE: ./components/results/line-items.js
+
+
+
+
+
+
+function line_items_LineItems({
+  data
+}) {
+  console.log({
+    data
+  });
+  const {
+    _key,
+    description,
+    value,
+    title,
+    frequency,
+    optionLogics
+  } = data;
+  const {
+    state
+  } = useStateMachine();
+  const {
+    questions,
+    semesters,
+    results,
+    totalSemesters,
+    totalCreditHours
+  } = state.calculator; // oneTime * 1
+  // perSemester * 1 * [numOfSemesters]
+  // perCreditHour * creditHours
+  // perYear * 1
+
+  const logic = ({
+    _key,
+    description,
+    value,
+    title,
+    frequency,
+    optionLogics
+  }) => {};
+
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      mb: 3,
+      size: "md",
+      children: title
+    }), /*#__PURE__*/_jsx(Box, {
+      mb: "4",
+      p: "6",
+      bg: "gray.100",
+      rounded: "sm",
+      children: /*#__PURE__*/_jsx(BodyText, {
+        blocks: description
+      })
+    }), /*#__PURE__*/_jsxs(Box, {
+      my: "6",
+      children: [/*#__PURE__*/_jsxs(Text, {
+        children: ["value: $", value]
+      }), /*#__PURE__*/_jsxs(Text, {
+        children: ["frequency: ", frequency]
+      })]
+    }), /*#__PURE__*/_jsxs(Box, {
+      my: "6",
+      children: [/*#__PURE__*/_jsx(Heading, {
+        size: "sm",
+        children: "Logic"
+      }), optionLogics.map(logic => /*#__PURE__*/_jsxs(Box, {
+        my: 3,
+        border: "solid #e1e1e1 1px",
+        p: 5,
+        children: [/*#__PURE__*/_jsxs(Text, {
+          children: ["Question id: ", logic.logicSourceQuestion._ref]
+        }), /*#__PURE__*/_jsxs(Text, {
+          children: ["value equals: ", logic.logicSourceQuestion._ref]
+        })]
+      }, logic._key))]
+    })]
+  });
+}
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
 var style = __webpack_require__(5988);
 ;// CONCATENATED MODULE: ./components/counter/index.js
@@ -48235,32 +48326,102 @@ function counter_Counter({
     })]
   });
 }
-;// CONCATENATED MODULE: ./components/calculator/results.js
+;// CONCATENATED MODULE: ./components/results/index.js
+
+
+
+
+function results_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function results_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { results_ownKeys(Object(source), true).forEach(function (key) { results_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { results_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function results_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
-function Results() {
+
+
+function Results({
+  categories
+}) {
   const {
+    actions,
     state
-  } = useStateMachine();
+  } = useStateMachine({
+    updateAction
+  });
   const {
-    questions
+    questions,
+    results,
+    totalSemesters
   } = state.calculator;
+
+  const updateTotalSemesters = val => {
+    if (val === true) {
+      actions.updateAction(results_objectSpread(results_objectSpread({}, state), {}, {
+        calculator: results_objectSpread(results_objectSpread({}, state.calculator), {}, {
+          totalSemesters: 2
+        })
+      }));
+    } else {
+      actions.updateAction(results_objectSpread(results_objectSpread({}, state), {}, {
+        calculator: results_objectSpread(results_objectSpread({}, state.calculator), {}, {
+          totalSemesters: 1
+        })
+      }));
+    }
+  };
+
   return /*#__PURE__*/_jsxs(Box, {
     children: [/*#__PURE__*/_jsxs(Box, {
-      mb: 4,
+      mb: 12,
       children: [/*#__PURE__*/_jsx(Heading, {
-        size: "md",
+        size: "sm",
         mb: 4,
         color: "gray.600",
+        textTransform: "uppercase",
         children: "My Results"
-      }), /*#__PURE__*/_jsx(Heading, {
+      }), /*#__PURE__*/_jsxs(Heading, {
         mb: 2,
-        children: "Estimated cost for one year (or one semester)"
+        children: ["Estimated costs", totalSemesters === 1 && /*#__PURE__*/_jsx(_Fragment, {
+          children: " for One Semester"
+        }), totalSemesters === 2 && /*#__PURE__*/_jsx(_Fragment, {
+          children: " for Two Semesters"
+        })]
+      }), /*#__PURE__*/_jsxs(Flex, {
+        alignItems: "center",
+        children: [/*#__PURE__*/_jsx(FormLabel, {
+          htmlFor: "email-alerts",
+          mb: "0",
+          children: "View a full year's estimate (2 semesters)"
+        }), /*#__PURE__*/_jsx(Switch, {
+          id: "email-alerts",
+          onChange: e => updateTotalSemesters(e.target.checked)
+        })]
       })]
+    }), /*#__PURE__*/_jsx(Box, {
+      mb: 40,
+      children: categories.map(category => /*#__PURE__*/_jsxs(Box, {
+        mb: 8,
+        pb: 8,
+        borderBottom: "1px solid #eee",
+        children: [/*#__PURE__*/_jsx(Heading, {
+          mb: 3,
+          size: "lg",
+          color: "gray.600",
+          children: category.title
+        }), /*#__PURE__*/_jsx(Box, {
+          mb: "4",
+          children: /*#__PURE__*/_jsx(BodyText, {
+            blocks: category.description
+          })
+        }), category.lineItems && category.lineItems.length > 0 && category.lineItems.map(lineItem => /*#__PURE__*/_jsx(LineItems, {
+          data: lineItem
+        }, lineItem._key))]
+      }, category._id))
     }), /*#__PURE__*/_jsxs(Box, {
       mb: 8,
       children: [/*#__PURE__*/_jsxs(Heading, {
@@ -48463,7 +48624,8 @@ function calculator_defineProperty(obj, key, value) { if (key in obj) { Object.d
 
 function Calculator({
   tuitionCalculator,
-  questions
+  questions,
+  categories
 }) {
   var _state$calculator3, _state$calculator3$qu, _state$calculator4, _state$calculator4$qu;
 
@@ -48584,7 +48746,7 @@ function Calculator({
     }));
   };
 
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(flex_Flex, {
     paddingY: '5rem',
     flex: "1",
     flexDir: "column",
@@ -48626,13 +48788,15 @@ function Home({
   const siteSettings = pageData[0] && pageData[0].siteSettings;
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator;
   const {
-    questions
+    questions,
+    categories
   } = tuitionCalculator;
   return /*#__PURE__*/jsx_runtime.jsx(Layout, {
     siteSettings: siteSettings,
     children: tuitionCalculator && questions && /*#__PURE__*/jsx_runtime.jsx(Calculator, {
       tuitionCalculator: tuitionCalculator,
-      questions: questions
+      questions: questions,
+      categories: categories
     })
   });
 }
@@ -48651,7 +48815,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 8897:
+/***/ 6930:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48662,7 +48826,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_a7c9f6GW59Nm9Xk5vT6QW_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_226054b15d69e162ec14306bd8589f4281_22_2C_22previewModeSigningKey_22_3A_22c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d_22_2C_22previewModeEncryptionKey_22_3A_22a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_ygBLTKjwxhURolOA4fXZp_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22ce1477199e64217935ad0b61e55e3d65_22_2C_22previewModeSigningKey_22_3A_226faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372_22_2C_22previewModeEncryptionKey_22_3A_22dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -48679,12 +48843,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/a7c9f6GW59Nm9Xk5vT6QW/_buildManifest.js","static/a7c9f6GW59Nm9Xk5vT6QW/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-2c66c916869c45b0ceb9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/792-e653f9235ab134a6f508.js","static/chunks/pages/index-0e92450398c52833b9e6.js"],"/_app":["static/chunks/webpack-2c66c916869c45b0ceb9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-a902d365176f926e1d68.js"],"/_error":["static/chunks/webpack-2c66c916869c45b0ceb9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/ygBLTKjwxhURolOA4fXZp/_buildManifest.js","static/ygBLTKjwxhURolOA4fXZp/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-801a0e25fc2ab3050589.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/488-613b802126f66422eeb0.js","static/chunks/pages/index-c79e57113ba06714c8d4.js"],"/_app":["static/chunks/webpack-801a0e25fc2ab3050589.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-74c916fb199f35ada997.js"],"/_error":["static/chunks/webpack-801a0e25fc2ab3050589.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=a7c9f6GW59Nm9Xk5vT6QW&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%226054b15d69e162ec14306bd8589f4281%22%2C%22previewModeSigningKey%22%3A%22c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d%22%2C%22previewModeEncryptionKey%22%3A%22a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=ygBLTKjwxhURolOA4fXZp&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22ce1477199e64217935ad0b61e55e3d65%22%2C%22previewModeSigningKey%22%3A%226faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372%22%2C%22previewModeEncryptionKey%22%3A%22dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -48704,10 +48868,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(8624)
+      const compMod = __webpack_require__(6393)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_a7c9f6GW59Nm9Xk5vT6QW_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_226054b15d69e162ec14306bd8589f4281_22_2C_22previewModeSigningKey_22_3A_22c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d_22_2C_22previewModeEncryptionKey_22_3A_22a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_ygBLTKjwxhURolOA4fXZp_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22ce1477199e64217935ad0b61e55e3d65_22_2C_22previewModeSigningKey_22_3A_226faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372_22_2C_22previewModeEncryptionKey_22_3A_22dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -48755,11 +48919,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "a7c9f6GW59Nm9Xk5vT6QW",
-        escapedBuildId: "a7c9f6GW59Nm9Xk5vT6QW",
+        buildId: "ygBLTKjwxhURolOA4fXZp",
+        escapedBuildId: "ygBLTKjwxhURolOA4fXZp",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"6054b15d69e162ec14306bd8589f4281",previewModeSigningKey:"c7a5aa69daf3f57ba1c4a86d42964989611dd093cfeb72ca25dce6437ede426d",previewModeEncryptionKey:"a6cde9b45bad5f1c18b6bc841fe9c91ef778516272fb298c96c1defcd8ccfbfb"}
+        encodedPreviewProps: {previewModeId:"ce1477199e64217935ad0b61e55e3d65",previewModeSigningKey:"6faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372",previewModeEncryptionKey:"dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9"}
       })
       
     
@@ -67381,7 +67545,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(8897);
+/******/ 	var __webpack_exports__ = __webpack_require__(6930);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

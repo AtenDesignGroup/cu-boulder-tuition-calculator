@@ -13,7 +13,10 @@ createStore(
     calculator: {
       currentQuestion: 0,
       showResults: false,
-      questions: []
+      questions: [],
+      results: [],
+      totalSemesters: 1,
+      totalCreditHours: 0
     }
   }
 )

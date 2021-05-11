@@ -6,11 +6,11 @@ import { AnimatePresence } from 'framer-motion'
 import { Text as BodyText } from '@/components/serializers/text'
 
 import { Question } from '@/components/calculator/question'
-import { Results } from '@/components/calculator/results'
+import { Results } from '@/components/results'
 import { Flex, Heading, Box, Stack, Button } from '@chakra-ui/react'
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
 
-export function Calculator ({ tuitionCalculator, questions }) {
+export function Calculator ({ tuitionCalculator, questions, categories }) {
 
   const { actions, state } = useStateMachine({ updateAction })
   const { currentQuestion } = state.calculator
@@ -134,12 +134,12 @@ export function Calculator ({ tuitionCalculator, questions }) {
           <Button onClick={() => nextQuestion()} isDisabled={isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? true : false} rightIcon={<HiChevronRight />} variant="outline">Next</Button> }
 
           {questionLength === currentQuestion &&
-          <Button onClick={() => seeResults()} isDisabled={isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? true : false}>See showResults</Button> }
+          <Button onClick={() => seeResults()} isDisabled={isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? true : false}>See Results</Button> }
 
         </Stack>
 
 
-        {showResults && <Results />}
+        {showResults && <Results categories={categories} />}
       </>)}
       </Box>
 

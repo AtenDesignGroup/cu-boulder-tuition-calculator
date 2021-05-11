@@ -8,13 +8,15 @@ export function Debug () {
 
   const clearData = () => {
     // console.clear()
-
     actions.updateAction({
       ...state,
       calculator: {
         currentQuestion: 0,
         showResults: false,
-        questions: []
+        questions: [],
+        results: [],
+        totalSemesters: 1,
+        totalCreditHours: 0
       }
     })
 
@@ -28,7 +30,7 @@ export function Debug () {
       </Flex>
       <Code colorScheme='gray.200'>
         <pre>
-          {JSON.stringify(questions, 0, 2)}
+          {JSON.stringify(state.calculator, 0, 2)}
         </pre>
       </Code>
     </Box>

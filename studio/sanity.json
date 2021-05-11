@@ -20,7 +20,8 @@
     "dashboard-widget-netlify",
     "@sanity/rich-date-input",
     "media",
-    "json-to-docs"
+    "json-to-docs",
+    "duplicate-array-item"
   ],
   "parts": [
     {
@@ -42,6 +43,10 @@
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
       "path": "./parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/array/functions",
+      "path": "./src/components/customArrayFunctions.js"
     }
   ]
 }

@@ -15,11 +15,11 @@ export default {
         ]
       }
     },
-    {name: 'project-users', layout: {height: 'auto'}},
-    {
-      name: 'document-list',
-      options: {title: 'Recent Questions', order: '_createdAt desc', types: ['question']},
-      layout: {width: 'medium'}
-    }
+    {name: 'project-users', layout: {width: 'medium'}},
+    // {
+    //   name: 'document-list',
+    //   options: {title: 'Recent Questions', order: '_createdAt desc', types: ['question']},
+    //   layout: {width: 'medium'}
+    // }
   ]
 }

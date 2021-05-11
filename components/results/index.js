@@ -1,20 +1,66 @@
 import { useStateMachine } from 'little-state-machine'
+import updateAction from '@/hooks/updateAction'
+
 import CountUp from 'react-countup'
+import { LineItems } from '@/components/results/line-items'
 import { Counter } from '@/components/counter'
+import { Text as BodyText } from '@/components/serializers/text'
 
-import { Heading, Box, Text, Flex } from '@chakra-ui/react'
+import { Heading, Box, Text, Flex, FormLabel, Switch } from '@chakra-ui/react'
 
-export function Results() {
-  const { state } = useStateMachine()
-  const { questions } = state.calculator
+export function Results({categories}) {
+  const { actions, state } = useStateMachine({ updateAction })
+  const { questions, results, totalSemesters } = state.calculator
+
+  const updateTotalSemesters = (val) => {
+    if(val === true) {
+      actions.updateAction({
+        ...state,
+        calculator: {
+          ...state.calculator,
+          totalSemesters: 2
+        }
+      })
+    } else {
+      actions.updateAction({
+        ...state,
+        calculator: {
+          ...state.calculator,
+          totalSemesters: 1
+        }
+      })
+    }
+  }
   return (
     <Box>
-      <Box mb={4}>
-        <Heading size="md" mb={4} color="gray.600">
+      <Box mb={12}>
+        <Heading size="sm" mb={4} color="gray.600" textTransform='uppercase'>
           My Results
         </Heading>
-        <Heading mb={2}>Estimated cost for one year (or one semester)</Heading>
+        <Heading mb={2}>Estimated costs
+        {totalSemesters === 1 && <> for One Semester</>}
+        {totalSemesters === 2 && <> for Two Semesters</>}
+        </Heading>
+        <Flex alignItems="center">
+          <FormLabel htmlFor="email-alerts" mb="0">
+            View a full year's estimate (2 semesters)
+          </FormLabel>
+          <Switch id="email-alerts" onChange={(e) => updateTotalSemesters(e.target.checked)} />
+        </Flex>
       </Box>
+
+      <Box mb={40} >
+        {categories.map(category => (
+          <Box key={category._id} mb={8} pb={8} borderBottom='1px solid #eee'>
+            <Heading mb={3} size='lg' color='gray.600'>{category.title}</Heading>
+            <Box mb='4'><BodyText blocks={category.description} /></Box>
+            {(category.lineItems && category.lineItems.length > 0) &&
+              category.lineItems.map(lineItem => <LineItems key={lineItem._key} data={lineItem} />)
+            }
+          </Box>
+        ))}
+      </Box>
+
 
       <Box mb={8}>
         <Heading mb={2}>

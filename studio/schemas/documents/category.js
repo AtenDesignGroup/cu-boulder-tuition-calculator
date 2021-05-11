@@ -25,9 +25,14 @@ export default {
       name: 'lineItems',
       title: 'Line Items',
       type: 'array',
-      of: [{
+      of: [
+        {
         type: 'lineItem'
-      }]
+        }
+      ],
+      options: {
+        canDuplicate: 'title, adminTitle, optional, description, value, frequency, optionLogics'
+      }
     }
   ]
 }

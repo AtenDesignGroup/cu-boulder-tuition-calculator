@@ -16,11 +16,11 @@ export default function Home ({ pageData, preview, cookies }) {
 
   const siteSettings = pageData[0] && pageData[0].siteSettings
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
-  const { questions } = tuitionCalculator
+  const { questions, categories } = tuitionCalculator
 
   return (
     <Layout siteSettings={siteSettings}>
-      {(tuitionCalculator && questions) && <Calculator tuitionCalculator={tuitionCalculator} questions={questions} />}
+      {(tuitionCalculator && questions) && <Calculator tuitionCalculator={tuitionCalculator} questions={questions} categories={categories} />}
     </Layout>
   )
 }

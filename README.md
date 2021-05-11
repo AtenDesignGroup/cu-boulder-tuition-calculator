@@ -18,7 +18,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages
 
-## Deploy
+## Deploy (NextJS) React App
 
 1st re-build
 ```bash
@@ -35,6 +35,14 @@ Deploy to production
 
 ```bash
 netlify deploy --prod -o
+```
+
+## Deploy Sanity Studio (CMS) App
+
+Within the `/studio` directory run the following command
+
+```bash
+sanity deploy
 ```
 
 ## URLs
