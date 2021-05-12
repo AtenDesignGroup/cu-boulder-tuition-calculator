@@ -27,34 +27,18 @@ export default {
         maxLength: 96
       },
       validation: Rule => Rule.required()
-    },
-    {
-      name: 'tuitionValue',
-      type: 'number',
-      title: 'Tuition Value',
-      description: 'Dollar value added for this option PER SEMESTER'
-      // validation: Rule => Rule.positive()
-    },
-    {
-      name: 'feesValue',
-      type: 'number',
-      title: 'Fees Value',
-      description: 'Dollar value added for this option PER SEMESTER'
-      // validation: Rule => Rule.positive()
     }
   ],
   preview: {
     select: {
       title: 'title',
-      value: 'value.current',
-      tuitionValue: 'tuitionValue',
-      feesValue: 'feesValue'
+      value: 'value.current'
     },
     prepare (selection) {
-      const {title, value, tuitionValue, feesValue} = selection
+      const {title, value} = selection
       return {
         title: `${title}`,
-        subtitle: `Machine value: ${value} :: Tuition $${tuitionValue || 0} Fees $${feesValue || 0}`
+        subtitle: `Machine value: ${value}`
       }
     }
   }

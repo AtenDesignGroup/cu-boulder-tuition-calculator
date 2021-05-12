@@ -26,7 +26,7 @@ export default {
   title: 'Option Numeric Logic',
   type: 'object',
   icon: FcWorkflow,
-  options: {collapsible: true, collapsed: false, columns: 3},
+  // options: {collapsible: true, collapsed: false, columns: 3},
   fields: [
     {
       title: 'Question',

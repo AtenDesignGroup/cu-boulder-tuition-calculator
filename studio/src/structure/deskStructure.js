@@ -48,14 +48,14 @@ export default () =>
         .schemaType('question')
         .child(S.documentTypeList('question').title('Question')),
       S.listItem()
-        .title('Categories')
+        .title('Result Categories')
         .icon(FcFolder)
         .schemaType('category')
         .child(S.documentTypeList('category').title('Category')),
         S.divider(),
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['question', 'calculator', 'category', 'siteSettings', 'media.tag'].includes(
+          !['question', 'calculator', 'category', 'siteSettings', 'media.tag', 'comment'].includes(
             listItem.getId()
           )
       )

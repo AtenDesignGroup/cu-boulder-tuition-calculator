@@ -14,5 +14,16 @@ export default {
       description: 'Dollar value to be added to the total',
       validation: Rule => Rule.required()
     }
-  ]
+  ],
+  preview: {
+    select: {
+      value: 'value'
+    },
+    prepare (selection) {
+      const {value} = selection
+      return {
+        title: `$${value}`,
+      }
+    }
+  }
 }

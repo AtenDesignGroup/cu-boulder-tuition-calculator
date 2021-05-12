@@ -55,7 +55,7 @@ export default {
       description: 'Select the question you will use its selected value (needs to be a number)',
       to: [{type: 'question'}],
       validation: Rule => Rule.required(),
-      fieldset: 'cvFieldset'
+      // fieldset: 'cvFieldset'
     }
   ],
   preview: {

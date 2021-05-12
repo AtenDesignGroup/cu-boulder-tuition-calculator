@@ -21,7 +21,6 @@ export default {
       title: 'Description',
       rows: 3
     },
-    // Question Logic (show question if true)
     {
       name: 'optionLogics',
       title: 'Show Logic',
@@ -38,27 +37,6 @@ export default {
       of: [{
         type: 'optionSet'
       }]
-    },
-    {
-      name: 'categories',
-      title: 'Value Category',
-      type: 'reference',
-      to: [{
-        type: 'category'
-      }]
-    },
-    {
-      name: 'valueLabel',
-      type: 'string',
-      title: 'Value Label',
-      description: 'Used to label the final result value(s)'
-    },
-    {
-      name: 'valueDescription',
-      type: 'text',
-      rows: 3,
-      title: 'Value Description',
-      description: 'Used to describe the final result value(s)'
     }
   ]
 }

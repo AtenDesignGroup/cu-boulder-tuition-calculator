@@ -74,8 +74,7 @@ export default {
       name: 'value',
       type: 'number',
       title: 'Value (OLD and will be removed)',
-      description: 'Dollar value added',
-      validation: Rule => Rule.required()
+      description: 'Dollar value added'
     },
     {
       title: 'Frequency',
