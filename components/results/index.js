@@ -6,31 +6,24 @@ import { LineItems } from '@/components/results/line-items'
 import { Counter } from '@/components/counter'
 import { Text as BodyText } from '@/components/serializers/text'
 
-import { Heading, Box, Text, Flex, FormLabel, Switch } from '@chakra-ui/react'
+import { Heading, Box, Text, Flex, Stack, FormLabel, Radio, RadioGroup } from '@chakra-ui/react'
 
 export function Results({categories}) {
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
 
   const updateTotalSemesters = (val) => {
-    if(val === true) {
-      actions.updateAction({
-        ...state,
-        calculator: {
-          ...state.calculator,
-          totalSemesters: 2
-        }
-      })
-    } else {
-      actions.updateAction({
-        ...state,
-        calculator: {
-          ...state.calculator,
-          totalSemesters: 1
-        }
-      })
-    }
+    val = parseInt(val)
+    console.log({val})
+    actions.updateAction({
+      ...state,
+      calculator: {
+        ...state.calculator,
+        totalSemesters: val
+      }
+    })
   }
+  console.log({totalSemesters})
   return (
     <Box>
       <Box mb={12}>
@@ -42,10 +35,14 @@ export function Results({categories}) {
         {totalSemesters === 2 && <> for Two Semesters</>}
         </Heading>
         <Flex alignItems="center">
-          <FormLabel htmlFor="email-alerts" mb="0">
-            View a full year's estimate (2 semesters)
-          </FormLabel>
-          <Switch id="email-alerts" onChange={(e) => updateTotalSemesters(e.target.checked)} />
+          {/*<FormLabel htmlFor="totalSemestersView" mb="0"> </FormLabel> */}
+          <RadioGroup name="totalSemestersView" onChange={updateTotalSemesters} value={totalSemesters.toString()} defaultChecked={totalSemesters.toString()}>
+            <Stack direction="row">
+              <Radio value="1" id="one">View one semester</Radio>
+              <Radio value="2" id="two">View two semesters</Radio>
+            </Stack>
+          </RadioGroup>
+          {/* <Switch id="totalSemestersView" onChange={(e) => updateTotalSemesters(e.target.checked)} /> */}
         </Flex>
       </Box>
 

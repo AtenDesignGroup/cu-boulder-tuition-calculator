@@ -4,14 +4,11 @@ import { Head } from '@/components/head'
 import Footer from '@/components/footer'
 import { Debug } from '@/components/calculator/debug'
 import {
-  Text,
   Flex,
   Button,
   Box,
-  Input,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
@@ -30,7 +27,7 @@ export function Layout({ children, siteSettings }) {
       />
       <Flex height="100vh" flexDir="column">
         {children}
-        <Box paddingY={'5rem'}  width='100%' maxW='860px' mx='auto'>
+        <Box position='fixed' top='0' left='0' width='100%' background='#fff' pt='4' pl='4'>
         <Button ref={btnRef} colorScheme="blue" onClick={onOpen} display='inline-block' isFullWidth={false} variant="outline">
           Debug
         </Button>
@@ -49,7 +46,6 @@ export function Layout({ children, siteSettings }) {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Debug App</DrawerHeader>
-
             <DrawerBody>
               <Debug />
             </DrawerBody>

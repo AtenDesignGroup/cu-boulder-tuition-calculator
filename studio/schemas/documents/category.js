@@ -5,7 +5,7 @@ import {FcFolder} from 'react-icons/fc'
 export default {
   name: 'category',
   type: 'document',
-  title: 'Category',
+  title: 'Result Category',
   icon: FcFolder,
   liveEdit: false,
   fields: [
@@ -27,7 +27,7 @@ export default {
       type: 'array',
       of: [ { type: 'lineItem' } ],
       options: {
-        canDuplicate: 'title'
+        canDuplicate: 'frontEndTitle, title'
       }
     }
   ]

@@ -6780,7 +6780,7 @@ exports.reachTemplate = __webpack_require__(2183);
 
 exports.stringify = __webpack_require__(7894);
 
-exports.wait = __webpack_require__(2039);
+exports.wait = __webpack_require__(6930);
 
 
 /***/ }),
@@ -7178,7 +7178,7 @@ exports.keys = function (obj, options = {}) {
 
 /***/ }),
 
-/***/ 2039:
+/***/ 6930:
 /***/ (function(module) {
 
 "use strict";
@@ -46122,10 +46122,13 @@ function Layout({
       height: "100vh",
       flexDir: "column",
       children: [children, /*#__PURE__*/jsx_runtime.jsx(box_Box, {
-        paddingY: '5rem',
+        position: "fixed",
+        top: "0",
+        left: "0",
         width: "100%",
-        maxW: "860px",
-        mx: "auto",
+        background: "#fff",
+        pt: "4",
+        pl: "4",
         children: /*#__PURE__*/jsx_runtime.jsx(Button, {
           ref: btnRef,
           colorScheme: "blue",
@@ -48030,17 +48033,13 @@ function options_Options({
     updateAction
   });
   const {
-    currentQuestion,
-    showResults,
-    questions
+    currentQuestion
   } = state.calculator;
   const optionSetsLength = question === null || question === void 0 ? void 0 : (_question$optionSets = question.optionSets) === null || _question$optionSets === void 0 ? void 0 : _question$optionSets.length;
-  const selectQuestionRef = useRef();
-
-  function checkForFalse(val) {
-    return val === false;
-  } // When the question has been updated/changed focus will be re-set to the Select
-
+  const selectQuestionRef = useRef(); // function checkForFalse(val) {
+  //   return val === false;
+  // }
+  // When the question has been updated/changed focus will be re-set to the Select
 
   useEffect(() => {
     (selectQuestionRef === null || selectQuestionRef === void 0 ? void 0 : selectQuestionRef.current) && selectQuestionRef.current.focus();
@@ -48146,20 +48145,11 @@ function options_Options({
 
 
 
-
-
-
 function Question({
   question,
-  index,
-  questionLength,
-  questions
+  index
 }) {
-  // console.log({ nextQ })
-  // console.log({ prevQ })
-  // const { register, handleSubmit } = useForm()
   const {
-    actions,
     state
   } = useStateMachine({
     updateAction
@@ -48184,8 +48174,7 @@ function Question({
       x: 50,
       display: 'none'
     }
-  }; // console.log(state?.calculator?.questions[question?._id]?.answer)
-
+  };
   return /*#__PURE__*/_jsx(motion.div, {
     variants: variants,
     exit: "removed",
@@ -48214,9 +48203,7 @@ var build = __webpack_require__(7857);
 function line_items_LineItems({
   data
 }) {
-  console.log({
-    data
-  });
+  // console.log({data})
   const {
     _key,
     description,
@@ -48627,7 +48614,7 @@ function Calculator({
   questions,
   categories
 }) {
-  var _state$calculator3, _state$calculator3$qu, _state$calculator4, _state$calculator4$qu;
+  var _state$calculator4, _state$calculator4$qu, _state$calculator5, _state$calculator5$qu;
 
   const {
     actions,
@@ -48671,25 +48658,64 @@ function Calculator({
     return showQuestion;
   };
 
+  const operatorMagic = (questionVal, mathOperation, logicVal) => {
+    if (mathOperation === 'equals') {
+      return questionVal === logicVal;
+    } else if (mathOperation === 'doesNotEqual') {
+      return questionVal !== logicVal;
+    } else if (mathOperation === 'lessThan') {
+      return questionVal < logicVal;
+    } else if (mathOperation === 'lessThanOrEquals') {
+      return questionVal <= logicVal;
+    } else if (mathOperation === 'greaterThan') {
+      return questionVal > logicVal;
+    } else if (mathOperation === 'greaterThanOrEquals') {
+      return questionVal >= logicVal;
+    } else {
+      return false;
+    }
+  };
+
   const showQ = q => {
     var _q$optionLogics;
 
-    // console.log({ q })
-    let showQuestion = false;
+    console.log(q);
+    let showQuestion = []; // console.log('showQuestion0: ', showQuestion)
 
     if ((q === null || q === void 0 ? void 0 : q.optionLogics) === undefined || (q === null || q === void 0 ? void 0 : (_q$optionLogics = q.optionLogics) === null || _q$optionLogics === void 0 ? void 0 : _q$optionLogics.length) === 0) {
-      showQuestion = true;
+      console.log('no logic');
+      showQuestion.push('true');
     } else {
       var _q$optionLogics2;
 
-      // console.log({ question })
-      showQuestion = (q === null || q === void 0 ? void 0 : q.optionLogics) && (q === null || q === void 0 ? void 0 : (_q$optionLogics2 = q.optionLogics) === null || _q$optionLogics2 === void 0 ? void 0 : _q$optionLogics2.map(logic => {
-        var _state$calculator2, _state$calculator2$qu;
+      (q === null || q === void 0 ? void 0 : q.optionLogics) && (q === null || q === void 0 ? void 0 : (_q$optionLogics2 = q.optionLogics) === null || _q$optionLogics2 === void 0 ? void 0 : _q$optionLogics2.map(logic => {
+        // String Logic
+        if (logic._type === 'optionLogic') {
+          var _state$calculator2, _state$calculator2$qu;
 
-        return (state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer) === logic.logicSourceValue;
+          console.log('string logic');
+
+          if ((state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer) === logic.logicSourceValue) {
+            showQuestion.push('true');
+          } else {
+            showQuestion.push('false');
+          }
+        } // Numeric Operational Logic
+
+
+        if (logic._type === 'optionNumericLogic') {
+          var _state$calculator3, _state$calculator3$qu, _logic$logicSourceQue;
+
+          console.log('number logic');
+          let questionVal = Number(state === null || state === void 0 ? void 0 : (_state$calculator3 = state.calculator) === null || _state$calculator3 === void 0 ? void 0 : (_state$calculator3$qu = _state$calculator3.questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue = logic.logicSourceQuestion) === null || _logic$logicSourceQue === void 0 ? void 0 : _logic$logicSourceQue._ref]) === null || _state$calculator3$qu === void 0 ? void 0 : _state$calculator3$qu.answer);
+          let logicVal = logic === null || logic === void 0 ? void 0 : logic.operatorValue;
+          let mathOperation = logic === null || logic === void 0 ? void 0 : logic.mathOperation;
+          showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal));
+        }
       })[0]);
     }
 
+    console.log('end: ', showQuestion);
     return showQuestion;
   }; // console.log(questionLogic())
 
@@ -48697,43 +48723,37 @@ function Calculator({
   const nextQuestion = () => {
     // console.clear()
     let i = currentQuestion;
-    let showQuestion = false;
+    let showQuestion = [];
 
     do {
       i += 1;
       showQuestion = showQ(questions[i]);
-    } while (showQuestion === false || i === questionLength);
+    } while (!showQuestion.includes('true') || i === questionLength);
 
-    i = i === undefined || i > questionLength ? questionLength : i; // console.log(i)
-
+    i = i === undefined || i > questionLength ? questionLength : i;
     actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
       calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
         currentQuestion: i === undefined || i > questionLength ? questionLength : i
       })
-    })); // FIXME:
-    // selectQuestionRef.current.focus()
+    }));
   }; // Button to advance the user to the previous question, not shown on the first question
 
 
   const prevQuestion = () => {
-    // console.clear()
     let i = currentQuestion;
-    let showQuestion = false;
+    let showQuestion = [];
 
     do {
-      i -= 1; // console.log(questions[i])
-      // console.log(showQ(questions[i]))
-
+      i -= 1;
       showQuestion = showQ(questions[i]);
-    } while (showQuestion === false); // console.log({ i })
+    } while (!showQuestion.includes('true') || i === questionLength);
 
-
+    i = i === undefined || i > questionLength ? questionLength : i;
     actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
       calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
         currentQuestion: i === undefined || i < 0 ? 0 : i
       })
-    })); // FIXME:
-    //  selectQuestionRef.current.focus()
+    }));
   }; // Button function to show the Results, only seen on the last question
 
 
@@ -48808,14 +48828,14 @@ async function getStaticProps({
     props: {
       pageData,
       preview
-    } // revalidate: 1
+    } // revalidate: 60
 
   };
 }
 
 /***/ }),
 
-/***/ 6930:
+/***/ 9174:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48826,7 +48846,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_ygBLTKjwxhURolOA4fXZp_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22ce1477199e64217935ad0b61e55e3d65_22_2C_22previewModeSigningKey_22_3A_226faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372_22_2C_22previewModeEncryptionKey_22_3A_22dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_MHoLvfZ9U3oc5Fwh548xP_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2208770a088201535e3cf6b45bdd6010c8_22_2C_22previewModeSigningKey_22_3A_224defb877800bac5a028ffbe895d0be3e6b6c11d1b693b638ff1fb93d9d9210ac_22_2C_22previewModeEncryptionKey_22_3A_2250c316a8f1a6dc9c6c5ee0765f17cb6e239b0fda3286aac4ae2cf7b18cc6435e_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -48843,12 +48863,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/ygBLTKjwxhURolOA4fXZp/_buildManifest.js","static/ygBLTKjwxhURolOA4fXZp/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-801a0e25fc2ab3050589.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/488-613b802126f66422eeb0.js","static/chunks/pages/index-c79e57113ba06714c8d4.js"],"/_app":["static/chunks/webpack-801a0e25fc2ab3050589.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-74c916fb199f35ada997.js"],"/_error":["static/chunks/webpack-801a0e25fc2ab3050589.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/MHoLvfZ9U3oc5Fwh548xP/_buildManifest.js","static/MHoLvfZ9U3oc5Fwh548xP/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-07c49ddb1c43ba2148d3.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/488-613b802126f66422eeb0.js","static/chunks/pages/index-a91102e10bd62567aaf4.js"],"/_app":["static/chunks/webpack-07c49ddb1c43ba2148d3.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-60080e794b3ba6f2dca0.js","static/chunks/585-ca6b46384bb0bd4868bd.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-74c916fb199f35ada997.js"],"/_error":["static/chunks/webpack-07c49ddb1c43ba2148d3.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=ygBLTKjwxhURolOA4fXZp&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22ce1477199e64217935ad0b61e55e3d65%22%2C%22previewModeSigningKey%22%3A%226faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372%22%2C%22previewModeEncryptionKey%22%3A%22dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=MHoLvfZ9U3oc5Fwh548xP&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2208770a088201535e3cf6b45bdd6010c8%22%2C%22previewModeSigningKey%22%3A%224defb877800bac5a028ffbe895d0be3e6b6c11d1b693b638ff1fb93d9d9210ac%22%2C%22previewModeEncryptionKey%22%3A%2250c316a8f1a6dc9c6c5ee0765f17cb6e239b0fda3286aac4ae2cf7b18cc6435e%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -48871,7 +48891,7 @@ var page_handler = __webpack_require__(9436);
       const compMod = __webpack_require__(6393)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_ygBLTKjwxhURolOA4fXZp_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22ce1477199e64217935ad0b61e55e3d65_22_2C_22previewModeSigningKey_22_3A_226faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372_22_2C_22previewModeEncryptionKey_22_3A_22dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_MHoLvfZ9U3oc5Fwh548xP_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2208770a088201535e3cf6b45bdd6010c8_22_2C_22previewModeSigningKey_22_3A_224defb877800bac5a028ffbe895d0be3e6b6c11d1b693b638ff1fb93d9d9210ac_22_2C_22previewModeEncryptionKey_22_3A_2250c316a8f1a6dc9c6c5ee0765f17cb6e239b0fda3286aac4ae2cf7b18cc6435e_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -48919,11 +48939,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "ygBLTKjwxhURolOA4fXZp",
-        escapedBuildId: "ygBLTKjwxhURolOA4fXZp",
+        buildId: "MHoLvfZ9U3oc5Fwh548xP",
+        escapedBuildId: "MHoLvfZ9U3oc5Fwh548xP",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"ce1477199e64217935ad0b61e55e3d65",previewModeSigningKey:"6faa079a3658524a0bf8eb6af7669ef2fb10d96da706f651bf46a3077965d372",previewModeEncryptionKey:"dd8a8ddad8368f3892c634984ebcb4fffff3516b55386bb07a1f1b96361979b9"}
+        encodedPreviewProps: {previewModeId:"08770a088201535e3cf6b45bdd6010c8",previewModeSigningKey:"4defb877800bac5a028ffbe895d0be3e6b6c11d1b693b638ff1fb93d9d9210ac",previewModeEncryptionKey:"50c316a8f1a6dc9c6c5ee0765f17cb6e239b0fda3286aac4ae2cf7b18cc6435e"}
       })
       
     
@@ -67545,7 +67565,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(6930);
+/******/ 	var __webpack_exports__ = __webpack_require__(9174);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

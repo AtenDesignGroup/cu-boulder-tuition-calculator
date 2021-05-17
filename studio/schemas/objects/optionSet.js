@@ -18,9 +18,11 @@ export default {
       name: 'optionLogics',
       title: 'Logic',
       type: 'array',
-      of: [{
-        type: 'optionLogic'
-      }]
+      description: 'If used, the option set would show if all true. If you do not add any logic, the option will always show to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
+      of: [
+        {type: 'optionLogic'},
+        {type: 'optionNumericLogic'}
+      ]
     },
     {
       name: 'options',
@@ -28,7 +30,8 @@ export default {
       type: 'array',
       of: [{
         type: 'option'
-      }]
+      }],
+      validation: Rule => Rule.required().min(2)
     }
   ]
 }

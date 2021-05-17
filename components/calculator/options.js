@@ -8,17 +8,19 @@ import { Heading, Box, Select, FormControl, FormLabel } from '@chakra-ui/react'
 export function Options ({ question, title, description }) {
   const { register, handleSubmit } = useForm()
   const { actions, state } = useStateMachine({ updateAction })
-  const { currentQuestion, showResults, questions } = state.calculator
+  const { currentQuestion } = state.calculator
   const optionSetsLength = question?.optionSets?.length
-  const selectQuestionRef = useRef()
+  const selectRef = useRef()
 
-  function checkForFalse(val) {
-    return val === false;
-  }
+  // function checkForFalse(val) {
+  //   return val === false;
+  // }
 
+  // console.log({currentQuestion})
   // When the question has been updated/changed focus will be re-set to the Select
   useEffect(() => {
-    selectQuestionRef?.current && selectQuestionRef.current.focus();
+    // console.log('useEffect')
+    selectRef.current && selectRef.current.focus();
   }, [currentQuestion])
 
   // Using the question's logic to show or hide
@@ -59,14 +61,14 @@ export function Options ({ question, title, description }) {
   return (
     <>
     {optionSetsLength === 1 ? (
-      <FormControl id={question?.optionSets[0]._key} key={question?.optionSets[0]._key} mb='6'>
+      <FormControl id={question?.optionSets[0]._key} key={question?.optionSets[0]._key} mb='6' ref={selectRef}>
           <FormLabel><Heading mb='6'>{title}</Heading></FormLabel>
           <Box mb='4'><BodyText blocks={description} /></Box>
           <Select
             {...register(`${question._id}`)}
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
             placeholder='Select a value...'
-            ref={selectQuestionRef}
+
             onChange={(e) => selectUpdate(e.currentTarget.value, question)}>
             {question?.optionSets[0].options.map(option =>
               <option value={option.value.current} key={option._key}>
@@ -83,7 +85,7 @@ export function Options ({ question, title, description }) {
           <Select
             {...register(`${question._id}`)}
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
-            placeholder='Select a value...' ref={selectQuestionRef}
+            placeholder='Select a value...'
             onChange={(e) => selectUpdate(e.currentTarget.value, question)}>
             {optionSet.options.map(option =>
               <option value={option.value.current} key={option._key}>

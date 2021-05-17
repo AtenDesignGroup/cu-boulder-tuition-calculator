@@ -1,15 +1,12 @@
 
 import { useStateMachine } from 'little-state-machine'
-import { isStringEmpty } from '@/utils/helpers'
 import updateAction from '@/hooks/updateAction'
-import { Text as BodyText } from '@/components/serializers/text'
 import { Options } from '@/components/calculator/options'
-import { Text, Heading, Box, Button, Stack } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
 
-
-export function Question ({ question, index, questionLength, questions }) {
+export function Question (props) {
+  const { question, index } = props
   // console.log({ nextQ })
   // console.log({ prevQ })
   // const { register, handleSubmit } = useForm()

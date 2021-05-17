@@ -26,7 +26,9 @@ export default {
     {
       name: 'questions',
       title: 'Questions',
+      description: 'Adding Questions here will display them on Tuition Calculator.',
       type: 'array',
+      validation: Rule => Rule.required().min(1),
       of: [
         {
           type: 'reference',
@@ -38,7 +40,9 @@ export default {
     {
       name: 'categories',
       title: 'Result Categories',
+      description: 'Adding Categories here will display them in the Results section on the Tuition Calculator.',
       type: 'array',
+      validation: Rule => Rule.required().min(1),
       of: [
         {
           type: 'reference',

@@ -16,7 +16,6 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
   const { showResults } = state.calculator
   const questionLength = questions?.length - 1
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
-  const [seeResultsBtn, setSeeResultsBtn] = useState(false)
   // const prevButtonRef = useRef();
   // const nextButtonRef = useRef();
   // const selectRef = useRef();
@@ -25,23 +24,23 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
     setCurrentQuestionID(questions[currentQuestion]._id)
   }, [currentQuestion])
 
-  // // Using the question's logic to show or hide
-  // const questionLogic = () => {
-  //   let showQuestion = false
-  //   if (question.optionLogics === undefined || question?.optionLogics?.length === 0) {
-  //     showQuestion = true
-  //   } else {
-  //     // console.log({ question })
-  //     showQuestion =
-  //       question?.optionLogics &&
-  //       question?.optionLogics?.map(
-  //         logic =>
-  //           state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer ===
-  //           logic.logicSourceValue
-  //       )[0]
-  //   }
-  //   return showQuestion
-  // }
+  // Using the question's logic to show or hide
+  const questionLogic = () => {
+    let showQuestion = false
+    if (question.optionLogics === undefined || question?.optionLogics?.length === 0) {
+      showQuestion = true
+    } else {
+      // console.log({ question })
+      showQuestion =
+        question?.optionLogics &&
+        question?.optionLogics?.map(
+          logic =>
+            state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer ===
+            logic.logicSourceValue
+        )[0]
+    }
+    return showQuestion
+  }
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`)
@@ -62,15 +61,9 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
     }
   }
 
-  const showQ = (q, optionLogicConditional, i) => {
+  const showQ = (q, optionLogicConditional) => {
     console.log({q})
     let showQuestion = []
-    let returnVal = ''
-    if(i >= questionLength || showQuestion !== undefined && !showQuestion.length > 1){
-      console.log('escape!')
-      return 'hide'
-    }
-
     // console.log('showQuestion0: ', showQuestion)
     if (q?.optionLogics === undefined || q?.optionLogics?.length === 0) {
       // console.log('no logic')
@@ -104,56 +97,62 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
         })[0]
     }
 
-    if(optionLogicConditional === 'and'){
+    if(optionLogicConditional === 'and' && showQuestion !== undefined && showQuestion.length > 1){
       console.log('AND cleanup')
-      showQuestion.includes('hide') ? returnVal = 'hide'
-        : returnVal = 'true'
+      showQuestion.includes('hide') ?
+        showQuestion.splice(0, showQuestion.length).push('hide')
+        : showQuestion.splice(0, showQuestion.length).push('show')
     }
 
-    if(optionLogicConditional === 'or'){
+    if(optionLogicConditional === 'or' && showQuestion !== undefined && showQuestion.length > 1){
       console.log('OR cleanup')
       showQuestion.includes('show') ?
-      returnVal = 'show'
-        : returnVal = 'hide'
+        showQuestion.splice(0, showQuestion.length).push('show')
+        : showQuestion.splice(0, showQuestion.length).push('hide')
     }
-    console.log('end returnVal: ', returnVal)
-    return returnVal
+    console.log('end: ', showQuestion)
+    return showQuestion
   }
 
+  // console.log(questionLogic())
+
   const nextQuestion = () => {
+    // console.clear()
     let i = currentQuestion
-    let showQuestion = 'hide';
+    let showQuestion = []
     let optionLogicConditional = 'or'
     console.log(questions[i].optionLogicConditional)
+    // do {
+    //   i += 1
+    //   console.log({i})
+    //   optionLogicConditional = questions[i]?.optionLogicConditional || 'or'
+    //   showQuestion = showQ(questions[i], optionLogicConditional)
+    //   console.log({optionLogicConditional})
+    // } while (!showQuestion.includes('show') || i >= questionLength)
 
-    while(showQuestion === 'hide') {
+    while(!showQuestion.includes('show') || i >= questionLength) {
       i += 1
-      if (i >= questionLength) {
-        break;
-      }
       console.log({i})
       optionLogicConditional = questions[i]?.optionLogicConditional || 'or'
-      showQuestion = showQ(questions[i], optionLogicConditional, i)
-      console.log({showQuestion})
+      showQuestion = showQ(questions[i], optionLogicConditional)
+      console.log({optionLogicConditional})
+
     }
 
-    console.log((i === undefined || i > questionLength) ? currentQuestion : i)
+    //(questions[i] === undefined || Object.keys(questions[i]).length === 0 || !showQuestion.includes('show') || i >= questionLength)
 
-    if(i === undefined || i >= questionLength){
-      console.log('you have magically reached the end 🤔')
-      i = currentQuestion;
-      setSeeResultsBtn(true);
-    }
-
+    console.log({questionLength})
     console.log({i})
-    actions.updateAction({
-      ...state,
-      calculator: {
-        ...state.calculator,
-        currentQuestion: (i === undefined || i > questionLength) ? currentQuestion : i
-      }
-    })
-
+    console.log((i === undefined || i > questionLength) ? currentQuestion : i)
+    i = (i === undefined || i >= questionLength) ? questionLength : i
+    console.log({i})
+    // actions.updateAction({
+    //   ...state,
+    //   calculator: {
+    //     ...state.calculator,
+    //     currentQuestion: (i === undefined || i > questionLength) ? currentQuestion : i
+    //   }
+    // })
    // selectRef.current.focus();
   }
 
@@ -167,8 +166,8 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
       showQuestion = showQ(questions[i])
       optionLogicConditional = questions[i].optionLogicConditional
       console.log({optionLogicConditional})
-    } while (!showQuestion === 'show' || i === questionLength)
-
+    } while (!showQuestion.includes('show') || i === questionLength)
+      // } while (optionLogicConditional === 'and' ? showQuestion.includes('hide') : !showQuestion.includes('true') || i === questionLength)
     i = (i === undefined || i > questionLength || i < 0) ? questionLength : i
 
     actions.updateAction({
@@ -184,7 +183,6 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
   // Button function to show the Results, only seen on the last question
   const seeResults = () => {
     // console.log('seeshowResults')
-    setSeeResultsBtn(false)
     actions.updateAction({
       ...state,
       calculator: {
@@ -242,7 +240,7 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
                 </Button>
               )}
 
-              {(seeResultsBtn && !showResults) && (
+              {questionLength === currentQuestion && (
                 <Button
                   onClick={() => seeResults()}
                   isDisabled={

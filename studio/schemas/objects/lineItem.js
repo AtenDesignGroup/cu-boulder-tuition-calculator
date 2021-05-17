@@ -94,13 +94,11 @@ export default {
       name: 'optionLogics',
       title: 'Logic',
       type: 'array',
-      options: {collapsible: true, collapsed: false, columns: 3},
-      of: [{
-        type: 'optionLogic'
-      },
-      {
-        type: 'optionNumericLogic'
-      }]
+      description: 'If used, the item would apply if all true. If you do not add any logic, the item will always apply to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
+      of: [
+        {type: 'optionLogic'},
+        {type: 'optionNumericLogic'}
+      ]
     }
   ],
   preview: {
@@ -108,12 +106,11 @@ export default {
       title: 'title',
       frontendTitle: 'frontendTitle',
       optional: 'optional',
-      value: 'value',
+      value: 'itemValue[0].value',
       frequency: 'frequency',
       logic: 'optionLogics'
     },
     prepare (selection) {
-
       const {title, adminTitle, value, optional, frequency, logic} = selection
       return {
         title: `${TitleFunc(title, adminTitle)}`,

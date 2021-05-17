@@ -35,7 +35,7 @@ export default {
       // console.log({source})
       return {
         title: `Show when '${source}'`,
-        subtitle: `equals'${value}'`
+        subtitle: `equals '${value}'`
       }
     }
   }

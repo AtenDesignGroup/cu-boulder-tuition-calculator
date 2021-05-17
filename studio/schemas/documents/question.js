@@ -8,6 +8,9 @@ export default {
   title: 'Question',
   icon: FcQuestions,
   liveEdit: false,
+  initialValue: () => ({
+    optionLogicConditional: 'or'
+  }),
   fields: [
     {
       name: 'title',
@@ -25,10 +28,23 @@ export default {
       name: 'optionLogics',
       title: 'Show Logic',
       type: 'array',
-      description: 'If used, the whole question would show if true. If you do not add any logic, the question will always show.',
-      of: [{
-        type: 'optionLogic'
-      }]
+      description: 'If used, the whole question would show if true. If you do not add any logic, the question will always show. NOTE! This always uses AND logic, so every logic condition needs to be true.',
+      of: [
+        {type: 'optionLogic'},
+        {type: 'optionNumericLogic'}
+      ]
+    },
+    {
+      title: 'Show Logic Conditional',
+      name: 'optionLogicConditional',
+      type: 'string',
+      validation: Rule => Rule.required(),
+      options: {
+        list: [
+          {title: 'AND - All show logic conditons need to be true', value: 'and'},
+          {title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or'}
+        ]
+      }
     },
     {
       name: 'optionSets',

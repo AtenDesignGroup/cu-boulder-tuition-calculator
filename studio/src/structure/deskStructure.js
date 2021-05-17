@@ -51,7 +51,7 @@ export default () =>
         .title('Result Categories')
         .icon(FcFolder)
         .schemaType('category')
-        .child(S.documentTypeList('category').title('Category')),
+        .child(S.documentTypeList('category').title('Result Category')),
         S.divider(),
       ...S.documentTypeListItems().filter(
         listItem =>

@@ -4,7 +4,7 @@ import { Heading, Box, Text, Flex } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 
 export function LineItems({data}) {
-  console.log({data})
+  // console.log({data})
   const {_key, description, value, title, frequency, optionLogics} = data
 
   const { state } = useStateMachine()
