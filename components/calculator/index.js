@@ -17,6 +17,7 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
   const questionLength = questions?.length - 1
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
   const [seeResultsBtn, setSeeResultsBtn] = useState(false)
+  const [atTheLastQuestion, setAtTheLastQuestion] = useState(false)
   // const prevButtonRef = useRef();
   // const nextButtonRef = useRef();
   // const selectRef = useRef();
@@ -124,10 +125,49 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
     let i = currentQuestion
     let showQuestion = 'hide';
     let optionLogicConditional = 'or'
-    console.log(questions[i].optionLogicConditional)
+    // console.log(questions[i].optionLogicConditional)
 
     while(showQuestion === 'hide') {
       i += 1
+      if (i >= questionLength) {
+        break;
+      }
+      // console.log({i})
+      optionLogicConditional = questions[i]?.optionLogicConditional || 'or'
+      showQuestion = showQ(questions[i], optionLogicConditional, i)
+      // console.log({showQuestion})
+    }
+
+    // console.log((i === undefined || i > questionLength) ? currentQuestion : i)
+
+    if(i === undefined || i >= questionLength){
+      // console.log('you have magically reached the end 🤔')
+      i = currentQuestion;
+      setAtTheLastQuestion(true)
+      setSeeResultsBtn(true);
+    }
+
+    // console.log({i})
+    actions.updateAction({
+      ...state,
+      calculator: {
+        ...state.calculator,
+        currentQuestion: (i === undefined || i > questionLength) ? currentQuestion : i
+      }
+    })
+
+   // selectRef.current.focus();
+  }
+
+  // Button to advance the user to the previous question, not shown on the first question
+  const prevQuestion = () => {
+    let i = currentQuestion
+    let showQuestion = 'hide';
+    let optionLogicConditional = 'or'
+    console.log(questions[i].optionLogicConditional)
+
+    while(showQuestion === 'hide') {
+      i -= 1
       if (i >= questionLength) {
         break;
       }
@@ -146,6 +186,7 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
     }
 
     console.log({i})
+    setAtTheLastQuestion(false)
     actions.updateAction({
       ...state,
       calculator: {
@@ -155,29 +196,25 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
     })
 
    // selectRef.current.focus();
-  }
+    // let i = currentQuestion
+    // let showQuestion = []
+    // let optionLogicConditional = 'or'
+    // do {
+    //   i -= 1
+    //   showQuestion = showQ(questions[i])
+    //   optionLogicConditional = questions[i].optionLogicConditional
+    //   console.log({optionLogicConditional})
+    // } while (!showQuestion === 'show' || i === questionLength)
 
-  // Button to advance the user to the previous question, not shown on the first question
-  const prevQuestion = () => {
-    let i = currentQuestion
-    let showQuestion = []
-    let optionLogicConditional = 'or'
-    do {
-      i -= 1
-      showQuestion = showQ(questions[i])
-      optionLogicConditional = questions[i].optionLogicConditional
-      console.log({optionLogicConditional})
-    } while (!showQuestion === 'show' || i === questionLength)
+    // i = (i === undefined || i > questionLength || i < 0) ? questionLength : i
 
-    i = (i === undefined || i > questionLength || i < 0) ? questionLength : i
-
-    actions.updateAction({
-      ...state,
-      calculator: {
-        ...state.calculator,
-        currentQuestion: (i === undefined || i < 0) ? 0 : i
-      }
-    })
+    // actions.updateAction({
+    //   ...state,
+    //   calculator: {
+    //     ...state.calculator,
+    //     currentQuestion: (i === undefined || i < 0) ? 0 : i
+    //   }
+    // })
     // selectRef.current.focus();
   }
 
@@ -230,11 +267,12 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
               {questionLength > currentQuestion && (
                 <Button
                   onClick={() => nextQuestion()}
-                  isDisabled={
-                    isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
-                      ? true
-                      : false
-                  }
+                  // isDisabled={
+                  //   isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
+                  //     ? true
+                  //     : false
+                  // }
+                  isDisabled={atTheLastQuestion}
                   rightIcon={<HiChevronRight />}
                   variant="outline"
                 >
@@ -242,7 +280,7 @@ export function Calculator({ tuitionCalculator, questions, categories }) {
                 </Button>
               )}
 
-              {(seeResultsBtn && !showResults) && (
+              {(seeResultsBtn) && (
                 <Button
                   onClick={() => seeResults()}
                   isDisabled={
