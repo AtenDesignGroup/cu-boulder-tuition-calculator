@@ -26,9 +26,9 @@ export default {
       title: 'Line Items',
       type: 'array',
       of: [ { type: 'lineItem' } ],
-      options: {
-        canDuplicate: 'frontEndTitle, title'
-      }
+      // options: {
+      //   canDuplicate: 'title'
+      // }
     }
   ]
 }

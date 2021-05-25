@@ -6,6 +6,9 @@ export default {
   type: 'object',
   icon: FcViewDetails,
   options: {collapsible: true, collapsed: false},
+  initialValue: () => ({
+    optionLogicConditional: 'or'
+  }),
   fields: [
     {
       name: 'title',
@@ -23,6 +26,18 @@ export default {
         {type: 'optionLogic'},
         {type: 'optionNumericLogic'}
       ]
+    },
+    {
+      title: 'Logic Conditional',
+      name: 'optionLogicConditional',
+      type: 'string',
+      validation: Rule => Rule.required(),
+      options: {
+        list: [
+          {title: 'AND - All show logic conditons need to be true', value: 'and'},
+          {title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or'}
+        ]
+      }
     },
     {
       name: 'options',

@@ -30,7 +30,8 @@ export default {
     {
       name: 'content',
       title: 'Content',
-      type: 'bodyPortableText'
+      type: 'bodyPortableText',
+      rows: 3
     },
     {
       title: 'SEO Settings',

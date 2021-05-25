@@ -19,11 +19,13 @@ const LogicVal = (val) => {
   }
  }
 
- const TitleFunc = (title, adminTitle) => {
-  if(adminTitle) {
-    return adminTitle || ''
+ const TitleFunc = (title, frontEndTitle) => {
+   console.log({title})
+   console.log({frontEndTitle})
+  if(frontEndTitle === undefined || frontEndTitle === null || frontEndTitle === '') {
+    return title
   } else {
-    return title || ''
+    return frontEndTitle
   }
  }
 
@@ -35,6 +37,9 @@ export default {
   icon: Icon,
   // options: {collapsible: true, collapsed: false},
   options: { columns: 2},
+  initialValue: () => ({
+    optionLogicConditional: 'or'
+  }),
   fields: [
     {
       name: 'frontEndTitle',
@@ -62,19 +67,12 @@ export default {
       rows: 3
     },
     {
-      title: 'Value (NEW 🎉)',
+      title: 'Value',
       name: 'itemValue',
       type: 'array',
       description: 'Choose either a simple value or a calculated value.',
       of: [{type: 'simpleValue'}, {type: 'calculatedValue'}],
       validation: Rule => Rule.required().min(1).max(1)
-    },
-    // TODO: REMOVE
-    {
-      name: 'value',
-      type: 'number',
-      title: 'Value (OLD and will be removed)',
-      description: 'Dollar value added'
     },
     {
       title: 'Frequency',
@@ -99,7 +97,19 @@ export default {
         {type: 'optionLogic'},
         {type: 'optionNumericLogic'}
       ]
-    }
+    },
+    {
+      title: 'Logic Conditional',
+      name: 'optionLogicConditional',
+      type: 'string',
+      validation: Rule => Rule.required(),
+      options: {
+        list: [
+          {title: 'AND - All show logic conditons need to be true', value: 'and'},
+          {title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or'}
+        ]
+      }
+    },
   ],
   preview: {
     select: {
@@ -111,9 +121,9 @@ export default {
       logic: 'optionLogics'
     },
     prepare (selection) {
-      const {title, adminTitle, value, optional, frequency, logic} = selection
+      const {title, frontEndTitle, value, optional, frequency, logic} = selection
       return {
-        title: `${TitleFunc(title, adminTitle)}`,
+        title: title,
         subtitle: `${OptionalVal(optional)} $${value || 0} - ${LogicVal(logic)} - Charged ${frequency}`
       }
     }

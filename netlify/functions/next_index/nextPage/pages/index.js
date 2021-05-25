@@ -32779,33 +32779,6 @@ const cuTheme = extendTheme({
     heading: `"Roboto Condensed",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
     body: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`
   },
-  // components: {
-  //   Button: {
-  //     // 1. We can update the base styles
-  //     baseStyle: {
-  //       fontWeight: '700' // Normally, it is "semibold"
-  //     },
-  //     // 2. We can add a new button size or extend existing
-  //     sizes: {
-  //       xl: {
-  //         h: '56px',
-  //         fontSize: 'lg',
-  //         px: '32px'
-  //       }
-  //     },
-  //     // 3. We can add a new visual variant
-  //     variants: {
-  //       'with-shadow': {
-  //         bg: 'red.400',
-  //         boxShadow: '0 0 2px 2px #efdfde'
-  //       },
-  //       // 4. We can override existing variants
-  //       solid: (props) => ({
-  //         bg: props.colorMode === 'dark' ? 'red.300' : 'red.500'
-  //       })
-  //     }
-  //   }
-  // },
   styles: {
     global: props => ({
       body: {
@@ -32950,15 +32923,34 @@ const getTuitionCalculatorQuery = next_sanity_cjs_production_min/* groq */.Ml`
     description,
     categories[] {
     _type == 'reference' => ^-> {
-        ...
+        ...,
+        lineItems[] {
+          ...,
+          itemValue[] {
+            ...,
+            // logicSourceQuestion->
+          }
+        }
       }
     },
     questions[] {
-      _type == 'reference' => ^->,
+      _type == 'reference' => ^-> {
+        ...
+      }
     }
   },
   "siteSettings": *[_type == "siteSettings"][0],
-}`;
+}`; // export const getTuitionCalculatorQuery2 = groq`
+//  *[_type=="category"]{
+//   title,
+//   lineItems[] {
+//     optionLogics[] {
+//       ...,
+//       logicSourceQuestion->
+//     }
+//   }
+// }`
+// "relatedMovies": *[_type=='movie' && references(^._id)]{ title }
 ;// CONCATENATED MODULE: ./lib/sanity-api.js
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -48198,90 +48190,10 @@ function Question(props) {
     })
   }, index);
 }
-// EXTERNAL MODULE: ./node_modules/react-countup/build/index.js
-var build = __webpack_require__(7857);
-;// CONCATENATED MODULE: ./components/results/line-items.js
-
-
-
-
-
-
-function line_items_LineItems({
-  data
-}) {
-  // console.log({data})
-  const {
-    _key,
-    description,
-    value,
-    title,
-    frequency,
-    optionLogics
-  } = data;
-  const {
-    state
-  } = useStateMachine();
-  const {
-    questions,
-    semesters,
-    results,
-    totalSemesters,
-    totalCreditHours
-  } = state.calculator; // oneTime * 1
-  // perSemester * 1 * [numOfSemesters]
-  // perCreditHour * creditHours
-  // perYear * 1
-
-  const logic = ({
-    _key,
-    description,
-    value,
-    title,
-    frequency,
-    optionLogics
-  }) => {};
-
-  return /*#__PURE__*/_jsxs(_Fragment, {
-    children: [/*#__PURE__*/_jsx(Heading, {
-      mb: 3,
-      size: "md",
-      children: title
-    }), /*#__PURE__*/_jsx(Box, {
-      mb: "4",
-      p: "6",
-      bg: "gray.100",
-      rounded: "sm",
-      children: /*#__PURE__*/_jsx(BodyText, {
-        blocks: description
-      })
-    }), /*#__PURE__*/_jsxs(Box, {
-      my: "6",
-      children: [/*#__PURE__*/_jsxs(Text, {
-        children: ["value: $", value]
-      }), /*#__PURE__*/_jsxs(Text, {
-        children: ["frequency: ", frequency]
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      my: "6",
-      children: [/*#__PURE__*/_jsx(Heading, {
-        size: "sm",
-        children: "Logic"
-      }), optionLogics.map(logic => /*#__PURE__*/_jsxs(Box, {
-        my: 3,
-        border: "solid #e1e1e1 1px",
-        p: 5,
-        children: [/*#__PURE__*/_jsxs(Text, {
-          children: ["Question id: ", logic.logicSourceQuestion._ref]
-        }), /*#__PURE__*/_jsxs(Text, {
-          children: ["value equals: ", logic.logicSourceQuestion._ref]
-        })]
-      }, logic._key))]
-    })]
-  });
-}
 // EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
 var style = __webpack_require__(5988);
+// EXTERNAL MODULE: ./node_modules/react-countup/build/index.js
+var build = __webpack_require__(7857);
 ;// CONCATENATED MODULE: ./components/counter/index.js
 
 
@@ -48320,6 +48232,253 @@ function counter_Counter({
     })]
   });
 }
+;// CONCATENATED MODULE: ./components/results/line-items.js
+
+
+
+function line_items_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function line_items_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { line_items_ownKeys(Object(source), true).forEach(function (key) { line_items_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { line_items_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function line_items_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+function line_items_LineItems({
+  data,
+  catID,
+  catTitle
+}) {
+  // console.log({ data })
+  const {
+    actions,
+    state
+  } = useStateMachine({
+    updateAction
+  });
+  const {
+    _key,
+    description,
+    itemValue,
+    frontEndTitle,
+    frequency,
+    optionLogics,
+    optional,
+    optionLogicConditional
+  } = data;
+  const {
+    questions,
+    semesters,
+    results,
+    totalSemesters,
+    totalCreditHours
+  } = state.calculator;
+
+  const showArray = () => {
+    var _data$optionLogics;
+
+    let showQuestion = [];
+    let returnVal = false;
+    data === null || data === void 0 ? void 0 : (_data$optionLogics = data.optionLogics) === null || _data$optionLogics === void 0 ? void 0 : _data$optionLogics.map(logic => {
+      // String Logic
+      if (logic._type === 'optionLogic') {
+        var _state$calculator, _state$calculator$que;
+
+        if ((state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue) {
+          showQuestion.push('show');
+        } else {
+          showQuestion.push('hide');
+        } // Numeric Operational Logic
+
+      } else if (logic._type === 'optionNumericLogic') {
+        var _state$calculator2, _state$calculator2$qu, _logic$logicSourceQue;
+
+        let questionVal = Number(state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue = logic.logicSourceQuestion) === null || _logic$logicSourceQue === void 0 ? void 0 : _logic$logicSourceQue._ref]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer);
+        let logicVal = logic === null || logic === void 0 ? void 0 : logic.operatorValue;
+        let mathOperation = logic === null || logic === void 0 ? void 0 : logic.mathOperation;
+        showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal));
+      } else {
+        showQuestion.push('hide');
+      }
+
+      return showQuestion;
+    })[0];
+
+    if (showQuestion.length < 1) {
+      returnVal = true;
+    } else if (optionLogicConditional === null || !optionLogicConditional) {
+      returnVal = true;
+    } else if (optionLogicConditional === 'and') {
+      showQuestion.includes('hide') ? returnVal = false : returnVal = true;
+    } else if (optionLogicConditional === 'or') {
+      showQuestion.includes('show') ? returnVal = true : returnVal = false;
+    } // returnVal === true && updateStateResults(catID, data.title, data.frequency)
+
+
+    return returnVal;
+  };
+
+  const operatorMagic = (questionVal, mathOperation, logicVal) => {
+    // console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`)
+    if (mathOperation === 'equals') {
+      return questionVal === logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'doesNotEqual') {
+      return questionVal !== logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'lessThan') {
+      return questionVal < logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'lessThanOrEquals') {
+      return questionVal <= logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'greaterThan') {
+      return questionVal > logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'greaterThanOrEquals') {
+      return questionVal >= logicVal ? 'show' : 'hide';
+    } else {
+      return 'hide';
+    }
+  };
+
+  const TotalGenerator = () => {
+    var _itemValue$, _itemValue$2;
+
+    let total = 0;
+    const valueType = ((_itemValue$ = itemValue[0]) === null || _itemValue$ === void 0 ? void 0 : _itemValue$._type) || null;
+    const value = ((_itemValue$2 = itemValue[0]) === null || _itemValue$2 === void 0 ? void 0 : _itemValue$2.value) || 0;
+    let math = null;
+    let valueQuestionID = null; // CALCULATED VALUE
+
+    if (valueType === 'calculatedValue') {
+      var _itemValue$3, _itemValue$4, _itemValue$4$logicSou, _questions$valueQuest;
+
+      math = (_itemValue$3 = itemValue[0]) === null || _itemValue$3 === void 0 ? void 0 : _itemValue$3.mathOperation;
+      valueQuestionID = (_itemValue$4 = itemValue[0]) === null || _itemValue$4 === void 0 ? void 0 : (_itemValue$4$logicSou = _itemValue$4.logicSourceQuestion) === null || _itemValue$4$logicSou === void 0 ? void 0 : _itemValue$4$logicSou._ref;
+      const myQuestionAnswer = parseInt(((_questions$valueQuest = questions[valueQuestionID]) === null || _questions$valueQuest === void 0 ? void 0 : _questions$valueQuest.answer) || 0); // console.log({myQuestionAnswer})
+
+      if (math === 'multiplication') {
+        total = value * myQuestionAnswer;
+      } else if (math === 'addition') {
+        total = value + myQuestionAnswer;
+      } else if (math === 'division') {
+        total = value / myQuestionAnswer;
+      } else if (math === 'subtraction') {
+        total = value - myQuestionAnswer;
+      }
+    } // SIMPLE VALUE
+
+
+    if (valueType === 'simpleValue') {
+      // console.log('simpleValue')
+      total = total + value;
+    } // console.log({ valueType, valueQuestionID, math, value, total })
+
+
+    return total;
+  };
+
+  useEffect(() => {
+    // console.log('useEffect')
+    // console.log({questions})
+    // console.log(state.calculator.questions)
+    // console.log({results})
+    // console.log(state.calculator.results)
+    // console.log({catID})
+    // console.log(data.frontEndTitle)
+    // console.log(data.frequency)
+    // console.log(TotalGenerator())
+    // console.log(state.calculator.results[catID])
+    // console.log({_key})
+    if (showArray() === true) {
+      // console.log('useEffect add')
+      // console.log(`catID: ${catID}, _key: ${_key}, value: ${TotalGenerator()}`)
+      actions.updateAction(line_items_objectSpread(line_items_objectSpread({}, state), {}, {
+        calculator: line_items_objectSpread(line_items_objectSpread({}, state.calculator), {}, {
+          results: line_items_objectSpread(line_items_objectSpread({}, state.calculator.results), {}, {
+            [catID]: line_items_objectSpread(line_items_objectSpread({}, state.calculator.results[catID]), {}, {
+              title: catTitle,
+              [_key]: {
+                title: data.frontEndTitle,
+                frequency: data.frequency,
+                value: TotalGenerator()
+              }
+            })
+          })
+        })
+      }));
+    }
+  }, []);
+
+  if (showArray()) {
+    return /*#__PURE__*/_jsx(Box, {
+      mb: "6",
+      children: /*#__PURE__*/_jsxs(Flex, {
+        alignItems: "center",
+        mb: 3,
+        justifyContent: "space-between",
+        children: [/*#__PURE__*/_jsxs(Flex, {
+          alignItems: "center",
+          flexDir: "column",
+          alignItems: "flex-start",
+          children: [/*#__PURE__*/_jsxs(Flex, {
+            alignItems: "center",
+            children: [/*#__PURE__*/_jsx(Heading, {
+              size: "md",
+              children: frontEndTitle
+            }), description && /*#__PURE__*/_jsxs(Popover, {
+              placement: "top-start",
+              children: [/*#__PURE__*/_jsx(PopoverTrigger, {
+                children: /*#__PURE__*/_jsx(IconButton, {
+                  variant: "ghost",
+                  "aria-label": "More info",
+                  fontSize: "20px",
+                  icon: /*#__PURE__*/_jsx(InfoIcon, {})
+                })
+              }), /*#__PURE__*/_jsxs(PopoverContent, {
+                children: [/*#__PURE__*/_jsx(PopoverCloseButton, {}), /*#__PURE__*/_jsx(PopoverBody, {
+                  py: "5",
+                  px: "5",
+                  children: /*#__PURE__*/_jsx(BodyText, {
+                    blocks: description
+                  })
+                })]
+              })]
+            })]
+          }), optional && /*#__PURE__*/_jsx(Box, {
+            background: "#eee",
+            textTransform: "uppercase",
+            fontSize: "0.6em",
+            px: "1",
+            py: ".75",
+            fontWeight: "bold",
+            children: "Optional Fee"
+          })]
+        }), /*#__PURE__*/_jsxs(Flex, {
+          flexDir: "column",
+          alignItems: "flex-end",
+          children: [/*#__PURE__*/_jsx(Text, {
+            ml: "6",
+            fontSize: "xl",
+            children: /*#__PURE__*/_jsx(Counter, {
+              target: TotalGenerator(),
+              duration: 2
+            })
+          }), /*#__PURE__*/_jsx(Badge, {
+            ml: "1",
+            colorScheme: "green",
+            fontSize: "0.6em",
+            variant: "solid",
+            children: frequency.replace(/([A-Z])/g, ' $1').trim()
+          })]
+        })]
+      })
+    });
+  } else {
+    return null;
+  }
+}
 ;// CONCATENATED MODULE: ./components/results/index.js
 
 
@@ -48330,7 +48489,6 @@ function results_ownKeys(object, enumerableOnly) { var keys = Object.keys(object
 function results_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { results_ownKeys(Object(source), true).forEach(function (key) { results_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { results_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function results_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -48354,20 +48512,17 @@ function Results({
   } = state.calculator;
 
   const updateTotalSemesters = val => {
-    val = parseInt(val);
-    console.log({
-      val
-    });
+    val = parseInt(val); // console.log({ val })
+
     actions.updateAction(results_objectSpread(results_objectSpread({}, state), {}, {
       calculator: results_objectSpread(results_objectSpread({}, state.calculator), {}, {
         totalSemesters: val
-      })
+      }, state.calculator.results)
     }));
-  };
+  }; // console.log({totalSemesters})
+  // console.log({ categories })
 
-  console.log({
-    totalSemesters
-  });
+
   return /*#__PURE__*/_jsxs(Box, {
     children: [/*#__PURE__*/_jsxs(Box, {
       mb: 12,
@@ -48421,189 +48576,118 @@ function Results({
           children: /*#__PURE__*/_jsx(BodyText, {
             blocks: category.description
           })
-        }), category.lineItems && category.lineItems.length > 0 && category.lineItems.map(lineItem => /*#__PURE__*/_jsx(LineItems, {
-          data: lineItem
-        }, lineItem._key))]
+        }), category.lineItems && category.lineItems.length > 0 && category.lineItems.map((lineItem, i) => /*#__PURE__*/_jsx(LineItems // key={lineItem._key}
+        , {
+          data: lineItem,
+          catID: category._id,
+          catTitle: category.title
+        }, i))]
       }, category._id))
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["Total ", /*#__PURE__*/_jsx(Counter, {
-          target: 28886,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "Includes: Tuition, fees, living on campus, and books and supplies are considered direct educational costs. Tuition, fees and on-campus housing are billed by the university on the tuition and fee bill."
-      }), ' ', /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "Direct costs are included in the Cost of Attendance for financial aid purposes."
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["Tuition ", /*#__PURE__*/_jsx(Counter, {
-          target: 10728,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "domestic Colorado resident undergraduate College of Arts & Sciences, All Others (Educ, ENVD, etc.), 15 credit hours, two semesters"
-      }), /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "If Colorado resident undergraduate, include this statement: This tuition rate assumes that you\u2019ve applied for and authorized the College Opportunity Fund stipend to reduce your tuition."
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["Mandatory Fees ", /*#__PURE__*/_jsx(Counter, {
-          target: 1738,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["Mandatory fees support student services, student activities, technology, capital construction and need-based financial aid. Fees are charged per semester and are based on your college level (undergraduate or graduate), citizenship, and the number of credit hours and classes in which you are enrolled. Visit ", /*#__PURE__*/_jsx("a", {
-          href: "https://www.colorado.edu/bursar/costs/mandatory-student-fees",
-          target: "_blank",
-          rel: "noreferrer noopener",
-          children: "Mandatory Student Fees"
-        }), " for details."]
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["On-Campus Housing and Meals ", /*#__PURE__*/_jsx(Counter, {
-          target: 15220,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["This cost is for a standard double room (roommate(s) and community bath) with 19 meals per week. Please visit ", /*#__PURE__*/_jsx("a", {
-          href: "https://www.colorado.edu/living/",
-          target: "_blank",
-          rel: "noreferrer noopener",
-          children: "Housing & Dining"
-        }), " to explore residence hall living."]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: [/*#__PURE__*/_jsx("a", {
-          href: "https://www.colorado.edu/living/",
-          target: "_blank",
-          rel: "noreferrer noopener",
-          children: "Housing Security Deposit"
-        }), " $300 (one-time deposit submitted with on-campus housing application)"]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: [/*#__PURE__*/_jsx("a", {
-          href: "https://living.colorado.edu/",
-          target: "_blank",
-          rel: "noreferrer noopener",
-          children: "Residential Academic Program"
-        }), " optional $425 per year"]
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["or Living with parents $4,626 or Off Campus ", /*#__PURE__*/_jsx(Counter, {
-          target: 13515,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "This estimate is determined by the Colorado Department of Education, the Office of Financial Aid and Off-Campus Housing & Neighborhood Relations for Cost of Attendance."
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["Books and Supplies ", /*#__PURE__*/_jsx(Counter, {
-          target: 1200,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "Costs for books and supplies vary widely depending on your college, school or program. This estimate is determined by the Colorado Department of Education and the Office of Financial Aid, and it is included in the Cost of Attendance. Books and supplies purchased from the CU Book Store (up to $1,500 per semester) can be charged to the tuition bill."
-      })]
-    }), /*#__PURE__*/_jsx(Box, {
-      mb: 8,
-      children: /*#__PURE__*/_jsxs(Heading, {
-        mb: 2,
-        children: ["Health Insurance ", /*#__PURE__*/_jsx(Counter, {
-          target: 3896,
-          duration: 2
-        }), " or BuffCare", ' ', /*#__PURE__*/_jsx(Counter, {
-          target: 225,
-          duration: 2
-        })]
-      })
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsx(Heading, {
-        mb: 2,
-        children: "Other Costs"
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["Personal Costs ", /*#__PURE__*/_jsx(Counter, {
-          target: 1440,
-          duration: 2
-        })]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["Transportation Costs ", /*#__PURE__*/_jsx(Counter, {
-          target: 1152,
-          duration: 2
-        }), " (if nonres, then", ' ', /*#__PURE__*/_jsx(Counter, {
-          target: 1814,
-          duration: 2
-        }), ")"]
-      }), /*#__PURE__*/_jsx(Text, {
-        mb: 3,
-        children: "Personal and transportation estimates are determined by the Colorado Department of Education and the Office of Financial Aid for Cost of Attendance."
-      })]
-    }), /*#__PURE__*/_jsxs(Box, {
-      mb: 8,
-      children: [/*#__PURE__*/_jsx(Heading, {
-        mb: 2,
-        children: "New Students:"
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["Application Fee: ", /*#__PURE__*/_jsx(Counter, {
-          target: 50,
-          duration: 2
-        }), " (undergrad domestic students), ", /*#__PURE__*/_jsx(Counter, {
-          target: 70,
-          duration: 2
-        }), " (undergrad international students)"]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["Confirmation Deposit ", /*#__PURE__*/_jsx(Counter, {
-          target: 200,
-          duration: 2
-        }), " (one-time deposit, confirms your intent to enroll)"]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["New Student Fee ", /*#__PURE__*/_jsx(Counter, {
-          target: 232,
-          duration: 2
-        }), " (one-time fee upon entering a degree program)"]
-      }), /*#__PURE__*/_jsxs(Text, {
-        mb: 3,
-        children: ["Parking Permit optional ", /*#__PURE__*/_jsx(Counter, {
-          target: 180,
-          duration: 2
-        }), "-", /*#__PURE__*/_jsx(Counter, {
-          target: 213,
-          duration: 2
-        })]
-      })]
     })]
   });
-}
+} // <Box mb={8}>
+//         <Heading mb={2}>
+//           Total <Counter target={28886} duration={2} />
+//         </Heading>
+//         <Text mb={3}>
+//           Includes: Tuition, fees, living on campus, and books and supplies are considered direct
+//           educational costs. Tuition, fees and on-campus housing are billed by the university on the
+//           tuition and fee bill.
+//         </Text>{' '}
+//         <Text mb={3}>
+//           Direct costs are included in the Cost of Attendance for financial aid purposes.
+//         </Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>
+//           Tuition <Counter target={10728} duration={2} />
+//         </Heading>
+//         <Text mb={3}>
+//           domestic Colorado resident undergraduate College of Arts & Sciences, All Others (Educ,
+//           ENVD, etc.), 15 credit hours, two semesters
+//         </Text>
+//         <Text mb={3}>
+//           If Colorado resident undergraduate, include this statement: This tuition rate assumes that
+//           you’ve applied for and authorized the College Opportunity Fund stipend to reduce your
+//           tuition.
+//         </Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>
+//           Mandatory Fees <Counter target={1738} duration={2} />
+//         </Heading>
+//         <Text mb={3}>
+//           Mandatory fees support student services, student activities, technology, capital
+//           construction and need-based financial aid. Fees are charged per semester and are based on
+//           your college level (undergraduate or graduate), citizenship, and the number of credit
+//           hours and classes in which you are enrolled. Visit <a href="https://www.colorado.edu/bursar/costs/mandatory-student-fees" target='_blank' rel="noreferrer noopener">Mandatory Student Fees</a> for details.
+//         </Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>
+//           On-Campus Housing and Meals <Counter target={15220} duration={2} />
+//         </Heading>
+//         <Text mb={3}>
+//           This cost is for a standard double room (roommate(s) and community bath) with 19 meals per
+//           week. Please visit <a href="https://www.colorado.edu/living/" target='_blank' rel="noreferrer noopener">Housing & Dining</a> to explore residence hall living.
+//         </Text>
+//         <Text mb={3}>
+//         <a href="https://www.colorado.edu/living/" target='_blank' rel="noreferrer noopener">Housing Security Deposit</a> $300 (one-time deposit submitted with on-campus housing
+//           application)
+//         </Text>
+//         <Text mb={3}><a href="https://living.colorado.edu/" target='_blank' rel="noreferrer noopener">Residential Academic Program</a> optional $425 per year</Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>
+//           or Living with parents $4,626 or Off Campus <Counter target={13515} duration={2} />
+//         </Heading>
+//         <Text mb={3}>
+//           This estimate is determined by the Colorado Department of Education, the Office of
+//           Financial Aid and Off-Campus Housing & Neighborhood Relations for Cost of Attendance.
+//         </Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>
+//           Books and Supplies <Counter target={1200} duration={2} />
+//         </Heading>
+//         <Text mb={3}>
+//           Costs for books and supplies vary widely depending on your college, school or program.
+//           This estimate is determined by the Colorado Department of Education and the Office of
+//           Financial Aid, and it is included in the Cost of Attendance. Books and supplies purchased
+//           from the CU Book Store (up to $1,500 per semester) can be charged to the tuition bill.
+//         </Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>
+//           Health Insurance <Counter target={3896} duration={2} /> or BuffCare{' '}
+//           <Counter target={225} duration={2} />
+//         </Heading>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>Other Costs</Heading>
+//         <Text mb={3}>
+//           Personal Costs <Counter target={1440} duration={2} />
+//         </Text>
+//         <Text mb={3}>
+//           Transportation Costs <Counter target={1152} duration={2} /> (if nonres, then{' '}
+//           <Counter target={1814} duration={2} />)
+//         </Text>
+//         <Text mb={3}>
+//           Personal and transportation estimates are determined by the Colorado Department of
+//           Education and the Office of Financial Aid for Cost of Attendance.
+//         </Text>
+//       </Box>
+//       <Box mb={8}>
+//         <Heading mb={2}>New Students:</Heading>
+//         <Text mb={3}>
+//           Application Fee: <Counter target={50} duration={2} /> (undergrad domestic students), <Counter target={70} duration={2} /> (undergrad international students)
+//         </Text>
+//         <Text mb={3}>
+//           Confirmation Deposit <Counter target={200} duration={2} /> (one-time deposit, confirms your intent to enroll)
+//         </Text>
+//         <Text mb={3}>New Student Fee <Counter target={232} duration={2} /> (one-time fee upon entering a degree program)</Text>
+//         <Text mb={3}>Parking Permit optional <Counter target={180} duration={2} />-<Counter target={213} duration={2} /></Text>
+//       </Box>
 ;// CONCATENATED MODULE: ./components/calculator/index.js
 
 
@@ -48630,7 +48714,7 @@ function Calculator({
   questions,
   categories
 }) {
-  var _state$calculator3, _state$calculator3$qu;
+  var _state$calculator3, _state$calculator3$qu, _state$calculator4, _state$calculator4$qu;
 
   const {
     actions,
@@ -48681,8 +48765,9 @@ function Calculator({
   // }
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
-    console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`);
-
+    // console.log(
+    //   `questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`
+    // )
     if (mathOperation === 'equals') {
       return questionVal === logicVal ? 'show' : 'hide';
     } else if (mathOperation === 'doesNotEqual') {
@@ -48703,14 +48788,12 @@ function Calculator({
   const showQ = (q, optionLogicConditional, i) => {
     var _q$optionLogics;
 
-    console.log({
-      q
-    });
+    // console.log({ q })
     let showQuestion = [];
     let returnVal = '';
 
     if (i >= questionLength || showQuestion !== undefined && !showQuestion.length > 1) {
-      console.log('escape!');
+      // console.log('escape!')
       return 'hide';
     } // console.log('showQuestion0: ', showQuestion)
 
@@ -48726,8 +48809,7 @@ function Calculator({
         if (logic._type === 'optionLogic') {
           var _state$calculator, _state$calculator$que;
 
-          console.log('string logic');
-
+          // console.log('string logic')
           if ((state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue) {
             showQuestion.push('show');
           } else {
@@ -48749,16 +48831,16 @@ function Calculator({
     }
 
     if (optionLogicConditional === 'and') {
-      console.log('AND cleanup');
+      // console.log('AND cleanup')
       showQuestion.includes('hide') ? returnVal = 'hide' : returnVal = 'true';
     }
 
     if (optionLogicConditional === 'or') {
-      console.log('OR cleanup');
+      // console.log('OR cleanup')
       showQuestion.includes('show') ? returnVal = 'show' : returnVal = 'hide';
-    }
+    } // console.log('end returnVal: ', returnVal)
 
-    console.log('end returnVal: ', returnVal);
+
     return returnVal;
   };
 
@@ -48801,8 +48883,7 @@ function Calculator({
   const prevQuestion = () => {
     let i = currentQuestion;
     let showQuestion = 'hide';
-    let optionLogicConditional = 'or';
-    console.log(questions[i].optionLogicConditional);
+    let optionLogicConditional = 'or'; // console.log(questions[i].optionLogicConditional)
 
     while (showQuestion === 'hide') {
       var _questions$i2;
@@ -48811,29 +48892,21 @@ function Calculator({
 
       if (i >= questionLength) {
         break;
-      }
+      } // console.log({ i })
 
-      console.log({
-        i
-      });
+
       optionLogicConditional = ((_questions$i2 = questions[i]) === null || _questions$i2 === void 0 ? void 0 : _questions$i2.optionLogicConditional) || 'or';
-      showQuestion = showQ(questions[i], optionLogicConditional, i);
-      console.log({
-        showQuestion
-      });
-    }
+      showQuestion = showQ(questions[i], optionLogicConditional, i); // console.log({ showQuestion })
+    } // console.log(i === undefined || i > questionLength ? currentQuestion : i)
 
-    console.log(i === undefined || i > questionLength ? currentQuestion : i);
 
     if (i === undefined || i >= questionLength) {
-      console.log('you have magically reached the end 🤔');
+      // console.log('you have magically reached the end 🤔')
       i = currentQuestion;
       setSeeResultsBtn(true);
-    }
+    } // console.log({ i })
 
-    console.log({
-      i
-    });
+
     setAtTheLastQuestion(false);
     actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
       calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
@@ -48847,7 +48920,7 @@ function Calculator({
     //   i -= 1
     //   showQuestion = showQ(questions[i])
     //   optionLogicConditional = questions[i].optionLogicConditional
-    //   console.log({optionLogicConditional})
+    //  console.log({optionLogicConditional})
     // } while (!showQuestion === 'show' || i === questionLength)
     // i = (i === undefined || i > questionLength || i < 0) ? questionLength : i
     // actions.updateAction({
@@ -48878,6 +48951,7 @@ function Calculator({
     width: "100%",
     maxW: "860px",
     mx: "auto",
+    px: "8",
     children: [/*#__PURE__*/jsx_runtime.jsx(heading_Heading, {
       mb: "2",
       children: tuitionCalculator.title
@@ -48940,7 +49014,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 5120:
+/***/ 8912:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48951,7 +49025,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_B64PPMbnJWN8cxx_U8uZL_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_225f4d917e505f6cfed7bb530d8bf06caa_22_2C_22previewModeSigningKey_22_3A_2200751cd5cd55fe7a0bb7bd142d552aa3db886bde1b722fbc75233d3def93d50b_22_2C_22previewModeEncryptionKey_22_3A_2298567e56bc5d2a983cb6fb72d0614b0785a8ebbcb1f28cf5907eff71bdc97ebf_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_u96_yX94SwRUDgrvyTH7e_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_223d4df750e0cf77a352d370722a0e02a3_22_2C_22previewModeSigningKey_22_3A_2252073725cba970fb505244f3176103e8d0b4e5453f43706aa3f6bcf7125fcdb3_22_2C_22previewModeEncryptionKey_22_3A_228f486a2324fac2b441a6ee02f8dafbd4015615dc2dfd1ff72c2af2b7e165175b_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -48968,12 +49042,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/B64PPMbnJWN8cxx_U8uZL/_buildManifest.js","static/B64PPMbnJWN8cxx_U8uZL/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-fa53aa090c5cabc4d075.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-3b7ac9dfb312f41b9b6b.js","static/chunks/995-32d349d9ee76ee6519e4.js","static/chunks/pages/index-b28ba8e88ce92792982a.js"],"/_app":["static/chunks/webpack-fa53aa090c5cabc4d075.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-3b7ac9dfb312f41b9b6b.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-74c916fb199f35ada997.js"],"/_error":["static/chunks/webpack-fa53aa090c5cabc4d075.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/u96-yX94SwRUDgrvyTH7e/_buildManifest.js","static/u96-yX94SwRUDgrvyTH7e/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-50d22b4781e9c3d7c430.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-de563d8c50ca95d6d1f5.js","static/chunks/188-010422bbf08d8b73f89f.js","static/chunks/pages/index-1eb02edf68b4533ab01e.js"],"/_app":["static/chunks/webpack-50d22b4781e9c3d7c430.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-de563d8c50ca95d6d1f5.js","static/chunks/585-ef1815a15aa28fbcd1f6.js","static/css/e1218d0fa47adbac2315.css","static/chunks/pages/_app-2866d548aeefd38bc51d.js"],"/_error":["static/chunks/webpack-50d22b4781e9c3d7c430.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=B64PPMbnJWN8cxx_U8uZL&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%225f4d917e505f6cfed7bb530d8bf06caa%22%2C%22previewModeSigningKey%22%3A%2200751cd5cd55fe7a0bb7bd142d552aa3db886bde1b722fbc75233d3def93d50b%22%2C%22previewModeEncryptionKey%22%3A%2298567e56bc5d2a983cb6fb72d0614b0785a8ebbcb1f28cf5907eff71bdc97ebf%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=u96-yX94SwRUDgrvyTH7e&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%223d4df750e0cf77a352d370722a0e02a3%22%2C%22previewModeSigningKey%22%3A%2252073725cba970fb505244f3176103e8d0b4e5453f43706aa3f6bcf7125fcdb3%22%2C%22previewModeEncryptionKey%22%3A%228f486a2324fac2b441a6ee02f8dafbd4015615dc2dfd1ff72c2af2b7e165175b%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -48996,7 +49070,7 @@ var page_handler = __webpack_require__(9436);
       const compMod = __webpack_require__(6393)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_B64PPMbnJWN8cxx_U8uZL_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_225f4d917e505f6cfed7bb530d8bf06caa_22_2C_22previewModeSigningKey_22_3A_2200751cd5cd55fe7a0bb7bd142d552aa3db886bde1b722fbc75233d3def93d50b_22_2C_22previewModeEncryptionKey_22_3A_2298567e56bc5d2a983cb6fb72d0614b0785a8ebbcb1f28cf5907eff71bdc97ebf_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_u96_yX94SwRUDgrvyTH7e_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_223d4df750e0cf77a352d370722a0e02a3_22_2C_22previewModeSigningKey_22_3A_2252073725cba970fb505244f3176103e8d0b4e5453f43706aa3f6bcf7125fcdb3_22_2C_22previewModeEncryptionKey_22_3A_228f486a2324fac2b441a6ee02f8dafbd4015615dc2dfd1ff72c2af2b7e165175b_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -49044,11 +49118,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "B64PPMbnJWN8cxx_U8uZL",
-        escapedBuildId: "B64PPMbnJWN8cxx_U8uZL",
+        buildId: "u96-yX94SwRUDgrvyTH7e",
+        escapedBuildId: "u96\-yX94SwRUDgrvyTH7e",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"5f4d917e505f6cfed7bb530d8bf06caa",previewModeSigningKey:"00751cd5cd55fe7a0bb7bd142d552aa3db886bde1b722fbc75233d3def93d50b",previewModeEncryptionKey:"98567e56bc5d2a983cb6fb72d0614b0785a8ebbcb1f28cf5907eff71bdc97ebf"}
+        encodedPreviewProps: {previewModeId:"3d4df750e0cf77a352d370722a0e02a3",previewModeSigningKey:"52073725cba970fb505244f3176103e8d0b4e5453f43706aa3f6bcf7125fcdb3",previewModeEncryptionKey:"8f486a2324fac2b441a6ee02f8dafbd4015615dc2dfd1ff72c2af2b7e165175b"}
       })
       
     
@@ -67670,7 +67744,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(5120);
+/******/ 	var __webpack_exports__ = __webpack_require__(8912);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

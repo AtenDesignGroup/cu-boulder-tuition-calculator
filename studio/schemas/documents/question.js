@@ -35,7 +35,7 @@ export default {
       ]
     },
     {
-      title: 'Show Logic Conditional',
+      title: 'Logic Conditional',
       name: 'optionLogicConditional',
       type: 'string',
       validation: Rule => Rule.required(),
