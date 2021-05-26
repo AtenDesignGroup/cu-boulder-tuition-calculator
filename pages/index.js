@@ -1,6 +1,9 @@
 import Error from 'next/error'
+import Link from 'next/link'
+
 import { useRouter } from 'next/router'
 import { getHomePage } from '@/lib/sanity-api'
+import { Flex } from '@chakra-ui/react'
 
 import { Layout } from '@/components/layout'
 
@@ -20,7 +23,14 @@ export default function Home ({ pageData, preview, cookies }) {
 
   return (
     <Layout siteSettings={siteSettings}>
-      {(tuitionCalculator && questions) && <Calculator tuitionCalculator={tuitionCalculator} questions={questions} categories={categories} />}
+
+  {/* {(tuitionCalculator && questions) && <Calculator tuitionCalculator={tuitionCalculator} questions={questions} categories={categories} />}
+  */}
+      <Flex mt={24}>
+      <Link href="/question/0">
+      <a>START</a>
+      </Link>
+      </Flex>
     </Layout>
   )
 }
@@ -29,6 +39,6 @@ export async function getStaticProps ({ preview = false }) {
   const pageData = await getHomePage(preview)
   return {
     props: { pageData, preview },
-    // revalidate: 60
+    revalidate: 60
   }
 }

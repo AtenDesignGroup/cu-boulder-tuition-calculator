@@ -19,6 +19,17 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'This is used to setup the page URL and should not be changed after it is initiall setup or it might break links.',
+      options: {
+        source: 'title',
+        maxLength: 96
+      },
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'description',
       type: 'bodyPortableText',
       title: 'Description',

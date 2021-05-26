@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
-
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { isStringEmpty } from '@/utils/helpers'
@@ -12,12 +10,10 @@ import { Results } from '@/components/results'
 import { Flex, Heading, Box, Stack, Button } from '@chakra-ui/react'
 import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
 
-export function Calculator({ question, questions, slug }) {
-  const router = useRouter()
-  console.log({questions})
+export function Calculator({ tuitionCalculator, questions, categories }) {
   const { actions, state } = useStateMachine({ updateAction })
-  // const { currentQuestion } = state.calculator
-  const currentQuestion = parseInt(slug)
+  const { currentQuestion } = state.calculator
+  console.log({currentQuestion})
   const { showResults } = state.calculator
   const questionLength = questions?.length - 1
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
@@ -120,7 +116,6 @@ export function Calculator({ question, questions, slug }) {
         currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
       }
     })
-    router.push(`/question/${i === undefined || i > questionLength ? currentQuestion : i}`)
   }
 
   // Button to advance the user to the previous question, not shown on the first question
@@ -151,7 +146,6 @@ export function Calculator({ question, questions, slug }) {
         currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
       }
     })
-    router.push(`/question/${i === undefined || i > questionLength ? currentQuestion : i}`)
   }
 
   // Button function to show the Results, only seen on the last question
@@ -165,66 +159,74 @@ export function Calculator({ question, questions, slug }) {
       }
     })
   }
-  console.log({question, questions, slug})
+
   return (
     <Flex paddingY={'5rem'} flex="1" flexDir="column" width="100%" maxW="860px" mx="auto" px="8">
+      <Heading mb="2">{tuitionCalculator.title}</Heading>
+      <BodyText blocks={tuitionCalculator.description} />
 
+      <Box mt="10" suppressHydrationWarning={true}>
+        {process.browser && (
+          <>
+            <AnimatePresence>
+              {questions.map((question, index) => {
+                return (
+                  <Question
+                    key={question._id}
+                    question={question}
+                    index={index}
+                    questionLength={questionLength}
+                    questions={questions}
+                  />
+                )
+              })}
+            </AnimatePresence>
 
-    <Box mt="10" suppressHydrationWarning={true}>
+            <Stack direction="row" spacing={4} align="center" mb="12">
+              {currentQuestion > 0 && (
+                <Button
+                  onClick={() => prevQuestion()}
+                  leftIcon={<HiChevronLeft />}
+                  variant="outline"
+                >
+                  Previous
+                </Button>
+              )}
 
-                <Question
-                  key={question._id}
-                  question={question}
-                  index={slug}
-                  questionLength={questionLength}
-                  questions={questions}
-                />
+              {questionLength > currentQuestion && (
+                <Button
+                  onClick={() => nextQuestion()}
+                  isDisabled={
+                    atTheLastQuestion ||
+                    isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
+                      ? true
+                      : false
+                  }
+                  rightIcon={<HiChevronRight />}
+                  variant="outline"
+                >
+                  Next
+                </Button>
+              )}
 
+              {seeResultsBtn && (
+                <Button
+                  onClick={() => seeResults()}
+                  isDisabled={
+                    isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
+                      ? true
+                      : false
+                  }
+                >
+                  See Results
+                </Button>
+              )}
+            </Stack>
 
-          <Stack direction="row" spacing={4} align="center" mb="12">
-            {currentQuestion > 0 && (
-              <Button
-                onClick={() => prevQuestion()}
-                leftIcon={<HiChevronLeft />}
-                variant="outline"
-              >
-                Previous
-              </Button>
-            )}
-
-            {questionLength > currentQuestion && (
-              <Button
-                onClick={() => nextQuestion()}
-                isDisabled={
-                  atTheLastQuestion ||
-                  isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
-                    ? true
-                    : false
-                }
-                rightIcon={<HiChevronRight />}
-                variant="outline"
-              >
-                Next
-              </Button>
-            )}
-
-            {seeResultsBtn && (
-              <Button
-                onClick={() => seeResults()}
-                isDisabled={
-                  isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
-                    ? true
-                    : false
-                }
-              >
-                See Results
-              </Button>
-            )}
-          </Stack>
-
-         {/*  {showResults && <Results categories={categories} />} */}
-
-    </Box>
-  </Flex>
+            {showResults && <Results categories={categories} />}
+          </>
+        )}
+      </Box>
+    </Flex>
   )
 }
