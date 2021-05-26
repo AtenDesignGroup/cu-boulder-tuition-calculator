@@ -142,8 +142,6 @@ export function LineItems({ data, catID, catTitle }) {
     // console.log(state.calculator.results[catID])
     // console.log({_key})
     if (showArray() === true) {
-      // console.log('useEffect add')
-      // console.log(`catID: ${catID}, _key: ${_key}, value: ${TotalGenerator()}`)
 
       actions.updateAction({
         ...state,

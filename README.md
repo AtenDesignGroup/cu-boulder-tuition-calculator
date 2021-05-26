@@ -33,13 +33,11 @@ netlify build
 ```
 
 Deploy preview
-
 ```bash
 netlify deploy -o
 ```
 
 Deploy to production
-
 ```bash
 netlify deploy --prod -o
 ```
