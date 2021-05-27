@@ -4,17 +4,19 @@ import { useRouter } from 'next/router'
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { isStringEmpty } from '@/utils/helpers'
-import { AnimatePresence } from 'framer-motion'
-import { Text as BodyText } from '@/components/serializers/text'
+import { motion } from 'framer-motion'
+
+// import { AnimatePresence } from 'framer-motion'
+// import { Text as BodyText } from '@/components/serializers/text'
 
 import { Question } from '@/components/calculator/question'
-import { Results } from '@/components/results'
-import { Flex, Heading, Box, Stack, Button } from '@chakra-ui/react'
+
+import { Flex, Heading, Box, Stack, Button, Spinner } from '@chakra-ui/react'
 import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
 
 export function Calculator({ question, questions, slug }) {
   const router = useRouter()
-  console.log({questions})
+  // console.log({questions})
   const { actions, state } = useStateMachine({ updateAction })
   // const { currentQuestion } = state.calculator
   const currentQuestion = parseInt(slug)
@@ -23,6 +25,26 @@ export function Calculator({ question, questions, slug }) {
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
   const [seeResultsBtn, setSeeResultsBtn] = useState(false)
   const [atTheLastQuestion, setAtTheLastQuestion] = useState(false)
+
+   // Animation Variants (Framer Motion)
+   const variants = {
+    initial: {
+      opacity: 0,
+      // x: -50,
+      display: 'none'
+    },
+    animate: {
+      opacity: 1,
+      // x: 0,
+      display: 'block'
+    },
+    removed: {
+      opacity: 0,
+      // x: 50,
+      display: 'none'
+    },
+    transition: { duration: 2 }
+  }
 
   useEffect(() => {
     setCurrentQuestionID(questions[currentQuestion]._id)
@@ -120,7 +142,7 @@ export function Calculator({ question, questions, slug }) {
         currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
       }
     })
-    router.push(`/question/${i === undefined || i > questionLength ? currentQuestion : i}`)
+    router.push(`/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id}`)
   }
 
   // Button to advance the user to the previous question, not shown on the first question
@@ -151,7 +173,7 @@ export function Calculator({ question, questions, slug }) {
         currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
       }
     })
-    router.push(`/question/${i === undefined || i > questionLength ? currentQuestion : i}`)
+    router.push(`/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id}`)
   }
 
   // Button function to show the Results, only seen on the last question
@@ -164,14 +186,25 @@ export function Calculator({ question, questions, slug }) {
         showResults: true
       }
     })
+    router.push(`/results`)
   }
-  console.log({question, questions, slug})
+  console.log({question, questions, slug, currentQuestion})
+  if (!question) {
+    return <Spinner size="md"/>
+  }
   return (
     <Flex paddingY={'5rem'} flex="1" flexDir="column" width="100%" maxW="860px" mx="auto" px="8">
 
 
-    <Box mt="10" suppressHydrationWarning={true}>
-
+    <Box mt="10">
+    <motion.div
+    key={slug}
+    variants={variants}
+    exit='removed'
+    initial='initial'
+    animate={'animate'}
+    animate={currentQuestion === slug ? 'animate' : 'initial'}
+  >
                 <Question
                   key={question._id}
                   question={question}
@@ -222,9 +255,8 @@ export function Calculator({ question, questions, slug }) {
             )}
           </Stack>
 
-         {/*  {showResults && <Results categories={categories} />} */}
-
+          </motion.div>
     </Box>
   </Flex>
-  )
+ )
 }

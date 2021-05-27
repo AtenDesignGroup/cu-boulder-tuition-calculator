@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-
+import { Layout } from '@/components/layout'
 import { Calculator } from '@/components/calculator'
-
 import {Spinner} from '@chakra-ui/react'
 import { getAllQuestions } from '@/lib/sanity-api'
 
 
-
-export default function QuestionPage({ question, questions, siteSettings, slug }) {
+export default function QuestionPage({ question, questions, siteSettings, slug, position }) {
   const router = useRouter()
   if (!router.isFallback && !question?._id) {
     return <ErrorPage statusCode={404} />
@@ -18,25 +16,27 @@ export default function QuestionPage({ question, questions, siteSettings, slug }
   }
 
   return (
-<>
-    {questions && <Calculator slug={slug} questions={questions} question={question} />}
-</>
-    )
+    <Layout siteSettings={siteSettings}>
+     {questions && <Calculator slug={position} questions={questions} question={question} />}
+    </Layout>
+  )
 }
 
 export const getStaticProps = async ({ params }) => {
-  const slug = parseInt(params?.slug)
+  const slug = params?._id
   const pages = await getAllQuestions()
-  const question = pages?.tuitionCalculator?.questions[slug] || null
+  const question = pages?.tuitionCalculator?.questions?.find((s) => s._id === slug) || null
   const questions = pages?.tuitionCalculator?.questions || null
+  const position = questions?.indexOf(question)
   const siteSettings = pages?.siteSettings || null
-  console.log({pages})
+
   return {
     props: {
       question,
       questions,
       siteSettings,
-      slug
+      slug,
+      position
     },
     revalidate: 30,
   }
@@ -44,10 +44,9 @@ export const getStaticProps = async ({ params }) => {
 
 export async function getStaticPaths () {
   const pageData = await getAllQuestions()
-
-  const pages = pageData?.tuitionCalculator?.questions?.map((q) => ({ params: { slug: q._id } }))
+  const pages = pageData?.tuitionCalculator?.questions?.map((q) => ({ params: { _id: q._id } }))
   return {
     paths: pages || null,
-    fallback: true
+    fallback: false
   }
 }

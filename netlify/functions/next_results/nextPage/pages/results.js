@@ -848,11 +848,12 @@ function createContext(options) {
 __webpack_require__.d(__webpack_exports__, {
   "iv": function() { return /* reexport */ css; },
   "isStyleProp": function() { return /* reexport */ isStyleProp; },
+  "layoutPropNames": function() { return /* reexport */ layoutPropNames; },
   "propNames": function() { return /* reexport */ propNames; },
   "toCSSVar": function() { return /* reexport */ toCSSVar; }
 });
 
-// UNUSED EXPORTS: background, border, color, flexbox, getCss, getTransformGpuTemplate, getTransformTemplate, grid, layout, layoutPropNames, list, others, outline, position, shadow, space, systemProps, toNegativeVar, toVarDefinition, toVarReference, tokenToCSSVar, tokens, transform, transition, typography
+// UNUSED EXPORTS: background, border, color, flexbox, getCss, getTransformGpuTemplate, getTransformTemplate, grid, layout, list, others, outline, position, shadow, space, systemProps, toNegativeVar, toVarDefinition, toVarReference, tokenToCSSVar, tokens, transform, transition, typography
 
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
 var assertion = __webpack_require__(3808);
@@ -2804,15 +2805,17 @@ var GlobalStyle = () => {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "hj": function() { return /* binding */ isNumber; },
+/* harmony export */   "kJ": function() { return /* binding */ isArray; },
 /* harmony export */   "mf": function() { return /* binding */ isFunction; },
 /* harmony export */   "Kn": function() { return /* binding */ isObject; },
 /* harmony export */   "Qr": function() { return /* binding */ isEmptyObject; },
 /* harmony export */   "HD": function() { return /* binding */ isString; },
 /* harmony export */   "FS": function() { return /* binding */ isCssVar; },
 /* harmony export */   "Ts": function() { return /* binding */ __DEV__; },
-/* harmony export */   "Ys": function() { return /* binding */ __TEST__; }
+/* harmony export */   "Ys": function() { return /* binding */ __TEST__; },
+/* harmony export */   "kA": function() { return /* binding */ isInputEvent; }
 /* harmony export */ });
-/* unused harmony exports isNotNumber, isNumeric, isArray, isEmptyArray, isDefined, isUndefined, isNotEmptyObject, isNull, isEmpty, isRefObject, isInputEvent */
+/* unused harmony exports isNotNumber, isNumeric, isEmptyArray, isDefined, isUndefined, isNotEmptyObject, isNull, isEmpty, isRefObject */
 // Number assertions
 function isNumber(value) {
   return typeof value === "number";
@@ -2889,9 +2892,10 @@ function isInputEvent(value) {
 /* harmony export */   "lZ": function() { return /* binding */ getOwnerDocument; },
 /* harmony export */   "jU": function() { return /* binding */ isBrowser; },
 /* harmony export */   "PB": function() { return /* binding */ dataAttr; },
+/* harmony export */   "Qm": function() { return /* binding */ ariaAttr; },
 /* harmony export */   "cx": function() { return /* binding */ cx; }
 /* harmony export */ });
-/* unused harmony exports getOwnerWindow, canUseDOM, ariaAttr, getActiveElement, contains, addDomEvent, normalizeEventKey, getRelatedTarget, isRightClick */
+/* unused harmony exports getOwnerWindow, canUseDOM, getActiveElement, contains, addDomEvent, normalizeEventKey, getRelatedTarget, isRightClick */
 function getOwnerWindow(node) {
   var _getOwnerDocument$def, _getOwnerDocument;
 
@@ -2965,11 +2969,13 @@ function isRightClick(event) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Pu": function() { return /* binding */ runIfFn; },
 /* harmony export */   "v0": function() { return /* binding */ callAllHandlers; },
+/* harmony export */   "PP": function() { return /* binding */ callAll; },
 /* harmony export */   "ZT": function() { return /* binding */ noop; },
 /* harmony export */   "ZK": function() { return /* binding */ warn; },
+/* harmony export */   "A4": function() { return /* binding */ scheduleMicrotask; },
 /* harmony export */   "zG": function() { return /* binding */ pipe; }
 /* harmony export */ });
-/* unused harmony exports callAll, compose, once, error, scheduleMicrotask, distance */
+/* unused harmony exports compose, once, error, distance */
 /* harmony import */ var _assertion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3808);
 /* eslint-disable no-nested-ternary */
 
@@ -3093,13 +3099,14 @@ function distance(a, b) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CE": function() { return /* binding */ omit; },
 /* harmony export */   "ei": function() { return /* binding */ pick; },
+/* harmony export */   "Vl": function() { return /* binding */ split; },
 /* harmony export */   "Wf": function() { return /* binding */ memoizedGet; },
 /* harmony export */   "lw": function() { return /* binding */ objectFilter; },
 /* harmony export */   "YU": function() { return /* binding */ filterUndefined; },
 /* harmony export */   "Yd": function() { return /* binding */ objectKeys; },
 /* harmony export */   "sq": function() { return /* binding */ fromEntries; }
 /* harmony export */ });
-/* unused harmony exports split, get, memoize, getWithDefault, getCSSVar */
+/* unused harmony exports get, memoize, getWithDefault, getCSSVar */
 /* harmony import */ var lodash_mergewith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8554);
 /* harmony import */ var lodash_mergewith__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_mergewith__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -11262,6 +11269,17 @@ module.exports = {
 	"yellowgreen": [154, 205, 50]
 };
 
+
+/***/ }),
+
+/***/ 8273:
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(a,n){ true?!(__WEBPACK_AMD_DEFINE_FACTORY__ = (n),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+		__WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):0}(this,function(a,n,t){var e=function(a,n,t,e,i,r){function o(a){var n,t,e,i,r,o,s=a<0;if(a=Math.abs(a).toFixed(l.decimals),a+="",n=a.split("."),t=n[0],e=n.length>1?l.options.decimal+n[1]:"",l.options.useGrouping){for(i="",r=0,o=t.length;r<o;++r)0!==r&&r%3===0&&(i=l.options.separator+i),i=t[o-r-1]+i;t=i}return l.options.numerals.length&&(t=t.replace(/[0-9]/g,function(a){return l.options.numerals[+a]}),e=e.replace(/[0-9]/g,function(a){return l.options.numerals[+a]})),(s?"-":"")+l.options.prefix+t+e+l.options.suffix}function s(a,n,t,e){return t*(-Math.pow(2,-10*a/e)+1)*1024/1023+n}function u(a){return"number"==typeof a&&!isNaN(a)}var l=this;if(l.version=function(){return"1.9.3"},l.options={useEasing:!0,useGrouping:!0,separator:",",decimal:".",easingFn:s,formattingFn:o,prefix:"",suffix:"",numerals:[]},r&&"object"==typeof r)for(var m in l.options)r.hasOwnProperty(m)&&null!==r[m]&&(l.options[m]=r[m]);""===l.options.separator?l.options.useGrouping=!1:l.options.separator=""+l.options.separator;for(var d=0,c=["webkit","moz","ms","o"],f=0;f<c.length&&!window.requestAnimationFrame;++f)window.requestAnimationFrame=window[c[f]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[c[f]+"CancelAnimationFrame"]||window[c[f]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(a,n){var t=(new Date).getTime(),e=Math.max(0,16-(t-d)),i=window.setTimeout(function(){a(t+e)},e);return d=t+e,i}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(a){clearTimeout(a)}),l.initialize=function(){return!!l.initialized||(l.error="",l.d="string"==typeof a?document.getElementById(a):a,l.d?(l.startVal=Number(n),l.endVal=Number(t),u(l.startVal)&&u(l.endVal)?(l.decimals=Math.max(0,e||0),l.dec=Math.pow(10,l.decimals),l.duration=1e3*Number(i)||2e3,l.countDown=l.startVal>l.endVal,l.frameVal=l.startVal,l.initialized=!0,!0):(l.error="[CountUp] startVal ("+n+") or endVal ("+t+") is not a number",!1)):(l.error="[CountUp] target is null or undefined",!1))},l.printValue=function(a){var n=l.options.formattingFn(a);"INPUT"===l.d.tagName?this.d.value=n:"text"===l.d.tagName||"tspan"===l.d.tagName?this.d.textContent=n:this.d.innerHTML=n},l.count=function(a){l.startTime||(l.startTime=a),l.timestamp=a;var n=a-l.startTime;l.remaining=l.duration-n,l.options.useEasing?l.countDown?l.frameVal=l.startVal-l.options.easingFn(n,0,l.startVal-l.endVal,l.duration):l.frameVal=l.options.easingFn(n,l.startVal,l.endVal-l.startVal,l.duration):l.countDown?l.frameVal=l.startVal-(l.startVal-l.endVal)*(n/l.duration):l.frameVal=l.startVal+(l.endVal-l.startVal)*(n/l.duration),l.countDown?l.frameVal=l.frameVal<l.endVal?l.endVal:l.frameVal:l.frameVal=l.frameVal>l.endVal?l.endVal:l.frameVal,l.frameVal=Math.round(l.frameVal*l.dec)/l.dec,l.printValue(l.frameVal),n<l.duration?l.rAF=requestAnimationFrame(l.count):l.callback&&l.callback()},l.start=function(a){l.initialize()&&(l.callback=a,l.rAF=requestAnimationFrame(l.count))},l.pauseResume=function(){l.paused?(l.paused=!1,delete l.startTime,l.duration=l.remaining,l.startVal=l.frameVal,requestAnimationFrame(l.count)):(l.paused=!0,cancelAnimationFrame(l.rAF))},l.reset=function(){l.paused=!1,delete l.startTime,l.initialized=!1,l.initialize()&&(cancelAnimationFrame(l.rAF),l.printValue(l.startVal))},l.update=function(a){if(l.initialize()){if(a=Number(a),!u(a))return void(l.error="[CountUp] update() - new endVal is not a number: "+a);l.error="",a!==l.frameVal&&(cancelAnimationFrame(l.rAF),l.paused=!1,delete l.startTime,l.startVal=l.frameVal,l.endVal=a,l.countDown=l.startVal>l.endVal,l.rAF=requestAnimationFrame(l.count))}},l.initialize()&&l.printValue(l.startVal)};return e});
 
 /***/ }),
 
@@ -32881,7 +32899,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 1451:
+/***/ 41:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32890,129 +32908,51 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ Home; },
+  "default": function() { return /* binding */ ResultsPage; },
   "getStaticProps": function() { return /* binding */ getStaticProps; }
 });
 
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(5893);
-// EXTERNAL MODULE: ./node_modules/next/error.js
-var error = __webpack_require__(2918);
-// EXTERNAL MODULE: ./node_modules/next/link.js
-var next_link = __webpack_require__(1664);
 // EXTERNAL MODULE: ./node_modules/next/router.js
 var next_router = __webpack_require__(1163);
-// EXTERNAL MODULE: ./node_modules/next-sanity/dist/next-sanity.cjs.production.min.js
-var next_sanity_cjs_production_min = __webpack_require__(3253);
-;// CONCATENATED MODULE: ./lib/sanity-queries.js
- // const $now = new Date().toISOString()
-
-const getTuitionCalculatorQuery = next_sanity_cjs_production_min/* groq */.Ml`
- *[_type in ["siteSettings", "calculator"]]{
-  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
-    ...,
-    title,
-    description,
-    categories[] {
-    _type == 'reference' => ^-> {
-        ...,
-        lineItems[] {
-          ...,
-          itemValue[] {
-            ...,
-            // logicSourceQuestion->
-          }
-        }
-      }
-    },
-    questions[] {
-      _type == 'reference' => ^-> {
-        ...
-      }
-    }
-  },
-  "siteSettings": *[_type == "siteSettings"][0],
-}`; // export async function getAllQuestionsWithSlug() {
-//   const data = await client.fetch(`*[_type == "question"]{ 'slug': _id }`)
-//   return data
-// }
-// export const getAllQuestionsWithSlug = groq`
-//   *[_type == "question"]{'_id': _id }`
-
-const sanity_queries_getAllQuestionsQuery = next_sanity_cjs_production_min/* groq */.Ml`
-*[_type in ["calculator", "siteSettings"]][0]{
-  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
-    questions[] {
-      _type == 'reference' => ^-> {
-        ...
-      }
-    }
-  },
-  "siteSettings": *[_type == "siteSettings"][0]
-}`;
-;// CONCATENATED MODULE: ./lib/sanity-api.js
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// import client, { previewClient } from './sanity'
-// const getClient = (preview) => (preview ? previewClient : client)
-
-
-const config = {
-  /**
-   * Find your project ID and dataset in `sanity.json` in your studio project.
-   * These are considered “public”, but you can use environment variables
-   * if you want differ between local dev and production.
-   *
-   * https://nextjs.org/docs/basic-features/environment-variables
-   **/
-  dataset: "production" || 0,
-  projectId: "85juwyag" || 0,
-  token: process.env.SANITY_API_TOKEN,
-  useCdn: true // useCdn: process.env.NODE_ENV === 'production'
-
-  /**
-   * Set useCdn to `false` if your application require the freshest possible
-   * data always (potentially slightly slower and a bit more expensive).
-   * Authenticated request (like preview) will always bypass the CDN
-   **/
-
-};
-const sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(config);
-const previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(_objectSpread(_objectSpread({}, config), {}, {
-  useCdn: true,
-  // useCdn: false,
-  token: process.env.NEXT_SANITY_API_TOKEN
-}));
-const getClient = usePreview => usePreview ? previewClient : sanityClient;
-const urlFor = source => createImageUrlBuilder(config).image(source);
-const usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(config);
-async function getTuitionCalculator(preview) {
-  const data = await getClient(preview).fetch(getTuitionCalculatorQuery);
-  return data;
-} // export async function getQuestionPage (preview) {
-//   const data = await getClient(preview).fetch(getAllQuestionsWithSlug)
-//   return data
-// }
-// export async function getQuestionBySlug(_id) {
-//   const data = await getClient(true).fetch(
-//     `*[_type == "question" && _id == $_id]{
-//       ...
-//     }`,
-//     { _id }
-//   )
-//   return data[0]
-// }
-
-async function getAllQuestions(preview) {
-  const data = await getClient(preview).fetch(getAllQuestionsQuery);
-  return data;
-}
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(7294);
+// EXTERNAL MODULE: ./node_modules/next/head.js
+var head = __webpack_require__(9008);
+;// CONCATENATED MODULE: ./components/head.js
+
+
+
+
+const Head = ({
+  children,
+  title,
+  description
+}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
+    children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
+      charSet: "UTF-8"
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1, shrink-to-fit=no"
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      httpEquiv: "x-ua-compatible",
+      content: "ie=edge"
+    }), /*#__PURE__*/jsx_runtime.jsx("link", {
+      rel: "icon",
+      href: "/favicon.ico"
+    }), /*#__PURE__*/jsx_runtime.jsx("title", {
+      children: title || ''
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      name: "description",
+      content: description || ''
+    }), /*#__PURE__*/jsx_runtime.jsx("link", {
+      rel: "preconnect",
+      href: "https://cdn.sanity.io"
+    }), children]
+  })
+});
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/system/dist/esm/forward-ref.js
 /**
  * All credit goes to Chance (Reach UI), Haz (Reakit) and (fluentui)
@@ -33125,9 +33065,9 @@ function styled(component, options) {
   });
   return (0,emotion_styled_cjs.default)(component, styledOptions)(styleObject);
 }
-var chakra = styled;
+var system_chakra = styled;
 domElements.forEach(tag => {
-  chakra[tag] = chakra(tag);
+  system_chakra[tag] = system_chakra(tag);
 });
 //# sourceMappingURL=system.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
@@ -33171,7 +33111,7 @@ var Flex = /*#__PURE__*/forwardRef((props, ref) => {
     flexGrow: grow,
     flexShrink: shrink
   };
-  return /*#__PURE__*/react.createElement(chakra.div, _extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, _extends({
     ref: ref,
     __css: styles
   }, rest));
@@ -33352,222 +33292,6 @@ function useMultiStyleConfig(themeKey, props) {
 //# sourceMappingURL=use-style-config.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/dom.js
 var dom = __webpack_require__(4461);
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/heading.js
-function heading_extends() { heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return heading_extends.apply(this, arguments); }
-
-function heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var Heading = /*#__PURE__*/forwardRef((props, ref) => {
-  var styles = useStyleConfig("Heading", props);
-
-  var _omitThemingProps = system_utils_omitThemingProps(props),
-      rest = heading_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
-
-  return /*#__PURE__*/react.createElement(chakra.h2, heading_extends({
-    ref: ref,
-    className: (0,dom.cx)("chakra-heading", props.className)
-  }, rest, {
-    __css: styles
-  }));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  Heading.displayName = "Heading";
-}
-//# sourceMappingURL=heading.js.map
-;// CONCATENATED MODULE: ./utils/sanity.js
-
-
-function sanity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function sanity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_ownKeys(Object(source), true).forEach(function (key) { sanity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function sanity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-const sanity_config = {
-  /**
-   * Find your project ID and dataset in `sanity.json` in your studio project.
-   * These are considered “public”, but you can use environment variables
-   * if you want differ between local dev and production.
-   *
-   * https://nextjs.org/docs/basic-features/environment-variables
-   **/
-  dataset: "production",
-  projectId: "85juwyag",
-  useCdn: true,
-  token: process.env.SANITY_API_TOKEN // useCdn: process.env.NODE_ENV === 'production'
-
-  /**
-   * Set useCdn to `false` if your application require the freshest possible
-   * data always (potentially slightly slower and a bit more expensive).
-   * Authenticated request (like preview) will always bypass the CDN
-   **/
-
-};
-
-if (!sanity_config.projectId) {
-  throw Error('The Project ID is not set. Check your environment variables.');
-}
-
-if (!sanity_config.dataset) {
-  throw Error('The dataset name is not set. Check your environment variables.');
-}
-/**
- * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
- * Read more: https://www.sanity.io/docs/image-url
- **/
-
-
-const sanity_urlFor = source => createImageUrlBuilder(sanity_config).image(source); // Set up the live preview subsscription hook
-
-const sanity_usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(sanity_config); // Set up Portable Text serialization
-
-const PortableText = (0,next_sanity_cjs_production_min/* createPortableTextComponent */.Kz)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
-  // Serializers passed to @sanity/block-content-to-react
-  // (https://github.com/sanity-io/block-content-to-react)
-  serializers: {
-    types: {
-      ul: props => /*#__PURE__*/jsx_runtime.jsx("ul", {
-        className: "test",
-        children: "test"
-      })
-    }
-  }
-})); // Set up the client for fetching data in the getProps page functions
-
-const sanity_sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_config); // Set up a preview client with serverless authentication for drafts
-
-const sanity_previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
-  useCdn: true // useCdn: false
-
-})); // Helper function for easily switching between normal client and preview client
-
-const sanity_getClient = usePreview => usePreview ? sanity_previewClient : sanity_sanityClient;
-;// CONCATENATED MODULE: ./components/serializers/serializers.js
-
-
-
-
-const serializers = {
-  marks: {
-    link: ({
-      mark,
-      children
-    }) => {
-      const {
-        blank,
-        href
-      } = mark;
-
-      if (!href) {
-        return null;
-      }
-
-      return blank === true ? /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-        children: href.includes('https') || href.includes('http') ? /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          children: children
-        }) : /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          children: children
-        })
-      }) : /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-        children: href.includes('https') || href.includes('http') || href.includes('tel') || href.includes('mailto') ? /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          children: children
-        }) : /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-          href: href,
-          children: /*#__PURE__*/jsx_runtime.jsx("a", {
-            children: children
-          })
-        })
-      });
-    }
-  },
-  list: props => {
-    // console.log({ props })
-    switch (props.type) {
-      case 'number':
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ol", {
-            children: props.children
-          });
-        }
-
-      case 'bullet':
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ul", {
-            children: props.children
-          });
-        }
-
-      default:
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ul", {
-            children: props.children
-          });
-        }
-    }
-  }
-};
-/* harmony default export */ var serializers_serializers = (serializers);
-;// CONCATENATED MODULE: ./components/serializers/text.js
-
-
-
-function Text({
-  blocks
-}) {
-  var _blocks$;
-
-  // console.log({ blocks })
-  // TODO: Test this conditional logic out more to make sure it's SOLID
-  return blocks !== null && blocks !== void 0 && blocks.length && (_blocks$ = blocks[0]) !== null && _blocks$ !== void 0 && _blocks$.children.length ? /*#__PURE__*/jsx_runtime.jsx(PortableText, {
-    blocks: blocks,
-    serializers: serializers_serializers
-  }) : null;
-}
-// EXTERNAL MODULE: ./node_modules/next/head.js
-var head = __webpack_require__(9008);
-;// CONCATENATED MODULE: ./components/head.js
-
-
-
-
-const Head = ({
-  children,
-  title,
-  description
-}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
-    children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
-      charSet: "UTF-8"
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1, shrink-to-fit=no"
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      httpEquiv: "x-ua-compatible",
-      content: "ie=edge"
-    }), /*#__PURE__*/jsx_runtime.jsx("link", {
-      rel: "icon",
-      href: "/favicon.ico"
-    }), /*#__PURE__*/jsx_runtime.jsx("title", {
-      children: title || ''
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      name: "description",
-      content: description || ''
-    }), /*#__PURE__*/jsx_runtime.jsx("link", {
-      rel: "preconnect",
-      href: "https://cdn.sanity.io"
-    }), children]
-  })
-});
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/text.js
 function text_extends() { text_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return text_extends.apply(this, arguments); }
 
@@ -33582,7 +33306,7 @@ function text_objectWithoutPropertiesLoose(source, excluded) { if (source == nul
  *
  * @see Docs https://chakra-ui.com/docs/typography/text
  */
-var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
+var Text = /*#__PURE__*/forwardRef((props, ref) => {
   var styles = useStyleConfig("Text", props);
 
   var _omitThemingProps = system_utils_omitThemingProps(props),
@@ -33593,7 +33317,7 @@ var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
     textDecoration: props.decoration,
     textTransform: props.casing
   });
-  return /*#__PURE__*/react.createElement(chakra.p, text_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.p, text_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-text", props.className)
   }, aliasedProps, rest, {
@@ -33602,7 +33326,7 @@ var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
 });
 
 if (assertion/* __DEV__ */.Ts) {
-  text_Text.displayName = "Text";
+  Text.displayName = "Text";
 }
 //# sourceMappingURL=text.js.map
 ;// CONCATENATED MODULE: ./components/footer.js
@@ -33618,7 +33342,7 @@ function Footer() {
       justifyContent: "center",
       alignItems: "center",
       paddingY: "2rem",
-      children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+      children: /*#__PURE__*/jsx_runtime.jsx(Text, {
         children: "Powered by Sanity.io"
       })
     })
@@ -33627,16 +33351,16 @@ function Footer() {
 // EXTERNAL MODULE: ./node_modules/little-state-machine/dist/little-state-machine.js
 var little_state_machine = __webpack_require__(1240);
 ;// CONCATENATED MODULE: ./hooks/updateAction.js
-function updateAction_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function updateAction_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { updateAction_ownKeys(Object(source), true).forEach(function (key) { updateAction_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { updateAction_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function updateAction_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function updateAction(state, payload) {
   // console.log('state:', state)
   // console.log('payload:', payload)
-  return updateAction_objectSpread(updateAction_objectSpread({}, state), payload);
+  return _objectSpread(_objectSpread({}, state), payload);
 }
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/box.js
 function box_extends() { box_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return box_extends.apply(this, arguments); }
@@ -33653,7 +33377,7 @@ function box_objectWithoutPropertiesLoose(source, excluded) { if (source == null
  *
  * @see Docs https://chakra-ui.com/docs/layout/box
  */
-var Box = chakra("div");
+var Box = system_chakra("div");
 
 if (assertion/* __DEV__ */.Ts) {
   Box.displayName = "Box";
@@ -33707,6 +33431,32 @@ if (assertion/* __DEV__ */.Ts) {
   Circle.displayName = "Circle";
 }
 //# sourceMappingURL=box.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/heading.js
+function heading_extends() { heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return heading_extends.apply(this, arguments); }
+
+function heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var Heading = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useStyleConfig("Heading", props);
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      rest = heading_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
+
+  return /*#__PURE__*/react.createElement(system_chakra.h2, heading_extends({
+    ref: ref,
+    className: (0,dom.cx)("chakra-heading", props.className)
+  }, rest, {
+    __css: styles
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Heading.displayName = "Heading";
+}
+//# sourceMappingURL=heading.js.map
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/refs.js
 
 
@@ -33775,7 +33525,7 @@ var visuallyHiddenStyle = {
  * elements on screen
  */
 
-var VisuallyHidden = chakra("span", {
+var VisuallyHidden = system_chakra("span", {
   baseStyle: visuallyHiddenStyle
 });
 
@@ -33789,7 +33539,7 @@ if (assertion/* __DEV__ */.Ts) {
  */
 
 
-var VisuallyHiddenInput = chakra("input", {
+var VisuallyHiddenInput = system_chakra("input", {
   baseStyle: visuallyHiddenStyle
 });
 
@@ -33849,7 +33599,7 @@ var Spinner = /*#__PURE__*/forwardRef((props, ref) => {
     animation: spin + " " + speed + " linear infinite"
   }, styles);
 
-  return /*#__PURE__*/react.createElement(chakra.div, spinner_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, spinner_extends({
     ref: ref,
     __css: spinnerStyles,
     className: _className
@@ -33922,7 +33672,7 @@ var ButtonGroup = /*#__PURE__*/forwardRef((props, ref) => {
 
   return /*#__PURE__*/react.createElement(ButtonGroupProvider, {
     value: context
-  }, /*#__PURE__*/react.createElement(chakra.div, button_group_extends({
+  }, /*#__PURE__*/react.createElement(system_chakra.div, button_group_extends({
     ref: ref,
     role: "group",
     __css: groupStyles,
@@ -34003,7 +33753,7 @@ var Button = /*#__PURE__*/forwardRef((props, ref) => {
     setIsButton(node.tagName === "BUTTON");
   }, []);
   var defaultType = isButton ? "button" : undefined;
-  return /*#__PURE__*/react.createElement(chakra.button, button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.button, button_extends({
     disabled: isDisabled || isLoading,
     ref: mergeRefs(ref, refCallback),
     as: as,
@@ -34017,7 +33767,7 @@ var Button = /*#__PURE__*/forwardRef((props, ref) => {
   }, leftIcon), isLoading && spinnerPlacement === "start" && /*#__PURE__*/react.createElement(ButtonSpinner, {
     label: loadingText,
     placement: "start"
-  }, spinner), isLoading ? loadingText || /*#__PURE__*/react.createElement(chakra.span, {
+  }, spinner), isLoading ? loadingText || /*#__PURE__*/react.createElement(system_chakra.span, {
     opacity: 0
   }, children) : children, isLoading && spinnerPlacement === "end" && /*#__PURE__*/react.createElement(ButtonSpinner, {
     label: loadingText,
@@ -34045,7 +33795,7 @@ var ButtonIcon = props => {
 
   var _className = (0,dom.cx)("chakra-button__icon", className);
 
-  return /*#__PURE__*/react.createElement(chakra.span, button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.span, button_extends({
     display: "inline-flex",
     alignSelf: "center",
     flexShrink: 0
@@ -34085,7 +33835,7 @@ var ButtonSpinner = props => {
     lineHeight: "normal"
   }, __css);
 
-  return /*#__PURE__*/react.createElement(chakra.div, button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, button_extends({
     className: _className
   }, rest, {
     __css: spinnerStyles
@@ -34116,7 +33866,7 @@ var Code = /*#__PURE__*/forwardRef((props, ref) => {
   var _omitThemingProps = system_utils_omitThemingProps(props),
       rest = code_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
 
-  return /*#__PURE__*/react.createElement(chakra.code, code_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.code, code_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-code", props.className)
   }, rest, {
@@ -44768,14 +44518,14 @@ var Icon = /*#__PURE__*/forwardRef((props, ref) => {
 
 
   if (element && typeof element !== "string") {
-    return /*#__PURE__*/react.createElement(chakra.svg, icon_extends({
+    return /*#__PURE__*/react.createElement(system_chakra.svg, icon_extends({
       as: element
     }, shared, rest));
   }
 
   var _path = children != null ? children : fallbackIcon.path;
 
-  return /*#__PURE__*/react.createElement(chakra.svg, icon_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.svg, icon_extends({
     verticalAlign: "middle",
     viewBox: _viewBox
   }, shared, rest), _path);
@@ -44829,7 +44579,7 @@ var CloseButton = /*#__PURE__*/forwardRef((props, ref) => {
     justifyContent: "center",
     flexShrink: 0
   };
-  return /*#__PURE__*/react.createElement(chakra.button, close_button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.button, close_button_extends({
     type: "button",
     "aria-label": "Close",
     ref: ref,
@@ -45563,7 +45313,7 @@ var modal_transition_transitions = {
   }),
   none: {}
 };
-var Motion = chakra(motion.section);
+var Motion = system_chakra(motion.section);
 var ModalTransition = /*#__PURE__*/react.forwardRef((props, ref) => {
   var {
     preset
@@ -45865,7 +45615,7 @@ if (assertion/* __DEV__ */.Ts) {
   Modal.displayName = "Modal";
 }
 
-var modal_Motion = chakra(motion.div);
+var modal_Motion = system_chakra(motion.div);
 /**
  * ModalContent is used to group modal's content. It has all the
  * necessary `aria-*` properties to indicate that it is a modal
@@ -45913,7 +45663,7 @@ var ModalContent = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     motionPreset
   } = useModalContext();
-  return /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(chakra.div, modal_extends({}, containerProps, {
+  return /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(system_chakra.div, modal_extends({}, containerProps, {
     className: "chakra-modal__content-container",
     __css: dialogContainerStyles
   }), /*#__PURE__*/react.createElement(ModalTransition, modal_extends({
@@ -46037,7 +45787,7 @@ var ModalHeader = /*#__PURE__*/forwardRef((props, ref) => {
     flex: 0
   }, styles.header);
 
-  return /*#__PURE__*/react.createElement(chakra.header, modal_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.header, modal_extends({
     ref: ref,
     className: _className,
     id: headerId
@@ -46080,7 +45830,7 @@ var ModalBody = /*#__PURE__*/forwardRef((props, ref) => {
   var _className = (0,dom.cx)("chakra-modal__body", className);
 
   var styles = (0,providers/* useStyles */.yK)();
-  return /*#__PURE__*/react.createElement(chakra.div, modal_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, modal_extends({
     ref: ref,
     className: _className,
     id: bodyId
@@ -46113,7 +45863,7 @@ var ModalFooter = /*#__PURE__*/forwardRef((props, ref) => {
     justifyContent: "flex-end"
   }, styles.footer);
 
-  return /*#__PURE__*/react.createElement(chakra.footer, modal_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.footer, modal_extends({
     ref: ref
   }, rest, {
     __css: footerStyles,
@@ -46196,7 +45946,7 @@ function Drawer(props) {
     styleConfig: drawerStyleConfig
   }, rest), children));
 }
-var StyleSlide = chakra(Slide);
+var StyleSlide = system_chakra(Slide);
 
 /**
  * ModalContent is used to group modal's content. It has all the
@@ -46241,7 +45991,7 @@ var DrawerContent = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     placement
   } = useDrawerContext();
-  return /*#__PURE__*/react.createElement(chakra.div, drawer_extends({}, containerProps, {
+  return /*#__PURE__*/react.createElement(system_chakra.div, drawer_extends({}, containerProps, {
     className: "chakra-modal__content-container",
     __css: dialogContainerStyles
   }), /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(StyleSlide, drawer_extends({
@@ -46330,7 +46080,1574 @@ function Layout({
     })]
   });
 }
-;// CONCATENATED MODULE: ./pages/index.js
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__(1664);
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/badge.js
+function badge_extends() { badge_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return badge_extends.apply(this, arguments); }
+
+function badge_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+/**
+ * React component used to display notifications, messages, or
+ * statuses in different shapes and sizes.
+ *
+ * @see Docs https://chakra-ui.com/docs/data-display/badge
+ */
+var Badge = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useStyleConfig("Badge", props);
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      rest = badge_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
+
+  return /*#__PURE__*/react.createElement(system_chakra.span, badge_extends({
+    ref: ref,
+    className: (0,dom.cx)("chakra-badge", props.className)
+  }, rest, {
+    __css: badge_extends({
+      display: "inline-block",
+      whiteSpace: "nowrap",
+      verticalAlign: "middle"
+    }, styles)
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Badge.displayName = "Badge";
+}
+//# sourceMappingURL=badge.js.map
+// EXTERNAL MODULE: ./node_modules/next-sanity/dist/next-sanity.cjs.production.min.js
+var next_sanity_cjs_production_min = __webpack_require__(3253);
+;// CONCATENATED MODULE: ./utils/sanity.js
+
+
+function sanity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function sanity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_ownKeys(Object(source), true).forEach(function (key) { sanity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function sanity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+const config = {
+  /**
+   * Find your project ID and dataset in `sanity.json` in your studio project.
+   * These are considered “public”, but you can use environment variables
+   * if you want differ between local dev and production.
+   *
+   * https://nextjs.org/docs/basic-features/environment-variables
+   **/
+  dataset: "production",
+  projectId: "85juwyag",
+  useCdn: true,
+  token: process.env.SANITY_API_TOKEN // useCdn: process.env.NODE_ENV === 'production'
+
+  /**
+   * Set useCdn to `false` if your application require the freshest possible
+   * data always (potentially slightly slower and a bit more expensive).
+   * Authenticated request (like preview) will always bypass the CDN
+   **/
+
+};
+
+if (!config.projectId) {
+  throw Error('The Project ID is not set. Check your environment variables.');
+}
+
+if (!config.dataset) {
+  throw Error('The dataset name is not set. Check your environment variables.');
+}
+/**
+ * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
+ * Read more: https://www.sanity.io/docs/image-url
+ **/
+
+
+const urlFor = source => createImageUrlBuilder(config).image(source); // Set up the live preview subsscription hook
+
+const usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(config); // Set up Portable Text serialization
+
+const PortableText = (0,next_sanity_cjs_production_min/* createPortableTextComponent */.Kz)(sanity_objectSpread(sanity_objectSpread({}, config), {}, {
+  // Serializers passed to @sanity/block-content-to-react
+  // (https://github.com/sanity-io/block-content-to-react)
+  serializers: {
+    types: {
+      ul: props => /*#__PURE__*/jsx_runtime.jsx("ul", {
+        className: "test",
+        children: "test"
+      })
+    }
+  }
+})); // Set up the client for fetching data in the getProps page functions
+
+const sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(config); // Set up a preview client with serverless authentication for drafts
+
+const previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_objectSpread(sanity_objectSpread({}, config), {}, {
+  useCdn: true // useCdn: false
+
+})); // Helper function for easily switching between normal client and preview client
+
+const getClient = usePreview => usePreview ? previewClient : sanityClient;
+;// CONCATENATED MODULE: ./components/serializers/serializers.js
+
+
+
+
+const serializers = {
+  marks: {
+    link: ({
+      mark,
+      children
+    }) => {
+      const {
+        blank,
+        href
+      } = mark;
+
+      if (!href) {
+        return null;
+      }
+
+      return blank === true ? /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+        children: href.includes('https') || href.includes('http') ? /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: children
+        }) : /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          children: children
+        })
+      }) : /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+        children: href.includes('https') || href.includes('http') || href.includes('tel') || href.includes('mailto') ? /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          children: children
+        }) : /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
+          href: href,
+          children: /*#__PURE__*/jsx_runtime.jsx("a", {
+            children: children
+          })
+        })
+      });
+    }
+  },
+  list: props => {
+    // console.log({ props })
+    switch (props.type) {
+      case 'number':
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ol", {
+            children: props.children
+          });
+        }
+
+      case 'bullet':
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ul", {
+            children: props.children
+          });
+        }
+
+      default:
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ul", {
+            children: props.children
+          });
+        }
+    }
+  }
+};
+/* harmony default export */ var serializers_serializers = (serializers);
+;// CONCATENATED MODULE: ./components/serializers/text.js
+
+
+
+function text_Text({
+  blocks
+}) {
+  var _blocks$;
+
+  // console.log({ blocks })
+  // TODO: Test this conditional logic out more to make sure it's SOLID
+  return blocks !== null && blocks !== void 0 && blocks.length && (_blocks$ = blocks[0]) !== null && _blocks$ !== void 0 && _blocks$.children.length ? /*#__PURE__*/jsx_runtime.jsx(PortableText, {
+    blocks: blocks,
+    serializers: serializers_serializers
+  }) : null;
+}
+// EXTERNAL MODULE: ./node_modules/styled-jsx/style.js
+var style = __webpack_require__(5988);
+// EXTERNAL MODULE: ./node_modules/react-intersection-observer/react-intersection-observer.js
+var react_intersection_observer = __webpack_require__(4225);
+// EXTERNAL MODULE: ./node_modules/react-countup/build/index.js
+var build = __webpack_require__(7857);
+;// CONCATENATED MODULE: ./components/counter/index.js
+
+
+
+// <CountUp delay={0.5} start={0} end={28886} decimals={0} decimal="" separator="," prefix="$" useEasing={true}  />
+
+
+function Counter({
+  target,
+  duration
+}) {
+  const [ref, inView] = (0,react_intersection_observer/* useInView */.YD)({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("span", {
+    ref: ref,
+    className: style.default.dynamic([["3588283533", [duration]]]),
+    children: [/*#__PURE__*/jsx_runtime.jsx(build/* default */.ZP, {
+      start: 0,
+      end: inView ? target : 0,
+      duration: duration,
+      separator: ",",
+      prefix: "$",
+      useEasing: true,
+      children: ({
+        countUpRef
+      }) => /*#__PURE__*/jsx_runtime.jsx("span", {
+        ref: countUpRef,
+        className: style.default.dynamic([["3588283533", [duration]]])
+      })
+    }), /*#__PURE__*/jsx_runtime.jsx(style.default, {
+      id: "3588283533",
+      dynamic: [duration],
+      children: [".opacity-100.__jsx-style-dynamic-selector{opacity:1;}", ".opacity-0.__jsx-style-dynamic-selector{opacity:0;}", ".transform-show.__jsx-style-dynamic-selector{visibility:visible;}", ".transform-hide.__jsx-style-dynamic-selector{visibility:hidden;}", `.delay.__jsx-style-dynamic-selector{-webkit-transition-delay:${duration}s;transition-delay:${duration}s;}`, ".transform-hide.__jsx-style-dynamic-selector{-webkit-transform:translate3d(0,1rem,0);-ms-transform:translate3d(0,1rem,0);transform:translate3d(0,1rem,0);}", ".transform-show.__jsx-style-dynamic-selector{-webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}"]
+    })]
+  });
+}
+;// CONCATENATED MODULE: ./components/results/line-items.js
+
+
+
+function line_items_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function line_items_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { line_items_ownKeys(Object(source), true).forEach(function (key) { line_items_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { line_items_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function line_items_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+ // import { MdInfo as InfoIcon } from 'react-icons/md'
+
+function LineItems({
+  data,
+  catID,
+  catTitle
+}) {
+  // console.log({ data })
+  const {
+    actions,
+    state
+  } = (0,little_state_machine/* useStateMachine */.j_)({
+    updateAction: updateAction
+  });
+  const {
+    _key,
+    description,
+    itemValue,
+    frontEndTitle,
+    frequency,
+    optionLogics,
+    optional,
+    optionLogicConditional
+  } = data;
+  const {
+    questions,
+    semesters,
+    results,
+    totalSemesters,
+    totalCreditHours
+  } = state.calculator;
+
+  const showArray = () => {
+    var _data$optionLogics;
+
+    let showQuestion = [];
+    let returnVal = false;
+    data === null || data === void 0 ? void 0 : (_data$optionLogics = data.optionLogics) === null || _data$optionLogics === void 0 ? void 0 : _data$optionLogics.map(logic => {
+      // String Logic
+      if (logic._type === 'optionLogic') {
+        var _state$calculator, _state$calculator$que;
+
+        if ((state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue) {
+          showQuestion.push('show');
+        } else {
+          showQuestion.push('hide');
+        } // Numeric Operational Logic
+
+      } else if (logic._type === 'optionNumericLogic') {
+        var _state$calculator2, _state$calculator2$qu, _logic$logicSourceQue;
+
+        let questionVal = Number(state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue = logic.logicSourceQuestion) === null || _logic$logicSourceQue === void 0 ? void 0 : _logic$logicSourceQue._ref]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer);
+        let logicVal = logic === null || logic === void 0 ? void 0 : logic.operatorValue;
+        let mathOperation = logic === null || logic === void 0 ? void 0 : logic.mathOperation;
+        showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal));
+      } else {
+        showQuestion.push('hide');
+      }
+
+      return showQuestion;
+    })[0];
+
+    if (showQuestion.length < 1) {
+      returnVal = true;
+    } else if (optionLogicConditional === null || !optionLogicConditional) {
+      returnVal = true;
+    } else if (optionLogicConditional === 'and') {
+      showQuestion.includes('hide') ? returnVal = false : returnVal = true;
+    } else if (optionLogicConditional === 'or') {
+      showQuestion.includes('show') ? returnVal = true : returnVal = false;
+    } // returnVal === true && updateStateResults(catID, data.title, data.frequency)
+
+
+    return returnVal;
+  };
+
+  const operatorMagic = (questionVal, mathOperation, logicVal) => {
+    // console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`)
+    if (mathOperation === 'equals') {
+      return questionVal === logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'doesNotEqual') {
+      return questionVal !== logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'lessThan') {
+      return questionVal < logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'lessThanOrEquals') {
+      return questionVal <= logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'greaterThan') {
+      return questionVal > logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'greaterThanOrEquals') {
+      return questionVal >= logicVal ? 'show' : 'hide';
+    } else {
+      return 'hide';
+    }
+  };
+
+  const TotalGenerator = () => {
+    var _itemValue$, _itemValue$2;
+
+    let total = 0;
+    const valueType = ((_itemValue$ = itemValue[0]) === null || _itemValue$ === void 0 ? void 0 : _itemValue$._type) || null;
+    const value = ((_itemValue$2 = itemValue[0]) === null || _itemValue$2 === void 0 ? void 0 : _itemValue$2.value) || 0;
+    let math = null;
+    let valueQuestionID = null; // CALCULATED VALUE
+
+    if (valueType === 'calculatedValue') {
+      var _itemValue$3, _itemValue$4, _itemValue$4$logicSou, _questions$valueQuest;
+
+      math = (_itemValue$3 = itemValue[0]) === null || _itemValue$3 === void 0 ? void 0 : _itemValue$3.mathOperation;
+      valueQuestionID = (_itemValue$4 = itemValue[0]) === null || _itemValue$4 === void 0 ? void 0 : (_itemValue$4$logicSou = _itemValue$4.logicSourceQuestion) === null || _itemValue$4$logicSou === void 0 ? void 0 : _itemValue$4$logicSou._ref;
+      const myQuestionAnswer = parseInt(((_questions$valueQuest = questions[valueQuestionID]) === null || _questions$valueQuest === void 0 ? void 0 : _questions$valueQuest.answer) || 0); // console.log({myQuestionAnswer})
+
+      if (math === 'multiplication') {
+        total = value * myQuestionAnswer;
+      } else if (math === 'addition') {
+        total = value + myQuestionAnswer;
+      } else if (math === 'division') {
+        total = value / myQuestionAnswer;
+      } else if (math === 'subtraction') {
+        total = value - myQuestionAnswer;
+      }
+    } // SIMPLE VALUE
+
+
+    if (valueType === 'simpleValue') {
+      // console.log('simpleValue')
+      total = total + value;
+    } // console.log({ valueType, valueQuestionID, math, value, total })
+
+
+    return total;
+  };
+
+  (0,react.useEffect)(() => {
+    // console.log('useEffect')
+    // console.log({questions})
+    // console.log(state.calculator.questions)
+    // console.log({results})
+    // console.log(state.calculator.results)
+    // console.log({catID})
+    // console.log(data.frontEndTitle)
+    // console.log(data.frequency)
+    // console.log(TotalGenerator())
+    // console.log(state.calculator.results[catID])
+    // console.log({_key})
+    if (showArray() === true) {
+      actions.updateAction(line_items_objectSpread(line_items_objectSpread({}, state), {}, {
+        calculator: line_items_objectSpread(line_items_objectSpread({}, state.calculator), {}, {
+          results: line_items_objectSpread(line_items_objectSpread({}, state.calculator.results), {}, {
+            [catID]: line_items_objectSpread(line_items_objectSpread({}, state.calculator.results[catID]), {}, {
+              title: catTitle,
+              [_key]: {
+                title: data.frontEndTitle,
+                frequency: data.frequency,
+                value: TotalGenerator()
+              }
+            })
+          })
+        })
+      }));
+    }
+  }, []);
+
+  if (showArray()) {
+    return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+      mb: "6",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+        alignItems: "flex-end",
+        mb: "2",
+        justifyContent: "space-between",
+        children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+          alignItems: "center",
+          flexDir: "column",
+          alignItems: "flex-start",
+          children: [/*#__PURE__*/jsx_runtime.jsx(Flex, {
+            flexDir: "column",
+            children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
+              size: "xl",
+              children: frontEndTitle
+            })
+          }), optional && /*#__PURE__*/jsx_runtime.jsx(Box, {
+            background: "#eee",
+            textTransform: "uppercase",
+            fontSize: "0.6em",
+            px: "1",
+            py: ".75",
+            fontWeight: "bold",
+            children: "Optional Fee"
+          })]
+        }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+          flexDir: "column",
+          alignItems: "flex-end",
+          children: [/*#__PURE__*/jsx_runtime.jsx(Text, {
+            fontSize: "2xl",
+            mb: "0",
+            children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
+              target: TotalGenerator(),
+              duration: 2
+            })
+          }), /*#__PURE__*/jsx_runtime.jsx(Badge, {
+            colorScheme: "green",
+            fontSize: "0.6em",
+            variant: "solid",
+            children: frequency.replace(/([A-Z])/g, ' $1').trim()
+          })]
+        })]
+      }), description && /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+        blocks: description
+      })]
+    });
+  } else {
+    return null;
+  }
+}
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/radio/dist/esm/use-radio-group.js
+function use_radio_group_extends() { use_radio_group_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return use_radio_group_extends.apply(this, arguments); }
+
+function use_radio_group_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+/**
+ * React hook to manage a group of radio inputs
+ */
+function useRadioGroup(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  var {
+    onChange: onChangeProp,
+    value: valueProp,
+    defaultValue,
+    name: nameProp,
+    isNative
+  } = props,
+      htmlProps = use_radio_group_objectWithoutPropertiesLoose(props, ["onChange", "value", "defaultValue", "name", "isNative"]);
+
+  var [valueState, setValue] = react.useState(defaultValue || "");
+  var [isControlled, value] = useControllableProp(valueProp, valueState);
+  var ref = react.useRef(null);
+  var focus = react.useCallback(() => {
+    var rootNode = ref.current;
+    if (!rootNode) return;
+    var query = "input:not(:disabled):checked";
+    var firstEnabledAndCheckedInput = rootNode.querySelector(query);
+
+    if (firstEnabledAndCheckedInput) {
+      firstEnabledAndCheckedInput.focus();
+      return;
+    }
+
+    query = "input:not(:disabled)";
+    var firstEnabledInput = rootNode.querySelector(query);
+    firstEnabledInput == null ? void 0 : firstEnabledInput.focus();
+  }, []);
+  /**
+   * All radio options must use the same name
+   */
+
+  var fallbackName = useId(undefined, "radio");
+  var name = nameProp || fallbackName;
+  var onChange = react.useCallback(eventOrValue => {
+    var nextValue = (0,assertion/* isInputEvent */.kA)(eventOrValue) ? eventOrValue.target.value : eventOrValue;
+
+    if (!isControlled) {
+      setValue(nextValue);
+    }
+
+    onChangeProp == null ? void 0 : onChangeProp(String(nextValue));
+  }, [onChangeProp, isControlled]);
+  var getRootProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return use_radio_group_extends({}, props, {
+      ref: mergeRefs(forwardedRef, ref),
+      role: "radiogroup"
+    });
+  }, []);
+  var getRadioProps = react.useCallback(function (props, ref) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (ref === void 0) {
+      ref = null;
+    }
+
+    var checkedKey = isNative ? "checked" : "isChecked";
+    return use_radio_group_extends({}, props, {
+      ref,
+      name,
+      [checkedKey]: value != null ? props.value === value : undefined,
+      onChange
+    });
+  }, [isNative, name, onChange, value]);
+  return {
+    getRootProps,
+    getRadioProps,
+    name,
+    ref,
+    focus,
+    setValue,
+    value,
+    onChange,
+    htmlProps
+  };
+}
+//# sourceMappingURL=use-radio-group.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/radio/dist/esm/radio-group.js
+function radio_group_extends() { radio_group_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return radio_group_extends.apply(this, arguments); }
+
+function radio_group_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+var [RadioGroupProvider, useRadioGroupContext] = (0,context/* createContext */.k)({
+  name: "RadioGroupContext",
+  strict: false
+});
+
+
+/**
+ * Used for multiple radios which are bound in one group,
+ * and it indicates which option is selected.
+ *
+ * @see Docs https://chakra-ui.com/docs/form/radio
+ */
+var RadioGroup = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    colorScheme,
+    size,
+    variant,
+    children,
+    className
+  } = props,
+      rest = radio_group_objectWithoutPropertiesLoose(props, ["colorScheme", "size", "variant", "children", "className"]);
+
+  var {
+    value,
+    onChange,
+    getRootProps,
+    name,
+    htmlProps
+  } = useRadioGroup(rest);
+  var group = react.useMemo(() => ({
+    name,
+    size,
+    onChange,
+    colorScheme,
+    value,
+    variant
+  }), [size, name, onChange, colorScheme, value, variant]);
+  var groupProps = getRootProps(htmlProps, ref);
+
+  var _className = (0,dom.cx)("chakra-radio-group", className);
+
+  return /*#__PURE__*/react.createElement(RadioGroupProvider, {
+    value: group
+  }, /*#__PURE__*/react.createElement(system_chakra.div, radio_group_extends({}, groupProps, {
+    className: _className
+  }), children));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  RadioGroup.displayName = "RadioGroup";
+}
+//# sourceMappingURL=radio-group.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/children.js
+
+/**
+ * Gets only the valid children of a component,
+ * and ignores any nullish or falsy child.
+ *
+ * @param children the children
+ */
+
+function getValidChildren(children) {
+  return react.Children.toArray(children).filter(child => /*#__PURE__*/react.isValidElement(child));
+}
+//# sourceMappingURL=children.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/utils/dist/esm/responsive.js
+
+
+
+var breakpoints = Object.freeze(["base", "sm", "md", "lg", "xl", "2xl"]);
+function mapResponsive(prop, mapper) {
+  if ((0,assertion/* isArray */.kJ)(prop)) {
+    return prop.map(item => {
+      if (item === null) {
+        return null;
+      }
+
+      return mapper(item);
+    });
+  }
+
+  if ((0,assertion/* isObject */.Kn)(prop)) {
+    return (0,object/* objectKeys */.Yd)(prop).reduce((result, key) => {
+      result[key] = mapper(prop[key]);
+      return result;
+    }, {});
+  }
+
+  if (prop != null) {
+    return mapper(prop);
+  }
+
+  return null;
+}
+function objectToArrayNotation(obj, bps) {
+  if (bps === void 0) {
+    bps = breakpoints;
+  }
+
+  var result = bps.map(br => {
+    var _obj$br;
+
+    return (_obj$br = obj[br]) != null ? _obj$br : null;
+  });
+
+  while (getLastItem(result) === null) {
+    result.pop();
+  }
+
+  return result;
+}
+function arrayToObjectNotation(values, bps) {
+  if (bps === void 0) {
+    bps = breakpoints;
+  }
+
+  var result = {};
+  values.forEach((value, index) => {
+    var key = bps[index];
+    if (value == null) return;
+    result[key] = value;
+  });
+  return result;
+}
+function isResponsiveObjectLike(obj, bps) {
+  if (bps === void 0) {
+    bps = breakpoints;
+  }
+
+  var keys = Object.keys(obj);
+  return keys.length > 0 && keys.every(key => bps.includes(key));
+}
+/**
+ * since breakpoints are defined as custom properties on an array, you may
+ * `Object.keys(theme.breakpoints)` to retrieve both regular numeric indices
+ * and custom breakpoints as string.
+ *
+ * This function returns true given a custom array property.
+ */
+
+var isCustomBreakpoint = maybeBreakpoint => Number.isNaN(Number(maybeBreakpoint));
+//# sourceMappingURL=responsive.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/stack.utils.js
+
+
+/**
+ * If we ever run into SSR issues with this, check this post to find a fix for it:
+ * @see https://medium.com/@emmenko/patching-lobotomized-owl-selector-for-emotion-ssr-5a582a3c424c
+ */
+var selector = "& > *:not(style) ~ *:not(style)";
+function getStackStyles(options) {
+  var {
+    spacing,
+    direction
+  } = options;
+  var directionStyles = {
+    column: {
+      marginTop: spacing,
+      marginEnd: 0,
+      marginBottom: 0,
+      marginStart: 0
+    },
+    row: {
+      marginTop: 0,
+      marginEnd: 0,
+      marginBottom: 0,
+      marginStart: spacing
+    },
+    "column-reverse": {
+      marginTop: 0,
+      marginEnd: 0,
+      marginBottom: spacing,
+      marginStart: 0
+    },
+    "row-reverse": {
+      marginTop: 0,
+      marginEnd: spacing,
+      marginBottom: 0,
+      marginStart: 0
+    }
+  };
+  return {
+    flexDirection: direction,
+    [selector]: mapResponsive(direction, value => directionStyles[value])
+  };
+}
+function getDividerStyles(options) {
+  var {
+    spacing,
+    direction
+  } = options;
+  var dividerStyles = {
+    column: {
+      my: spacing,
+      mx: 0,
+      borderLeftWidth: 0,
+      borderBottomWidth: "1px"
+    },
+    "column-reverse": {
+      my: spacing,
+      mx: 0,
+      borderLeftWidth: 0,
+      borderBottomWidth: "1px"
+    },
+    row: {
+      mx: spacing,
+      my: 0,
+      borderLeftWidth: "1px",
+      borderBottomWidth: 0
+    },
+    "row-reverse": {
+      mx: spacing,
+      my: 0,
+      borderLeftWidth: "1px",
+      borderBottomWidth: 0
+    }
+  };
+  return {
+    "&": mapResponsive(direction, value => dividerStyles[value])
+  };
+}
+//# sourceMappingURL=stack.utils.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/stack.js
+function stack_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function stack_extends() { stack_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return stack_extends.apply(this, arguments); }
+
+
+
+
+
+
+var StackDivider = props => /*#__PURE__*/React.createElement(chakra.div, stack_extends({
+  className: "chakra-stack__divider"
+}, props, {
+  __css: stack_extends({}, props["__css"], {
+    borderWidth: 0,
+    alignSelf: "stretch",
+    borderColor: "inherit",
+    width: "auto",
+    height: "auto"
+  })
+}));
+var StackItem = props => /*#__PURE__*/react.createElement(system_chakra.div, stack_extends({
+  className: "chakra-stack__item"
+}, props, {
+  __css: stack_extends({
+    display: "inline-block",
+    flex: "0 0 auto",
+    minWidth: 0
+  }, props["__css"])
+}));
+
+/**
+ * Stacks help you easily create flexible and automatically distributed layouts
+ *
+ * You can stack elements in the horizontal or vertical direction,
+ * and apply a space or/and divider between each element.
+ *
+ * It uses `display: flex` internally and renders a `div`.
+ *
+ * @see Docs https://chakra-ui.com/docs/layout/stack
+ *
+ */
+var Stack = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    isInline,
+    direction: directionProp,
+    align,
+    justify,
+    spacing = "0.5rem",
+    wrap,
+    children,
+    divider,
+    className,
+    shouldWrapChildren
+  } = props,
+      rest = stack_objectWithoutPropertiesLoose(props, ["isInline", "direction", "align", "justify", "spacing", "wrap", "children", "divider", "className", "shouldWrapChildren"]);
+
+  var direction = isInline ? "row" : directionProp != null ? directionProp : "column";
+  var styles = react.useMemo(() => getStackStyles({
+    direction,
+    spacing
+  }), [direction, spacing]);
+  var dividerStyle = react.useMemo(() => getDividerStyles({
+    spacing,
+    direction
+  }), [spacing, direction]);
+  var hasDivider = !!divider;
+  var shouldUseChildren = !shouldWrapChildren && !hasDivider;
+  var validChildren = getValidChildren(children);
+  var clones = shouldUseChildren ? validChildren : validChildren.map((child, index) => {
+    var isLast = index + 1 === validChildren.length;
+    var wrappedChild = /*#__PURE__*/react.createElement(StackItem, {
+      key: index
+    }, child);
+
+    var _child = shouldWrapChildren ? wrappedChild : child;
+
+    if (!hasDivider) return _child;
+    var clonedDivider = /*#__PURE__*/react.cloneElement(divider, {
+      __css: dividerStyle
+    });
+
+    var _divider = isLast ? null : clonedDivider;
+
+    return /*#__PURE__*/react.createElement(react.Fragment, {
+      key: index
+    }, _child, _divider);
+  });
+
+  var _className = (0,dom.cx)("chakra-stack", className);
+
+  return /*#__PURE__*/react.createElement(system_chakra.div, stack_extends({
+    ref: ref,
+    display: "flex",
+    alignItems: align,
+    justifyContent: justify,
+    flexDirection: styles.flexDirection,
+    flexWrap: wrap,
+    className: _className,
+    __css: hasDivider ? {} : {
+      [selector]: styles[selector]
+    }
+  }, rest), clones);
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Stack.displayName = "Stack";
+}
+/**
+ * A view that arranges its children in a horizontal line.
+ */
+
+
+var HStack = /*#__PURE__*/forwardRef((props, ref) => /*#__PURE__*/react.createElement(Stack, stack_extends({
+  align: "center"
+}, props, {
+  direction: "row",
+  ref: ref
+})));
+
+if (assertion/* __DEV__ */.Ts) {
+  HStack.displayName = "HStack";
+}
+/**
+ * A view that arranges its children in a vertical line.
+ */
+
+
+var VStack = /*#__PURE__*/forwardRef((props, ref) => /*#__PURE__*/react.createElement(Stack, stack_extends({
+  align: "center"
+}, props, {
+  direction: "column",
+  ref: ref
+})));
+
+if (assertion/* __DEV__ */.Ts) {
+  VStack.displayName = "VStack";
+}
+//# sourceMappingURL=stack.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/hooks/dist/esm/use-boolean.js
+
+
+/**
+ * React hook to manage boolean (on - off) states
+ *
+ * @param initialState the initial boolean state value
+ */
+function useBoolean(initialState) {
+  if (initialState === void 0) {
+    initialState = false;
+  }
+
+  var [value, setValue] = (0,react.useState)(initialState);
+  var on = (0,react.useCallback)(() => {
+    setValue(true);
+  }, []);
+  var off = (0,react.useCallback)(() => {
+    setValue(false);
+  }, []);
+  var toggle = (0,react.useCallback)(() => {
+    setValue(prev => !prev);
+  }, []);
+  return [value, {
+    on,
+    off,
+    toggle
+  }];
+}
+//# sourceMappingURL=use-boolean.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/form-control.js
+function form_control_extends() { form_control_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return form_control_extends.apply(this, arguments); }
+
+function form_control_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+var [FormControlProvider, useFormControlContext] = (0,context/* createContext */.k)({
+  strict: false,
+  name: "FormControlContext"
+});
+
+
+function useFormControlProvider(props) {
+  var {
+    id: idProp,
+    isRequired,
+    isInvalid,
+    isDisabled,
+    isReadOnly
+  } = props,
+      htmlProps = form_control_objectWithoutPropertiesLoose(props, ["id", "isRequired", "isInvalid", "isDisabled", "isReadOnly"]); // Generate all the required ids
+
+
+  var uuid = useId();
+  var id = idProp || "field-" + uuid;
+  var labelId = id + "-label";
+  var feedbackId = id + "-feedback";
+  var helpTextId = id + "-helptext";
+  /**
+   * Track whether the `FormErrorMessage` has been rendered.
+   * We use this to append its id the the `aria-describedby` of the `input`.
+   */
+
+  var [hasFeedbackText, setHasFeedbackText] = react.useState(false);
+  /**
+   * Track whether the `FormHelperText` has been rendered.
+   * We use this to append its id the the `aria-describedby` of the `input`.
+   */
+
+  var [hasHelpText, setHasHelpText] = react.useState(false); // Track whether the form element (e.g, `input`) has focus.
+
+  var [isFocused, setFocus] = useBoolean();
+  var getHelpTextProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({
+      id: helpTextId
+    }, props, {
+      /**
+       * Notify the field context when the help text is rendered on screen,
+       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
+       */
+      ref: mergeRefs(forwardedRef, node => {
+        if (!node) return;
+        setHasHelpText(true);
+      })
+    });
+  }, [helpTextId]);
+  var getLabelProps = react.useCallback(function (props, forwardedRef) {
+    var _props$id, _props$htmlFor;
+
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({}, props, {
+      ref: forwardedRef,
+      "data-focus": (0,dom/* dataAttr */.PB)(isFocused),
+      "data-disabled": (0,dom/* dataAttr */.PB)(isDisabled),
+      "data-invalid": (0,dom/* dataAttr */.PB)(isInvalid),
+      "data-readonly": (0,dom/* dataAttr */.PB)(isReadOnly),
+      id: (_props$id = props.id) != null ? _props$id : labelId,
+      htmlFor: (_props$htmlFor = props.htmlFor) != null ? _props$htmlFor : id
+    });
+  }, [id, isDisabled, isFocused, isInvalid, isReadOnly, labelId]);
+  var getErrorMessageProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({
+      id: feedbackId
+    }, props, {
+      /**
+       * Notify the field context when the error message is rendered on screen,
+       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
+       */
+      ref: mergeRefs(forwardedRef, node => {
+        if (!node) return;
+        setHasFeedbackText(true);
+      }),
+      "aria-live": "polite"
+    });
+  }, [feedbackId]);
+  var getRootProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({}, props, htmlProps, {
+      ref: forwardedRef,
+      role: "group"
+    });
+  }, [htmlProps]);
+  var getRequiredIndicatorProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({}, props, {
+      ref: forwardedRef,
+      role: "presentation",
+      "aria-hidden": true,
+      children: props.children || "*"
+    });
+  }, []);
+  var onFocus = react.useCallback(() => {
+    (0,esm_function/* scheduleMicrotask */.A4)(setFocus.on);
+  }, [setFocus]);
+  return {
+    isRequired: !!isRequired,
+    isInvalid: !!isInvalid,
+    isReadOnly: !!isReadOnly,
+    isDisabled: !!isDisabled,
+    isFocused: !!isFocused,
+    onFocus,
+    onBlur: setFocus.off,
+    hasFeedbackText,
+    setHasFeedbackText,
+    hasHelpText,
+    setHasHelpText,
+    id,
+    labelId,
+    feedbackId,
+    helpTextId,
+    htmlProps,
+    getHelpTextProps,
+    getErrorMessageProps,
+    getRootProps,
+    getLabelProps,
+    getRequiredIndicatorProps
+  };
+}
+
+/**
+ * FormControl provides context such as
+ * `isInvalid`, `isDisabled`, and `isRequired` to form elements.
+ *
+ * This is commonly used in form elements such as `input`,
+ * `select`, `textarea`, etc.
+ */
+var FormControl = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useMultiStyleConfig("Form", props);
+  var ownProps = system_utils_omitThemingProps(props);
+
+  var _useFormControlProvid = useFormControlProvider(ownProps),
+      {
+    getRootProps
+  } = _useFormControlProvid,
+      context = form_control_objectWithoutPropertiesLoose(_useFormControlProvid, ["getRootProps", "htmlProps"]);
+
+  var className = (0,dom.cx)("chakra-form-control", props.className);
+  var contextValue = react.useMemo(() => context, [context]);
+  return /*#__PURE__*/react.createElement(FormControlProvider, {
+    value: contextValue
+  }, /*#__PURE__*/react.createElement(providers/* StylesProvider */.Fo, {
+    value: styles
+  }, /*#__PURE__*/react.createElement(system_chakra.div, form_control_extends({}, getRootProps({}, ref), {
+    className: className,
+    __css: {
+      width: "100%",
+      position: "relative"
+    }
+  }))));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  FormControl.displayName = "FormControl";
+}
+
+/**
+ * FormHelperText
+ *
+ * Assistive component that conveys additional guidance
+ * about the field, such as how it will be used and what
+ * types in values should be provided.
+ */
+var FormHelperText = /*#__PURE__*/forwardRef((props, ref) => {
+  var field = useFormControlContext();
+  var styles = (0,providers/* useStyles */.yK)();
+  var className = (0,dom.cx)("chakra-form__helper-text", props.className);
+  return /*#__PURE__*/react.createElement(system_chakra.div, form_control_extends({}, field == null ? void 0 : field.getHelpTextProps(props, ref), {
+    __css: styles.helperText,
+    className: className
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  FormHelperText.displayName = "FormHelperText";
+}
+//# sourceMappingURL=form-control.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/use-form-control.js
+function use_form_control_extends() { use_form_control_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return use_form_control_extends.apply(this, arguments); }
+
+function use_form_control_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+/**
+ * React hook that provides the props that should be spread on to
+ * input fields (`input`, `select`, `textarea`, etc.).
+ *
+ * It provides a convenient way to control a form fields, validation
+ * and helper text.
+ */
+function useFormControl(props) {
+  var _useFormControlProps = useFormControlProps(props),
+      {
+    isDisabled,
+    isInvalid,
+    isReadOnly,
+    isRequired
+  } = _useFormControlProps,
+      rest = use_form_control_objectWithoutPropertiesLoose(_useFormControlProps, ["isDisabled", "isInvalid", "isReadOnly", "isRequired"]);
+
+  return use_form_control_extends({}, rest, {
+    disabled: isDisabled,
+    readOnly: isReadOnly,
+    required: isRequired,
+    "aria-invalid": (0,dom/* ariaAttr */.Qm)(isInvalid),
+    "aria-required": (0,dom/* ariaAttr */.Qm)(isRequired),
+    "aria-readonly": (0,dom/* ariaAttr */.Qm)(isReadOnly)
+  });
+}
+function useFormControlProps(props) {
+  var _ref, _ref2, _ref3;
+
+  var field = useFormControlContext();
+
+  var {
+    id,
+    disabled,
+    readOnly,
+    required,
+    isRequired,
+    isInvalid,
+    isReadOnly,
+    isDisabled,
+    onFocus,
+    onBlur
+  } = props,
+      rest = use_form_control_objectWithoutPropertiesLoose(props, ["id", "disabled", "readOnly", "required", "isRequired", "isInvalid", "isReadOnly", "isDisabled", "onFocus", "onBlur"]);
+
+  var labelIds = []; // Error message must be described first in all scenarios.
+
+  if (field != null && field.hasFeedbackText && field != null && field.isInvalid) {
+    labelIds.push(field.feedbackId);
+  }
+
+  if (field != null && field.hasHelpText) {
+    labelIds.push(field.helpTextId);
+  }
+
+  return use_form_control_extends({}, rest, {
+    "aria-describedby": labelIds.join(" ") || undefined,
+    id: id != null ? id : field == null ? void 0 : field.id,
+    isDisabled: (_ref = disabled != null ? disabled : isDisabled) != null ? _ref : field == null ? void 0 : field.isDisabled,
+    isReadOnly: (_ref2 = readOnly != null ? readOnly : isReadOnly) != null ? _ref2 : field == null ? void 0 : field.isReadOnly,
+    isRequired: (_ref3 = required != null ? required : isRequired) != null ? _ref3 : field == null ? void 0 : field.isRequired,
+    isInvalid: isInvalid != null ? isInvalid : field == null ? void 0 : field.isInvalid,
+    onFocus: (0,esm_function/* callAllHandlers */.v0)(field == null ? void 0 : field.onFocus, onFocus),
+    onBlur: (0,esm_function/* callAllHandlers */.v0)(field == null ? void 0 : field.onBlur, onBlur)
+  });
+}
+//# sourceMappingURL=use-form-control.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/radio/dist/esm/use-radio.js
+function use_radio_extends() { use_radio_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return use_radio_extends.apply(this, arguments); }
+
+function use_radio_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+/**
+ * @todo use the `useClickable` hook here
+ * to manage the isFocusable & isDisabled props
+ */
+
+function useRadio(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  var {
+    defaultIsChecked,
+    defaultChecked = defaultIsChecked,
+    isChecked: isCheckedProp,
+    isFocusable,
+    isDisabled,
+    isReadOnly,
+    isRequired,
+    onChange,
+    isInvalid,
+    name,
+    value
+  } = props,
+      htmlProps = use_radio_objectWithoutPropertiesLoose(props, ["defaultIsChecked", "defaultChecked", "isChecked", "isFocusable", "isDisabled", "isReadOnly", "isRequired", "onChange", "isInvalid", "name", "value", "id"]);
+
+  var [isFocused, setFocused] = useBoolean();
+  var [isHovered, setHovering] = useBoolean();
+  var [isActive, setActive] = useBoolean();
+  var ref = (0,react.useRef)(null);
+  var [isCheckedState, setChecked] = (0,react.useState)(Boolean(defaultChecked));
+  var [isControlled, isChecked] = useControllableProp(isCheckedProp, isCheckedState);
+  (0,esm_function/* warn */.ZK)({
+    condition: !!defaultIsChecked,
+    message: 'The "defaultIsChecked" prop has been deprecated and will be removed in a future version. ' + 'Please use the "defaultChecked" prop instead, which mirrors default React checkbox behavior.'
+  });
+  var handleChange = (0,react.useCallback)(event => {
+    if (isReadOnly || isDisabled) {
+      event.preventDefault();
+      return;
+    }
+
+    if (!isControlled) {
+      setChecked(event.target.checked);
+    }
+
+    onChange == null ? void 0 : onChange(event);
+  }, [isControlled, isDisabled, isReadOnly, onChange]);
+  var onKeyDown = (0,react.useCallback)(event => {
+    if (event.key === " ") {
+      setActive.on();
+    }
+  }, [setActive]);
+  var onKeyUp = (0,react.useCallback)(event => {
+    if (event.key === " ") {
+      setActive.off();
+    }
+  }, [setActive]);
+  var getCheckboxProps = (0,react.useCallback)(function (props, ref) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (ref === void 0) {
+      ref = null;
+    }
+
+    return use_radio_extends({}, props, {
+      ref,
+      "data-active": (0,dom/* dataAttr */.PB)(isActive),
+      "data-hover": (0,dom/* dataAttr */.PB)(isHovered),
+      "data-disabled": (0,dom/* dataAttr */.PB)(isDisabled),
+      "data-invalid": (0,dom/* dataAttr */.PB)(isInvalid),
+      "data-checked": (0,dom/* dataAttr */.PB)(isChecked),
+      "data-focus": (0,dom/* dataAttr */.PB)(isFocused),
+      "data-readonly": (0,dom/* dataAttr */.PB)(isReadOnly),
+      "aria-hidden": true,
+      onMouseDown: (0,esm_function/* callAllHandlers */.v0)(props.onMouseDown, setActive.on),
+      onMouseUp: (0,esm_function/* callAllHandlers */.v0)(props.onMouseUp, setActive.off),
+      onMouseEnter: (0,esm_function/* callAllHandlers */.v0)(props.onMouseEnter, setHovering.on),
+      onMouseLeave: (0,esm_function/* callAllHandlers */.v0)(props.onMouseLeave, setHovering.off)
+    });
+  }, [isActive, isHovered, isDisabled, isInvalid, isChecked, isFocused, isReadOnly, setActive.on, setActive.off, setHovering.on, setHovering.off]);
+  var inputProps = useFormControl(props);
+  var getInputProps = (0,react.useCallback)(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    var ownProps = (0,object/* pick */.ei)(inputProps, ["id", "disabled", "readOnly", "required", "aria-invalid", "aria-required", "aria-readonly", "aria-describedby", "onFocus", "onBlur"]);
+    /**
+     * This is a workaround for React Concurrent Mode issue.
+     * @see Issue https://github.com/facebook/react/issues/18591.
+     *
+     * Remove once it's fixed.
+     */
+
+    var focus = () => {
+      (0,esm_function/* scheduleMicrotask */.A4)(() => {
+        setFocused.on();
+      });
+    };
+
+    var trulyDisabled = ownProps.disabled && !isFocusable;
+    return use_radio_extends({}, props, ownProps, {
+      ref: mergeRefs(forwardedRef, ref),
+      type: "radio",
+      name,
+      value,
+      onChange: (0,esm_function/* callAllHandlers */.v0)(props.onChange, handleChange),
+      onBlur: (0,esm_function/* callAllHandlers */.v0)(ownProps.onBlur, props.onBlur, setFocused.off),
+      onFocus: (0,esm_function/* callAllHandlers */.v0)(ownProps.onFocus, props.onFocus, focus),
+      onKeyDown: (0,esm_function/* callAllHandlers */.v0)(props.onKeyDown, onKeyDown),
+      onKeyUp: (0,esm_function/* callAllHandlers */.v0)(props.onKeyUp, onKeyUp),
+      checked: isChecked,
+      disabled: trulyDisabled,
+      "aria-disabled": (0,dom/* ariaAttr */.Qm)(trulyDisabled),
+      style: visuallyHiddenStyle
+    });
+  }, [inputProps, isFocusable, name, value, handleChange, setFocused, onKeyDown, onKeyUp, isChecked]);
+
+  var getLabelProps = function getLabelProps(props, ref) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (ref === void 0) {
+      ref = null;
+    }
+
+    return use_radio_extends({}, props, {
+      ref,
+      onMouseDown: (0,esm_function/* callAllHandlers */.v0)(props.onMouseDown, stop),
+      onTouchStart: (0,esm_function/* callAllHandlers */.v0)(props.onTouchStart, stop),
+      "data-disabled": (0,dom/* dataAttr */.PB)(isDisabled),
+      "data-checked": (0,dom/* dataAttr */.PB)(isChecked),
+      "data-invalid": (0,dom/* dataAttr */.PB)(isInvalid)
+    });
+  };
+
+  return {
+    state: {
+      isInvalid,
+      isFocused,
+      isChecked,
+      isActive,
+      isHovered,
+      isDisabled,
+      isReadOnly,
+      isRequired
+    },
+    getCheckboxProps,
+    getInputProps,
+    getLabelProps,
+    htmlProps
+  };
+}
+/**
+ * Prevent `onBlur` being fired when the checkbox label is touched
+ */
+
+function stop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+}
+//# sourceMappingURL=use-radio.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/radio/dist/esm/radio.js
+function radio_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function radio_extends() { radio_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return radio_extends.apply(this, arguments); }
+
+
+
+
+
+
+
+/**
+ * Radio component is used in forms when a user needs to select a single value from
+ * several options.
+ *
+ * @see Docs https://chakra-ui.com/docs/form/radio
+ */
+var Radio = /*#__PURE__*/forwardRef((props, ref) => {
+  var _props$name;
+
+  var {
+    onChange: onChangeProp,
+    value: valueProp
+  } = props;
+  var group = useRadioGroupContext();
+  var styles = useMultiStyleConfig("Radio", radio_extends({}, group, props));
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      {
+    spacing = "0.5rem",
+    children,
+    isFullWidth
+  } = _omitThemingProps,
+      rest = radio_objectWithoutPropertiesLoose(_omitThemingProps, ["spacing", "children", "isFullWidth"]);
+
+  var isChecked = props.isChecked;
+
+  if ((group == null ? void 0 : group.value) != null && valueProp != null) {
+    isChecked = group.value === valueProp;
+  }
+
+  var onChange = onChangeProp;
+
+  if (group != null && group.onChange && valueProp != null) {
+    onChange = (0,esm_function/* callAll */.PP)(group.onChange, onChangeProp);
+  }
+
+  var name = (_props$name = props == null ? void 0 : props.name) != null ? _props$name : group == null ? void 0 : group.name;
+  var {
+    getInputProps,
+    getCheckboxProps,
+    getLabelProps,
+    htmlProps
+  } = useRadio(radio_extends({}, rest, {
+    isChecked,
+    onChange,
+    name
+  }));
+  var [layoutProps, otherProps] = (0,object/* split */.Vl)(htmlProps, esm.layoutPropNames);
+  var checkboxProps = getCheckboxProps(otherProps);
+  var inputProps = getInputProps({}, ref);
+  var labelProps = getLabelProps();
+
+  var rootStyles = radio_extends({
+    width: isFullWidth ? "full" : undefined,
+    display: "inline-flex",
+    alignItems: "center",
+    verticalAlign: "top"
+  }, styles.container);
+
+  var checkboxStyles = radio_extends({
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0
+  }, styles.control);
+
+  var labelStyles = radio_extends({
+    userSelect: "none",
+    marginStart: spacing
+  }, styles.label);
+
+  return /*#__PURE__*/react.createElement(system_chakra.label, radio_extends({
+    className: "chakra-radio"
+  }, layoutProps, {
+    __css: rootStyles
+  }), /*#__PURE__*/react.createElement("input", radio_extends({
+    className: "chakra-radio__input"
+  }, inputProps)), /*#__PURE__*/react.createElement(system_chakra.span, radio_extends({
+    className: "chakra-radio__control"
+  }, checkboxProps, {
+    __css: checkboxStyles
+  })), children && /*#__PURE__*/react.createElement(system_chakra.span, radio_extends({
+    className: "chakra-radio__label"
+  }, labelProps, {
+    __css: labelStyles
+  }), children));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Radio.displayName = "Radio";
+}
+//# sourceMappingURL=radio.js.map
+;// CONCATENATED MODULE: ./components/results/index.js
+
+
+
+
+function results_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function results_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { results_ownKeys(Object(source), true).forEach(function (key) { results_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { results_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function results_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -46339,14 +47656,231 @@ function Layout({
 
 
 
+function Results({
+  categories
+}) {
+  const {
+    actions,
+    state
+  } = (0,little_state_machine/* useStateMachine */.j_)({
+    updateAction: updateAction
+  });
+  const {
+    questions,
+    results,
+    totalSemesters
+  } = state.calculator;
+  const mainRef = (0,react.useRef)();
+  (0,react.useEffect)(() => {
+    setTimeout(() => {
+      mainRef.current.focus();
+    }, 1);
+  }, []);
 
-function Home({
+  const updateTotalSemesters = val => {
+    val = parseInt(val);
+    actions.updateAction(results_objectSpread(results_objectSpread({}, state), {}, {
+      calculator: results_objectSpread(results_objectSpread({}, state.calculator), {}, {
+        totalSemesters: val
+      }, state.calculator.results)
+    }));
+  };
+
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+      mb: 12,
+      children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+        size: "sm",
+        mb: 4,
+        color: "gray.600",
+        textTransform: "uppercase",
+        ref: mainRef,
+        tabIndex: "-1",
+        as: "h1",
+        children: "My Results"
+      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Heading, {
+        mb: 2,
+        as: "h2",
+        children: ["Estimated costs", totalSemesters === 1 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+          children: " for One Semester"
+        }), totalSemesters === 2 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+          children: " for Two Semesters"
+        })]
+      }), /*#__PURE__*/jsx_runtime.jsx(Flex, {
+        alignItems: "center",
+        children: /*#__PURE__*/(0,jsx_runtime.jsxs)(RadioGroup, {
+          name: "totalSemestersView",
+          onChange: updateTotalSemesters,
+          value: totalSemesters.toString(),
+          defaultChecked: totalSemesters.toString(),
+          as: "fieldset",
+          children: [/*#__PURE__*/jsx_runtime.jsx("legend", {
+            className: "visuallyHidden",
+            children: "Choose number of semesters to view"
+          }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Stack, {
+            direction: "row",
+            children: [/*#__PURE__*/jsx_runtime.jsx(Radio, {
+              value: "1",
+              id: "one",
+              children: "View one semester"
+            }), /*#__PURE__*/jsx_runtime.jsx(Radio, {
+              value: "2",
+              id: "two",
+              children: "View two semesters"
+            })]
+          })]
+        })
+      })]
+    }), /*#__PURE__*/jsx_runtime.jsx(Box, {
+      mb: 40,
+      children: categories.map(category => /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+        mb: 8,
+        pb: 8,
+        borderBottom: "1px solid #eee",
+        children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+          mb: 3,
+          size: "lg",
+          color: "gray.600",
+          children: category.title
+        }), /*#__PURE__*/jsx_runtime.jsx(Box, {
+          mb: "4",
+          children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+            blocks: category.description
+          })
+        }), category.lineItems && category.lineItems.length > 0 && category.lineItems.map(lineItem => /*#__PURE__*/jsx_runtime.jsx(LineItems, {
+          data: lineItem,
+          catID: category._id,
+          catTitle: category.title
+        }, lineItem._key))]
+      }, category._id))
+    }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
+      href: `/question/${Object.keys(questions)[0]}`,
+      children: /*#__PURE__*/jsx_runtime.jsx("a", {
+        children: "Go back and edit your submission"
+      })
+    })]
+  });
+}
+;// CONCATENATED MODULE: ./lib/sanity-queries.js
+ // const $now = new Date().toISOString()
+
+const getTuitionCalculatorQuery = next_sanity_cjs_production_min/* groq */.Ml`
+ *[_type in ["siteSettings", "calculator"]]{
+  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
+    ...,
+    title,
+    description,
+    categories[] {
+    _type == 'reference' => ^-> {
+        ...,
+        lineItems[] {
+          ...,
+          itemValue[] {
+            ...,
+            // logicSourceQuestion->
+          }
+        }
+      }
+    },
+    questions[] {
+      _type == 'reference' => ^-> {
+        ...
+      }
+    }
+  },
+  "siteSettings": *[_type == "siteSettings"][0],
+}`; // export async function getAllQuestionsWithSlug() {
+//   const data = await client.fetch(`*[_type == "question"]{ 'slug': _id }`)
+//   return data
+// }
+// export const getAllQuestionsWithSlug = groq`
+//   *[_type == "question"]{'_id': _id }`
+
+const sanity_queries_getAllQuestionsQuery = next_sanity_cjs_production_min/* groq */.Ml`
+*[_type in ["calculator", "siteSettings"]][0]{
+  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
+    questions[] {
+      _type == 'reference' => ^-> {
+        ...
+      }
+    }
+  },
+  "siteSettings": *[_type == "siteSettings"][0]
+}`;
+;// CONCATENATED MODULE: ./lib/sanity-api.js
+function sanity_api_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function sanity_api_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_api_ownKeys(Object(source), true).forEach(function (key) { sanity_api_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_api_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function sanity_api_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// import client, { previewClient } from './sanity'
+// const getClient = (preview) => (preview ? previewClient : client)
+
+
+const sanity_api_config = {
+  /**
+   * Find your project ID and dataset in `sanity.json` in your studio project.
+   * These are considered “public”, but you can use environment variables
+   * if you want differ between local dev and production.
+   *
+   * https://nextjs.org/docs/basic-features/environment-variables
+   **/
+  dataset: "production" || 0,
+  projectId: "85juwyag" || 0,
+  token: process.env.SANITY_API_TOKEN,
+  useCdn: true // useCdn: process.env.NODE_ENV === 'production'
+
+  /**
+   * Set useCdn to `false` if your application require the freshest possible
+   * data always (potentially slightly slower and a bit more expensive).
+   * Authenticated request (like preview) will always bypass the CDN
+   **/
+
+};
+const sanity_api_sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_api_config);
+const sanity_api_previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_api_objectSpread(sanity_api_objectSpread({}, sanity_api_config), {}, {
+  useCdn: true,
+  // useCdn: false,
+  token: process.env.NEXT_SANITY_API_TOKEN
+}));
+const sanity_api_getClient = usePreview => usePreview ? sanity_api_previewClient : sanity_api_sanityClient;
+const sanity_api_urlFor = source => createImageUrlBuilder(sanity_api_config).image(source);
+const sanity_api_usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(sanity_api_config);
+async function getTuitionCalculator(preview) {
+  const data = await sanity_api_getClient(preview).fetch(getTuitionCalculatorQuery);
+  return data;
+} // export async function getQuestionPage (preview) {
+//   const data = await getClient(preview).fetch(getAllQuestionsWithSlug)
+//   return data
+// }
+// export async function getQuestionBySlug(_id) {
+//   const data = await getClient(true).fetch(
+//     `*[_type == "question" && _id == $_id]{
+//       ...
+//     }`,
+//     { _id }
+//   )
+//   return data[0]
+// }
+
+async function getAllQuestions(preview) {
+  const data = await sanity_api_getClient(preview).fetch(getAllQuestionsQuery);
+  return data;
+}
+;// CONCATENATED MODULE: ./pages/results.js
+
+
+
+
+
+function ResultsPage({
   pageData
 }) {
   const router = (0,next_router.useRouter)();
 
   if (!router.isFallback && !pageData) {
-    return /*#__PURE__*/jsx_runtime.jsx(error.default, {
+    return /*#__PURE__*/jsx_runtime.jsx(Error, {
       statusCode: 404
     });
   }
@@ -46359,23 +47893,8 @@ function Home({
   } = tuitionCalculator;
   return /*#__PURE__*/jsx_runtime.jsx(Layout, {
     siteSettings: siteSettings,
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-      mt: 24,
-      flexDir: "column",
-      children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
-        mb: "2",
-        children: tuitionCalculator.title
-      }), /*#__PURE__*/jsx_runtime.jsx(Text, {
-        blocks: tuitionCalculator.description
-      }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-        href: `/question/${questions[0]._id}`,
-        children: /*#__PURE__*/jsx_runtime.jsx("a", {
-          style: {
-            textDecoration: 'underline'
-          },
-          children: "Get Started"
-        })
-      })]
+    children: /*#__PURE__*/jsx_runtime.jsx(Results, {
+      categories: categories
     })
   });
 }
@@ -46394,7 +47913,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 930:
+/***/ 2018:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46405,7 +47924,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -46427,7 +47946,7 @@ var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunk
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=zWsPvgCzituMODlMTeJMG&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2268eb0b766ba2cbd51a40777df4a9bf21%22%2C%22previewModeSigningKey%22%3A%2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6%22%2C%22previewModeEncryptionKey%22%3A%22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=zWsPvgCzituMODlMTeJMG&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2268eb0b766ba2cbd51a40777df4a9bf21%22%2C%22previewModeSigningKey%22%3A%2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6%22%2C%22previewModeEncryptionKey%22%3A%22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -46447,10 +47966,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(1451)
+      const compMod = __webpack_require__(41)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -46497,7 +48016,7 @@ var page_handler = __webpack_require__(9436);
 
         rewrites: combinedRewrites,
         i18n: undefined,
-        page: "/",
+        page: "/results",
         buildId: "zWsPvgCzituMODlMTeJMG",
         escapedBuildId: "zWsPvgCzituMODlMTeJMG",
         basePath: "",
@@ -49169,14 +50688,6 @@ const ESCAPE_LOOKUP={'&':'\\u0026','>':'\\u003e','<':'\\u003c','\u2028':'\\u2028
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2400)
-
-
-/***/ }),
-
-/***/ 2918:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-module.exports = __webpack_require__(900)
 
 
 /***/ }),
@@ -53331,6 +54842,615 @@ module.exports = withSideEffect;
 
 /***/ }),
 
+/***/ 7857:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+__webpack_unused_export__ = ({ value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var PropTypes = _interopDefault(__webpack_require__(5697));
+var React = __webpack_require__(7294);
+var React__default = _interopDefault(React);
+var warning = _interopDefault(__webpack_require__(2473));
+var CountUp$1 = _interopDefault(__webpack_require__(8273));
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+var createCountUpInstance = function createCountUpInstance(el, props) {
+  var decimal = props.decimal,
+      decimals = props.decimals,
+      duration = props.duration,
+      easingFn = props.easingFn,
+      end = props.end,
+      formattingFn = props.formattingFn,
+      prefix = props.prefix,
+      separator = props.separator,
+      start = props.start,
+      suffix = props.suffix,
+      useEasing = props.useEasing;
+  return new CountUp$1(el, start, end, decimals, duration, {
+    decimal: decimal,
+    easingFn: easingFn,
+    formattingFn: formattingFn,
+    separator: separator,
+    prefix: prefix,
+    suffix: suffix,
+    useEasing: useEasing,
+    useGrouping: !!separator
+  });
+};
+
+var CountUp =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CountUp, _Component);
+
+  function CountUp() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, CountUp);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CountUp)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "createInstance", function () {
+      if (typeof _this.props.children === 'function') {
+        // Warn when user didn't use containerRef at all
+        warning(_this.containerRef.current && (_this.containerRef.current instanceof HTMLElement || _this.containerRef.current instanceof SVGTextElement || _this.containerRef.current instanceof SVGTSpanElement), "Couldn't find attached element to hook the CountUp instance into! Try to attach \"containerRef\" from the render prop to a an HTMLElement, eg. <span ref={containerRef} />.");
+      }
+
+      return createCountUpInstance(_this.containerRef.current, _this.props);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "pauseResume", function () {
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          reset = _assertThisInitialize.reset,
+          start = _assertThisInitialize.restart,
+          update = _assertThisInitialize.update;
+
+      var onPauseResume = _this.props.onPauseResume;
+
+      _this.instance.pauseResume();
+
+      onPauseResume({
+        reset: reset,
+        start: start,
+        update: update
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "reset", function () {
+      var _assertThisInitialize2 = _assertThisInitialized(_this),
+          pauseResume = _assertThisInitialize2.pauseResume,
+          start = _assertThisInitialize2.restart,
+          update = _assertThisInitialize2.update;
+
+      var onReset = _this.props.onReset;
+
+      _this.instance.reset();
+
+      onReset({
+        pauseResume: pauseResume,
+        start: start,
+        update: update
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "restart", function () {
+      _this.reset();
+
+      _this.start();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "start", function () {
+      var _assertThisInitialize3 = _assertThisInitialized(_this),
+          pauseResume = _assertThisInitialize3.pauseResume,
+          reset = _assertThisInitialize3.reset,
+          start = _assertThisInitialize3.restart,
+          update = _assertThisInitialize3.update;
+
+      var _this$props = _this.props,
+          delay = _this$props.delay,
+          onEnd = _this$props.onEnd,
+          onStart = _this$props.onStart;
+
+      var run = function run() {
+        return _this.instance.start(function () {
+          return onEnd({
+            pauseResume: pauseResume,
+            reset: reset,
+            start: start,
+            update: update
+          });
+        });
+      }; // Delay start if delay prop is properly set
+
+
+      if (delay > 0) {
+        _this.timeoutId = setTimeout(run, delay * 1000);
+      } else {
+        run();
+      }
+
+      onStart({
+        pauseResume: pauseResume,
+        reset: reset,
+        update: update
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "update", function (newEnd) {
+      var _assertThisInitialize4 = _assertThisInitialized(_this),
+          pauseResume = _assertThisInitialize4.pauseResume,
+          reset = _assertThisInitialize4.reset,
+          start = _assertThisInitialize4.restart;
+
+      var onUpdate = _this.props.onUpdate;
+
+      _this.instance.update(newEnd);
+
+      onUpdate({
+        pauseResume: pauseResume,
+        reset: reset,
+        start: start
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "containerRef", React__default.createRef());
+
+    return _this;
+  }
+
+  _createClass(CountUp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          delay = _this$props2.delay;
+      this.instance = this.createInstance(); // Don't invoke start if component is used as a render prop
+
+      if (typeof children === 'function' && delay !== 0) return; // Otherwise just start immediately
+
+      this.start();
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      var _this$props3 = this.props,
+          end = _this$props3.end,
+          start = _this$props3.start,
+          suffix = _this$props3.suffix,
+          prefix = _this$props3.prefix,
+          redraw = _this$props3.redraw,
+          duration = _this$props3.duration,
+          separator = _this$props3.separator,
+          decimals = _this$props3.decimals,
+          decimal = _this$props3.decimal;
+      var hasCertainPropsChanged = duration !== nextProps.duration || end !== nextProps.end || start !== nextProps.start || suffix !== nextProps.suffix || prefix !== nextProps.prefix || separator !== nextProps.separator || decimals !== nextProps.decimals || decimal !== nextProps.decimal;
+      return hasCertainPropsChanged || redraw;
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // If duration, suffix, prefix, separator or start has changed
+      // there's no way to update the values.
+      // So we need to re-create the CountUp instance in order to
+      // restart it.
+      var _this$props4 = this.props,
+          end = _this$props4.end,
+          start = _this$props4.start,
+          suffix = _this$props4.suffix,
+          prefix = _this$props4.prefix,
+          duration = _this$props4.duration,
+          separator = _this$props4.separator,
+          decimals = _this$props4.decimals,
+          decimal = _this$props4.decimal,
+          preserveValue = _this$props4.preserveValue;
+
+      if (duration !== prevProps.duration || start !== prevProps.start || suffix !== prevProps.suffix || prefix !== prevProps.prefix || separator !== prevProps.separator || decimals !== prevProps.decimals || decimal !== prevProps.decimal) {
+        this.instance.reset();
+        this.instance = this.createInstance();
+        this.start();
+      } // Only end value has changed, so reset and and re-animate with the updated
+      // end value.
+
+
+      if (end !== prevProps.end) {
+        if (!preserveValue) {
+          this.instance.reset();
+        }
+
+        this.instance.update(end);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+      }
+
+      this.instance.reset();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props5 = this.props,
+          children = _this$props5.children,
+          className = _this$props5.className,
+          style = _this$props5.style;
+      var containerRef = this.containerRef,
+          pauseResume = this.pauseResume,
+          reset = this.reset,
+          restart = this.restart,
+          update = this.update;
+
+      if (typeof children === 'function') {
+        return children({
+          countUpRef: containerRef,
+          pauseResume: pauseResume,
+          reset: reset,
+          start: restart,
+          update: update
+        });
+      }
+
+      return React__default.createElement("span", {
+        className: className,
+        ref: containerRef,
+        style: style
+      });
+    }
+  }]);
+
+  return CountUp;
+}(React.Component);
+
+_defineProperty(CountUp, "propTypes", {
+  decimal: PropTypes.string,
+  decimals: PropTypes.number,
+  delay: PropTypes.number,
+  easingFn: PropTypes.func,
+  end: PropTypes.number.isRequired,
+  formattingFn: PropTypes.func,
+  onEnd: PropTypes.func,
+  onStart: PropTypes.func,
+  prefix: PropTypes.string,
+  redraw: PropTypes.bool,
+  separator: PropTypes.string,
+  start: PropTypes.number,
+  startOnMount: PropTypes.bool,
+  suffix: PropTypes.string,
+  style: PropTypes.object,
+  useEasing: PropTypes.bool,
+  preserveValue: PropTypes.bool
+});
+
+_defineProperty(CountUp, "defaultProps", {
+  decimal: '.',
+  decimals: 0,
+  delay: null,
+  duration: null,
+  easingFn: null,
+  formattingFn: null,
+  onEnd: function onEnd() {},
+  onPauseResume: function onPauseResume() {},
+  onReset: function onReset() {},
+  onStart: function onStart() {},
+  onUpdate: function onUpdate() {},
+  prefix: '',
+  redraw: false,
+  separator: '',
+  start: 0,
+  startOnMount: true,
+  suffix: '',
+  style: undefined,
+  useEasing: true,
+  preserveValue: false
+});
+
+// and just sets the innerHTML of the element.
+
+var MOCK_ELEMENT = {
+  innerHTML: null
+};
+
+var useCountUp = function useCountUp(props) {
+  var _props = _objectSpread2({}, CountUp.defaultProps, {}, props);
+
+  var start = _props.start,
+      formattingFn = _props.formattingFn;
+
+  var _useState = React.useState(typeof formattingFn === 'function' ? formattingFn(start) : start),
+      _useState2 = _slicedToArray(_useState, 2),
+      count = _useState2[0],
+      setCount = _useState2[1];
+
+  var countUpRef = React.useRef(null);
+
+  var createInstance = function createInstance() {
+    var countUp = createCountUpInstance(MOCK_ELEMENT, _props);
+    var formattingFnRef = countUp.options.formattingFn;
+
+    countUp.options.formattingFn = function () {
+      var result = formattingFnRef.apply(void 0, arguments);
+      setCount(result);
+    };
+
+    return countUp;
+  };
+
+  var getCountUp = function getCountUp() {
+    var countUp = countUpRef.current;
+
+    if (countUp !== null) {
+      return countUp;
+    }
+
+    var newCountUp = createInstance();
+    countUpRef.current = newCountUp;
+    return newCountUp;
+  };
+
+  var reset = function reset() {
+    var onReset = _props.onReset;
+    getCountUp().reset();
+    onReset({
+      pauseResume: pauseResume,
+      start: restart,
+      update: update
+    });
+  };
+
+  var restart = function restart() {
+    var onStart = _props.onStart,
+        onEnd = _props.onEnd;
+    getCountUp().reset();
+    getCountUp().start(function () {
+      onEnd({
+        pauseResume: pauseResume,
+        reset: reset,
+        start: restart,
+        update: update
+      });
+    });
+    onStart({
+      pauseResume: pauseResume,
+      reset: reset,
+      update: update
+    });
+  };
+
+  var pauseResume = function pauseResume() {
+    var onPauseResume = _props.onPauseResume;
+    getCountUp().pauseResume();
+    onPauseResume({
+      reset: reset,
+      start: restart,
+      update: update
+    });
+  };
+
+  var update = function update(newEnd) {
+    var onUpdate = _props.onUpdate;
+    getCountUp().update(newEnd);
+    onUpdate({
+      pauseResume: pauseResume,
+      reset: reset,
+      start: restart
+    });
+  };
+
+  React.useEffect(function () {
+    var delay = _props.delay,
+        onStart = _props.onStart,
+        onEnd = _props.onEnd,
+        startOnMount = _props.startOnMount;
+
+    if (startOnMount) {
+      var timeout = setTimeout(function () {
+        onStart({
+          pauseResume: pauseResume,
+          reset: reset,
+          update: update
+        });
+        getCountUp().start(function () {
+          clearTimeout(timeout);
+          onEnd({
+            pauseResume: pauseResume,
+            reset: reset,
+            start: restart,
+            update: update
+          });
+        });
+      }, delay * 1000);
+    }
+
+    return reset;
+  }, []);
+  return {
+    countUp: count,
+    start: restart,
+    pauseResume: pauseResume,
+    reset: reset,
+    update: update
+  };
+};
+
+exports.ZP = CountUp;
+__webpack_unused_export__ = useCountUp;
+
+
+/***/ }),
+
 /***/ 4798:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -55060,6 +57180,457 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__webpack_require__(8116), exports);
 __exportStar(__webpack_require__(275), exports);
 __exportStar(__webpack_require__(9186), exports);
+
+
+/***/ }),
+
+/***/ 4225:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+var __webpack_unused_export__;
+var React = __webpack_require__(7294);
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+var ObserverMap = new Map();
+var RootIds = new WeakMap();
+var rootId = 0;
+/**
+ * Generate a unique ID for the root element
+ * @param root
+ */
+
+function getRootId(root) {
+  if (!root) return '0';
+  if (RootIds.has(root)) return RootIds.get(root);
+  rootId += 1;
+  RootIds.set(root, rootId.toString());
+  return RootIds.get(root);
+}
+/**
+ * Convert the options to a string Id, based on the values.
+ * Ensures we can reuse the same observer when observing elements with the same options.
+ * @param options
+ */
+
+
+function optionsToId(options) {
+  return Object.keys(options).sort().filter(function (key) {
+    return options[key] !== undefined;
+  }).map(function (key) {
+    return key + "_" + (key === 'root' ? getRootId(options.root) : options[key]);
+  }).toString();
+}
+
+function createObserver(options) {
+  // Create a unique ID for this observer instance, based on the root, root margin and threshold.
+  var id = optionsToId(options);
+  var instance = ObserverMap.get(id);
+
+  if (!instance) {
+    // Create a map of elements this observer is going to observe. Each element has a list of callbacks that should be triggered, once it comes into view.
+    var elements = new Map();
+    var thresholds;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var _elements$get;
+
+        // While it would be nice if you could just look at isIntersecting to determine if the component is inside the viewport, browsers can't agree on how to use it.
+        // -Firefox ignores `threshold` when considering `isIntersecting`, so it will never be false again if `threshold` is > 0
+        var inView = entry.isIntersecting && thresholds.some(function (threshold) {
+          return entry.intersectionRatio >= threshold;
+        }); // @ts-ignore support IntersectionObserver v2
+
+        if (options.trackVisibility && typeof entry.isVisible === 'undefined') {
+          // The browser doesn't support Intersection Observer v2, falling back to v1 behavior.
+          // @ts-ignore
+          entry.isVisible = inView;
+        }
+
+        (_elements$get = elements.get(entry.target)) == null ? void 0 : _elements$get.forEach(function (callback) {
+          callback(inView, entry);
+        });
+      });
+    }, options); // Ensure we have a valid thresholds array. If not, use the threshold from the options
+
+    thresholds = observer.thresholds || (Array.isArray(options.threshold) ? options.threshold : [options.threshold || 0]);
+    instance = {
+      id: id,
+      observer: observer,
+      elements: elements
+    };
+    ObserverMap.set(id, instance);
+  }
+
+  return instance;
+}
+
+function observe(element, callback, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  if (!element) return function () {}; // An observer with the same options can be reused, so lets use this fact
+
+  var _createObserver = createObserver(options),
+      id = _createObserver.id,
+      observer = _createObserver.observer,
+      elements = _createObserver.elements; // Register the callback listener for this element
+
+
+  var callbacks = elements.get(element) || [];
+
+  if (!elements.has(element)) {
+    elements.set(element, callbacks);
+  }
+
+  callbacks.push(callback);
+  observer.observe(element);
+  return function unobserve() {
+    // Remove the callback from the callback list
+    callbacks.splice(callbacks.indexOf(callback), 1);
+
+    if (callbacks.length === 0) {
+      // No more callback exists for element, so destroy it
+      elements["delete"](element);
+      observer.unobserve(element);
+    }
+
+    if (elements.size === 0) {
+      // No more elements are being observer by this instance, so destroy it
+      observer.disconnect();
+      ObserverMap["delete"](id);
+    }
+  };
+}
+
+function isPlainChildren(props) {
+  return typeof props.children !== 'function';
+}
+/**
+ ## Render props
+
+ To use the `<InView>` component, you pass it a function. It will be called
+ whenever the state changes, with the new value of `inView`. In addition to the
+ `inView` prop, children also receive a `ref` that should be set on the
+ containing DOM element. This is the element that the IntersectionObserver will
+ monitor.
+
+ If you need it, you can also access the
+ [`IntersectionObserverEntry`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)
+ on `entry`, giving you access to all the details about the current intersection
+ state.
+
+ ```jsx
+ import { InView } from 'react-intersection-observer';
+
+ const Component = () => (
+ <InView>
+ {({ inView, ref, entry }) => (
+      <div ref={ref}>
+        <h2>{`Header inside viewport ${inView}.`}</h2>
+      </div>
+    )}
+ </InView>
+ );
+
+ export default Component;
+ ```
+
+ ## Plain children
+
+ You can pass any element to the `<InView />`, and it will handle creating the
+ wrapping DOM element. Add a handler to the `onChange` method, and control the
+ state in your own component. Any extra props you add to `<InView>` will be
+ passed to the HTML element, allowing you set the `className`, `style`, etc.
+
+ ```jsx
+ import { InView } from 'react-intersection-observer';
+
+ const Component = () => (
+ <InView as="div" onChange={(inView, entry) => console.log('Inview:', inView)}>
+ <h2>Plain children are always rendered. Use onChange to monitor state.</h2>
+ </InView>
+ );
+
+ export default Component;
+ ```
+ */
+
+
+var InView = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(InView, _React$Component);
+
+  function InView(props) {
+    var _this;
+
+    _this = _React$Component.call(this, props) || this;
+    _this.node = null;
+    _this._unobserveCb = null;
+
+    _this.handleNode = function (node) {
+      if (_this.node) {
+        // Clear the old observer, before we start observing a new element
+        _this.unobserve();
+
+        if (!node && !_this.props.triggerOnce && !_this.props.skip) {
+          // Reset the state if we get a new node, and we aren't ignoring updates
+          _this.setState({
+            inView: !!_this.props.initialInView,
+            entry: undefined
+          });
+        }
+      }
+
+      _this.node = node ? node : null;
+
+      _this.observeNode();
+    };
+
+    _this.handleChange = function (inView, entry) {
+      if (inView && _this.props.triggerOnce) {
+        // If `triggerOnce` is true, we should stop observing the element.
+        _this.unobserve();
+      }
+
+      if (!isPlainChildren(_this.props)) {
+        // Store the current State, so we can pass it to the children in the next render update
+        // There's no reason to update the state for plain children, since it's not used in the rendering.
+        _this.setState({
+          inView: inView,
+          entry: entry
+        });
+      }
+
+      if (_this.props.onChange) {
+        // If the user is actively listening for onChange, always trigger it
+        _this.props.onChange(inView, entry);
+      }
+    };
+
+    _this.state = {
+      inView: !!props.initialInView,
+      entry: undefined
+    };
+    return _this;
+  }
+
+  var _proto = InView.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    // If a IntersectionObserver option changed, reinit the observer
+    if (prevProps.rootMargin !== this.props.rootMargin || prevProps.root !== this.props.root || prevProps.threshold !== this.props.threshold || prevProps.skip !== this.props.skip || prevProps.trackVisibility !== this.props.trackVisibility || prevProps.delay !== this.props.delay) {
+      this.unobserve();
+      this.observeNode();
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unobserve();
+    this.node = null;
+  };
+
+  _proto.observeNode = function observeNode() {
+    if (!this.node || this.props.skip) return;
+    var _this$props = this.props,
+        threshold = _this$props.threshold,
+        root = _this$props.root,
+        rootMargin = _this$props.rootMargin,
+        trackVisibility = _this$props.trackVisibility,
+        delay = _this$props.delay;
+    this._unobserveCb = observe(this.node, this.handleChange, {
+      threshold: threshold,
+      root: root,
+      rootMargin: rootMargin,
+      // @ts-ignore
+      trackVisibility: trackVisibility,
+      // @ts-ignore
+      delay: delay
+    });
+  };
+
+  _proto.unobserve = function unobserve() {
+    if (this._unobserveCb) {
+      this._unobserveCb();
+
+      this._unobserveCb = null;
+    }
+  };
+
+  _proto.render = function render() {
+    if (!isPlainChildren(this.props)) {
+      var _this$state = this.state,
+          inView = _this$state.inView,
+          entry = _this$state.entry;
+      return this.props.children({
+        inView: inView,
+        entry: entry,
+        ref: this.handleNode
+      });
+    }
+
+    var _this$props2 = this.props,
+        children = _this$props2.children,
+        as = _this$props2.as,
+        tag = _this$props2.tag,
+        props = _objectWithoutPropertiesLoose(_this$props2, ["children", "as", "tag", "triggerOnce", "threshold", "root", "rootMargin", "onChange", "skip", "trackVisibility", "delay", "initialInView"]);
+
+    return /*#__PURE__*/React.createElement(as || tag || 'div', _extends({
+      ref: this.handleNode
+    }, props), children);
+  };
+
+  return InView;
+}(React.Component);
+InView.displayName = 'InView';
+InView.defaultProps = {
+  threshold: 0,
+  triggerOnce: false,
+  initialInView: false
+};
+
+/**
+ * React Hooks make it easy to monitor the `inView` state of your components. Call
+ * the `useInView` hook with the (optional) [options](#options) you need. It will
+ * return an array containing a `ref`, the `inView` status and the current
+ * [`entry`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry).
+ * Assign the `ref` to the DOM element you want to monitor, and the hook will
+ * report the status.
+ *
+ * @example
+ * ```jsx
+ * import React from 'react';
+ * import { useInView } from 'react-intersection-observer';
+ *
+ * const Component = () => {
+ *   const { ref, inView, entry } = useInView({
+ *       threshold: 0,
+ *   });
+ *
+ *   return (
+ *     <div ref={ref}>
+ *       <h2>{`Header inside viewport ${inView}.`}</h2>
+ *     </div>
+ *   );
+ * };
+ * ```
+ */
+
+function useInView(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      threshold = _ref.threshold,
+      delay = _ref.delay,
+      trackVisibility = _ref.trackVisibility,
+      rootMargin = _ref.rootMargin,
+      root = _ref.root,
+      triggerOnce = _ref.triggerOnce,
+      skip = _ref.skip,
+      initialInView = _ref.initialInView;
+
+  var unobserve = React.useRef();
+
+  var _React$useState = React.useState({
+    inView: !!initialInView
+  }),
+      state = _React$useState[0],
+      setState = _React$useState[1];
+
+  var setRef = React.useCallback(function (node) {
+    if (unobserve.current !== undefined) {
+      unobserve.current();
+      unobserve.current = undefined;
+    } // Skip creating the observer
+
+
+    if (skip) return;
+
+    if (node) {
+      unobserve.current = observe(node, function (inView, entry) {
+        setState({
+          inView: inView,
+          entry: entry
+        });
+
+        if (entry.isIntersecting && triggerOnce && unobserve.current) {
+          // If it should only trigger once, unobserve the element after it's inView
+          unobserve.current();
+          unobserve.current = undefined;
+        }
+      }, {
+        root: root,
+        rootMargin: rootMargin,
+        threshold: threshold,
+        // @ts-ignore
+        trackVisibility: trackVisibility,
+        // @ts-ignore
+        delay: delay
+      });
+    }
+  }, // We break the rule here, because we aren't including the actual `threshold` variable
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [// If the threshold is an array, convert it to a string so it won't change between renders.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  Array.isArray(threshold) ? threshold.toString() : threshold, root, rootMargin, triggerOnce, skip, trackVisibility, delay]);
+  /* eslint-disable-next-line */
+
+  React.useEffect(function () {
+    if (!unobserve.current && state.entry && !triggerOnce && !skip) {
+      // If we don't have a ref, then reset the state (unless the hook is set to only `triggerOnce` or `skip`)
+      // This ensures we correctly reflect the current state - If you aren't observing anything, then nothing is inView
+      setState({
+        inView: !!initialInView
+      });
+    }
+  });
+  var result = [setRef, state.inView, state.entry]; // Support object destructuring, by adding the specific values.
+
+  result.ref = result[0];
+  result.inView = result[1];
+  result.entry = result[2];
+  return result;
+}
+
+__webpack_unused_export__ = InView;
+__webpack_unused_export__ = InView;
+exports.YD = useInView;
+//# sourceMappingURL=react-intersection-observer.js.map
 
 
 /***/ }),
@@ -61123,6 +63694,14 @@ module.exports = __webpack_require__(5039)
 
 /***/ }),
 
+/***/ 5988:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(7884)
+
+
+/***/ }),
+
 /***/ 8363:
 /***/ (function(__unused_webpack_module, exports) {
 
@@ -64167,6 +66746,76 @@ module.exports = __webpack_require__(1669).deprecate;
 
 /***/ }),
 
+/***/ 2473:
+/***/ (function(module) {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var __DEV__ = "production" !== 'production';
+
+var warning = function() {};
+
+if (__DEV__) {
+  var printWarning = function printWarning(format, args) {
+    var len = arguments.length;
+    args = new Array(len > 1 ? len - 1 : 0);
+    for (var key = 1; key < len; key++) {
+      args[key - 1] = arguments[key];
+    }
+    var argIndex = 0;
+    var message = 'Warning: ' +
+      format.replace(/%s/g, function() {
+        return args[argIndex++];
+      });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  }
+
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+          '`warning(condition, format, ...args)` requires a warning ' +
+          'message argument'
+      );
+    }
+    if (!condition) {
+      printWarning.apply(null, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
+
+
+/***/ }),
+
 /***/ 2479:
 /***/ (function(module) {
 
@@ -64437,7 +67086,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(930);
+/******/ 	var __webpack_exports__ = __webpack_require__(2018);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

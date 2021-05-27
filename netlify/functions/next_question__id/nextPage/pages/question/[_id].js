@@ -848,11 +848,12 @@ function createContext(options) {
 __webpack_require__.d(__webpack_exports__, {
   "iv": function() { return /* reexport */ css; },
   "isStyleProp": function() { return /* reexport */ isStyleProp; },
+  "layoutPropNames": function() { return /* reexport */ layoutPropNames; },
   "propNames": function() { return /* reexport */ propNames; },
   "toCSSVar": function() { return /* reexport */ toCSSVar; }
 });
 
-// UNUSED EXPORTS: background, border, color, flexbox, getCss, getTransformGpuTemplate, getTransformTemplate, grid, layout, layoutPropNames, list, others, outline, position, shadow, space, systemProps, toNegativeVar, toVarDefinition, toVarReference, tokenToCSSVar, tokens, transform, transition, typography
+// UNUSED EXPORTS: background, border, color, flexbox, getCss, getTransformGpuTemplate, getTransformTemplate, grid, layout, list, others, outline, position, shadow, space, systemProps, toNegativeVar, toVarDefinition, toVarReference, tokenToCSSVar, tokens, transform, transition, typography
 
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
 var assertion = __webpack_require__(3808);
@@ -2804,6 +2805,7 @@ var GlobalStyle = () => {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "hj": function() { return /* binding */ isNumber; },
+/* harmony export */   "kJ": function() { return /* binding */ isArray; },
 /* harmony export */   "mf": function() { return /* binding */ isFunction; },
 /* harmony export */   "Kn": function() { return /* binding */ isObject; },
 /* harmony export */   "Qr": function() { return /* binding */ isEmptyObject; },
@@ -2812,7 +2814,7 @@ var GlobalStyle = () => {
 /* harmony export */   "Ts": function() { return /* binding */ __DEV__; },
 /* harmony export */   "Ys": function() { return /* binding */ __TEST__; }
 /* harmony export */ });
-/* unused harmony exports isNotNumber, isNumeric, isArray, isEmptyArray, isDefined, isUndefined, isNotEmptyObject, isNull, isEmpty, isRefObject, isInputEvent */
+/* unused harmony exports isNotNumber, isNumeric, isEmptyArray, isDefined, isUndefined, isNotEmptyObject, isNull, isEmpty, isRefObject, isInputEvent */
 // Number assertions
 function isNumber(value) {
   return typeof value === "number";
@@ -2889,9 +2891,10 @@ function isInputEvent(value) {
 /* harmony export */   "lZ": function() { return /* binding */ getOwnerDocument; },
 /* harmony export */   "jU": function() { return /* binding */ isBrowser; },
 /* harmony export */   "PB": function() { return /* binding */ dataAttr; },
+/* harmony export */   "Qm": function() { return /* binding */ ariaAttr; },
 /* harmony export */   "cx": function() { return /* binding */ cx; }
 /* harmony export */ });
-/* unused harmony exports getOwnerWindow, canUseDOM, ariaAttr, getActiveElement, contains, addDomEvent, normalizeEventKey, getRelatedTarget, isRightClick */
+/* unused harmony exports getOwnerWindow, canUseDOM, getActiveElement, contains, addDomEvent, normalizeEventKey, getRelatedTarget, isRightClick */
 function getOwnerWindow(node) {
   var _getOwnerDocument$def, _getOwnerDocument;
 
@@ -2967,9 +2970,10 @@ function isRightClick(event) {
 /* harmony export */   "v0": function() { return /* binding */ callAllHandlers; },
 /* harmony export */   "ZT": function() { return /* binding */ noop; },
 /* harmony export */   "ZK": function() { return /* binding */ warn; },
+/* harmony export */   "A4": function() { return /* binding */ scheduleMicrotask; },
 /* harmony export */   "zG": function() { return /* binding */ pipe; }
 /* harmony export */ });
-/* unused harmony exports callAll, compose, once, error, scheduleMicrotask, distance */
+/* unused harmony exports callAll, compose, once, error, distance */
 /* harmony import */ var _assertion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3808);
 /* eslint-disable no-nested-ternary */
 
@@ -3093,13 +3097,14 @@ function distance(a, b) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CE": function() { return /* binding */ omit; },
 /* harmony export */   "ei": function() { return /* binding */ pick; },
+/* harmony export */   "Vl": function() { return /* binding */ split; },
 /* harmony export */   "Wf": function() { return /* binding */ memoizedGet; },
 /* harmony export */   "lw": function() { return /* binding */ objectFilter; },
 /* harmony export */   "YU": function() { return /* binding */ filterUndefined; },
 /* harmony export */   "Yd": function() { return /* binding */ objectKeys; },
 /* harmony export */   "sq": function() { return /* binding */ fromEntries; }
 /* harmony export */ });
-/* unused harmony exports split, get, memoize, getWithDefault, getCSSVar */
+/* unused harmony exports get, memoize, getWithDefault, getCSSVar */
 /* harmony import */ var lodash_mergewith__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8554);
 /* harmony import */ var lodash_mergewith__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_mergewith__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -32881,7 +32886,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 1451:
+/***/ 543:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32890,129 +32895,54 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": function() { return /* binding */ Home; },
+  "default": function() { return /* binding */ QuestionPage; },
+  "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; }
 });
 
 // EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
 var jsx_runtime = __webpack_require__(5893);
-// EXTERNAL MODULE: ./node_modules/next/error.js
-var error = __webpack_require__(2918);
-// EXTERNAL MODULE: ./node_modules/next/link.js
-var next_link = __webpack_require__(1664);
 // EXTERNAL MODULE: ./node_modules/next/router.js
 var next_router = __webpack_require__(1163);
-// EXTERNAL MODULE: ./node_modules/next-sanity/dist/next-sanity.cjs.production.min.js
-var next_sanity_cjs_production_min = __webpack_require__(3253);
-;// CONCATENATED MODULE: ./lib/sanity-queries.js
- // const $now = new Date().toISOString()
-
-const getTuitionCalculatorQuery = next_sanity_cjs_production_min/* groq */.Ml`
- *[_type in ["siteSettings", "calculator"]]{
-  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
-    ...,
-    title,
-    description,
-    categories[] {
-    _type == 'reference' => ^-> {
-        ...,
-        lineItems[] {
-          ...,
-          itemValue[] {
-            ...,
-            // logicSourceQuestion->
-          }
-        }
-      }
-    },
-    questions[] {
-      _type == 'reference' => ^-> {
-        ...
-      }
-    }
-  },
-  "siteSettings": *[_type == "siteSettings"][0],
-}`; // export async function getAllQuestionsWithSlug() {
-//   const data = await client.fetch(`*[_type == "question"]{ 'slug': _id }`)
-//   return data
-// }
-// export const getAllQuestionsWithSlug = groq`
-//   *[_type == "question"]{'_id': _id }`
-
-const sanity_queries_getAllQuestionsQuery = next_sanity_cjs_production_min/* groq */.Ml`
-*[_type in ["calculator", "siteSettings"]][0]{
-  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
-    questions[] {
-      _type == 'reference' => ^-> {
-        ...
-      }
-    }
-  },
-  "siteSettings": *[_type == "siteSettings"][0]
-}`;
-;// CONCATENATED MODULE: ./lib/sanity-api.js
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// import client, { previewClient } from './sanity'
-// const getClient = (preview) => (preview ? previewClient : client)
-
-
-const config = {
-  /**
-   * Find your project ID and dataset in `sanity.json` in your studio project.
-   * These are considered “public”, but you can use environment variables
-   * if you want differ between local dev and production.
-   *
-   * https://nextjs.org/docs/basic-features/environment-variables
-   **/
-  dataset: "production" || 0,
-  projectId: "85juwyag" || 0,
-  token: process.env.SANITY_API_TOKEN,
-  useCdn: true // useCdn: process.env.NODE_ENV === 'production'
-
-  /**
-   * Set useCdn to `false` if your application require the freshest possible
-   * data always (potentially slightly slower and a bit more expensive).
-   * Authenticated request (like preview) will always bypass the CDN
-   **/
-
-};
-const sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(config);
-const previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(_objectSpread(_objectSpread({}, config), {}, {
-  useCdn: true,
-  // useCdn: false,
-  token: process.env.NEXT_SANITY_API_TOKEN
-}));
-const getClient = usePreview => usePreview ? previewClient : sanityClient;
-const urlFor = source => createImageUrlBuilder(config).image(source);
-const usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(config);
-async function getTuitionCalculator(preview) {
-  const data = await getClient(preview).fetch(getTuitionCalculatorQuery);
-  return data;
-} // export async function getQuestionPage (preview) {
-//   const data = await getClient(preview).fetch(getAllQuestionsWithSlug)
-//   return data
-// }
-// export async function getQuestionBySlug(_id) {
-//   const data = await getClient(true).fetch(
-//     `*[_type == "question" && _id == $_id]{
-//       ...
-//     }`,
-//     { _id }
-//   )
-//   return data[0]
-// }
-
-async function getAllQuestions(preview) {
-  const data = await getClient(preview).fetch(getAllQuestionsQuery);
-  return data;
-}
+// EXTERNAL MODULE: ./node_modules/next/error.js
+var error = __webpack_require__(2918);
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(7294);
+// EXTERNAL MODULE: ./node_modules/next/head.js
+var head = __webpack_require__(9008);
+;// CONCATENATED MODULE: ./components/head.js
+
+
+
+
+const Head = ({
+  children,
+  title,
+  description
+}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
+    children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
+      charSet: "UTF-8"
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1, shrink-to-fit=no"
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      httpEquiv: "x-ua-compatible",
+      content: "ie=edge"
+    }), /*#__PURE__*/jsx_runtime.jsx("link", {
+      rel: "icon",
+      href: "/favicon.ico"
+    }), /*#__PURE__*/jsx_runtime.jsx("title", {
+      children: title || ''
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      name: "description",
+      content: description || ''
+    }), /*#__PURE__*/jsx_runtime.jsx("link", {
+      rel: "preconnect",
+      href: "https://cdn.sanity.io"
+    }), children]
+  })
+});
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/system/dist/esm/forward-ref.js
 /**
  * All credit goes to Chance (Reach UI), Haz (Reakit) and (fluentui)
@@ -33125,9 +33055,9 @@ function styled(component, options) {
   });
   return (0,emotion_styled_cjs.default)(component, styledOptions)(styleObject);
 }
-var chakra = styled;
+var system_chakra = styled;
 domElements.forEach(tag => {
-  chakra[tag] = chakra(tag);
+  system_chakra[tag] = system_chakra(tag);
 });
 //# sourceMappingURL=system.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
@@ -33171,7 +33101,7 @@ var Flex = /*#__PURE__*/forwardRef((props, ref) => {
     flexGrow: grow,
     flexShrink: shrink
   };
-  return /*#__PURE__*/react.createElement(chakra.div, _extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, _extends({
     ref: ref,
     __css: styles
   }, rest));
@@ -33352,222 +33282,6 @@ function useMultiStyleConfig(themeKey, props) {
 //# sourceMappingURL=use-style-config.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/dom.js
 var dom = __webpack_require__(4461);
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/heading.js
-function heading_extends() { heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return heading_extends.apply(this, arguments); }
-
-function heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var Heading = /*#__PURE__*/forwardRef((props, ref) => {
-  var styles = useStyleConfig("Heading", props);
-
-  var _omitThemingProps = system_utils_omitThemingProps(props),
-      rest = heading_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
-
-  return /*#__PURE__*/react.createElement(chakra.h2, heading_extends({
-    ref: ref,
-    className: (0,dom.cx)("chakra-heading", props.className)
-  }, rest, {
-    __css: styles
-  }));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  Heading.displayName = "Heading";
-}
-//# sourceMappingURL=heading.js.map
-;// CONCATENATED MODULE: ./utils/sanity.js
-
-
-function sanity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function sanity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_ownKeys(Object(source), true).forEach(function (key) { sanity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function sanity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-const sanity_config = {
-  /**
-   * Find your project ID and dataset in `sanity.json` in your studio project.
-   * These are considered “public”, but you can use environment variables
-   * if you want differ between local dev and production.
-   *
-   * https://nextjs.org/docs/basic-features/environment-variables
-   **/
-  dataset: "production",
-  projectId: "85juwyag",
-  useCdn: true,
-  token: process.env.SANITY_API_TOKEN // useCdn: process.env.NODE_ENV === 'production'
-
-  /**
-   * Set useCdn to `false` if your application require the freshest possible
-   * data always (potentially slightly slower and a bit more expensive).
-   * Authenticated request (like preview) will always bypass the CDN
-   **/
-
-};
-
-if (!sanity_config.projectId) {
-  throw Error('The Project ID is not set. Check your environment variables.');
-}
-
-if (!sanity_config.dataset) {
-  throw Error('The dataset name is not set. Check your environment variables.');
-}
-/**
- * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
- * Read more: https://www.sanity.io/docs/image-url
- **/
-
-
-const sanity_urlFor = source => createImageUrlBuilder(sanity_config).image(source); // Set up the live preview subsscription hook
-
-const sanity_usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(sanity_config); // Set up Portable Text serialization
-
-const PortableText = (0,next_sanity_cjs_production_min/* createPortableTextComponent */.Kz)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
-  // Serializers passed to @sanity/block-content-to-react
-  // (https://github.com/sanity-io/block-content-to-react)
-  serializers: {
-    types: {
-      ul: props => /*#__PURE__*/jsx_runtime.jsx("ul", {
-        className: "test",
-        children: "test"
-      })
-    }
-  }
-})); // Set up the client for fetching data in the getProps page functions
-
-const sanity_sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_config); // Set up a preview client with serverless authentication for drafts
-
-const sanity_previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
-  useCdn: true // useCdn: false
-
-})); // Helper function for easily switching between normal client and preview client
-
-const sanity_getClient = usePreview => usePreview ? sanity_previewClient : sanity_sanityClient;
-;// CONCATENATED MODULE: ./components/serializers/serializers.js
-
-
-
-
-const serializers = {
-  marks: {
-    link: ({
-      mark,
-      children
-    }) => {
-      const {
-        blank,
-        href
-      } = mark;
-
-      if (!href) {
-        return null;
-      }
-
-      return blank === true ? /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-        children: href.includes('https') || href.includes('http') ? /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          children: children
-        }) : /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          children: children
-        })
-      }) : /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-        children: href.includes('https') || href.includes('http') || href.includes('tel') || href.includes('mailto') ? /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          children: children
-        }) : /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-          href: href,
-          children: /*#__PURE__*/jsx_runtime.jsx("a", {
-            children: children
-          })
-        })
-      });
-    }
-  },
-  list: props => {
-    // console.log({ props })
-    switch (props.type) {
-      case 'number':
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ol", {
-            children: props.children
-          });
-        }
-
-      case 'bullet':
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ul", {
-            children: props.children
-          });
-        }
-
-      default:
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ul", {
-            children: props.children
-          });
-        }
-    }
-  }
-};
-/* harmony default export */ var serializers_serializers = (serializers);
-;// CONCATENATED MODULE: ./components/serializers/text.js
-
-
-
-function Text({
-  blocks
-}) {
-  var _blocks$;
-
-  // console.log({ blocks })
-  // TODO: Test this conditional logic out more to make sure it's SOLID
-  return blocks !== null && blocks !== void 0 && blocks.length && (_blocks$ = blocks[0]) !== null && _blocks$ !== void 0 && _blocks$.children.length ? /*#__PURE__*/jsx_runtime.jsx(PortableText, {
-    blocks: blocks,
-    serializers: serializers_serializers
-  }) : null;
-}
-// EXTERNAL MODULE: ./node_modules/next/head.js
-var head = __webpack_require__(9008);
-;// CONCATENATED MODULE: ./components/head.js
-
-
-
-
-const Head = ({
-  children,
-  title,
-  description
-}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
-    children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
-      charSet: "UTF-8"
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1, shrink-to-fit=no"
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      httpEquiv: "x-ua-compatible",
-      content: "ie=edge"
-    }), /*#__PURE__*/jsx_runtime.jsx("link", {
-      rel: "icon",
-      href: "/favicon.ico"
-    }), /*#__PURE__*/jsx_runtime.jsx("title", {
-      children: title || ''
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      name: "description",
-      content: description || ''
-    }), /*#__PURE__*/jsx_runtime.jsx("link", {
-      rel: "preconnect",
-      href: "https://cdn.sanity.io"
-    }), children]
-  })
-});
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/text.js
 function text_extends() { text_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return text_extends.apply(this, arguments); }
 
@@ -33582,7 +33296,7 @@ function text_objectWithoutPropertiesLoose(source, excluded) { if (source == nul
  *
  * @see Docs https://chakra-ui.com/docs/typography/text
  */
-var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
+var Text = /*#__PURE__*/forwardRef((props, ref) => {
   var styles = useStyleConfig("Text", props);
 
   var _omitThemingProps = system_utils_omitThemingProps(props),
@@ -33593,7 +33307,7 @@ var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
     textDecoration: props.decoration,
     textTransform: props.casing
   });
-  return /*#__PURE__*/react.createElement(chakra.p, text_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.p, text_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-text", props.className)
   }, aliasedProps, rest, {
@@ -33602,7 +33316,7 @@ var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
 });
 
 if (assertion/* __DEV__ */.Ts) {
-  text_Text.displayName = "Text";
+  Text.displayName = "Text";
 }
 //# sourceMappingURL=text.js.map
 ;// CONCATENATED MODULE: ./components/footer.js
@@ -33618,7 +33332,7 @@ function Footer() {
       justifyContent: "center",
       alignItems: "center",
       paddingY: "2rem",
-      children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+      children: /*#__PURE__*/jsx_runtime.jsx(Text, {
         children: "Powered by Sanity.io"
       })
     })
@@ -33627,16 +33341,16 @@ function Footer() {
 // EXTERNAL MODULE: ./node_modules/little-state-machine/dist/little-state-machine.js
 var little_state_machine = __webpack_require__(1240);
 ;// CONCATENATED MODULE: ./hooks/updateAction.js
-function updateAction_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function updateAction_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { updateAction_ownKeys(Object(source), true).forEach(function (key) { updateAction_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { updateAction_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function updateAction_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function updateAction(state, payload) {
   // console.log('state:', state)
   // console.log('payload:', payload)
-  return updateAction_objectSpread(updateAction_objectSpread({}, state), payload);
+  return _objectSpread(_objectSpread({}, state), payload);
 }
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/box.js
 function box_extends() { box_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return box_extends.apply(this, arguments); }
@@ -33653,7 +33367,7 @@ function box_objectWithoutPropertiesLoose(source, excluded) { if (source == null
  *
  * @see Docs https://chakra-ui.com/docs/layout/box
  */
-var Box = chakra("div");
+var Box = system_chakra("div");
 
 if (assertion/* __DEV__ */.Ts) {
   Box.displayName = "Box";
@@ -33707,6 +33421,32 @@ if (assertion/* __DEV__ */.Ts) {
   Circle.displayName = "Circle";
 }
 //# sourceMappingURL=box.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/heading.js
+function heading_extends() { heading_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return heading_extends.apply(this, arguments); }
+
+function heading_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var Heading = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useStyleConfig("Heading", props);
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      rest = heading_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
+
+  return /*#__PURE__*/react.createElement(system_chakra.h2, heading_extends({
+    ref: ref,
+    className: (0,dom.cx)("chakra-heading", props.className)
+  }, rest, {
+    __css: styles
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Heading.displayName = "Heading";
+}
+//# sourceMappingURL=heading.js.map
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/refs.js
 
 
@@ -33775,7 +33515,7 @@ var visuallyHiddenStyle = {
  * elements on screen
  */
 
-var VisuallyHidden = chakra("span", {
+var VisuallyHidden = system_chakra("span", {
   baseStyle: visuallyHiddenStyle
 });
 
@@ -33789,7 +33529,7 @@ if (assertion/* __DEV__ */.Ts) {
  */
 
 
-var VisuallyHiddenInput = chakra("input", {
+var VisuallyHiddenInput = system_chakra("input", {
   baseStyle: visuallyHiddenStyle
 });
 
@@ -33849,7 +33589,7 @@ var Spinner = /*#__PURE__*/forwardRef((props, ref) => {
     animation: spin + " " + speed + " linear infinite"
   }, styles);
 
-  return /*#__PURE__*/react.createElement(chakra.div, spinner_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, spinner_extends({
     ref: ref,
     __css: spinnerStyles,
     className: _className
@@ -33922,7 +33662,7 @@ var ButtonGroup = /*#__PURE__*/forwardRef((props, ref) => {
 
   return /*#__PURE__*/react.createElement(ButtonGroupProvider, {
     value: context
-  }, /*#__PURE__*/react.createElement(chakra.div, button_group_extends({
+  }, /*#__PURE__*/react.createElement(system_chakra.div, button_group_extends({
     ref: ref,
     role: "group",
     __css: groupStyles,
@@ -34003,7 +33743,7 @@ var Button = /*#__PURE__*/forwardRef((props, ref) => {
     setIsButton(node.tagName === "BUTTON");
   }, []);
   var defaultType = isButton ? "button" : undefined;
-  return /*#__PURE__*/react.createElement(chakra.button, button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.button, button_extends({
     disabled: isDisabled || isLoading,
     ref: mergeRefs(ref, refCallback),
     as: as,
@@ -34017,7 +33757,7 @@ var Button = /*#__PURE__*/forwardRef((props, ref) => {
   }, leftIcon), isLoading && spinnerPlacement === "start" && /*#__PURE__*/react.createElement(ButtonSpinner, {
     label: loadingText,
     placement: "start"
-  }, spinner), isLoading ? loadingText || /*#__PURE__*/react.createElement(chakra.span, {
+  }, spinner), isLoading ? loadingText || /*#__PURE__*/react.createElement(system_chakra.span, {
     opacity: 0
   }, children) : children, isLoading && spinnerPlacement === "end" && /*#__PURE__*/react.createElement(ButtonSpinner, {
     label: loadingText,
@@ -34045,7 +33785,7 @@ var ButtonIcon = props => {
 
   var _className = (0,dom.cx)("chakra-button__icon", className);
 
-  return /*#__PURE__*/react.createElement(chakra.span, button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.span, button_extends({
     display: "inline-flex",
     alignSelf: "center",
     flexShrink: 0
@@ -34085,7 +33825,7 @@ var ButtonSpinner = props => {
     lineHeight: "normal"
   }, __css);
 
-  return /*#__PURE__*/react.createElement(chakra.div, button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, button_extends({
     className: _className
   }, rest, {
     __css: spinnerStyles
@@ -34116,7 +33856,7 @@ var Code = /*#__PURE__*/forwardRef((props, ref) => {
   var _omitThemingProps = system_utils_omitThemingProps(props),
       rest = code_objectWithoutPropertiesLoose(_omitThemingProps, ["className"]);
 
-  return /*#__PURE__*/react.createElement(chakra.code, code_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.code, code_extends({
     ref: ref,
     className: (0,dom.cx)("chakra-code", props.className)
   }, rest, {
@@ -34271,10 +34011,10 @@ function HiChevronDown (props) {
   return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z","clipRule":"evenodd"}}]})(props);
 };
 function HiChevronLeft (props) {
-  return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z","clipRule":"evenodd"}}]})(props);
+  return (0,cjs.GenIcon)({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z","clipRule":"evenodd"}}]})(props);
 };
 function HiChevronRight (props) {
-  return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z","clipRule":"evenodd"}}]})(props);
+  return (0,cjs.GenIcon)({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z","clipRule":"evenodd"}}]})(props);
 };
 function HiChevronUp (props) {
   return GenIcon({"tag":"svg","attr":{"viewBox":"0 0 20 20","fill":"currentColor"},"child":[{"tag":"path","attr":{"fillRule":"evenodd","d":"M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z","clipRule":"evenodd"}}]})(props);
@@ -44768,14 +44508,14 @@ var Icon = /*#__PURE__*/forwardRef((props, ref) => {
 
 
   if (element && typeof element !== "string") {
-    return /*#__PURE__*/react.createElement(chakra.svg, icon_extends({
+    return /*#__PURE__*/react.createElement(system_chakra.svg, icon_extends({
       as: element
     }, shared, rest));
   }
 
   var _path = children != null ? children : fallbackIcon.path;
 
-  return /*#__PURE__*/react.createElement(chakra.svg, icon_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.svg, icon_extends({
     verticalAlign: "middle",
     viewBox: _viewBox
   }, shared, rest), _path);
@@ -44829,7 +44569,7 @@ var CloseButton = /*#__PURE__*/forwardRef((props, ref) => {
     justifyContent: "center",
     flexShrink: 0
   };
-  return /*#__PURE__*/react.createElement(chakra.button, close_button_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.button, close_button_extends({
     type: "button",
     "aria-label": "Close",
     ref: ref,
@@ -45563,7 +45303,7 @@ var modal_transition_transitions = {
   }),
   none: {}
 };
-var Motion = chakra(motion.section);
+var Motion = system_chakra(motion.section);
 var ModalTransition = /*#__PURE__*/react.forwardRef((props, ref) => {
   var {
     preset
@@ -45865,7 +45605,7 @@ if (assertion/* __DEV__ */.Ts) {
   Modal.displayName = "Modal";
 }
 
-var modal_Motion = chakra(motion.div);
+var modal_Motion = system_chakra(motion.div);
 /**
  * ModalContent is used to group modal's content. It has all the
  * necessary `aria-*` properties to indicate that it is a modal
@@ -45913,7 +45653,7 @@ var ModalContent = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     motionPreset
   } = useModalContext();
-  return /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(chakra.div, modal_extends({}, containerProps, {
+  return /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(system_chakra.div, modal_extends({}, containerProps, {
     className: "chakra-modal__content-container",
     __css: dialogContainerStyles
   }), /*#__PURE__*/react.createElement(ModalTransition, modal_extends({
@@ -46037,7 +45777,7 @@ var ModalHeader = /*#__PURE__*/forwardRef((props, ref) => {
     flex: 0
   }, styles.header);
 
-  return /*#__PURE__*/react.createElement(chakra.header, modal_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.header, modal_extends({
     ref: ref,
     className: _className,
     id: headerId
@@ -46080,7 +45820,7 @@ var ModalBody = /*#__PURE__*/forwardRef((props, ref) => {
   var _className = (0,dom.cx)("chakra-modal__body", className);
 
   var styles = (0,providers/* useStyles */.yK)();
-  return /*#__PURE__*/react.createElement(chakra.div, modal_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.div, modal_extends({
     ref: ref,
     className: _className,
     id: bodyId
@@ -46113,7 +45853,7 @@ var ModalFooter = /*#__PURE__*/forwardRef((props, ref) => {
     justifyContent: "flex-end"
   }, styles.footer);
 
-  return /*#__PURE__*/react.createElement(chakra.footer, modal_extends({
+  return /*#__PURE__*/react.createElement(system_chakra.footer, modal_extends({
     ref: ref
   }, rest, {
     __css: footerStyles,
@@ -46196,7 +45936,7 @@ function Drawer(props) {
     styleConfig: drawerStyleConfig
   }, rest), children));
 }
-var StyleSlide = chakra(Slide);
+var StyleSlide = system_chakra(Slide);
 
 /**
  * ModalContent is used to group modal's content. It has all the
@@ -46241,7 +45981,7 @@ var DrawerContent = /*#__PURE__*/forwardRef((props, ref) => {
   var {
     placement
   } = useDrawerContext();
-  return /*#__PURE__*/react.createElement(chakra.div, drawer_extends({}, containerProps, {
+  return /*#__PURE__*/react.createElement(system_chakra.div, drawer_extends({}, containerProps, {
     className: "chakra-modal__content-container",
     __css: dialogContainerStyles
   }), /*#__PURE__*/react.createElement(ModalFocusScope, null, /*#__PURE__*/react.createElement(StyleSlide, drawer_extends({
@@ -46330,7 +46070,2412 @@ function Layout({
     })]
   });
 }
-;// CONCATENATED MODULE: ./pages/index.js
+;// CONCATENATED MODULE: ./utils/helpers.js
+
+
+
+const getUrlPathParams = () => {
+  const {
+    0: pathParams,
+    1: setPathParams
+  } = useState("");
+  useEffect(() => {
+    var _router$asPath, _router$pathname;
+
+    setPathParams(router === null || router === void 0 ? void 0 : (_router$asPath = router.asPath) === null || _router$asPath === void 0 ? void 0 : _router$asPath.slice(router === null || router === void 0 ? void 0 : (_router$pathname = router.pathname) === null || _router$pathname === void 0 ? void 0 : _router$pathname.length));
+  });
+  const router = useRouter();
+  return pathParams;
+};
+
+const isStringEmpty = val => {
+  if (val === undefined || val === null || val === '') {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
+;// CONCATENATED MODULE: ./node_modules/react-hook-form/dist/index.esm.js
+
+
+var isCheckBoxInput = (element) => element.type === 'checkbox';
+
+var isNullOrUndefined = (value) => value == null;
+
+const isObjectType = (value) => typeof value === 'object';
+var isObject = (value) => !isNullOrUndefined(value) &&
+    !Array.isArray(value) &&
+    isObjectType(value) &&
+    !(value instanceof Date);
+
+var getControllerValue = (event) => isObject(event) && event.target
+    ? isCheckBoxInput(event.target)
+        ? event.target.checked
+        : event.target.value
+    : event;
+
+var getNodeParentName = (name) => name.substring(0, name.search(/.\d/)) || name;
+
+var isNameInFieldArray = (names, name) => [...names].some((current) => getNodeParentName(name) === current);
+
+var compact = (value) => value.filter(Boolean);
+
+var isUndefined = (val) => val === undefined;
+
+var index_esm_get = (obj = {}, path, defaultValue) => {
+    const result = compact(path.split(/[,[\].]+?/)).reduce((result, key) => (isNullOrUndefined(result) ? result : result[key]), obj);
+    return isUndefined(result) || result === obj
+        ? isUndefined(obj[path])
+            ? defaultValue
+            : obj[path]
+        : result;
+};
+
+const EVENTS = {
+    BLUR: 'blur',
+    CHANGE: 'change',
+};
+const VALIDATION_MODE = {
+    onBlur: 'onBlur',
+    onChange: 'onChange',
+    onSubmit: 'onSubmit',
+    onTouched: 'onTouched',
+    all: 'all',
+};
+const SELECT = 'select';
+const UNDEFINED = 'undefined';
+const INPUT_VALIDATION_RULES = {
+    max: 'max',
+    min: 'min',
+    maxLength: 'maxLength',
+    minLength: 'minLength',
+    pattern: 'pattern',
+    required: 'required',
+    validate: 'validate',
+};
+
+var omit = (source, key) => {
+    const copy = Object.assign({}, source);
+    delete copy[key];
+    return copy;
+};
+
+const FormContext = react.createContext(null);
+FormContext.displayName = 'RHFContext';
+const useFormContext = () => React.useContext(FormContext);
+const FormProvider = (props) => (React.createElement(FormContext.Provider, { value: omit(props, 'children') }, props.children));
+
+var getProxyFormState = (isProxyEnabled, formState, readFormStateRef, localReadFormStateRef, isRoot = true) => isProxyEnabled
+    ? new Proxy(formState, {
+        get: (obj, prop) => {
+            if (prop in obj) {
+                if (readFormStateRef.current[prop] !== VALIDATION_MODE.all) {
+                    readFormStateRef.current[prop] = isRoot
+                        ? VALIDATION_MODE.all
+                        : true;
+                }
+                localReadFormStateRef &&
+                    (localReadFormStateRef.current[prop] = true);
+                return obj[prop];
+            }
+            return undefined;
+        },
+    })
+    : formState;
+
+var isEmptyObject = (value) => isObject(value) && !Object.keys(value).length;
+
+var shouldRenderFormState = (formState, readFormStateRef, isRoot) => isEmptyObject(formState) ||
+    Object.keys(formState).length >= Object.keys(readFormStateRef).length ||
+    Object.keys(formState).find((key) => readFormStateRef[key] ===
+        (isRoot ? VALIDATION_MODE.all : true));
+
+var isWeb = typeof window !== UNDEFINED &&
+    typeof window.HTMLElement !== UNDEFINED &&
+    typeof document !== UNDEFINED;
+
+const isProxyEnabled = isWeb ? 'Proxy' in window : typeof Proxy !== UNDEFINED;
+
+function useFormState(props) {
+    const methods = useFormContext();
+    const { formStateRef, formStateSubjectRef, readFormStateRef } = (props && props.control) || methods.control;
+    const [formState, updateFormState] = React.useState(formStateRef.current);
+    const readFormState = React.useRef({
+        isDirty: false,
+        dirtyFields: false,
+        touchedFields: false,
+        isValidating: false,
+        isValid: false,
+        errors: false,
+    });
+    React.useEffect(() => {
+        const formStateSubscription = formStateSubjectRef.current.subscribe({
+            next: (formState) => {
+                shouldRenderFormState(formState, readFormState.current) &&
+                    updateFormState(Object.assign(Object.assign({}, formStateRef.current), formState));
+            },
+        });
+        return () => formStateSubscription.unsubscribe();
+    }, []);
+    return getProxyFormState(isProxyEnabled, formState, readFormStateRef, readFormState, false);
+}
+
+function useController({ name, rules, defaultValue, control, shouldUnregister, }) {
+    const methods = useFormContext();
+    const { defaultValuesRef, register, fieldsRef, unregister, fieldArrayNamesRef, controllerSubjectRef, shouldUnmountUnregister, } = control || methods.control;
+    const { onChange, onBlur, ref } = register(name, rules);
+    const [value, setInputStateValue] = React.useState(isUndefined(index_esm_get(fieldsRef.current, name)._f.value) ||
+        isNameInFieldArray(fieldArrayNamesRef.current, name)
+        ? isUndefined(defaultValue)
+            ? index_esm_get(defaultValuesRef.current, name)
+            : defaultValue
+        : index_esm_get(fieldsRef.current, name)._f.value);
+    const formState = useFormState({
+        control: control || methods.control,
+    });
+    index_esm_get(fieldsRef.current, name)._f.value = value;
+    React.useEffect(() => {
+        const controllerSubscription = controllerSubjectRef.current.subscribe({
+            next: (data) => (!data.name || name === data.name) &&
+                setInputStateValue(index_esm_get(data.values, name)),
+        });
+        return () => {
+            controllerSubscription.unsubscribe();
+            (shouldUnmountUnregister || shouldUnregister) && unregister(name);
+        };
+    }, [name]);
+    return {
+        field: {
+            onChange: (event) => {
+                const value = getControllerValue(event);
+                setInputStateValue(value);
+                onChange({
+                    target: {
+                        value,
+                        name: name,
+                    },
+                    type: EVENTS.CHANGE,
+                });
+            },
+            onBlur: () => {
+                onBlur({
+                    target: {
+                        name: name,
+                    },
+                    type: EVENTS.BLUR,
+                });
+            },
+            name,
+            value,
+            ref: (elm) => elm && ref(elm),
+        },
+        formState,
+        fieldState: Object.defineProperties({}, {
+            invalid: {
+                get() {
+                    return !!index_esm_get(formState.errors, name);
+                },
+            },
+            isDirty: {
+                get() {
+                    return !!index_esm_get(formState.dirtyFields, name);
+                },
+            },
+            isTouched: {
+                get() {
+                    return !!index_esm_get(formState.touchedFields, name);
+                },
+            },
+            error: {
+                get() {
+                    return index_esm_get(formState.errors, name);
+                },
+            },
+        }),
+    };
+}
+
+const Controller = (props) => props.render(useController(props));
+
+var appendErrors = (name, validateAllFieldCriteria, errors, type, message) => validateAllFieldCriteria
+    ? Object.assign(Object.assign({}, errors[name]), { types: Object.assign(Object.assign({}, (errors[name] && errors[name].types ? errors[name].types : {})), { [type]: message || true }) }) : {};
+
+var isKey = (value) => /^\w*$/.test(value);
+
+var stringToPath = (input) => compact(input.replace(/["|']|\]/g, '').split(/\.|\[/));
+
+function set(object, path, value) {
+    let index = -1;
+    const tempPath = isKey(path) ? [path] : stringToPath(path);
+    const length = tempPath.length;
+    const lastIndex = length - 1;
+    while (++index < length) {
+        const key = tempPath[index];
+        let newValue = value;
+        if (index !== lastIndex) {
+            const objValue = object[key];
+            newValue =
+                isObject(objValue) || Array.isArray(objValue)
+                    ? objValue
+                    : !isNaN(+tempPath[index + 1])
+                        ? []
+                        : {};
+        }
+        object[key] = newValue;
+        object = object[key];
+    }
+    return object;
+}
+
+const focusFieldBy = (fields, callback, fieldsNames) => {
+    for (const key of fieldsNames || Object.keys(fields)) {
+        const field = index_esm_get(fields, key);
+        if (field) {
+            const _f = field._f;
+            const current = omit(field, '_f');
+            if (_f && callback(_f.name)) {
+                if (_f.ref.focus && isUndefined(_f.ref.focus())) {
+                    break;
+                }
+                else if (_f.refs) {
+                    _f.refs[0].focus();
+                    break;
+                }
+            }
+            else if (isObject(current)) {
+                focusFieldBy(current, callback);
+            }
+        }
+    }
+};
+
+const getFieldsValues = (fieldsRef, defaultValuesRef, output = {}) => {
+    for (const name in fieldsRef.current) {
+        const field = fieldsRef.current[name];
+        if (field) {
+            const _f = field._f;
+            const current = omit(field, '_f');
+            set(output, name, _f
+                ? _f.ref.disabled || (_f.refs && _f.refs.every((ref) => ref.disabled))
+                    ? undefined
+                    : _f.value
+                : Array.isArray(field)
+                    ? []
+                    : {});
+            if (current) {
+                getFieldsValues({
+                    current,
+                }, defaultValuesRef, output[name]);
+            }
+        }
+    }
+    return Object.assign(Object.assign({}, defaultValuesRef), output);
+};
+
+var generateId = () => {
+    const d = typeof performance === UNDEFINED ? Date.now() : performance.now() * 1000;
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+        const r = (Math.random() * 16 + d) % 16 | 0;
+        return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+};
+
+var mapIds = (values = [], keyName) => values.map((value) => (Object.assign({ [keyName]: (value && value[keyName]) || generateId() }, value)));
+
+var isPrimitive = (value) => isNullOrUndefined(value) || !isObjectType(value);
+
+function deepEqual(object1, object2, isErrorObject) {
+    if (isPrimitive(object1) ||
+        isPrimitive(object2) ||
+        object1 instanceof Date ||
+        object2 instanceof Date) {
+        return object1 === object2;
+    }
+    if (!react.isValidElement(object1)) {
+        const keys1 = Object.keys(object1);
+        const keys2 = Object.keys(object2);
+        if (keys1.length !== keys2.length) {
+            return false;
+        }
+        for (const key of keys1) {
+            const val1 = object1[key];
+            if (!(isErrorObject && key === 'ref')) {
+                const val2 = object2[key];
+                if ((isObject(val1) || Array.isArray(val1)) &&
+                    (isObject(val2) || Array.isArray(val2))
+                    ? !deepEqual(val1, val2, isErrorObject)
+                    : val1 !== val2) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+function deepMerge(target, source) {
+    if (isPrimitive(target) || isPrimitive(source)) {
+        return source;
+    }
+    for (const key in source) {
+        const targetValue = target[key];
+        const sourceValue = source[key];
+        try {
+            target[key] =
+                (isObject(targetValue) && isObject(sourceValue)) ||
+                    (Array.isArray(targetValue) && Array.isArray(sourceValue))
+                    ? deepMerge(targetValue, sourceValue)
+                    : sourceValue;
+        }
+        catch (_a) { }
+    }
+    return target;
+}
+
+function setDirtyFields(values, defaultValues, dirtyFields, parentNode, parentName) {
+    let index = -1;
+    while (++index < values.length) {
+        for (const key in values[index]) {
+            if (Array.isArray(values[index][key])) {
+                !dirtyFields[index] && (dirtyFields[index] = {});
+                dirtyFields[index][key] = [];
+                setDirtyFields(values[index][key], index_esm_get(defaultValues[index] || {}, key, []), dirtyFields[index][key], dirtyFields[index], key);
+            }
+            else {
+                deepEqual(index_esm_get(defaultValues[index] || {}, key), values[index][key])
+                    ? set(dirtyFields[index] || {}, key)
+                    : (dirtyFields[index] = Object.assign(Object.assign({}, dirtyFields[index]), { [key]: true }));
+            }
+        }
+        parentNode &&
+            !dirtyFields.length &&
+            delete parentNode[parentName];
+    }
+    return dirtyFields;
+}
+var setFieldArrayDirtyFields = (values, defaultValues, dirtyFields) => deepMerge(setDirtyFields(values, defaultValues, dirtyFields.slice(0, values.length)), setDirtyFields(defaultValues, values, dirtyFields.slice(0, values.length)));
+
+function append(data, value) {
+    return [...data, ...(Array.isArray(value) ? value : [value])];
+}
+
+var fillEmptyArray = (value) => Array.isArray(value) ? Array(value.length).fill(undefined) : undefined;
+
+function insert(data, index, value) {
+    return [
+        ...data.slice(0, index),
+        ...(Array.isArray(value) ? value : [value]),
+        ...data.slice(index),
+    ];
+}
+
+var moveArrayAt = (data, from, to) => {
+    if (Array.isArray(data)) {
+        if (isUndefined(data[to])) {
+            data[to] = undefined;
+        }
+        data.splice(to, 0, data.splice(from, 1)[0]);
+        return data;
+    }
+    return [];
+};
+
+function prepend(data, value) {
+    return [...(Array.isArray(value) ? value : [value]), ...data];
+}
+
+function removeAtIndexes(data, indexes) {
+    let i = 0;
+    const temp = [...data];
+    for (const index of indexes) {
+        temp.splice(index - i, 1);
+        i++;
+    }
+    return compact(temp).length ? temp : [];
+}
+var removeArrayAt = (data, index) => isUndefined(index)
+    ? []
+    : removeAtIndexes(data, (Array.isArray(index) ? index : [index]).sort((a, b) => a - b));
+
+var swapArrayAt = (data, indexA, indexB) => {
+    data[indexA] = [data[indexB], (data[indexB] = data[indexA])][0];
+};
+
+var isBoolean = (value) => typeof value === 'boolean';
+
+function baseGet(object, updatePath) {
+    const length = updatePath.slice(0, -1).length;
+    let index = 0;
+    while (index < length) {
+        object = isUndefined(object) ? index++ : object[updatePath[index++]];
+    }
+    return object;
+}
+function unset(object, path) {
+    const updatePath = isKey(path) ? [path] : stringToPath(path);
+    const childObject = updatePath.length == 1 ? object : baseGet(object, updatePath);
+    const key = updatePath[updatePath.length - 1];
+    let previousObjRef;
+    if (childObject) {
+        delete childObject[key];
+    }
+    for (let k = 0; k < updatePath.slice(0, -1).length; k++) {
+        let index = -1;
+        let objectRef;
+        const currentPaths = updatePath.slice(0, -(k + 1));
+        const currentPathsLength = currentPaths.length - 1;
+        if (k > 0) {
+            previousObjRef = object;
+        }
+        while (++index < currentPaths.length) {
+            const item = currentPaths[index];
+            objectRef = objectRef ? objectRef[item] : object[item];
+            if (currentPathsLength === index &&
+                ((isObject(objectRef) && isEmptyObject(objectRef)) ||
+                    (Array.isArray(objectRef) &&
+                        !objectRef.filter((data) => (isObject(data) && !isEmptyObject(data)) || isBoolean(data)).length))) {
+                previousObjRef ? delete previousObjRef[item] : delete object[item];
+            }
+            previousObjRef = objectRef;
+        }
+    }
+    return object;
+}
+
+const useFieldArray = ({ control, name, keyName = 'id', shouldUnregister, }) => {
+    const methods = useFormContext();
+    const focusNameRef = React.useRef('');
+    const { isWatchAllRef, watchFieldsRef, getIsDirty, watchSubjectRef, fieldArraySubjectRef, fieldArrayNamesRef, fieldsRef, defaultValuesRef, formStateRef, formStateSubjectRef, readFormStateRef, validFieldsRef, fieldsWithValidationRef, fieldArrayDefaultValuesRef, unregister, shouldUnmountUnregister, } = control || methods.control;
+    const [fields, setFields] = React.useState(mapIds(index_esm_get(fieldArrayDefaultValuesRef.current, getNodeParentName(name))
+        ? index_esm_get(fieldArrayDefaultValuesRef.current, name, [])
+        : index_esm_get(defaultValuesRef.current, name, []), keyName));
+    set(fieldArrayDefaultValuesRef.current, name, [...fields]);
+    fieldArrayNamesRef.current.add(name);
+    const omitKey = (fields) => fields.map((field) => omit((field || {}), keyName));
+    const getCurrentFieldsValues = () => {
+        const values = index_esm_get(getFieldsValues(fieldsRef, defaultValuesRef.current), name, []);
+        return mapIds(index_esm_get(fieldArrayDefaultValuesRef.current, name, []).map((item, index) => (Object.assign(Object.assign({}, item), values[index]))), keyName);
+    };
+    const getFocusDetail = (index, options) => options
+        ? !isUndefined(options.focusIndex)
+            ? `${name}.${options.focusIndex}`
+            : options.focusName
+                ? options.focusName
+                : !options.shouldFocus
+                    ? ''
+                    : `${name}.${index}`
+        : `${name}.${index}`;
+    const resetFields = (index) => (Array.isArray(index) ? index : [index]).forEach((currentIndex) => set(fieldsRef.current, `${name}${isUndefined(currentIndex) ? '' : `.${currentIndex}`}`, isUndefined(currentIndex) ? [] : undefined));
+    const setFieldsAndNotify = (fieldsValues = []) => setFields(mapIds(fieldsValues, keyName));
+    const cleanup = (ref) => !compact(index_esm_get(ref, name, [])).length && unset(ref, name);
+    const updateDirtyFieldsWithDefaultValues = (updatedFieldArrayValues) => updatedFieldArrayValues &&
+        set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(omitKey(updatedFieldArrayValues), index_esm_get(defaultValuesRef.current, name, []), index_esm_get(formStateRef.current.dirtyFields, name, [])));
+    const batchStateUpdate = (method, args, updatedFieldArrayValues = [], shouldSet = true) => {
+        if (index_esm_get(fieldsRef.current, name)) {
+            const output = method(index_esm_get(fieldsRef.current, name), args.argA, args.argB);
+            shouldSet && set(fieldsRef.current, name, output);
+        }
+        if (Array.isArray(index_esm_get(formStateRef.current.errors, name))) {
+            const output = method(index_esm_get(formStateRef.current.errors, name), args.argA, args.argB);
+            shouldSet && set(formStateRef.current.errors, name, output);
+            cleanup(formStateRef.current.errors);
+        }
+        if (readFormStateRef.current.touchedFields &&
+            index_esm_get(formStateRef.current.touchedFields, name)) {
+            const output = method(index_esm_get(formStateRef.current.touchedFields, name), args.argA, args.argB);
+            shouldSet && set(formStateRef.current.touchedFields, name, output);
+            cleanup(formStateRef.current.touchedFields);
+        }
+        if (readFormStateRef.current.dirtyFields ||
+            readFormStateRef.current.isDirty) {
+            set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(omitKey(updatedFieldArrayValues), index_esm_get(defaultValuesRef.current, name, []), index_esm_get(formStateRef.current.dirtyFields, name, [])));
+            updateDirtyFieldsWithDefaultValues(updatedFieldArrayValues);
+            cleanup(formStateRef.current.dirtyFields);
+        }
+        if (readFormStateRef.current.isValid) {
+            set(validFieldsRef.current, name, method(index_esm_get(validFieldsRef.current, name, []), args.argA));
+            cleanup(validFieldsRef.current);
+            set(fieldsWithValidationRef.current, name, method(index_esm_get(fieldsWithValidationRef.current, name, []), args.argA));
+            cleanup(fieldsWithValidationRef.current);
+        }
+        formStateSubjectRef.current.next({
+            isDirty: getIsDirty(name, omitKey(updatedFieldArrayValues)),
+            errors: formStateRef.current.errors,
+            isValid: formStateRef.current.isValid,
+        });
+    };
+    const registerFieldArray = (values, index = 0, parentName = '') => values.forEach((appendValueItem, valueIndex) => !isPrimitive(appendValueItem) &&
+        Object.entries(appendValueItem).forEach(([key, value]) => {
+            const inputName = `${parentName || name}.${parentName ? valueIndex : index + valueIndex}.${key}`;
+            Array.isArray(value)
+                ? registerFieldArray(value, valueIndex, inputName)
+                : set(fieldsRef.current, inputName, {
+                    _f: {
+                        ref: {
+                            name: inputName,
+                        },
+                        name: inputName,
+                        value,
+                    },
+                });
+        }));
+    const append$1 = (value, options) => {
+        const appendValue = Array.isArray(value) ? value : [value];
+        const updatedFieldArrayValues = append(getCurrentFieldsValues(), appendValue);
+        const currentIndex = updatedFieldArrayValues.length - appendValue.length;
+        setFieldsAndNotify(updatedFieldArrayValues);
+        batchStateUpdate(append, {
+            argA: fillEmptyArray(value),
+        }, updatedFieldArrayValues, false);
+        registerFieldArray(appendValue, currentIndex);
+        focusNameRef.current = getFocusDetail(currentIndex, options);
+    };
+    const prepend$1 = (value, options) => {
+        const prependValue = Array.isArray(value) ? value : [value];
+        const updatedFieldArrayValues = prepend(getCurrentFieldsValues(), prependValue);
+        setFieldsAndNotify(updatedFieldArrayValues);
+        batchStateUpdate(prepend, {
+            argA: fillEmptyArray(value),
+        }, updatedFieldArrayValues);
+        registerFieldArray(prependValue);
+        focusNameRef.current = getFocusDetail(0, options);
+    };
+    const remove = (index) => {
+        const updatedFieldArrayValues = removeArrayAt(getCurrentFieldsValues(), index);
+        resetFields(index);
+        setFieldsAndNotify(updatedFieldArrayValues);
+        batchStateUpdate(removeArrayAt, {
+            argA: index,
+        }, updatedFieldArrayValues);
+    };
+    const insert$1 = (index, value, options) => {
+        const insertValue = Array.isArray(value) ? value : [value];
+        const updatedFieldArrayValues = insert(getCurrentFieldsValues(), index, insertValue);
+        setFieldsAndNotify(updatedFieldArrayValues);
+        batchStateUpdate(insert, {
+            argA: index,
+            argB: fillEmptyArray(value),
+        }, updatedFieldArrayValues);
+        registerFieldArray(insertValue, index);
+        focusNameRef.current = getFocusDetail(index, options);
+    };
+    const swap = (indexA, indexB) => {
+        const fieldValues = getCurrentFieldsValues();
+        swapArrayAt(fieldValues, indexA, indexB);
+        batchStateUpdate(swapArrayAt, {
+            argA: indexA,
+            argB: indexB,
+        }, fieldValues, false);
+        setFieldsAndNotify(fieldValues);
+    };
+    const move = (from, to) => {
+        const fieldValues = getCurrentFieldsValues();
+        moveArrayAt(fieldValues, from, to);
+        setFieldsAndNotify(fieldValues);
+        batchStateUpdate(moveArrayAt, {
+            argA: from,
+            argB: to,
+        }, fieldValues, false);
+    };
+    React.useEffect(() => {
+        if (isWatchAllRef.current) {
+            formStateSubjectRef.current.next({});
+        }
+        else {
+            for (const watchField of watchFieldsRef.current) {
+                if (name.startsWith(watchField)) {
+                    formStateSubjectRef.current.next({});
+                    break;
+                }
+            }
+        }
+        watchSubjectRef.current.next({
+            name,
+            value: index_esm_get(getFieldsValues(fieldsRef, defaultValuesRef.current), name, []),
+        });
+        focusNameRef.current &&
+            focusFieldBy(fieldsRef.current, (key) => key.startsWith(focusNameRef.current));
+        focusNameRef.current = '';
+        fieldArraySubjectRef.current.next({
+            name,
+            fields: omitKey([...fields]),
+        });
+    }, [fields, name]);
+    React.useEffect(() => {
+        const fieldArraySubscription = fieldArraySubjectRef.current.subscribe({
+            next({ name: inputFieldArrayName, fields, isReset }) {
+                if (isReset) {
+                    unset(fieldsRef.current, inputFieldArrayName || name);
+                    inputFieldArrayName
+                        ? set(fieldArrayDefaultValuesRef.current, inputFieldArrayName, fields)
+                        : (fieldArrayDefaultValuesRef.current = fields);
+                    setFieldsAndNotify(index_esm_get(fieldArrayDefaultValuesRef.current, name));
+                }
+            },
+        });
+        !index_esm_get(fieldsRef.current, name) && set(fieldsRef.current, name, []);
+        return () => {
+            fieldArraySubscription.unsubscribe();
+            (shouldUnmountUnregister || shouldUnregister) && unregister(name);
+        };
+    }, []);
+    return {
+        swap: React.useCallback(swap, [name]),
+        move: React.useCallback(move, [name]),
+        prepend: React.useCallback(prepend$1, [name]),
+        append: React.useCallback(append$1, [name]),
+        remove: React.useCallback(remove, [name]),
+        insert: React.useCallback(insert$1, [name]),
+        fields: fields,
+    };
+};
+
+function getFields(fieldsNames, fieldsRefs) {
+    const currentFields = {};
+    for (const name of fieldsNames) {
+        const field = index_esm_get(fieldsRefs, name);
+        if (field) {
+            !isKey(name)
+                ? set(currentFields, name, field._f)
+                : (currentFields[name] = field._f);
+        }
+    }
+    return currentFields;
+}
+
+var isFileInput = (element) => element.type === 'file';
+
+var isMultipleSelect = (element) => element.type === `${SELECT}-multiple`;
+
+var isRadioInput = (element) => element.type === 'radio';
+
+const defaultResult = {
+    value: false,
+    isValid: false,
+};
+const validResult = { value: true, isValid: true };
+var getCheckboxValue = (options) => {
+    if (Array.isArray(options)) {
+        if (options.length > 1) {
+            const values = options
+                .filter((option) => option && option.checked && !option.disabled)
+                .map((option) => option.value);
+            return { value: values, isValid: !!values.length };
+        }
+        return options[0].checked && !options[0].disabled
+            ? // @ts-expect-error expected to work in the browser
+                options[0].attributes && !isUndefined(options[0].attributes.value)
+                    ? isUndefined(options[0].value) || options[0].value === ''
+                        ? validResult
+                        : { value: options[0].value, isValid: true }
+                    : validResult
+            : defaultResult;
+    }
+    return defaultResult;
+};
+
+var getFieldValueAs = (value, { valueAsNumber, valueAsDate, setValueAs }) => valueAsNumber
+    ? value === ''
+        ? NaN
+        : +value
+    : valueAsDate
+        ? new Date(value)
+        : setValueAs
+            ? setValueAs(value)
+            : value;
+
+var getMultipleSelectValue = (options) => [...options]
+    .filter(({ selected }) => selected)
+    .map(({ value }) => value);
+
+const defaultReturn = {
+    isValid: false,
+    value: null,
+};
+var getRadioValue = (options) => Array.isArray(options)
+    ? options.reduce((previous, option) => option && option.checked && !option.disabled
+        ? {
+            isValid: true,
+            value: option.value,
+        }
+        : previous, defaultReturn)
+    : defaultReturn;
+
+function getFieldValue(field) {
+    if (field && field._f) {
+        const ref = field._f.ref;
+        if (ref.disabled) {
+            return;
+        }
+        if (isFileInput(ref)) {
+            return ref.files;
+        }
+        if (isRadioInput(ref)) {
+            return getRadioValue(field._f.refs).value;
+        }
+        if (isMultipleSelect(ref)) {
+            return getMultipleSelectValue(ref.options);
+        }
+        if (isCheckBoxInput(ref)) {
+            return getCheckboxValue(field._f.refs).value;
+        }
+        return getFieldValueAs(isUndefined(ref.value) ? field._f.ref.value : ref.value, field._f);
+    }
+}
+
+var hasValidation = (options) => options &&
+    (options.required ||
+        options.min ||
+        options.max ||
+        options.maxLength ||
+        options.minLength ||
+        options.pattern ||
+        options.validate);
+
+var skipValidation = ({ isOnBlur, isOnChange, isOnTouch, isTouched, isReValidateOnBlur, isReValidateOnChange, isBlurEvent, isSubmitted, isOnAll, }) => {
+    if (isOnAll) {
+        return false;
+    }
+    else if (!isSubmitted && isOnTouch) {
+        return !(isTouched || isBlurEvent);
+    }
+    else if (isSubmitted ? isReValidateOnBlur : isOnBlur) {
+        return !isBlurEvent;
+    }
+    else if (isSubmitted ? isReValidateOnChange : isOnChange) {
+        return isBlurEvent;
+    }
+    return true;
+};
+
+var isFunction = (value) => typeof value === 'function';
+
+var index_esm_isString = (value) => typeof value === 'string';
+
+var isMessage = (value) => index_esm_isString(value) || react.isValidElement(value);
+
+var isRegex = (value) => value instanceof RegExp;
+
+function getValidateError(result, ref, type = 'validate') {
+    if (isMessage(result) || (isBoolean(result) && !result)) {
+        return {
+            type,
+            message: isMessage(result) ? result : '',
+            ref,
+        };
+    }
+}
+
+var getValueAndMessage = (validationData) => isObject(validationData) && !isRegex(validationData)
+    ? validationData
+    : {
+        value: validationData,
+        message: '',
+    };
+
+var validateField = async ({ _f: { ref, refs, required, maxLength, minLength, min, max, pattern, validate, name, value: inputValue, valueAsNumber, }, }, validateAllFieldCriteria) => {
+    const error = {};
+    const isRadio = isRadioInput(ref);
+    const isCheckBox = isCheckBoxInput(ref);
+    const isRadioOrCheckbox = isRadio || isCheckBox;
+    const isEmpty = ((valueAsNumber || isFileInput(ref)) && !ref.value) ||
+        inputValue === '' ||
+        (Array.isArray(inputValue) && !inputValue.length);
+    const appendErrorsCurry = appendErrors.bind(null, name, validateAllFieldCriteria, error);
+    const getMinMaxMessage = (exceedMax, maxLengthMessage, minLengthMessage, maxType = INPUT_VALIDATION_RULES.maxLength, minType = INPUT_VALIDATION_RULES.minLength) => {
+        const message = exceedMax ? maxLengthMessage : minLengthMessage;
+        error[name] = Object.assign({ type: exceedMax ? maxType : minType, message,
+            ref }, appendErrorsCurry(exceedMax ? maxType : minType, message));
+    };
+    if (required &&
+        ((!isRadio && !isCheckBox && (isEmpty || isNullOrUndefined(inputValue))) ||
+            (isBoolean(inputValue) && !inputValue) ||
+            (isCheckBox && !getCheckboxValue(refs).isValid) ||
+            (isRadio && !getRadioValue(refs).isValid))) {
+        const { value, message } = isMessage(required)
+            ? { value: !!required, message: required }
+            : getValueAndMessage(required);
+        if (value) {
+            error[name] = Object.assign({ type: INPUT_VALIDATION_RULES.required, message, ref: isRadioOrCheckbox ? (refs || [])[0] || {} : ref }, appendErrorsCurry(INPUT_VALIDATION_RULES.required, message));
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if ((!isNullOrUndefined(min) || !isNullOrUndefined(max)) &&
+        inputValue !== '') {
+        let exceedMax;
+        let exceedMin;
+        const maxOutput = getValueAndMessage(max);
+        const minOutput = getValueAndMessage(min);
+        if (!isNaN(inputValue)) {
+            const valueNumber = ref.valueAsNumber || parseFloat(inputValue);
+            if (!isNullOrUndefined(maxOutput.value)) {
+                exceedMax = valueNumber > maxOutput.value;
+            }
+            if (!isNullOrUndefined(minOutput.value)) {
+                exceedMin = valueNumber < minOutput.value;
+            }
+        }
+        else {
+            const valueDate = ref.valueAsDate || new Date(inputValue);
+            if (index_esm_isString(maxOutput.value)) {
+                exceedMax = valueDate > new Date(maxOutput.value);
+            }
+            if (index_esm_isString(minOutput.value)) {
+                exceedMin = valueDate < new Date(minOutput.value);
+            }
+        }
+        if (exceedMax || exceedMin) {
+            getMinMaxMessage(!!exceedMax, maxOutput.message, minOutput.message, INPUT_VALIDATION_RULES.max, INPUT_VALIDATION_RULES.min);
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (index_esm_isString(inputValue) && !isEmpty && (maxLength || minLength)) {
+        const maxLengthOutput = getValueAndMessage(maxLength);
+        const minLengthOutput = getValueAndMessage(minLength);
+        const exceedMax = !isNullOrUndefined(maxLengthOutput.value) &&
+            inputValue.length > maxLengthOutput.value;
+        const exceedMin = !isNullOrUndefined(minLengthOutput.value) &&
+            inputValue.length < minLengthOutput.value;
+        if (exceedMax || exceedMin) {
+            getMinMaxMessage(exceedMax, maxLengthOutput.message, minLengthOutput.message);
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (index_esm_isString(inputValue) && pattern && !isEmpty) {
+        const { value: patternValue, message } = getValueAndMessage(pattern);
+        if (isRegex(patternValue) && !inputValue.match(patternValue)) {
+            error[name] = Object.assign({ type: INPUT_VALIDATION_RULES.pattern, message,
+                ref }, appendErrorsCurry(INPUT_VALIDATION_RULES.pattern, message));
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (validate) {
+        const validateRef = isRadioOrCheckbox && refs ? refs[0] : ref;
+        if (isFunction(validate)) {
+            const result = await validate(inputValue);
+            const validateError = getValidateError(result, validateRef);
+            if (validateError) {
+                error[name] = Object.assign(Object.assign({}, validateError), appendErrorsCurry(INPUT_VALIDATION_RULES.validate, validateError.message));
+                if (!validateAllFieldCriteria) {
+                    return error;
+                }
+            }
+        }
+        else if (isObject(validate)) {
+            let validationResult = {};
+            for (const [key, validateFunction] of Object.entries(validate)) {
+                if (!isEmptyObject(validationResult) && !validateAllFieldCriteria) {
+                    break;
+                }
+                const validateResult = await validateFunction(inputValue);
+                const validateError = getValidateError(validateResult, validateRef, key);
+                if (validateError) {
+                    validationResult = Object.assign(Object.assign({}, validateError), appendErrorsCurry(key, validateError.message));
+                    if (validateAllFieldCriteria) {
+                        error[name] = validationResult;
+                    }
+                }
+            }
+            if (!isEmptyObject(validationResult)) {
+                error[name] = Object.assign({ ref: validateRef }, validationResult);
+                if (!validateAllFieldCriteria) {
+                    return error;
+                }
+            }
+        }
+    }
+    return error;
+};
+
+var getValidationModes = (mode) => ({
+    isOnSubmit: !mode || mode === VALIDATION_MODE.onSubmit,
+    isOnBlur: mode === VALIDATION_MODE.onBlur,
+    isOnChange: mode === VALIDATION_MODE.onChange,
+    isOnAll: mode === VALIDATION_MODE.all,
+    isOnTouch: mode === VALIDATION_MODE.onTouched,
+});
+
+var index_esm_isHTMLElement = (value) => value instanceof HTMLElement;
+
+var isRadioOrCheckboxFunction = (ref) => isRadioInput(ref) || isCheckBoxInput(ref);
+
+class Subscription {
+    constructor() {
+        this.tearDowns = [];
+    }
+    add(tearDown) {
+        this.tearDowns.push(tearDown);
+    }
+    unsubscribe() {
+        for (const teardown of this.tearDowns) {
+            teardown();
+        }
+        this.tearDowns = [];
+    }
+}
+class Subscriber {
+    constructor(observer, subscription) {
+        this.observer = observer;
+        this.closed = false;
+        subscription.add(() => (this.closed = true));
+    }
+    next(value) {
+        if (!this.closed) {
+            this.observer.next(value);
+        }
+    }
+}
+class Subject {
+    constructor() {
+        this.observers = [];
+    }
+    next(value) {
+        for (const observer of this.observers) {
+            observer.next(value);
+        }
+    }
+    subscribe(observer) {
+        const subscription = new Subscription();
+        const subscriber = new Subscriber(observer, subscription);
+        this.observers.push(subscriber);
+        return subscription;
+    }
+    unsubscribe() {
+        this.observers = [];
+    }
+}
+
+const isWindowUndefined = typeof window === UNDEFINED;
+function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_MODE.onChange, resolver, context, defaultValues = {}, shouldFocusError = true, shouldUnregister, criteriaMode, } = {}) {
+    const fieldsRef = react.useRef({});
+    const fieldsNamesRef = react.useRef(new Set());
+    const formStateSubjectRef = react.useRef(new Subject());
+    const unregisterFieldsNamesRef = react.useRef(new Set());
+    const watchSubjectRef = react.useRef(new Subject());
+    const controllerSubjectRef = react.useRef(new Subject());
+    const fieldArraySubjectRef = react.useRef(new Subject());
+    const fieldArrayDefaultValuesRef = react.useRef({});
+    const watchFieldsRef = react.useRef(new Set());
+    const isMountedRef = react.useRef(false);
+    const fieldsWithValidationRef = react.useRef({});
+    const validFieldsRef = react.useRef({});
+    const defaultValuesRef = react.useRef(defaultValues);
+    const isWatchAllRef = react.useRef(false);
+    const contextRef = react.useRef(context);
+    const resolverRef = react.useRef(resolver);
+    const fieldArrayNamesRef = react.useRef(new Set());
+    const validationMode = getValidationModes(mode);
+    const isValidateAllFieldCriteria = criteriaMode === VALIDATION_MODE.all;
+    const [formState, setFormState] = react.useState({
+        isDirty: false,
+        isValidating: false,
+        dirtyFields: {},
+        isSubmitted: false,
+        submitCount: 0,
+        touchedFields: {},
+        isSubmitting: false,
+        isSubmitSuccessful: false,
+        isValid: !validationMode.isOnSubmit,
+        errors: {},
+    });
+    const readFormStateRef = react.useRef({
+        isDirty: !isProxyEnabled,
+        dirtyFields: !isProxyEnabled,
+        touchedFields: !isProxyEnabled,
+        isValidating: !isProxyEnabled,
+        isValid: !isProxyEnabled,
+        errors: !isProxyEnabled,
+    });
+    const formStateRef = react.useRef(formState);
+    contextRef.current = context;
+    resolverRef.current = resolver;
+    const getIsValid = () => (formStateRef.current.isValid =
+        deepEqual(validFieldsRef.current, fieldsWithValidationRef.current) &&
+            isEmptyObject(formStateRef.current.errors));
+    const shouldRenderBaseOnError = react.useCallback((name, error, shouldRender = false, state = {}, isValid, isWatched) => {
+        const previousError = index_esm_get(formStateRef.current.errors, name);
+        let shouldReRender = shouldRender ||
+            !deepEqual(previousError, error, true) ||
+            (readFormStateRef.current.isValid &&
+                isUndefined(error) &&
+                index_esm_get(fieldsWithValidationRef.current, name) &&
+                !index_esm_get(validFieldsRef.current, name));
+        if (error) {
+            unset(validFieldsRef.current, name);
+            shouldReRender =
+                shouldReRender ||
+                    !previousError ||
+                    !deepEqual(previousError, error, true);
+            set(formStateRef.current.errors, name, error);
+        }
+        else {
+            if (index_esm_get(fieldsWithValidationRef.current, name) || resolverRef.current) {
+                set(validFieldsRef.current, name, true);
+                shouldReRender = shouldReRender || previousError;
+            }
+            unset(formStateRef.current.errors, name);
+        }
+        if ((shouldReRender && !isNullOrUndefined(shouldRender)) ||
+            !isEmptyObject(state) ||
+            isWatched) {
+            const updatedFormState = Object.assign(Object.assign({}, state), { isValid: resolverRef.current ? !!isValid : getIsValid(), errors: formStateRef.current.errors });
+            formStateRef.current = Object.assign(Object.assign({}, formStateRef.current), updatedFormState);
+            formStateSubjectRef.current.next(isWatched ? {} : updatedFormState);
+        }
+        formStateSubjectRef.current.next({
+            isValidating: false,
+        });
+    }, []);
+    const setFieldValue = react.useCallback((name, rawValue, options = {}, shouldRender, shouldRegister) => {
+        shouldRegister && register(name);
+        const _f = index_esm_get(fieldsRef.current, name, {})._f;
+        if (_f) {
+            const value = isWeb && index_esm_isHTMLElement(_f.ref) && isNullOrUndefined(rawValue)
+                ? ''
+                : rawValue;
+            _f.value = getFieldValueAs(rawValue, _f);
+            if (isRadioInput(_f.ref)) {
+                (_f.refs || []).forEach((radioRef) => (radioRef.checked = radioRef.value === value));
+            }
+            else if (isFileInput(_f.ref) && !index_esm_isString(value)) {
+                _f.ref.files = value;
+            }
+            else if (isMultipleSelect(_f.ref)) {
+                [..._f.ref.options].forEach((selectRef) => (selectRef.selected = value.includes(selectRef.value)));
+            }
+            else if (isCheckBoxInput(_f.ref) && _f.refs) {
+                _f.refs.length > 1
+                    ? _f.refs.forEach((checkboxRef) => (checkboxRef.checked = Array.isArray(value)
+                        ? !!value.find((data) => data === checkboxRef.value)
+                        : value === checkboxRef.value))
+                    : (_f.refs[0].checked = !!value);
+            }
+            else {
+                _f.ref.value = value;
+            }
+            if (shouldRender) {
+                const values = getFieldsValues(fieldsRef);
+                set(values, name, rawValue);
+                controllerSubjectRef.current.next({
+                    values: Object.assign(Object.assign({}, defaultValuesRef.current), values),
+                    name,
+                });
+            }
+            options.shouldDirty && updateAndGetDirtyState(name, value);
+            options.shouldValidate && trigger(name);
+        }
+    }, []);
+    const getIsDirty = react.useCallback((name, data) => {
+        const formValues = getFieldsValues(fieldsRef);
+        name && data && set(formValues, name, data);
+        return !deepEqual(formValues, defaultValuesRef.current);
+    }, []);
+    const updateAndGetDirtyState = react.useCallback((name, inputValue, shouldRender = true) => {
+        if (readFormStateRef.current.isDirty ||
+            readFormStateRef.current.dirtyFields) {
+            const isFieldDirty = !deepEqual(index_esm_get(defaultValuesRef.current, name), inputValue);
+            const isDirtyFieldExist = index_esm_get(formStateRef.current.dirtyFields, name);
+            const previousIsDirty = formStateRef.current.isDirty;
+            isFieldDirty
+                ? set(formStateRef.current.dirtyFields, name, true)
+                : unset(formStateRef.current.dirtyFields, name);
+            formStateRef.current.isDirty = getIsDirty();
+            const state = {
+                isDirty: formStateRef.current.isDirty,
+                dirtyFields: formStateRef.current.dirtyFields,
+            };
+            const isChanged = (readFormStateRef.current.isDirty &&
+                previousIsDirty !== state.isDirty) ||
+                (readFormStateRef.current.dirtyFields &&
+                    isDirtyFieldExist !== index_esm_get(formStateRef.current.dirtyFields, name));
+            isChanged && shouldRender && formStateSubjectRef.current.next(state);
+            return isChanged ? state : {};
+        }
+        return {};
+    }, []);
+    const executeValidation = react.useCallback(async (name, skipReRender) => {
+        const error = (await validateField(index_esm_get(fieldsRef.current, name), isValidateAllFieldCriteria))[name];
+        shouldRenderBaseOnError(name, error, skipReRender);
+        return isUndefined(error);
+    }, [isValidateAllFieldCriteria]);
+    const executeSchemaOrResolverValidation = react.useCallback(async (names, currentNames = []) => {
+        const { errors } = await resolverRef.current(getFieldsValues(fieldsRef, shouldUnregister ? {} : defaultValuesRef.current), contextRef.current, {
+            criteriaMode,
+            names: currentNames,
+            fields: getFields(fieldsNamesRef.current, fieldsRef.current),
+        });
+        for (const name of names) {
+            const error = index_esm_get(errors, name);
+            error
+                ? set(formStateRef.current.errors, name, error)
+                : unset(formStateRef.current.errors, name);
+        }
+        return errors;
+    }, [criteriaMode]);
+    const validateForm = async (fieldsRef) => {
+        for (const name in fieldsRef) {
+            const field = fieldsRef[name];
+            if (field) {
+                const _f = field._f;
+                const current = omit(field, '_f');
+                if (_f) {
+                    const fieldError = await validateField(field, isValidateAllFieldCriteria);
+                    if (fieldError[_f.name]) {
+                        set(formStateRef.current.errors, _f.name, fieldError[_f.name]);
+                        unset(validFieldsRef.current, _f.name);
+                    }
+                    else if (index_esm_get(fieldsWithValidationRef.current, _f.name)) {
+                        set(validFieldsRef.current, _f.name, true);
+                        unset(formStateRef.current.errors, _f.name);
+                    }
+                }
+                current && (await validateForm(current));
+            }
+        }
+    };
+    const trigger = react.useCallback(async (name) => {
+        const fields = isUndefined(name)
+            ? Object.keys(fieldsRef.current)
+            : Array.isArray(name)
+                ? name
+                : [name];
+        let isValid;
+        formStateSubjectRef.current.next({
+            isValidating: true,
+        });
+        if (resolverRef.current) {
+            isValid = isEmptyObject(await executeSchemaOrResolverValidation(fields, isUndefined(name)
+                ? undefined
+                : fields));
+        }
+        else {
+            isValid = !!(isUndefined(name)
+                ? await validateForm(fieldsRef.current)
+                : (await Promise.all(fields
+                    .filter((fieldName) => index_esm_get(fieldsRef.current, fieldName))
+                    .map(async (fieldName) => await executeValidation(fieldName, null)))).every(Boolean));
+        }
+        formStateSubjectRef.current.next({
+            errors: formStateRef.current.errors,
+            isValidating: false,
+            isValid: resolverRef.current ? isValid : getIsValid(),
+        });
+        return isValid;
+    }, [executeSchemaOrResolverValidation, executeValidation]);
+    const setInternalValues = react.useCallback((name, value, options) => Object.entries(value).forEach(([inputKey, inputValue]) => {
+        const fieldName = `${name}.${inputKey}`;
+        const field = index_esm_get(fieldsRef.current, fieldName);
+        field && !field._f
+            ? setInternalValues(fieldName, inputValue, options)
+            : setFieldValue(fieldName, inputValue, options, true, !field);
+    }), [trigger]);
+    const isFieldWatched = (name) => isWatchAllRef.current ||
+        watchFieldsRef.current.has(name) ||
+        watchFieldsRef.current.has((name.match(/\w+/) || [])[0]);
+    const updateValidAndValue = (name, options, ref, isWithinRefCallback) => {
+        const field = index_esm_get(fieldsRef.current, name);
+        const defaultValue = isUndefined(field._f.value)
+            ? index_esm_get(defaultValuesRef.current, name)
+            : field._f.value;
+        if (field && !isUndefined(defaultValue)) {
+            if (ref && ref.defaultChecked) {
+                field._f.value = getFieldValue(field);
+            }
+            else if (!isNameInFieldArray(fieldArrayNamesRef.current, name)) {
+                setFieldValue(name, defaultValue);
+            }
+            else {
+                field._f.value = defaultValue;
+            }
+        }
+        if ((!isUndefined(defaultValue) || isWithinRefCallback) &&
+            hasValidation(options) &&
+            !validationMode.isOnSubmit &&
+            field &&
+            readFormStateRef.current.isValid) {
+            validateField(field, isValidateAllFieldCriteria).then((error) => {
+                isEmptyObject(error)
+                    ? set(validFieldsRef.current, name, true)
+                    : unset(validFieldsRef.current, name);
+                formStateRef.current.isValid !== getIsValid() &&
+                    setFormState(Object.assign(Object.assign({}, formStateRef.current), { isValid: getIsValid() }));
+            });
+        }
+        return defaultValue;
+    };
+    const setValue = (name, value, options = {}) => {
+        const field = index_esm_get(fieldsRef.current, name);
+        const isFieldArray = fieldArrayNamesRef.current.has(name);
+        if (isFieldArray) {
+            fieldArraySubjectRef.current.next({
+                fields: value,
+                name,
+                isReset: true,
+            });
+            if ((readFormStateRef.current.isDirty ||
+                readFormStateRef.current.dirtyFields) &&
+                options.shouldDirty) {
+                set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(value, index_esm_get(defaultValuesRef.current, name, []), index_esm_get(formStateRef.current.dirtyFields, name, [])));
+                formStateSubjectRef.current.next({
+                    dirtyFields: formStateRef.current.dirtyFields,
+                    isDirty: getIsDirty(name, value),
+                });
+            }
+            !value.length &&
+                set(fieldsRef.current, name, []) &&
+                set(fieldArrayDefaultValuesRef.current, name, []);
+        }
+        (field && !field._f) || isFieldArray
+            ? setInternalValues(name, value, isFieldArray ? {} : options)
+            : setFieldValue(name, value, options, true, !field);
+        isFieldWatched(name) && formStateSubjectRef.current.next({});
+        watchSubjectRef.current.next({ name, value });
+    };
+    const handleChange = react.useCallback(async ({ type, target, target: { value, type: inputType } }) => {
+        let name = target.name;
+        let error;
+        let isValid;
+        const field = index_esm_get(fieldsRef.current, name);
+        if (field) {
+            let inputValue = inputType ? getFieldValue(field) : undefined;
+            inputValue = isUndefined(inputValue) ? value : inputValue;
+            const isBlurEvent = type === EVENTS.BLUR;
+            const { isOnBlur: isReValidateOnBlur, isOnChange: isReValidateOnChange, } = getValidationModes(reValidateMode);
+            const shouldSkipValidation = (!hasValidation(field._f) &&
+                !resolverRef.current &&
+                !index_esm_get(formStateRef.current.errors, name)) ||
+                skipValidation(Object.assign({ isBlurEvent, isTouched: !!index_esm_get(formStateRef.current.touchedFields, name), isSubmitted: formStateRef.current.isSubmitted, isReValidateOnBlur,
+                    isReValidateOnChange }, validationMode));
+            const isWatched = !isBlurEvent && isFieldWatched(name);
+            if (!isUndefined(inputValue)) {
+                field._f.value = inputValue;
+            }
+            const state = updateAndGetDirtyState(name, field._f.value, false);
+            if (isBlurEvent && !index_esm_get(formStateRef.current.touchedFields, name)) {
+                set(formStateRef.current.touchedFields, name, true);
+                readFormStateRef.current.touchedFields &&
+                    (state.touchedFields = formStateRef.current.touchedFields);
+            }
+            let shouldRender = !isEmptyObject(state) || isWatched;
+            if (shouldSkipValidation) {
+                !isBlurEvent &&
+                    watchSubjectRef.current.next({
+                        name,
+                        type,
+                        value: inputValue,
+                    });
+                return (shouldRender &&
+                    formStateSubjectRef.current.next(isWatched ? {} : state));
+            }
+            formStateSubjectRef.current.next({
+                isValidating: true,
+            });
+            if (resolverRef.current) {
+                const { errors } = await resolverRef.current(getFieldsValues(fieldsRef, shouldUnregister ? {} : defaultValuesRef.current), contextRef.current, {
+                    criteriaMode,
+                    fields: getFields([name], fieldsRef.current),
+                    names: [name],
+                });
+                const previousFormIsValid = formStateRef.current.isValid;
+                error = index_esm_get(errors, name);
+                if (isCheckBoxInput(target) && !error) {
+                    const parentNodeName = getNodeParentName(name);
+                    const currentError = index_esm_get(errors, parentNodeName, {});
+                    currentError.type && currentError.message && (error = currentError);
+                    if (currentError ||
+                        index_esm_get(formStateRef.current.errors, parentNodeName)) {
+                        name = parentNodeName;
+                    }
+                }
+                isValid = isEmptyObject(errors);
+                previousFormIsValid !== isValid && (shouldRender = true);
+            }
+            else {
+                error = (await validateField(field, isValidateAllFieldCriteria))[name];
+            }
+            !isBlurEvent &&
+                watchSubjectRef.current.next({
+                    name,
+                    type,
+                    value: inputValue,
+                });
+            shouldRenderBaseOnError(name, error, shouldRender, state, isValid, isWatched);
+        }
+    }, []);
+    const getValues = (fieldNames) => {
+        const values = isMountedRef.current
+            ? getFieldsValues(fieldsRef, shouldUnregister ? {} : defaultValuesRef.current)
+            : defaultValuesRef.current;
+        return isUndefined(fieldNames)
+            ? values
+            : index_esm_isString(fieldNames)
+                ? index_esm_get(values, fieldNames)
+                : fieldNames.map((name) => index_esm_get(values, name));
+    };
+    const updateIsValid = react.useCallback(async (values = {}) => {
+        const previousIsValid = formStateRef.current.isValid;
+        if (resolver) {
+            const { errors } = await resolverRef.current(Object.assign(Object.assign({}, getFieldsValues(fieldsRef, shouldUnregister ? {} : defaultValuesRef.current)), values), contextRef.current, {
+                criteriaMode,
+                fields: getFields(fieldsNamesRef.current, fieldsRef.current),
+            });
+            formStateRef.current.isValid = isEmptyObject(errors);
+        }
+        else {
+            getIsValid();
+        }
+        previousIsValid !== formStateRef.current.isValid &&
+            formStateSubjectRef.current.next({
+                isValid: formStateRef.current.isValid,
+            });
+    }, [criteriaMode]);
+    const clearErrors = (name) => {
+        name &&
+            (Array.isArray(name) ? name : [name]).forEach((inputName) => unset(formStateRef.current.errors, inputName));
+        formStateSubjectRef.current.next({
+            errors: name ? formStateRef.current.errors : {},
+        });
+    };
+    const setError = (name, error, options) => {
+        const ref = ((index_esm_get(fieldsRef.current, name) || { _f: {} })._f || {}).ref;
+        set(formStateRef.current.errors, name, Object.assign(Object.assign({}, error), { ref }));
+        formStateSubjectRef.current.next({
+            errors: formStateRef.current.errors,
+            isValid: false,
+        });
+        options && options.shouldFocus && ref && ref.focus && ref.focus();
+    };
+    const watchInternal = react.useCallback((fieldNames, defaultValue, isGlobal) => {
+        const isArrayNames = Array.isArray(fieldNames);
+        const fieldValues = isMountedRef.current
+            ? getFieldsValues(fieldsRef, defaultValuesRef.current)
+            : isUndefined(defaultValue)
+                ? defaultValuesRef.current
+                : isArrayNames
+                    ? defaultValue || {}
+                    : { [fieldNames]: defaultValue };
+        if (isUndefined(fieldNames)) {
+            isGlobal && (isWatchAllRef.current = true);
+            return fieldValues;
+        }
+        const result = [];
+        for (const fieldName of isArrayNames ? fieldNames : [fieldNames]) {
+            isGlobal && watchFieldsRef.current.add(fieldName);
+            result.push(index_esm_get(fieldValues, fieldName));
+        }
+        return isArrayNames ? result : result[0];
+    }, []);
+    const watch = (fieldName, defaultValue) => isFunction(fieldName)
+        ? watchSubjectRef.current.subscribe({
+            next: (info) => fieldName(watchInternal(undefined, defaultValue), info),
+        })
+        : watchInternal(fieldName, defaultValue, true);
+    const unregister = (name, options = {}) => {
+        for (const inputName of name
+            ? Array.isArray(name)
+                ? name
+                : [name]
+            : Object.keys(fieldsNamesRef.current)) {
+            fieldsNamesRef.current.delete(inputName);
+            fieldArrayNamesRef.current.delete(inputName);
+            if (index_esm_get(fieldsRef.current, inputName)) {
+                if (!options.keepIsValid) {
+                    unset(fieldsWithValidationRef.current, inputName);
+                    unset(validFieldsRef.current, inputName);
+                }
+                !options.keepError && unset(formStateRef.current.errors, inputName);
+                !options.keepValue && unset(fieldsRef.current, inputName);
+                !options.keepDirty &&
+                    unset(formStateRef.current.dirtyFields, inputName);
+                !options.keepTouched &&
+                    unset(formStateRef.current.touchedFields, inputName);
+                !shouldUnregister &&
+                    !options.keepDefaultValue &&
+                    unset(defaultValuesRef.current, inputName);
+                watchSubjectRef.current.next({
+                    name: inputName,
+                });
+            }
+        }
+        formStateSubjectRef.current.next(Object.assign(Object.assign(Object.assign({}, formStateRef.current), (!options.keepDirty ? {} : { isDirty: getIsDirty() })), (resolverRef.current ? {} : { isValid: getIsValid() })));
+        !options.keepIsValid && updateIsValid();
+    };
+    const registerFieldRef = (name, ref, options) => {
+        register(name, options);
+        let field = index_esm_get(fieldsRef.current, name);
+        const isRadioOrCheckbox = isRadioOrCheckboxFunction(ref);
+        if (ref === field._f.ref ||
+            (isWeb && index_esm_isHTMLElement(field._f.ref) && !index_esm_isHTMLElement(ref)) ||
+            (isRadioOrCheckbox &&
+                Array.isArray(field._f.refs) &&
+                compact(field._f.refs).find((option) => option === ref))) {
+            return;
+        }
+        field = {
+            _f: isRadioOrCheckbox
+                ? Object.assign(Object.assign({}, field._f), { refs: [
+                        ...compact(field._f.refs || []).filter((ref) => index_esm_isHTMLElement(ref) && document.contains(ref)),
+                        ref,
+                    ], ref: { type: ref.type, name } }) : Object.assign(Object.assign({}, field._f), { ref }),
+        };
+        set(fieldsRef.current, name, field);
+        const defaultValue = updateValidAndValue(name, options, ref, true);
+        if (isRadioOrCheckbox && Array.isArray(defaultValue)
+            ? !deepEqual(index_esm_get(fieldsRef.current, name)._f.value, defaultValue)
+            : isUndefined(index_esm_get(fieldsRef.current, name)._f.value)) {
+            index_esm_get(fieldsRef.current, name)._f.value = getFieldValue(index_esm_get(fieldsRef.current, name));
+        }
+    };
+    const register = react.useCallback((name, options) => {
+        const isInitialRegister = !index_esm_get(fieldsRef.current, name);
+        set(fieldsRef.current, name, {
+            _f: Object.assign(Object.assign(Object.assign({}, (isInitialRegister
+                ? { ref: { name } }
+                : Object.assign({ ref: (index_esm_get(fieldsRef.current, name)._f || {}).ref }, index_esm_get(fieldsRef.current, name)._f))), { name }), options),
+        });
+        hasValidation(options) &&
+            set(fieldsWithValidationRef.current, name, true);
+        fieldsNamesRef.current.add(name);
+        isInitialRegister && updateValidAndValue(name, options);
+        return isWindowUndefined
+            ? { name: name }
+            : {
+                name,
+                onChange: handleChange,
+                onBlur: handleChange,
+                ref: (ref) => {
+                    ref
+                        ? registerFieldRef(name, ref, options)
+                        : (shouldUnregister || (options && options.shouldUnregister)) &&
+                            isWeb &&
+                            unregisterFieldsNamesRef.current.add(name);
+                },
+            };
+    }, [defaultValuesRef.current]);
+    const handleSubmit = react.useCallback((onValid, onInvalid) => async (e) => {
+        if (e) {
+            e.preventDefault && e.preventDefault();
+            e.persist && e.persist();
+        }
+        let fieldValues = Object.assign(Object.assign({}, (shouldUnregister ? {} : defaultValuesRef.current)), getFieldsValues(fieldsRef));
+        formStateSubjectRef.current.next({
+            isSubmitting: true,
+        });
+        try {
+            if (resolverRef.current) {
+                const { errors, values } = await resolverRef.current(fieldValues, contextRef.current, {
+                    criteriaMode,
+                    fields: getFields(fieldsNamesRef.current, fieldsRef.current),
+                });
+                formStateRef.current.errors = errors;
+                fieldValues = values;
+            }
+            else {
+                await validateForm(fieldsRef.current);
+            }
+            if (isEmptyObject(formStateRef.current.errors) &&
+                Object.keys(formStateRef.current.errors).every((name) => index_esm_get(fieldValues, name))) {
+                formStateSubjectRef.current.next({
+                    errors: {},
+                    isSubmitting: true,
+                });
+                await onValid(fieldValues, e);
+            }
+            else {
+                onInvalid && (await onInvalid(formStateRef.current.errors, e));
+                shouldFocusError &&
+                    focusFieldBy(fieldsRef.current, (key) => index_esm_get(formStateRef.current.errors, key), fieldsNamesRef.current);
+            }
+        }
+        finally {
+            formStateRef.current.isSubmitted = true;
+            formStateSubjectRef.current.next({
+                isSubmitted: true,
+                isSubmitting: false,
+                isSubmitSuccessful: isEmptyObject(formStateRef.current.errors),
+                submitCount: formStateRef.current.submitCount + 1,
+                errors: formStateRef.current.errors,
+            });
+        }
+    }, [shouldFocusError, isValidateAllFieldCriteria, criteriaMode]);
+    const resetFromState = react.useCallback(({ keepErrors, keepDirty, keepIsSubmitted, keepTouched, keepDefaultValues, keepIsValid, keepSubmitCount, }, values) => {
+        if (!keepIsValid) {
+            validFieldsRef.current = {};
+            fieldsWithValidationRef.current = {};
+        }
+        watchFieldsRef.current = new Set();
+        isWatchAllRef.current = false;
+        formStateSubjectRef.current.next({
+            submitCount: keepSubmitCount ? formStateRef.current.submitCount : 0,
+            isDirty: keepDirty
+                ? formStateRef.current.isDirty
+                : keepDefaultValues
+                    ? deepEqual(values, defaultValuesRef.current)
+                    : false,
+            isSubmitted: keepIsSubmitted ? formStateRef.current.isSubmitted : false,
+            isValid: keepIsValid
+                ? formStateRef.current.isValid
+                : !!updateIsValid(values),
+            dirtyFields: keepDirty ? formStateRef.current.dirtyFields : {},
+            touchedFields: keepTouched ? formStateRef.current.touchedFields : {},
+            errors: keepErrors ? formStateRef.current.errors : {},
+            isSubmitting: false,
+            isSubmitSuccessful: false,
+        });
+    }, []);
+    const reset = (values, keepStateOptions = {}) => {
+        const updatedValues = values || defaultValuesRef.current;
+        if (isWeb && !keepStateOptions.keepValues) {
+            for (const name of fieldsNamesRef.current) {
+                const field = index_esm_get(fieldsRef.current, name);
+                if (field && field._f) {
+                    const inputRef = Array.isArray(field._f.refs)
+                        ? field._f.refs[0]
+                        : field._f.ref;
+                    if (index_esm_isHTMLElement(inputRef)) {
+                        try {
+                            inputRef.closest('form').reset();
+                            break;
+                        }
+                        catch (_a) { }
+                    }
+                }
+            }
+        }
+        !keepStateOptions.keepDefaultValues &&
+            (defaultValuesRef.current = Object.assign({}, updatedValues));
+        if (!keepStateOptions.keepValues) {
+            fieldsRef.current = {};
+            controllerSubjectRef.current.next({
+                values: Object.assign({}, updatedValues),
+            });
+            watchSubjectRef.current.next({
+                value: Object.assign({}, updatedValues),
+            });
+            fieldArraySubjectRef.current.next({
+                fields: Object.assign({}, updatedValues),
+                isReset: true,
+            });
+        }
+        resetFromState(keepStateOptions, values);
+        isMountedRef.current = false;
+    };
+    const setFocus = (name) => index_esm_get(fieldsRef.current, name)._f.ref.focus();
+    react.useEffect(() => {
+        const formStateSubscription = formStateSubjectRef.current.subscribe({
+            next(formState = {}) {
+                if (shouldRenderFormState(formState, readFormStateRef.current, true)) {
+                    formStateRef.current = Object.assign(Object.assign({}, formStateRef.current), formState);
+                    setFormState(formStateRef.current);
+                }
+            },
+        });
+        const useFieldArraySubscription = fieldArraySubjectRef.current.subscribe({
+            next(state) {
+                if (state.fields && state.name && readFormStateRef.current.isValid) {
+                    const values = getFieldsValues(fieldsRef);
+                    set(values, state.name, state.fields);
+                    updateIsValid(values);
+                }
+            },
+        });
+        resolverRef.current && readFormStateRef.current.isValid && updateIsValid();
+        return () => {
+            watchSubjectRef.current.unsubscribe();
+            formStateSubscription.unsubscribe();
+            useFieldArraySubscription.unsubscribe();
+        };
+    }, []);
+    react.useEffect(() => {
+        const isLiveInDom = (ref) => !index_esm_isHTMLElement(ref) || !document.contains(ref);
+        isMountedRef.current = true;
+        unregisterFieldsNamesRef.current.forEach((name) => {
+            const field = index_esm_get(fieldsRef.current, name);
+            field &&
+                (field._f.refs
+                    ? field._f.refs.every(isLiveInDom)
+                    : isLiveInDom(field._f.ref)) &&
+                unregister(name);
+        });
+        unregisterFieldsNamesRef.current = new Set();
+    });
+    return {
+        control: react.useMemo(() => ({
+            register,
+            isWatchAllRef,
+            watchFieldsRef,
+            getIsDirty,
+            formStateSubjectRef,
+            fieldArraySubjectRef,
+            controllerSubjectRef,
+            watchSubjectRef,
+            watchInternal,
+            fieldsRef,
+            validFieldsRef,
+            fieldsWithValidationRef,
+            fieldArrayNamesRef,
+            readFormStateRef,
+            formStateRef,
+            defaultValuesRef,
+            fieldArrayDefaultValuesRef,
+            unregister,
+            shouldUnmountUnregister: shouldUnregister,
+        }), []),
+        formState: getProxyFormState(isProxyEnabled, formState, readFormStateRef),
+        trigger,
+        register,
+        handleSubmit,
+        watch: react.useCallback(watch, []),
+        setValue: react.useCallback(setValue, [setInternalValues]),
+        getValues: react.useCallback(getValues, []),
+        reset: react.useCallback(reset, []),
+        clearErrors: react.useCallback(clearErrors, []),
+        unregister: react.useCallback(unregister, []),
+        setError: react.useCallback(setError, []),
+        setFocus: react.useCallback(setFocus, []),
+    };
+}
+
+function useWatch(props) {
+    const { control, name, defaultValue } = props || {};
+    const methods = useFormContext();
+    const nameRef = React.useRef(name);
+    nameRef.current = name;
+    const { watchInternal, watchSubjectRef } = control || methods.control;
+    const [value, updateValue] = React.useState(isUndefined(defaultValue)
+        ? watchInternal(name)
+        : defaultValue);
+    React.useEffect(() => {
+        watchInternal(name);
+        const watchSubscription = watchSubjectRef.current.subscribe({
+            next: ({ name: inputName, value }) => (!nameRef.current ||
+                !inputName ||
+                (Array.isArray(nameRef.current)
+                    ? nameRef.current
+                    : [nameRef.current]).some((fieldName) => inputName &&
+                    fieldName &&
+                    (fieldName.startsWith(inputName) ||
+                        inputName.startsWith(fieldName)))) &&
+                updateValue(index_esm_isString(inputName) &&
+                    nameRef.current === inputName &&
+                    !isUndefined(value)
+                    ? value
+                    : watchInternal(nameRef.current, defaultValue)),
+        });
+        return () => watchSubscription.unsubscribe();
+    }, []);
+    return value;
+}
+
+
+//# sourceMappingURL=index.esm.js.map
+
+// EXTERNAL MODULE: ./node_modules/next-sanity/dist/next-sanity.cjs.production.min.js
+var next_sanity_cjs_production_min = __webpack_require__(3253);
+;// CONCATENATED MODULE: ./utils/sanity.js
+
+
+function sanity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function sanity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_ownKeys(Object(source), true).forEach(function (key) { sanity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function sanity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+const config = {
+  /**
+   * Find your project ID and dataset in `sanity.json` in your studio project.
+   * These are considered “public”, but you can use environment variables
+   * if you want differ between local dev and production.
+   *
+   * https://nextjs.org/docs/basic-features/environment-variables
+   **/
+  dataset: "production",
+  projectId: "85juwyag",
+  useCdn: true,
+  token: process.env.SANITY_API_TOKEN // useCdn: process.env.NODE_ENV === 'production'
+
+  /**
+   * Set useCdn to `false` if your application require the freshest possible
+   * data always (potentially slightly slower and a bit more expensive).
+   * Authenticated request (like preview) will always bypass the CDN
+   **/
+
+};
+
+if (!config.projectId) {
+  throw Error('The Project ID is not set. Check your environment variables.');
+}
+
+if (!config.dataset) {
+  throw Error('The dataset name is not set. Check your environment variables.');
+}
+/**
+ * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
+ * Read more: https://www.sanity.io/docs/image-url
+ **/
+
+
+const urlFor = source => createImageUrlBuilder(config).image(source); // Set up the live preview subsscription hook
+
+const usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(config); // Set up Portable Text serialization
+
+const PortableText = (0,next_sanity_cjs_production_min/* createPortableTextComponent */.Kz)(sanity_objectSpread(sanity_objectSpread({}, config), {}, {
+  // Serializers passed to @sanity/block-content-to-react
+  // (https://github.com/sanity-io/block-content-to-react)
+  serializers: {
+    types: {
+      ul: props => /*#__PURE__*/jsx_runtime.jsx("ul", {
+        className: "test",
+        children: "test"
+      })
+    }
+  }
+})); // Set up the client for fetching data in the getProps page functions
+
+const sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(config); // Set up a preview client with serverless authentication for drafts
+
+const previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_objectSpread(sanity_objectSpread({}, config), {}, {
+  useCdn: true // useCdn: false
+
+})); // Helper function for easily switching between normal client and preview client
+
+const getClient = usePreview => usePreview ? previewClient : sanityClient;
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__(1664);
+;// CONCATENATED MODULE: ./components/serializers/serializers.js
+
+
+
+
+const serializers = {
+  marks: {
+    link: ({
+      mark,
+      children
+    }) => {
+      const {
+        blank,
+        href
+      } = mark;
+
+      if (!href) {
+        return null;
+      }
+
+      return blank === true ? /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+        children: href.includes('https') || href.includes('http') ? /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: children
+        }) : /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          children: children
+        })
+      }) : /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+        children: href.includes('https') || href.includes('http') || href.includes('tel') || href.includes('mailto') ? /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          children: children
+        }) : /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
+          href: href,
+          children: /*#__PURE__*/jsx_runtime.jsx("a", {
+            children: children
+          })
+        })
+      });
+    }
+  },
+  list: props => {
+    // console.log({ props })
+    switch (props.type) {
+      case 'number':
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ol", {
+            children: props.children
+          });
+        }
+
+      case 'bullet':
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ul", {
+            children: props.children
+          });
+        }
+
+      default:
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ul", {
+            children: props.children
+          });
+        }
+    }
+  }
+};
+/* harmony default export */ var serializers_serializers = (serializers);
+;// CONCATENATED MODULE: ./components/serializers/text.js
+
+
+
+function text_Text({
+  blocks
+}) {
+  var _blocks$;
+
+  // console.log({ blocks })
+  // TODO: Test this conditional logic out more to make sure it's SOLID
+  return blocks !== null && blocks !== void 0 && blocks.length && (_blocks$ = blocks[0]) !== null && _blocks$ !== void 0 && _blocks$.children.length ? /*#__PURE__*/jsx_runtime.jsx(PortableText, {
+    blocks: blocks,
+    serializers: serializers_serializers
+  }) : null;
+}
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/hooks/dist/esm/use-boolean.js
+
+
+/**
+ * React hook to manage boolean (on - off) states
+ *
+ * @param initialState the initial boolean state value
+ */
+function useBoolean(initialState) {
+  if (initialState === void 0) {
+    initialState = false;
+  }
+
+  var [value, setValue] = (0,react.useState)(initialState);
+  var on = (0,react.useCallback)(() => {
+    setValue(true);
+  }, []);
+  var off = (0,react.useCallback)(() => {
+    setValue(false);
+  }, []);
+  var toggle = (0,react.useCallback)(() => {
+    setValue(prev => !prev);
+  }, []);
+  return [value, {
+    on,
+    off,
+    toggle
+  }];
+}
+//# sourceMappingURL=use-boolean.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/form-control.js
+function form_control_extends() { form_control_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return form_control_extends.apply(this, arguments); }
+
+function form_control_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+var [FormControlProvider, useFormControlContext] = (0,context/* createContext */.k)({
+  strict: false,
+  name: "FormControlContext"
+});
+
+
+function useFormControlProvider(props) {
+  var {
+    id: idProp,
+    isRequired,
+    isInvalid,
+    isDisabled,
+    isReadOnly
+  } = props,
+      htmlProps = form_control_objectWithoutPropertiesLoose(props, ["id", "isRequired", "isInvalid", "isDisabled", "isReadOnly"]); // Generate all the required ids
+
+
+  var uuid = useId();
+  var id = idProp || "field-" + uuid;
+  var labelId = id + "-label";
+  var feedbackId = id + "-feedback";
+  var helpTextId = id + "-helptext";
+  /**
+   * Track whether the `FormErrorMessage` has been rendered.
+   * We use this to append its id the the `aria-describedby` of the `input`.
+   */
+
+  var [hasFeedbackText, setHasFeedbackText] = react.useState(false);
+  /**
+   * Track whether the `FormHelperText` has been rendered.
+   * We use this to append its id the the `aria-describedby` of the `input`.
+   */
+
+  var [hasHelpText, setHasHelpText] = react.useState(false); // Track whether the form element (e.g, `input`) has focus.
+
+  var [isFocused, setFocus] = useBoolean();
+  var getHelpTextProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({
+      id: helpTextId
+    }, props, {
+      /**
+       * Notify the field context when the help text is rendered on screen,
+       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
+       */
+      ref: mergeRefs(forwardedRef, node => {
+        if (!node) return;
+        setHasHelpText(true);
+      })
+    });
+  }, [helpTextId]);
+  var getLabelProps = react.useCallback(function (props, forwardedRef) {
+    var _props$id, _props$htmlFor;
+
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({}, props, {
+      ref: forwardedRef,
+      "data-focus": (0,dom/* dataAttr */.PB)(isFocused),
+      "data-disabled": (0,dom/* dataAttr */.PB)(isDisabled),
+      "data-invalid": (0,dom/* dataAttr */.PB)(isInvalid),
+      "data-readonly": (0,dom/* dataAttr */.PB)(isReadOnly),
+      id: (_props$id = props.id) != null ? _props$id : labelId,
+      htmlFor: (_props$htmlFor = props.htmlFor) != null ? _props$htmlFor : id
+    });
+  }, [id, isDisabled, isFocused, isInvalid, isReadOnly, labelId]);
+  var getErrorMessageProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({
+      id: feedbackId
+    }, props, {
+      /**
+       * Notify the field context when the error message is rendered on screen,
+       * so we can apply the correct `aria-describedby` to the field (e.g. input, textarea).
+       */
+      ref: mergeRefs(forwardedRef, node => {
+        if (!node) return;
+        setHasFeedbackText(true);
+      }),
+      "aria-live": "polite"
+    });
+  }, [feedbackId]);
+  var getRootProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({}, props, htmlProps, {
+      ref: forwardedRef,
+      role: "group"
+    });
+  }, [htmlProps]);
+  var getRequiredIndicatorProps = react.useCallback(function (props, forwardedRef) {
+    if (props === void 0) {
+      props = {};
+    }
+
+    if (forwardedRef === void 0) {
+      forwardedRef = null;
+    }
+
+    return form_control_extends({}, props, {
+      ref: forwardedRef,
+      role: "presentation",
+      "aria-hidden": true,
+      children: props.children || "*"
+    });
+  }, []);
+  var onFocus = react.useCallback(() => {
+    (0,esm_function/* scheduleMicrotask */.A4)(setFocus.on);
+  }, [setFocus]);
+  return {
+    isRequired: !!isRequired,
+    isInvalid: !!isInvalid,
+    isReadOnly: !!isReadOnly,
+    isDisabled: !!isDisabled,
+    isFocused: !!isFocused,
+    onFocus,
+    onBlur: setFocus.off,
+    hasFeedbackText,
+    setHasFeedbackText,
+    hasHelpText,
+    setHasHelpText,
+    id,
+    labelId,
+    feedbackId,
+    helpTextId,
+    htmlProps,
+    getHelpTextProps,
+    getErrorMessageProps,
+    getRootProps,
+    getLabelProps,
+    getRequiredIndicatorProps
+  };
+}
+
+/**
+ * FormControl provides context such as
+ * `isInvalid`, `isDisabled`, and `isRequired` to form elements.
+ *
+ * This is commonly used in form elements such as `input`,
+ * `select`, `textarea`, etc.
+ */
+var FormControl = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useMultiStyleConfig("Form", props);
+  var ownProps = system_utils_omitThemingProps(props);
+
+  var _useFormControlProvid = useFormControlProvider(ownProps),
+      {
+    getRootProps
+  } = _useFormControlProvid,
+      context = form_control_objectWithoutPropertiesLoose(_useFormControlProvid, ["getRootProps", "htmlProps"]);
+
+  var className = (0,dom.cx)("chakra-form-control", props.className);
+  var contextValue = react.useMemo(() => context, [context]);
+  return /*#__PURE__*/react.createElement(FormControlProvider, {
+    value: contextValue
+  }, /*#__PURE__*/react.createElement(providers/* StylesProvider */.Fo, {
+    value: styles
+  }, /*#__PURE__*/react.createElement(system_chakra.div, form_control_extends({}, getRootProps({}, ref), {
+    className: className,
+    __css: {
+      width: "100%",
+      position: "relative"
+    }
+  }))));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  FormControl.displayName = "FormControl";
+}
+
+/**
+ * FormHelperText
+ *
+ * Assistive component that conveys additional guidance
+ * about the field, such as how it will be used and what
+ * types in values should be provided.
+ */
+var FormHelperText = /*#__PURE__*/forwardRef((props, ref) => {
+  var field = useFormControlContext();
+  var styles = (0,providers/* useStyles */.yK)();
+  var className = (0,dom.cx)("chakra-form__helper-text", props.className);
+  return /*#__PURE__*/react.createElement(system_chakra.div, form_control_extends({}, field == null ? void 0 : field.getHelpTextProps(props, ref), {
+    __css: styles.helperText,
+    className: className
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  FormHelperText.displayName = "FormHelperText";
+}
+//# sourceMappingURL=form-control.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/form-label.js
+function form_label_extends() { form_label_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return form_label_extends.apply(this, arguments); }
+
+function form_label_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+/**
+ * Used to enhance the usability of form controls.
+ *
+ * It is used to inform users as to what information
+ * is requested for a form field.
+ *
+ * ♿️ Accessibility: Every form field should have a form label.
+ */
+var FormLabel = /*#__PURE__*/forwardRef((passedProps, ref) => {
+  var styles = useStyleConfig("FormLabel", passedProps);
+  var props = system_utils_omitThemingProps(passedProps);
+
+  var {
+    children,
+    requiredIndicator = /*#__PURE__*/react.createElement(RequiredIndicator, null)
+  } = props,
+      rest = form_label_objectWithoutPropertiesLoose(props, ["className", "children", "requiredIndicator"]);
+
+  var field = useFormControlContext();
+  return /*#__PURE__*/react.createElement(system_chakra.label, form_label_extends({}, field == null ? void 0 : field.getLabelProps(rest, ref), {
+    className: (0,dom.cx)("chakra-form__label", props.className),
+    __css: form_label_extends({
+      display: "block",
+      textAlign: "start"
+    }, styles)
+  }), children, field != null && field.isRequired ? requiredIndicator : null);
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  FormLabel.displayName = "FormLabel";
+}
+
+/**
+ * Used to show a "required" text or an asterisks (*) to indicate that
+ * a field is required.
+ */
+var RequiredIndicator = /*#__PURE__*/forwardRef((props, ref) => {
+  var field = useFormControlContext();
+  var styles = (0,providers/* useStyles */.yK)();
+  if (!(field != null && field.isRequired)) return null;
+  var className = (0,dom.cx)("chakra-form__required-indicator", props.className);
+  return /*#__PURE__*/react.createElement(system_chakra.span, form_label_extends({}, field == null ? void 0 : field.getRequiredIndicatorProps(props, ref), {
+    __css: styles.requiredIndicator,
+    className: className
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  RequiredIndicator.displayName = "RequiredIndicator";
+}
+//# sourceMappingURL=form-label.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/form-control/dist/esm/use-form-control.js
+function use_form_control_extends() { use_form_control_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return use_form_control_extends.apply(this, arguments); }
+
+function use_form_control_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+/**
+ * React hook that provides the props that should be spread on to
+ * input fields (`input`, `select`, `textarea`, etc.).
+ *
+ * It provides a convenient way to control a form fields, validation
+ * and helper text.
+ */
+function useFormControl(props) {
+  var _useFormControlProps = useFormControlProps(props),
+      {
+    isDisabled,
+    isInvalid,
+    isReadOnly,
+    isRequired
+  } = _useFormControlProps,
+      rest = use_form_control_objectWithoutPropertiesLoose(_useFormControlProps, ["isDisabled", "isInvalid", "isReadOnly", "isRequired"]);
+
+  return use_form_control_extends({}, rest, {
+    disabled: isDisabled,
+    readOnly: isReadOnly,
+    required: isRequired,
+    "aria-invalid": (0,dom/* ariaAttr */.Qm)(isInvalid),
+    "aria-required": (0,dom/* ariaAttr */.Qm)(isRequired),
+    "aria-readonly": (0,dom/* ariaAttr */.Qm)(isReadOnly)
+  });
+}
+function useFormControlProps(props) {
+  var _ref, _ref2, _ref3;
+
+  var field = useFormControlContext();
+
+  var {
+    id,
+    disabled,
+    readOnly,
+    required,
+    isRequired,
+    isInvalid,
+    isReadOnly,
+    isDisabled,
+    onFocus,
+    onBlur
+  } = props,
+      rest = use_form_control_objectWithoutPropertiesLoose(props, ["id", "disabled", "readOnly", "required", "isRequired", "isInvalid", "isReadOnly", "isDisabled", "onFocus", "onBlur"]);
+
+  var labelIds = []; // Error message must be described first in all scenarios.
+
+  if (field != null && field.hasFeedbackText && field != null && field.isInvalid) {
+    labelIds.push(field.feedbackId);
+  }
+
+  if (field != null && field.hasHelpText) {
+    labelIds.push(field.helpTextId);
+  }
+
+  return use_form_control_extends({}, rest, {
+    "aria-describedby": labelIds.join(" ") || undefined,
+    id: id != null ? id : field == null ? void 0 : field.id,
+    isDisabled: (_ref = disabled != null ? disabled : isDisabled) != null ? _ref : field == null ? void 0 : field.isDisabled,
+    isReadOnly: (_ref2 = readOnly != null ? readOnly : isReadOnly) != null ? _ref2 : field == null ? void 0 : field.isReadOnly,
+    isRequired: (_ref3 = required != null ? required : isRequired) != null ? _ref3 : field == null ? void 0 : field.isRequired,
+    isInvalid: isInvalid != null ? isInvalid : field == null ? void 0 : field.isInvalid,
+    onFocus: (0,esm_function/* callAllHandlers */.v0)(field == null ? void 0 : field.onFocus, onFocus),
+    onBlur: (0,esm_function/* callAllHandlers */.v0)(field == null ? void 0 : field.onBlur, onBlur)
+  });
+}
+//# sourceMappingURL=use-form-control.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/select/dist/esm/select.js
+function select_extends() { select_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return select_extends.apply(this, arguments); }
+
+function select_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var SelectField = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    children,
+    placeholder,
+    className
+  } = props,
+      rest = select_objectWithoutPropertiesLoose(props, ["children", "placeholder", "className"]);
+
+  var ownProps = useFormControl(rest);
+  return /*#__PURE__*/react.createElement(system_chakra.select, select_extends({}, ownProps, {
+    ref: ref,
+    className: (0,dom.cx)("chakra-select", className)
+  }), placeholder && /*#__PURE__*/react.createElement("option", {
+    value: ""
+  }, placeholder), children);
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  SelectField.displayName = "SelectField";
+}
+
+/**
+ * React component used to select one item from a list of options.
+ */
+var Select = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useMultiStyleConfig("Select", props);
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      {
+    rootProps,
+    placeholder,
+    icon,
+    color,
+    height,
+    h,
+    minH,
+    minHeight,
+    iconColor,
+    iconSize
+  } = _omitThemingProps,
+      rest = select_objectWithoutPropertiesLoose(_omitThemingProps, ["rootProps", "placeholder", "icon", "color", "height", "h", "minH", "minHeight", "iconColor", "iconSize", "isFullWidth"]);
+
+  var [layoutProps, otherProps] = (0,object/* split */.Vl)(rest, esm.layoutPropNames);
+  var rootStyles = {
+    width: "100%",
+    height: "fit-content",
+    position: "relative",
+    color
+  };
+  var fieldStyles = lodash_mergewith_default()({}, styles.field, {
+    paddingEnd: "2rem",
+    _focus: {
+      zIndex: "unset"
+    }
+  });
+  return /*#__PURE__*/react.createElement(system_chakra.div, select_extends({
+    className: "chakra-select__wrapper",
+    __css: rootStyles
+  }, layoutProps, rootProps), /*#__PURE__*/react.createElement(SelectField, select_extends({
+    ref: ref,
+    height: h != null ? h : height,
+    minH: minH != null ? minH : minHeight,
+    placeholder: placeholder
+  }, otherProps, {
+    __css: fieldStyles
+  }), props.children), /*#__PURE__*/react.createElement(SelectIcon, select_extends({
+    "data-disabled": props.isDisabled
+  }, (iconColor || color) && {
+    color: iconColor || color
+  }, {
+    __css: styles.icon
+  }, iconSize && {
+    fontSize: iconSize
+  }), icon));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Select.displayName = "Select";
+}
+
+var DefaultIcon = props => /*#__PURE__*/react.createElement("svg", select_extends({
+  viewBox: "0 0 24 24"
+}, props), /*#__PURE__*/react.createElement("path", {
+  fill: "currentColor",
+  d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+}));
+var IconWrapper = system_chakra("div", {
+  baseStyle: {
+    position: "absolute",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    pointerEvents: "none",
+    top: "50%",
+    transform: "translateY(-50%)"
+  }
+});
+
+var SelectIcon = props => {
+  var {
+    children = /*#__PURE__*/react.createElement(DefaultIcon, null)
+  } = props,
+      rest = select_objectWithoutPropertiesLoose(props, ["children"]);
+
+  var clone = /*#__PURE__*/react.cloneElement(children, {
+    role: "presentation",
+    className: "chakra-select__icon",
+    focusable: false,
+    "aria-hidden": true,
+    // force icon to adhere to `IconWrapper` styles
+    style: {
+      width: "1em",
+      height: "1em",
+      color: "currentColor"
+    }
+  });
+  return /*#__PURE__*/react.createElement(IconWrapper, select_extends({}, rest, {
+    className: "chakra-select__icon-wrapper"
+  }), /*#__PURE__*/react.isValidElement(children) ? clone : null);
+};
+
+if (assertion/* __DEV__ */.Ts) {
+  SelectIcon.displayName = "SelectIcon";
+}
+//# sourceMappingURL=select.js.map
+;// CONCATENATED MODULE: ./components/calculator/options.js
+
+
+
+
+function options_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function options_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { options_ownKeys(Object(source), true).forEach(function (key) { options_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { options_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function options_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -46338,63 +48483,956 @@ function Layout({
 
 
 
+function Options({
+  question,
+  title,
+  description
+}) {
+  var _question$optionSets, _state$calculator2, _state$calculator2$qu;
+
+  const {
+    register,
+    handleSubmit
+  } = useForm();
+  const {
+    actions,
+    state
+  } = (0,little_state_machine/* useStateMachine */.j_)({
+    updateAction: updateAction
+  });
+  const {
+    currentQuestion
+  } = state.calculator;
+  const optionSetsLength = question === null || question === void 0 ? void 0 : (_question$optionSets = question.optionSets) === null || _question$optionSets === void 0 ? void 0 : _question$optionSets.length;
+  const mainRef = (0,react.useRef)();
+  (0,react.useEffect)(() => {
+    setTimeout(() => {
+      mainRef.current.focus();
+    }, 1);
+  }, []); // Using the question's logic to show or hide
+
+  const questionLogic = q => {
+    var _q$optionLogics;
+
+    let showQuestion = false;
+
+    if ((q === null || q === void 0 ? void 0 : q.optionLogics) === undefined || (q === null || q === void 0 ? void 0 : (_q$optionLogics = q.optionLogics) === null || _q$optionLogics === void 0 ? void 0 : _q$optionLogics.length) === 0) {
+      showQuestion = true;
+    } else {
+      var _q$optionLogics2;
+
+      showQuestion = (q === null || q === void 0 ? void 0 : q.optionLogics) && (q === null || q === void 0 ? void 0 : (_q$optionLogics2 = q.optionLogics) === null || _q$optionLogics2 === void 0 ? void 0 : _q$optionLogics2.map(logic => {
+        var _state$calculator, _state$calculator$que;
+
+        return (state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue;
+      }));
+    }
+
+    let result = Array.isArray(showQuestion) ? !showQuestion.some(element => element === false) : showQuestion;
+    return result;
+  }; // Update State when a Select value has been updated
 
 
-function Home({
-  pageData
+  const selectUpdate = (val, question) => {
+    actions.updateAction(options_objectSpread(options_objectSpread({}, state), {}, {
+      calculator: options_objectSpread(options_objectSpread({}, state.calculator), {}, {
+        questions: options_objectSpread(options_objectSpread({}, state.calculator.questions), {}, {
+          [question._id]: {
+            title: question.title,
+            answer: val ? val : null
+          }
+        })
+      })
+    }));
+  };
+
+  return /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+    children: optionSetsLength === 1 ? /*#__PURE__*/(0,jsx_runtime.jsxs)(FormControl, {
+      id: question === null || question === void 0 ? void 0 : question.optionSets[0]._key,
+      mb: "6",
+      children: [/*#__PURE__*/jsx_runtime.jsx(FormLabel, {
+        children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
+          mb: "6",
+          as: "h1",
+          ref: mainRef,
+          tabIndex: "-1",
+          children: title
+        })
+      }), description && /*#__PURE__*/jsx_runtime.jsx(Box, {
+        mb: "4",
+        tabIndex: "1",
+        children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+          blocks: description
+        })
+      }), /*#__PURE__*/jsx_runtime.jsx(Select, options_objectSpread(options_objectSpread({}, register(`${question._id}`)), {}, {
+        value: `${state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer}`,
+        placeholder: "Select a value...",
+        onChange: e => selectUpdate(e.currentTarget.value, question),
+        children: question === null || question === void 0 ? void 0 : question.optionSets[0].options.map(option => /*#__PURE__*/jsx_runtime.jsx("option", {
+          value: option.value.current,
+          children: option.title
+        }, option._key))
+      }))]
+    }, question === null || question === void 0 ? void 0 : question.optionSets[0]._key) : question === null || question === void 0 ? void 0 : question.optionSets.map(optionSet => {
+      var _state$calculator3, _state$calculator3$qu;
+
+      return questionLogic(optionSet) && /*#__PURE__*/(0,jsx_runtime.jsxs)(FormControl, {
+        id: optionSet._key,
+        mb: "6",
+        children: [/*#__PURE__*/jsx_runtime.jsx(FormLabel, {
+          children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
+            mb: "6",
+            children: title
+          })
+        }), /*#__PURE__*/jsx_runtime.jsx(Box, {
+          mb: "4",
+          children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+            blocks: description
+          })
+        }), /*#__PURE__*/jsx_runtime.jsx(Select, options_objectSpread(options_objectSpread({}, register(`${question._id}`)), {}, {
+          value: `${state === null || state === void 0 ? void 0 : (_state$calculator3 = state.calculator) === null || _state$calculator3 === void 0 ? void 0 : (_state$calculator3$qu = _state$calculator3.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator3$qu === void 0 ? void 0 : _state$calculator3$qu.answer}`,
+          placeholder: "Select a value...",
+          onChange: e => selectUpdate(e.currentTarget.value, question),
+          children: optionSet.options.map(option => /*#__PURE__*/jsx_runtime.jsx("option", {
+            value: option.value.current,
+            children: option.title
+          }, option._key))
+        }))]
+      }, optionSet._key);
+    })
+  });
+}
+;// CONCATENATED MODULE: ./components/calculator/question.js
+
+
+
+
+
+
+function Question(props) {
+  const {
+    question,
+    index
+  } = props;
+  const {
+    actions,
+    state
+  } = (0,little_state_machine/* useStateMachine */.j_)({
+    updateAction: updateAction
+  });
+  const {
+    currentQuestion
+  } = state.calculator; // Animation Variants (Framer Motion)
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      x: -50,
+      display: 'none'
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      display: 'block'
+    },
+    removed: {
+      opacity: 0,
+      x: 50,
+      display: 'none'
+    },
+    transition: {
+      duration: 20
+    }
+  }; // console.log(state?.calculator?.questions[question?._id]?.answer)
+
+  return /*#__PURE__*/jsx_runtime.jsx(Box, {
+    mb: "12",
+    mt: "4",
+    children: /*#__PURE__*/jsx_runtime.jsx(Options, {
+      question: question,
+      title: question.title,
+      description: question.description
+    })
+  });
+}
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/children.js
+
+/**
+ * Gets only the valid children of a component,
+ * and ignores any nullish or falsy child.
+ *
+ * @param children the children
+ */
+
+function getValidChildren(children) {
+  return react.Children.toArray(children).filter(child => /*#__PURE__*/react.isValidElement(child));
+}
+//# sourceMappingURL=children.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/utils/dist/esm/responsive.js
+
+
+
+var breakpoints = Object.freeze(["base", "sm", "md", "lg", "xl", "2xl"]);
+function mapResponsive(prop, mapper) {
+  if ((0,assertion/* isArray */.kJ)(prop)) {
+    return prop.map(item => {
+      if (item === null) {
+        return null;
+      }
+
+      return mapper(item);
+    });
+  }
+
+  if ((0,assertion/* isObject */.Kn)(prop)) {
+    return (0,object/* objectKeys */.Yd)(prop).reduce((result, key) => {
+      result[key] = mapper(prop[key]);
+      return result;
+    }, {});
+  }
+
+  if (prop != null) {
+    return mapper(prop);
+  }
+
+  return null;
+}
+function objectToArrayNotation(obj, bps) {
+  if (bps === void 0) {
+    bps = breakpoints;
+  }
+
+  var result = bps.map(br => {
+    var _obj$br;
+
+    return (_obj$br = obj[br]) != null ? _obj$br : null;
+  });
+
+  while (getLastItem(result) === null) {
+    result.pop();
+  }
+
+  return result;
+}
+function arrayToObjectNotation(values, bps) {
+  if (bps === void 0) {
+    bps = breakpoints;
+  }
+
+  var result = {};
+  values.forEach((value, index) => {
+    var key = bps[index];
+    if (value == null) return;
+    result[key] = value;
+  });
+  return result;
+}
+function isResponsiveObjectLike(obj, bps) {
+  if (bps === void 0) {
+    bps = breakpoints;
+  }
+
+  var keys = Object.keys(obj);
+  return keys.length > 0 && keys.every(key => bps.includes(key));
+}
+/**
+ * since breakpoints are defined as custom properties on an array, you may
+ * `Object.keys(theme.breakpoints)` to retrieve both regular numeric indices
+ * and custom breakpoints as string.
+ *
+ * This function returns true given a custom array property.
+ */
+
+var isCustomBreakpoint = maybeBreakpoint => Number.isNaN(Number(maybeBreakpoint));
+//# sourceMappingURL=responsive.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/stack.utils.js
+
+
+/**
+ * If we ever run into SSR issues with this, check this post to find a fix for it:
+ * @see https://medium.com/@emmenko/patching-lobotomized-owl-selector-for-emotion-ssr-5a582a3c424c
+ */
+var selector = "& > *:not(style) ~ *:not(style)";
+function getStackStyles(options) {
+  var {
+    spacing,
+    direction
+  } = options;
+  var directionStyles = {
+    column: {
+      marginTop: spacing,
+      marginEnd: 0,
+      marginBottom: 0,
+      marginStart: 0
+    },
+    row: {
+      marginTop: 0,
+      marginEnd: 0,
+      marginBottom: 0,
+      marginStart: spacing
+    },
+    "column-reverse": {
+      marginTop: 0,
+      marginEnd: 0,
+      marginBottom: spacing,
+      marginStart: 0
+    },
+    "row-reverse": {
+      marginTop: 0,
+      marginEnd: spacing,
+      marginBottom: 0,
+      marginStart: 0
+    }
+  };
+  return {
+    flexDirection: direction,
+    [selector]: mapResponsive(direction, value => directionStyles[value])
+  };
+}
+function getDividerStyles(options) {
+  var {
+    spacing,
+    direction
+  } = options;
+  var dividerStyles = {
+    column: {
+      my: spacing,
+      mx: 0,
+      borderLeftWidth: 0,
+      borderBottomWidth: "1px"
+    },
+    "column-reverse": {
+      my: spacing,
+      mx: 0,
+      borderLeftWidth: 0,
+      borderBottomWidth: "1px"
+    },
+    row: {
+      mx: spacing,
+      my: 0,
+      borderLeftWidth: "1px",
+      borderBottomWidth: 0
+    },
+    "row-reverse": {
+      mx: spacing,
+      my: 0,
+      borderLeftWidth: "1px",
+      borderBottomWidth: 0
+    }
+  };
+  return {
+    "&": mapResponsive(direction, value => dividerStyles[value])
+  };
+}
+//# sourceMappingURL=stack.utils.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/stack.js
+function stack_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function stack_extends() { stack_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return stack_extends.apply(this, arguments); }
+
+
+
+
+
+
+var StackDivider = props => /*#__PURE__*/React.createElement(chakra.div, stack_extends({
+  className: "chakra-stack__divider"
+}, props, {
+  __css: stack_extends({}, props["__css"], {
+    borderWidth: 0,
+    alignSelf: "stretch",
+    borderColor: "inherit",
+    width: "auto",
+    height: "auto"
+  })
+}));
+var StackItem = props => /*#__PURE__*/react.createElement(system_chakra.div, stack_extends({
+  className: "chakra-stack__item"
+}, props, {
+  __css: stack_extends({
+    display: "inline-block",
+    flex: "0 0 auto",
+    minWidth: 0
+  }, props["__css"])
+}));
+
+/**
+ * Stacks help you easily create flexible and automatically distributed layouts
+ *
+ * You can stack elements in the horizontal or vertical direction,
+ * and apply a space or/and divider between each element.
+ *
+ * It uses `display: flex` internally and renders a `div`.
+ *
+ * @see Docs https://chakra-ui.com/docs/layout/stack
+ *
+ */
+var Stack = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    isInline,
+    direction: directionProp,
+    align,
+    justify,
+    spacing = "0.5rem",
+    wrap,
+    children,
+    divider,
+    className,
+    shouldWrapChildren
+  } = props,
+      rest = stack_objectWithoutPropertiesLoose(props, ["isInline", "direction", "align", "justify", "spacing", "wrap", "children", "divider", "className", "shouldWrapChildren"]);
+
+  var direction = isInline ? "row" : directionProp != null ? directionProp : "column";
+  var styles = react.useMemo(() => getStackStyles({
+    direction,
+    spacing
+  }), [direction, spacing]);
+  var dividerStyle = react.useMemo(() => getDividerStyles({
+    spacing,
+    direction
+  }), [spacing, direction]);
+  var hasDivider = !!divider;
+  var shouldUseChildren = !shouldWrapChildren && !hasDivider;
+  var validChildren = getValidChildren(children);
+  var clones = shouldUseChildren ? validChildren : validChildren.map((child, index) => {
+    var isLast = index + 1 === validChildren.length;
+    var wrappedChild = /*#__PURE__*/react.createElement(StackItem, {
+      key: index
+    }, child);
+
+    var _child = shouldWrapChildren ? wrappedChild : child;
+
+    if (!hasDivider) return _child;
+    var clonedDivider = /*#__PURE__*/react.cloneElement(divider, {
+      __css: dividerStyle
+    });
+
+    var _divider = isLast ? null : clonedDivider;
+
+    return /*#__PURE__*/react.createElement(react.Fragment, {
+      key: index
+    }, _child, _divider);
+  });
+
+  var _className = (0,dom.cx)("chakra-stack", className);
+
+  return /*#__PURE__*/react.createElement(system_chakra.div, stack_extends({
+    ref: ref,
+    display: "flex",
+    alignItems: align,
+    justifyContent: justify,
+    flexDirection: styles.flexDirection,
+    flexWrap: wrap,
+    className: _className,
+    __css: hasDivider ? {} : {
+      [selector]: styles[selector]
+    }
+  }, rest), clones);
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Stack.displayName = "Stack";
+}
+/**
+ * A view that arranges its children in a horizontal line.
+ */
+
+
+var HStack = /*#__PURE__*/forwardRef((props, ref) => /*#__PURE__*/react.createElement(Stack, stack_extends({
+  align: "center"
+}, props, {
+  direction: "row",
+  ref: ref
+})));
+
+if (assertion/* __DEV__ */.Ts) {
+  HStack.displayName = "HStack";
+}
+/**
+ * A view that arranges its children in a vertical line.
+ */
+
+
+var VStack = /*#__PURE__*/forwardRef((props, ref) => /*#__PURE__*/react.createElement(Stack, stack_extends({
+  align: "center"
+}, props, {
+  direction: "column",
+  ref: ref
+})));
+
+if (assertion/* __DEV__ */.Ts) {
+  VStack.displayName = "VStack";
+}
+//# sourceMappingURL=stack.js.map
+;// CONCATENATED MODULE: ./components/calculator/index.js
+
+
+
+function calculator_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function calculator_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { calculator_ownKeys(Object(source), true).forEach(function (key) { calculator_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { calculator_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function calculator_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+ // import { AnimatePresence } from 'framer-motion'
+// import { Text as BodyText } from '@/components/serializers/text'
+
+
+
+
+function Calculator({
+  question,
+  questions,
+  slug
+}) {
+  var _state$calculator3, _state$calculator3$qu, _state$calculator4, _state$calculator4$qu;
+
+  const router = (0,next_router.useRouter)(); // console.log({questions})
+
+  const {
+    actions,
+    state
+  } = (0,little_state_machine/* useStateMachine */.j_)({
+    updateAction: updateAction
+  }); // const { currentQuestion } = state.calculator
+
+  const currentQuestion = parseInt(slug);
+  const {
+    showResults
+  } = state.calculator;
+  const questionLength = (questions === null || questions === void 0 ? void 0 : questions.length) - 1;
+  const {
+    0: currentQuestionID,
+    1: setCurrentQuestionID
+  } = (0,react.useState)(questions[currentQuestion]._id);
+  const {
+    0: seeResultsBtn,
+    1: setSeeResultsBtn
+  } = (0,react.useState)(false);
+  const {
+    0: atTheLastQuestion,
+    1: setAtTheLastQuestion
+  } = (0,react.useState)(false); // Animation Variants (Framer Motion)
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      // x: -50,
+      display: 'none'
+    },
+    animate: {
+      opacity: 1,
+      // x: 0,
+      display: 'block'
+    },
+    removed: {
+      opacity: 0,
+      // x: 50,
+      display: 'none'
+    },
+    transition: {
+      duration: 2
+    }
+  };
+  (0,react.useEffect)(() => {
+    setCurrentQuestionID(questions[currentQuestion]._id);
+  }, [currentQuestion]);
+
+  const operatorMagic = (questionVal, mathOperation, logicVal) => {
+    if (mathOperation === 'equals') {
+      return questionVal === logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'doesNotEqual') {
+      return questionVal !== logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'lessThan') {
+      return questionVal < logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'lessThanOrEquals') {
+      return questionVal <= logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'greaterThan') {
+      return questionVal > logicVal ? 'show' : 'hide';
+    } else if (mathOperation === 'greaterThanOrEquals') {
+      return questionVal >= logicVal ? 'show' : 'hide';
+    } else {
+      return 'hide';
+    }
+  };
+
+  const showQ = (q, optionLogicConditional, i) => {
+    var _q$optionLogics;
+
+    let showQuestion = [];
+    let returnVal = '';
+
+    if (i >= questionLength || showQuestion !== undefined && !showQuestion.length > 1) {
+      return 'hide';
+    }
+
+    if ((q === null || q === void 0 ? void 0 : q.optionLogics) === undefined || (q === null || q === void 0 ? void 0 : (_q$optionLogics = q.optionLogics) === null || _q$optionLogics === void 0 ? void 0 : _q$optionLogics.length) === 0) {
+      showQuestion.push('show');
+    } else {
+      var _q$optionLogics2;
+
+      (q === null || q === void 0 ? void 0 : q.optionLogics) && (q === null || q === void 0 ? void 0 : (_q$optionLogics2 = q.optionLogics) === null || _q$optionLogics2 === void 0 ? void 0 : _q$optionLogics2.map(logic => {
+        // String Logic
+        if (logic._type === 'optionLogic') {
+          var _state$calculator, _state$calculator$que;
+
+          if ((state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue) {
+            showQuestion.push('show');
+          } else {
+            showQuestion.push('hide');
+          }
+        } // Numeric Operational Logic
+
+
+        if (logic._type === 'optionNumericLogic') {
+          var _state$calculator2, _state$calculator2$qu, _logic$logicSourceQue;
+
+          let questionVal = Number(state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue = logic.logicSourceQuestion) === null || _logic$logicSourceQue === void 0 ? void 0 : _logic$logicSourceQue._ref]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer);
+          let logicVal = logic === null || logic === void 0 ? void 0 : logic.operatorValue;
+          let mathOperation = logic === null || logic === void 0 ? void 0 : logic.mathOperation;
+          showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal));
+        }
+      })[0]);
+    }
+
+    if (optionLogicConditional === 'and') {
+      showQuestion.includes('hide') ? returnVal = 'hide' : returnVal = 'true';
+    }
+
+    if (optionLogicConditional === 'or') {
+      showQuestion.includes('show') ? returnVal = 'show' : returnVal = 'hide';
+    }
+
+    return returnVal;
+  };
+
+  const nextQuestion = () => {
+    let i = currentQuestion;
+    let showQuestion = 'hide';
+    let optionLogicConditional = 'or';
+
+    while (showQuestion === 'hide') {
+      var _questions$i;
+
+      i += 1;
+
+      if (i >= questionLength) {
+        break;
+      }
+
+      optionLogicConditional = ((_questions$i = questions[i]) === null || _questions$i === void 0 ? void 0 : _questions$i.optionLogicConditional) || 'or';
+      showQuestion = showQ(questions[i], optionLogicConditional, i);
+    }
+
+    if (i === undefined || i >= questionLength) {
+      // console.log('you have magically reached the end 🤔')
+      i = currentQuestion;
+      setAtTheLastQuestion(true);
+      setSeeResultsBtn(true);
+    }
+
+    actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
+      calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
+        currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
+      })
+    }));
+    router.push(`/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id}`);
+  }; // Button to advance the user to the previous question, not shown on the first question
+
+
+  const prevQuestion = () => {
+    let i = currentQuestion;
+    let showQuestion = 'hide';
+    let optionLogicConditional = 'or';
+
+    while (showQuestion === 'hide') {
+      var _questions$i2;
+
+      i -= 1;
+
+      if (i >= questionLength) {
+        break;
+      }
+
+      optionLogicConditional = ((_questions$i2 = questions[i]) === null || _questions$i2 === void 0 ? void 0 : _questions$i2.optionLogicConditional) || 'or';
+      showQuestion = showQ(questions[i], optionLogicConditional, i);
+    }
+
+    if (i === undefined || i >= questionLength) {
+      i = currentQuestion;
+      setSeeResultsBtn(true);
+    }
+
+    setAtTheLastQuestion(false);
+    actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
+      calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
+        currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
+      })
+    }));
+    router.push(`/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id}`);
+  }; // Button function to show the Results, only seen on the last question
+
+
+  const seeResults = () => {
+    setSeeResultsBtn(false);
+    actions.updateAction(calculator_objectSpread(calculator_objectSpread({}, state), {}, {
+      calculator: calculator_objectSpread(calculator_objectSpread({}, state.calculator), {}, {
+        showResults: true
+      })
+    }));
+    router.push(`/results`);
+  };
+
+  console.log({
+    question,
+    questions,
+    slug,
+    currentQuestion
+  });
+
+  if (!question) {
+    return /*#__PURE__*/jsx_runtime.jsx(Spinner, {
+      size: "md"
+    });
+  }
+
+  return /*#__PURE__*/jsx_runtime.jsx(Flex, {
+    paddingY: '5rem',
+    flex: "1",
+    flexDir: "column",
+    width: "100%",
+    maxW: "860px",
+    mx: "auto",
+    px: "8",
+    children: /*#__PURE__*/jsx_runtime.jsx(Box, {
+      mt: "10",
+      children: /*#__PURE__*/(0,jsx_runtime.jsxs)(motion.div, {
+        variants: variants,
+        exit: "removed",
+        initial: "initial",
+        animate: 'animate',
+        animate: currentQuestion === slug ? 'animate' : 'initial',
+        children: [/*#__PURE__*/jsx_runtime.jsx(Question, {
+          question: question,
+          index: slug,
+          questionLength: questionLength,
+          questions: questions
+        }, question._id), /*#__PURE__*/(0,jsx_runtime.jsxs)(Stack, {
+          direction: "row",
+          spacing: 4,
+          align: "center",
+          mb: "12",
+          children: [currentQuestion > 0 && /*#__PURE__*/jsx_runtime.jsx(Button, {
+            onClick: () => prevQuestion(),
+            leftIcon: /*#__PURE__*/jsx_runtime.jsx(HiChevronLeft, {}),
+            variant: "outline",
+            children: "Previous"
+          }), questionLength > currentQuestion && /*#__PURE__*/jsx_runtime.jsx(Button, {
+            onClick: () => nextQuestion(),
+            isDisabled: atTheLastQuestion || isStringEmpty(state === null || state === void 0 ? void 0 : (_state$calculator3 = state.calculator) === null || _state$calculator3 === void 0 ? void 0 : (_state$calculator3$qu = _state$calculator3.questions[currentQuestionID]) === null || _state$calculator3$qu === void 0 ? void 0 : _state$calculator3$qu.answer) ? true : false,
+            rightIcon: /*#__PURE__*/jsx_runtime.jsx(HiChevronRight, {}),
+            variant: "outline",
+            children: "Next"
+          }), seeResultsBtn && /*#__PURE__*/jsx_runtime.jsx(Button, {
+            onClick: () => seeResults(),
+            isDisabled: isStringEmpty(state === null || state === void 0 ? void 0 : (_state$calculator4 = state.calculator) === null || _state$calculator4 === void 0 ? void 0 : (_state$calculator4$qu = _state$calculator4.questions[currentQuestionID]) === null || _state$calculator4$qu === void 0 ? void 0 : _state$calculator4$qu.answer) ? true : false,
+            children: "See Results"
+          })]
+        })]
+      }, slug)
+    })
+  });
+}
+;// CONCATENATED MODULE: ./lib/sanity-queries.js
+ // const $now = new Date().toISOString()
+
+const sanity_queries_getTuitionCalculatorQuery = next_sanity_cjs_production_min/* groq */.Ml`
+ *[_type in ["siteSettings", "calculator"]]{
+  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
+    ...,
+    title,
+    description,
+    categories[] {
+    _type == 'reference' => ^-> {
+        ...,
+        lineItems[] {
+          ...,
+          itemValue[] {
+            ...,
+            // logicSourceQuestion->
+          }
+        }
+      }
+    },
+    questions[] {
+      _type == 'reference' => ^-> {
+        ...
+      }
+    }
+  },
+  "siteSettings": *[_type == "siteSettings"][0],
+}`; // export async function getAllQuestionsWithSlug() {
+//   const data = await client.fetch(`*[_type == "question"]{ 'slug': _id }`)
+//   return data
+// }
+// export const getAllQuestionsWithSlug = groq`
+//   *[_type == "question"]{'_id': _id }`
+
+const getAllQuestionsQuery = next_sanity_cjs_production_min/* groq */.Ml`
+*[_type in ["calculator", "siteSettings"]][0]{
+  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
+    questions[] {
+      _type == 'reference' => ^-> {
+        ...
+      }
+    }
+  },
+  "siteSettings": *[_type == "siteSettings"][0]
+}`;
+;// CONCATENATED MODULE: ./lib/sanity-api.js
+function sanity_api_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function sanity_api_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_api_ownKeys(Object(source), true).forEach(function (key) { sanity_api_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_api_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function sanity_api_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// import client, { previewClient } from './sanity'
+// const getClient = (preview) => (preview ? previewClient : client)
+
+
+const sanity_api_config = {
+  /**
+   * Find your project ID and dataset in `sanity.json` in your studio project.
+   * These are considered “public”, but you can use environment variables
+   * if you want differ between local dev and production.
+   *
+   * https://nextjs.org/docs/basic-features/environment-variables
+   **/
+  dataset: "production" || 0,
+  projectId: "85juwyag" || 0,
+  token: process.env.SANITY_API_TOKEN,
+  useCdn: true // useCdn: process.env.NODE_ENV === 'production'
+
+  /**
+   * Set useCdn to `false` if your application require the freshest possible
+   * data always (potentially slightly slower and a bit more expensive).
+   * Authenticated request (like preview) will always bypass the CDN
+   **/
+
+};
+const sanity_api_sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_api_config);
+const sanity_api_previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_api_objectSpread(sanity_api_objectSpread({}, sanity_api_config), {}, {
+  useCdn: true,
+  // useCdn: false,
+  token: process.env.NEXT_SANITY_API_TOKEN
+}));
+const sanity_api_getClient = usePreview => usePreview ? sanity_api_previewClient : sanity_api_sanityClient;
+const sanity_api_urlFor = source => createImageUrlBuilder(sanity_api_config).image(source);
+const sanity_api_usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(sanity_api_config);
+async function getTuitionCalculator(preview) {
+  const data = await sanity_api_getClient(preview).fetch(getTuitionCalculatorQuery);
+  return data;
+} // export async function getQuestionPage (preview) {
+//   const data = await getClient(preview).fetch(getAllQuestionsWithSlug)
+//   return data
+// }
+// export async function getQuestionBySlug(_id) {
+//   const data = await getClient(true).fetch(
+//     `*[_type == "question" && _id == $_id]{
+//       ...
+//     }`,
+//     { _id }
+//   )
+//   return data[0]
+// }
+
+async function getAllQuestions(preview) {
+  const data = await sanity_api_getClient(preview).fetch(getAllQuestionsQuery);
+  return data;
+}
+;// CONCATENATED MODULE: ./pages/question/[_id].js
+
+
+
+
+
+
+
+function QuestionPage({
+  question,
+  questions,
+  siteSettings,
+  slug,
+  position
 }) {
   const router = (0,next_router.useRouter)();
 
-  if (!router.isFallback && !pageData) {
+  if (!router.isFallback && !(question !== null && question !== void 0 && question._id)) {
     return /*#__PURE__*/jsx_runtime.jsx(error.default, {
       statusCode: 404
     });
   }
 
-  const siteSettings = pageData[0] && pageData[0].siteSettings;
-  const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator;
-  const {
-    questions,
-    categories
-  } = tuitionCalculator;
+  if (router.isFallback) {
+    return /*#__PURE__*/jsx_runtime.jsx(Spinner, {
+      size: "md"
+    });
+  }
+
   return /*#__PURE__*/jsx_runtime.jsx(Layout, {
     siteSettings: siteSettings,
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-      mt: 24,
-      flexDir: "column",
-      children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
-        mb: "2",
-        children: tuitionCalculator.title
-      }), /*#__PURE__*/jsx_runtime.jsx(Text, {
-        blocks: tuitionCalculator.description
-      }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-        href: `/question/${questions[0]._id}`,
-        children: /*#__PURE__*/jsx_runtime.jsx("a", {
-          style: {
-            textDecoration: 'underline'
-          },
-          children: "Get Started"
-        })
-      })]
+    children: questions && /*#__PURE__*/jsx_runtime.jsx(Calculator, {
+      slug: position,
+      questions: questions,
+      question: question
     })
   });
 }
-async function getStaticProps({
-  preview = false
-}) {
-  const pageData = await getTuitionCalculator(preview);
+const getStaticProps = async ({
+  params
+}) => {
+  var _pages$tuitionCalcula, _pages$tuitionCalcula2, _pages$tuitionCalcula3;
+
+  const slug = params === null || params === void 0 ? void 0 : params._id;
+  const pages = await getAllQuestions();
+  const question = (pages === null || pages === void 0 ? void 0 : (_pages$tuitionCalcula = pages.tuitionCalculator) === null || _pages$tuitionCalcula === void 0 ? void 0 : (_pages$tuitionCalcula2 = _pages$tuitionCalcula.questions) === null || _pages$tuitionCalcula2 === void 0 ? void 0 : _pages$tuitionCalcula2.find(s => s._id === slug)) || null;
+  const questions = (pages === null || pages === void 0 ? void 0 : (_pages$tuitionCalcula3 = pages.tuitionCalculator) === null || _pages$tuitionCalcula3 === void 0 ? void 0 : _pages$tuitionCalcula3.questions) || null;
+  const position = questions === null || questions === void 0 ? void 0 : questions.indexOf(question);
+  const siteSettings = (pages === null || pages === void 0 ? void 0 : pages.siteSettings) || null;
   return {
     props: {
-      pageData,
-      preview
+      question,
+      questions,
+      siteSettings,
+      slug,
+      position
     },
-    revalidate: 60
+    revalidate: 30
+  };
+};
+async function getStaticPaths() {
+  var _pageData$tuitionCalc, _pageData$tuitionCalc2;
+
+  const pageData = await getAllQuestions();
+  const pages = pageData === null || pageData === void 0 ? void 0 : (_pageData$tuitionCalc = pageData.tuitionCalculator) === null || _pageData$tuitionCalc === void 0 ? void 0 : (_pageData$tuitionCalc2 = _pageData$tuitionCalc.questions) === null || _pageData$tuitionCalc2 === void 0 ? void 0 : _pageData$tuitionCalc2.map(q => ({
+    params: {
+      _id: q._id
+    }
+  }));
+  return {
+    paths: pages || null,
+    fallback: false
   };
 }
 
 /***/ }),
 
-/***/ 930:
+/***/ 8920:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46405,7 +49443,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2Fquestion_2F_5B_id_5D_absolutePagePath_private_next_pages_2Fquestion_2F_5B_id_5D_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -46427,7 +49465,7 @@ var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunk
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=zWsPvgCzituMODlMTeJMG&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2268eb0b766ba2cbd51a40777df4a9bf21%22%2C%22previewModeSigningKey%22%3A%2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6%22%2C%22previewModeEncryptionKey%22%3A%22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fquestion%2F%5B_id%5D&absolutePagePath=private-next-pages%2Fquestion%2F%5B_id%5D.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=zWsPvgCzituMODlMTeJMG&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2268eb0b766ba2cbd51a40777df4a9bf21%22%2C%22previewModeSigningKey%22%3A%2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6%22%2C%22previewModeEncryptionKey%22%3A%22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -46447,10 +49485,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(1451)
+      const compMod = __webpack_require__(543)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2Fquestion_2F_5B_id_5D_absolutePagePath_private_next_pages_2Fquestion_2F_5B_id_5D_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_zWsPvgCzituMODlMTeJMG_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2268eb0b766ba2cbd51a40777df4a9bf21_22_2C_22previewModeSigningKey_22_3A_2273d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6_22_2C_22previewModeEncryptionKey_22_3A_22ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -46497,11 +49535,11 @@ var page_handler = __webpack_require__(9436);
 
         rewrites: combinedRewrites,
         i18n: undefined,
-        page: "/",
+        page: "/question/[_id]",
         buildId: "zWsPvgCzituMODlMTeJMG",
         escapedBuildId: "zWsPvgCzituMODlMTeJMG",
         basePath: "",
-        pageIsDynamic: false,
+        pageIsDynamic: true,
         encodedPreviewProps: {previewModeId:"68eb0b766ba2cbd51a40777df4a9bf21",previewModeSigningKey:"73d50f66d45a58de19473a558635173ce5b8a112bd2d88f406b633b79298e0f6",previewModeEncryptionKey:"ca7f0ee084c60965fb577c8e96469df4558f9da47d4bac430aade5acaae31048"}
       })
       
@@ -64437,7 +67475,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(930);
+/******/ 	var __webpack_exports__ = __webpack_require__(8920);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

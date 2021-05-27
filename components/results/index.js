@@ -1,6 +1,7 @@
+import { useRef, useEffect } from 'react'
 import { useStateMachine } from 'little-state-machine'
+import Link from 'next/link'
 import updateAction from '@/hooks/updateAction'
-
 import { LineItems } from '@/components/results/line-items'
 import { Text as BodyText } from '@/components/serializers/text'
 
@@ -9,6 +10,13 @@ import { Heading, Box, Text, Flex, Stack, FormLabel, Radio, RadioGroup } from '@
 export function Results({ categories }) {
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
+  const mainRef = useRef()
+
+  useEffect(() => {
+    setTimeout(() => {
+      mainRef.current.focus();
+    }, 1)
+  }, [])
 
   const updateTotalSemesters = val => {
     val = parseInt(val)
@@ -25,10 +33,10 @@ export function Results({ categories }) {
   return (
     <Box>
       <Box mb={12}>
-        <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase">
+        <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase" ref={mainRef} tabIndex="-1" as="h1">
           My Results
         </Heading>
-        <Heading mb={2}>
+        <Heading mb={2} as="h2">
           Estimated costs
           {totalSemesters === 1 && <> for One Semester</>}
           {totalSemesters === 2 && <> for Two Semesters</>}
@@ -39,7 +47,9 @@ export function Results({ categories }) {
             onChange={updateTotalSemesters}
             value={totalSemesters.toString()}
             defaultChecked={totalSemesters.toString()}
+            as="fieldset"
           >
+            <legend className="visuallyHidden">Choose number of semesters to view</legend>
             <Stack direction="row">
               <Radio value="1" id="one">
                 View one semester
@@ -74,6 +84,11 @@ export function Results({ categories }) {
           </Box>
         ))}
       </Box>
+
+      <Link href={`/question/${Object.keys(questions)[0]}`}>
+        <a>Go back and edit your submission</a>
+      </Link>
+
     </Box>
   )
 }
