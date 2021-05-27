@@ -16,7 +16,6 @@ const iframeVimeo = {
 }
 
 const VimeoPreview = ({value}) => {
-  console.log({value})
   if (!value || !value.url) {
     return <div>Missing Vimeo URL</div>
   }

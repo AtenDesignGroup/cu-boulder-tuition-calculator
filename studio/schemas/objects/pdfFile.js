@@ -3,7 +3,6 @@ import React from 'react'
 import {MdPictureAsPdf as PDFIcon} from 'react-icons/md'
 
 const PDFPreview = ({value}) => {
-  console.log({value})
   if (!value.file || !value.file.asset || !value.file.asset._ref) {
     return <div>Missing PDF</div>
   }

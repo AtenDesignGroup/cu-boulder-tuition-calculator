@@ -1,34 +1,28 @@
-// import React from 'react'
-// const Icon = () => <span style={{fontSize: '1.5rem'}}>{'✅'}</span>
+import { FcMoneyTransfer as Icon } from 'react-icons/fc'
 
-import {FcMoneyTransfer as Icon} from 'react-icons/fc'
-
-const OptionalVal = (val) => {
- if(val === true) {
-   return 'Optional, '
- } else {
-   return ''
- }
+const OptionalVal = val => {
+  if (val === true) {
+    return 'Optional, '
+  } else {
+    return ''
+  }
 }
 
-const LogicVal = (val) => {
-  if(val && val.length > 0) {
+const LogicVal = val => {
+  if (val && val.length > 0) {
     return 'Includes logic'
   } else {
     return 'Applies to all'
   }
- }
+}
 
- const TitleFunc = (title, frontEndTitle) => {
-   console.log({title})
-   console.log({frontEndTitle})
-  if(frontEndTitle === undefined || frontEndTitle === null || frontEndTitle === '') {
+const TitleFunc = (title, frontEndTitle) => {
+  if (frontEndTitle === undefined || frontEndTitle === null || frontEndTitle === '') {
     return title
   } else {
     return frontEndTitle
   }
- }
-
+}
 
 export default {
   name: 'lineItem',
@@ -36,7 +30,7 @@ export default {
   type: 'object',
   icon: Icon,
   // options: {collapsible: true, collapsed: false},
-  options: { columns: 2},
+  options: { columns: 2 },
   initialValue: () => ({
     optionLogicConditional: 'or'
   }),
@@ -71,8 +65,11 @@ export default {
       name: 'itemValue',
       type: 'array',
       description: 'Choose either a simple value or a calculated value.',
-      of: [{type: 'simpleValue'}, {type: 'calculatedValue'}],
-      validation: Rule => Rule.required().min(1).max(1)
+      of: [{ type: 'simpleValue' }, { type: 'calculatedValue' }],
+      validation: Rule =>
+        Rule.required()
+          .min(1)
+          .max(1)
     },
     {
       title: 'Frequency',
@@ -81,10 +78,10 @@ export default {
       validation: Rule => Rule.required(),
       options: {
         list: [
-          {title: 'One-time', value: 'oneTime'},
-          {title: 'Per Semester', value: 'perSemester'},
-          {title: 'Per Credit Hour', value: 'perCreditHour'},
-          {title: 'Per Year', value: 'perYear'}
+          { title: 'One-time', value: 'oneTime' },
+          { title: 'Per Semester', value: 'perSemester' },
+          { title: 'Per Credit Hour', value: 'perCreditHour' },
+          { title: 'Per Year', value: 'perYear' }
         ]
       }
     },
@@ -92,11 +89,9 @@ export default {
       name: 'optionLogics',
       title: 'Logic',
       type: 'array',
-      description: 'If used, the item would apply if all true. If you do not add any logic, the item will always apply to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
-      of: [
-        {type: 'optionLogic'},
-        {type: 'optionNumericLogic'}
-      ]
+      description:
+        'If used, the item would apply if all true. If you do not add any logic, the item will always apply to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
+      of: [{ type: 'optionLogic' }, { type: 'optionNumericLogic' }]
     },
     {
       title: 'Logic Conditional',
@@ -105,11 +100,11 @@ export default {
       validation: Rule => Rule.required(),
       options: {
         list: [
-          {title: 'AND - All show logic conditons need to be true', value: 'and'},
-          {title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or'}
+          { title: 'AND - All show logic conditons need to be true', value: 'and' },
+          { title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or' }
         ]
       }
-    },
+    }
   ],
   preview: {
     select: {
@@ -120,11 +115,13 @@ export default {
       frequency: 'frequency',
       logic: 'optionLogics'
     },
-    prepare (selection) {
-      const {title, frontEndTitle, value, optional, frequency, logic} = selection
+    prepare(selection) {
+      const { title, frontEndTitle, value, optional, frequency, logic } = selection
       return {
         title: title,
-        subtitle: `${OptionalVal(optional)} $${value || 0} - ${LogicVal(logic)} - Charged ${frequency}`
+        subtitle: `${OptionalVal(optional)} $${value || 0} - ${LogicVal(
+          logic
+        )} - Charged ${frequency}`
       }
     }
   }

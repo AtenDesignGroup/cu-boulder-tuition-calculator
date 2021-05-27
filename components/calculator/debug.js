@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router'
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { Heading, Box, Code, Button, Flex } from '@chakra-ui/react'
 import { HiTrash } from "react-icons/hi";
 export function Debug () {
+  const router = useRouter()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions } = state.calculator
 
@@ -19,7 +21,7 @@ export function Debug () {
         totalCreditHours: 0
       }
     })
-
+    router.push(`/`)
   }
 
   return (
