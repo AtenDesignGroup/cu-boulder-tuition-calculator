@@ -73,6 +73,7 @@ export function Options({ question, title, description }) {
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
             placeholder="Select a value..."
             onChange={e => selectUpdate(e.currentTarget.value, question)}
+            tabIndex="2"
           >
             {question?.optionSets[0].options.map(option => (
               <option value={option.value.current} key={option._key}>
