@@ -2,10 +2,13 @@
 
 ## Getting Started
 
+Dupliate the `.env.template` file and rename the file to `.env.local`. Then add the values for the three lines in the file.
+
 Switch to the project's version of node
 ```bash
 npm run dev
 ```
+
 Install the node packages
 ```bash
 npm install
