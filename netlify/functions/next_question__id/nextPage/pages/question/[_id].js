@@ -48568,6 +48568,7 @@ function Options({
         value: `${state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[question === null || question === void 0 ? void 0 : question._id]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer}`,
         placeholder: "Select a value...",
         onChange: e => selectUpdate(e.currentTarget.value, question),
+        tabIndex: "2",
         children: question === null || question === void 0 ? void 0 : question.optionSets[0].options.map(option => /*#__PURE__*/jsx_runtime.jsx("option", {
           value: option.value.current,
           children: option.title
@@ -49017,7 +49018,8 @@ function Calculator({
   const {
     0: atTheLastQuestion,
     1: setAtTheLastQuestion
-  } = (0,react.useState)(false); // Animation Variants (Framer Motion)
+  } = (0,react.useState)(false);
+  const resultRef = (0,react.useRef)(); // Animation Variants (Framer Motion)
 
   const variants = {
     initial: {
@@ -49042,6 +49044,14 @@ function Calculator({
   (0,react.useEffect)(() => {
     setCurrentQuestionID(questions[currentQuestion]._id);
   }, [currentQuestion]);
+  (0,react.useEffect)(() => {
+    if (seeResultsBtn === true) {
+      console.log('seeResultsBtn');
+      setTimeout(() => {
+        resultRef.current.focus();
+      }, 1);
+    }
+  }, [seeResultsBtn]);
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     if (mathOperation === 'equals') {
@@ -49231,16 +49241,20 @@ function Calculator({
             onClick: () => prevQuestion(),
             leftIcon: /*#__PURE__*/jsx_runtime.jsx(HiChevronLeft, {}),
             variant: "outline",
-            children: "Previous"
+            tabIndex: "3",
+            children: "Previous Question"
           }), questionLength > currentQuestion && /*#__PURE__*/jsx_runtime.jsx(Button, {
             onClick: () => nextQuestion(),
             isDisabled: atTheLastQuestion || isStringEmpty(state === null || state === void 0 ? void 0 : (_state$calculator3 = state.calculator) === null || _state$calculator3 === void 0 ? void 0 : (_state$calculator3$qu = _state$calculator3.questions[currentQuestionID]) === null || _state$calculator3$qu === void 0 ? void 0 : _state$calculator3$qu.answer) ? true : false,
             rightIcon: /*#__PURE__*/jsx_runtime.jsx(HiChevronRight, {}),
             variant: "outline",
-            children: "Next"
+            tabIndex: "4",
+            children: "Next Question"
           }), seeResultsBtn && /*#__PURE__*/jsx_runtime.jsx(Button, {
+            ref: resultRef,
             onClick: () => seeResults(),
             isDisabled: isStringEmpty(state === null || state === void 0 ? void 0 : (_state$calculator4 = state.calculator) === null || _state$calculator4 === void 0 ? void 0 : (_state$calculator4$qu = _state$calculator4.questions[currentQuestionID]) === null || _state$calculator4$qu === void 0 ? void 0 : _state$calculator4$qu.answer) ? true : false,
+            tabIndex: "5",
             children: "See Results"
           })]
         })]
@@ -49432,7 +49446,7 @@ async function getStaticPaths() {
 
 /***/ }),
 
-/***/ 1094:
+/***/ 9185:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49443,7 +49457,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2Fquestion_2F_5B_id_5D_absolutePagePath_private_next_pages_2Fquestion_2F_5B_id_5D_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_e4_nqBGr0LIbIB4FScIA_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22eb81e58dd64d05e31703286fd7311bc3_22_2C_22previewModeSigningKey_22_3A_22168419e040ad6eef6c18e70936d546479e55967107f128f30ebe380c14518577_22_2C_22previewModeEncryptionKey_22_3A_223fc9d28dcffb9ac5110282c7b8d602508893744c3766ff02f6f61e01cf1922cb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2Fquestion_2F_5B_id_5D_absolutePagePath_private_next_pages_2Fquestion_2F_5B_id_5D_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_tIgBX5pomzQrxPK3D9lb_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22d6027c2d0959657f8d9be8b19e69597a_22_2C_22previewModeSigningKey_22_3A_22232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374_22_2C_22previewModeEncryptionKey_22_3A_22c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -49460,12 +49474,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/e4_nqBGr0LIbIB4FScIA_/_buildManifest.js","static/e4_nqBGr0LIbIB4FScIA_/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-882fa44d00281ab132a9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-bdc8373ad247030fafac.js"],"/_app":["static/chunks/webpack-882fa44d00281ab132a9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-7abdcc2aa40ade4139bc.js"],"/_error":["static/chunks/webpack-882fa44d00281ab132a9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-882fa44d00281ab132a9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-8ddfb62dabd2c7de2fb6.js"],"/results":["static/chunks/webpack-882fa44d00281ab132a9.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-13b443dd5b0641cc1447.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/_tIgBX5pomzQrxPK3D9lb/_buildManifest.js","static/_tIgBX5pomzQrxPK3D9lb/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-bdc8373ad247030fafac.js"],"/_app":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-7abdcc2aa40ade4139bc.js"],"/_error":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-64e11f1f41c87634f100.js"],"/results":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-13b443dd5b0641cc1447.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fquestion%2F%5B_id%5D&absolutePagePath=private-next-pages%2Fquestion%2F%5B_id%5D.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=e4_nqBGr0LIbIB4FScIA_&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22eb81e58dd64d05e31703286fd7311bc3%22%2C%22previewModeSigningKey%22%3A%22168419e040ad6eef6c18e70936d546479e55967107f128f30ebe380c14518577%22%2C%22previewModeEncryptionKey%22%3A%223fc9d28dcffb9ac5110282c7b8d602508893744c3766ff02f6f61e01cf1922cb%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fquestion%2F%5B_id%5D&absolutePagePath=private-next-pages%2Fquestion%2F%5B_id%5D.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=_tIgBX5pomzQrxPK3D9lb&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22d6027c2d0959657f8d9be8b19e69597a%22%2C%22previewModeSigningKey%22%3A%22232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374%22%2C%22previewModeEncryptionKey%22%3A%22c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -49488,7 +49502,7 @@ var page_handler = __webpack_require__(9436);
       const compMod = __webpack_require__(543)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2Fquestion_2F_5B_id_5D_absolutePagePath_private_next_pages_2Fquestion_2F_5B_id_5D_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_e4_nqBGr0LIbIB4FScIA_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22eb81e58dd64d05e31703286fd7311bc3_22_2C_22previewModeSigningKey_22_3A_22168419e040ad6eef6c18e70936d546479e55967107f128f30ebe380c14518577_22_2C_22previewModeEncryptionKey_22_3A_223fc9d28dcffb9ac5110282c7b8d602508893744c3766ff02f6f61e01cf1922cb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2Fquestion_2F_5B_id_5D_absolutePagePath_private_next_pages_2Fquestion_2F_5B_id_5D_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_tIgBX5pomzQrxPK3D9lb_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22d6027c2d0959657f8d9be8b19e69597a_22_2C_22previewModeSigningKey_22_3A_22232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374_22_2C_22previewModeEncryptionKey_22_3A_22c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -49536,11 +49550,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/question/[_id]",
-        buildId: "e4_nqBGr0LIbIB4FScIA_",
-        escapedBuildId: "e4_nqBGr0LIbIB4FScIA_",
+        buildId: "_tIgBX5pomzQrxPK3D9lb",
+        escapedBuildId: "_tIgBX5pomzQrxPK3D9lb",
         basePath: "",
         pageIsDynamic: true,
-        encodedPreviewProps: {previewModeId:"eb81e58dd64d05e31703286fd7311bc3",previewModeSigningKey:"168419e040ad6eef6c18e70936d546479e55967107f128f30ebe380c14518577",previewModeEncryptionKey:"3fc9d28dcffb9ac5110282c7b8d602508893744c3766ff02f6f61e01cf1922cb"}
+        encodedPreviewProps: {previewModeId:"d6027c2d0959657f8d9be8b19e69597a",previewModeSigningKey:"232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374",previewModeEncryptionKey:"c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e"}
       })
       
     
@@ -67475,7 +67489,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(1094);
+/******/ 	var __webpack_exports__ = __webpack_require__(9185);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

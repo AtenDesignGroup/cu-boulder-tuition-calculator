@@ -53,7 +53,7 @@ export function Calculator({ question, questions, slug }) {
 
   useEffect(() => {
     if (seeResultsBtn === true) {
-      console.log('seeResultsBtn')
+      // console.log('seeResultsBtn')
       setTimeout(() => {
         resultRef.current.focus()
       }, 1)
@@ -206,7 +206,7 @@ export function Calculator({ question, questions, slug }) {
     })
     router.push(`/results`)
   }
-  console.log({ question, questions, slug, currentQuestion })
+  // console.log({ question, questions, slug, currentQuestion })
   if (!question) {
     return <Spinner size="md" />
   }
