@@ -4,8 +4,10 @@ import Link from 'next/link'
 import updateAction from '@/hooks/updateAction'
 import { LineItems } from '@/components/results/line-items'
 import { Text as BodyText } from '@/components/serializers/text'
-import { showArray, totalGenerator } from '@/utils/results'
-import { Heading, Box, Flex, Stack, Radio, RadioGroup } from '@chakra-ui/react'
+import { showArray, totalGenerator, toFixedNumber } from '@/utils/results'
+import { Heading, Box, Flex, Stack, Radio, RadioGroup, Text } from '@chakra-ui/react'
+import { Counter } from '@/components/counter'
+
 
 export function Results({ categories }) {
   const { actions, state } = useStateMachine({ updateAction })
@@ -47,6 +49,7 @@ export function Results({ categories }) {
     //   }
     // })
   }
+
   const filteredResults = categories?.map(val => {
     return {
       ...val,
@@ -58,49 +61,53 @@ export function Results({ categories }) {
       }).filter(val => showArray(val, questions) === true)
     };
   }).filter(val => val.lineItems.length > 0)
-  .filter(val => {
-    // actions.updateAction({
-    //   ...state,
-    //   calculator: {
-    //     ...state.calculator,
-    //     results: {
-    //       ...state.calculator.results,
-    //       [val._id]: {
-    //         ...state.calculator.results[val._id],
-    //         title: val.title,
-    //         // items: val.lineItems
-    //       }
-    //     }
-    //   }
-    // })
-    //addFilterResults(test)
-    return { ...val }
-  }).map(val =>
+  .map(val =>
     {
+      const catTotals = [];
+      let catTotal = 0;
+      val.lineItems.map(item => {
+        console.log(item.frequency)
+        catTotals.push(item.frequency === 'perSemester' ? parseFloat(item.total) * totalSemesters : parseFloat(item.total));
+        catTotals.length > 0 ? catTotal = catTotals.reduce((a,b) => parseFloat(a) + parseFloat(b), 0) :  catTotal = catTotals[0]
+      })
       return {
         ...val,
-        total: val?.lineItems?.reduce((a, b) => a.total + b.total, 0),
+        total: catTotal
       }
     }
   )
 
-
+  const grandTotals = [];
+  let grandTotal = 0;
+  filteredResults.map(item => {
+    grandTotals.push(parseFloat(item.total));
+    grandTotals.length > 0 ? grandTotal = grandTotals.reduce((a,b) => parseFloat(a) + parseFloat(b), 0) :  grandTotal = grandTotals[0]
+  })
 
   console.log({filteredResults})
-
+  console.log({grandTotal})
   return (
-    <Box>
+    <Box mb={12}>
       <Box mb={12}>
+
         <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase" ref={mainRef}
         // tabIndex="-1"
         as="h1">
           My Results
         </Heading>
+
         <Heading mb={2} as="h2">
           Estimated costs
           {totalSemesters === 1 && <> for One Semester</>}
           {totalSemesters === 2 && <> for Two Semesters</>}
         </Heading>
+
+        <Flex justifyContent="space-between" alignItems='baseline' mt={4} mb={4}>
+        <Heading textTransform='uppercase' size="2xl" as='h2'>Grand Total</Heading>
+        <Text fontSize="3xl" mb='0' fontWeight='bold' color="gray.800"><Counter target={grandTotal} duration={2} /></Text>
+        </Flex>
+
+
         <Flex alignItems="center">
           <RadioGroup
             name="totalSemestersView"
@@ -122,18 +129,21 @@ export function Results({ categories }) {
         </Flex>
       </Box>
 
-      <Box mb={40}>
+      <Box mb={20}>
 
 
 
         {filteredResults.map(category => (
-          <Box key={category._id} mb={8} pb={8} borderBottom="1px solid #eee">
+          <Box key={category._id} mb={8} pb={2} borderBottom="1px solid #eee">
+
             <Heading mb={3} size="xl" color="gray.600">
               {category.title}
             </Heading>
+
             <Box mb="4">
               <BodyText blocks={category.description} />
             </Box>
+
             {category.lineItems && category.lineItems !== undefined &&
               category.lineItems.length > 0 &&
               category?.lineItems.map(lineItem => {
@@ -148,6 +158,10 @@ export function Results({ categories }) {
               })
               .filter(val => showArray(val.props.data, questions) === true)
             }
+            <Flex justifyContent="space-between">
+            <Heading textTransform='uppercase' size="sm">Sub Total</Heading>
+            <Text fontSize="lg" mb='0' color="gray.600"><Counter target={category.total} duration={2} /></Text>
+            </Flex>
           </Box>
         ))}
 

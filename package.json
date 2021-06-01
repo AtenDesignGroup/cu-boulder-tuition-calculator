@@ -27,8 +27,7 @@
     "react-dom": "17.0.1",
     "react-hook-form": "^7.2.1",
     "react-icons": "^4.2.0",
-    "react-intersection-observer": "^8.31.1",
-    "yup": "^0.32.9"
+    "react-intersection-observer": "^8.31.1"
   },
   "engines": {
     "node": "14.x"

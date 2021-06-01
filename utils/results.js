@@ -92,6 +92,11 @@ export function totalGenerator(itemValue, questions) {
   return total
 }
 
+export function toFixedNumber(num, digits, base){
+  var pow = Math.pow(base||10, digits);
+  return Math.round(num*pow) / pow;
+}
+
 const operatorMagic = (questionVal, mathOperation, logicVal) => {
   // console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`)
   if (mathOperation === 'equals') {
@@ -260,3 +265,4 @@ export function CalculateResults() {
     </div>
   )
 }
+

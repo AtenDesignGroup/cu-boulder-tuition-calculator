@@ -80,7 +80,6 @@ export default {
         list: [
           { title: 'One-time', value: 'oneTime' },
           { title: 'Per Semester', value: 'perSemester' },
-          { title: 'Per Credit Hour', value: 'perCreditHour' },
           { title: 'Per Year', value: 'perYear' }
         ]
       }

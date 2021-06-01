@@ -30,7 +30,7 @@ export function LineItems({ data, itemTotal }) {
   // console.log(showArray(data))
 
     return (
-      <Box mb="8">
+      <Box mb="10">
         <Flex alignItems="flex-end" mb="2" justifyContent="space-between">
           <Flex alignItems="center" flexDir="column" alignItems="flex-start">
             <Flex flexDir="column">
