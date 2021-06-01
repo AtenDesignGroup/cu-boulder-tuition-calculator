@@ -65,7 +65,9 @@ export function Options({ question, title, description }) {
           <FormLabel>
             <Heading mb="6" as="h1" ref={mainRef} tabIndex="-1">{title}</Heading>
           </FormLabel>
-          {description && <Box mb="4" tabIndex="1">
+          {description && <Box mb="4"
+          // tabIndex="1"
+          >
             <BodyText blocks={description} />
           </Box>}
           <Select
@@ -73,7 +75,7 @@ export function Options({ question, title, description }) {
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
             placeholder="Select a value..."
             onChange={e => selectUpdate(e.currentTarget.value, question)}
-            tabIndex="2"
+            // tabIndex="2"
           >
             {question?.optionSets[0].options.map(option => (
               <option value={option.value.current} key={option._key}>

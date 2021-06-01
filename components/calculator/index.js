@@ -247,7 +247,8 @@ export function Calculator({ question, questions, slug }) {
                 }
                 rightIcon={<HiChevronRight />}
                 variant="outline"
-                tabIndex="4">
+                //tabIndex="4"
+                >
                 Next Question
               </Button>
             )}
@@ -261,7 +262,8 @@ export function Calculator({ question, questions, slug }) {
                     ? true
                     : false
                 }
-                tabIndex="5">
+                // tabIndex="5"
+                >
                 See Results
               </Button>
             )}

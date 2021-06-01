@@ -91,7 +91,9 @@ export function Results({ categories }) {
   return (
     <Box>
       <Box mb={12}>
-        <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase" ref={mainRef} tabIndex="-1" as="h1">
+        <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase" ref={mainRef}
+        // tabIndex="-1"
+        as="h1">
           My Results
         </Heading>
         <Heading mb={2} as="h2">

@@ -32899,7 +32899,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 41:
+/***/ 2129:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33357,7 +33357,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function updateAction(state, payload) {
+function updateAction_updateAction(state, payload) {
   // console.log('state:', state)
   // console.log('payload:', payload)
   return _objectSpread(_objectSpread({}, state), payload);
@@ -35263,7 +35263,7 @@ function Debug() {
     actions,
     state
   } = (0,little_state_machine/* useStateMachine */.j_)({
-    updateAction: updateAction
+    updateAction: updateAction_updateAction
   });
   const {
     questions
@@ -46306,6 +46306,7 @@ function Counter({
       duration: duration,
       separator: ",",
       prefix: "$",
+      decimals: 2,
       useEasing: true,
       children: ({
         countUpRef
@@ -46324,30 +46325,196 @@ function Counter({
 
 
 
-function line_items_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function line_items_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { line_items_ownKeys(Object(source), true).forEach(function (key) { line_items_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { line_items_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function line_items_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
- // import { MdInfo as InfoIcon } from 'react-icons/md'
 
 function LineItems({
   data,
-  catID,
-  catTitle
+  itemTotal
 }) {
-  // console.log({ data })
+  const {
+    _key,
+    description,
+    itemValue,
+    frontEndTitle,
+    frequency,
+    optionLogics,
+    optional,
+    optionLogicConditional
+  } = data; // console.log(showArray(data))
+
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+    mb: "8",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+      alignItems: "flex-end",
+      mb: "2",
+      justifyContent: "space-between",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+        alignItems: "center",
+        flexDir: "column",
+        alignItems: "flex-start",
+        children: [/*#__PURE__*/jsx_runtime.jsx(Flex, {
+          flexDir: "column",
+          children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
+            size: "lg",
+            children: frontEndTitle
+          })
+        }), optional && /*#__PURE__*/jsx_runtime.jsx(Box, {
+          background: "#eee",
+          textTransform: "uppercase",
+          fontSize: "0.6em",
+          px: "1",
+          py: ".75",
+          fontWeight: "bold",
+          children: "Optional Fee"
+        })]
+      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+        flexDir: "column",
+        alignItems: "flex-end",
+        children: [/*#__PURE__*/jsx_runtime.jsx(Text, {
+          fontSize: "2xl",
+          mb: "0",
+          children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
+            target: itemTotal,
+            duration: 2
+          })
+        }), /*#__PURE__*/jsx_runtime.jsx(Badge, {
+          background: "#2f8055",
+          fontSize: "0.6em",
+          variant: "solid",
+          children: frequency.replace(/([A-Z])/g, ' $1').trim()
+        })]
+      })]
+    }), description && /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+      blocks: description
+    })]
+  });
+}
+;// CONCATENATED MODULE: ./utils/results.js
+
+
+function results_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function results_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { results_ownKeys(Object(source), true).forEach(function (key) { results_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { results_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function results_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function showArray(data, questions) {
+  var _data$optionLogics;
+
+  // console.log(data.frontEndTitle)
+  const {
+    _key,
+    description,
+    itemValue,
+    frontEndTitle,
+    frequency,
+    optionLogics,
+    optional,
+    optionLogicConditional
+  } = data;
+  let showQuestion = [];
+  let returnVal = false;
+  data === null || data === void 0 ? void 0 : (_data$optionLogics = data.optionLogics) === null || _data$optionLogics === void 0 ? void 0 : _data$optionLogics.map(logic => {
+    // String Logic
+    if (logic._type === 'optionLogic') {
+      var _questions$logic$logi;
+
+      if (((_questions$logic$logi = questions[logic.logicSourceQuestion._ref]) === null || _questions$logic$logi === void 0 ? void 0 : _questions$logic$logi.answer) === logic.logicSourceValue) {
+        showQuestion.push('show');
+      } else {
+        showQuestion.push('hide');
+      } // Numeric Operational Logic
+
+    } else if (logic._type === 'optionNumericLogic') {
+      var _questions$logic$logi2, _logic$logicSourceQue;
+
+      let questionVal = Number((_questions$logic$logi2 = questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue = logic.logicSourceQuestion) === null || _logic$logicSourceQue === void 0 ? void 0 : _logic$logicSourceQue._ref]) === null || _questions$logic$logi2 === void 0 ? void 0 : _questions$logic$logi2.answer);
+      let logicVal = logic === null || logic === void 0 ? void 0 : logic.operatorValue;
+      let mathOperation = logic === null || logic === void 0 ? void 0 : logic.mathOperation;
+      showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal));
+    } else {
+      showQuestion.push('hide');
+    }
+
+    return showQuestion;
+  })[0];
+
+  if (!optionLogicConditional) {
+    returnVal = false;
+  } else if (showQuestion.length < 1) {
+    returnVal = true;
+  } else if (optionLogicConditional === null || !optionLogicConditional) {
+    returnVal = true;
+  } else if (optionLogicConditional === 'and') {
+    showQuestion.includes('hide') ? returnVal = false : returnVal = true;
+  } else if (optionLogicConditional === 'or') {
+    showQuestion.includes('show') ? returnVal = true : returnVal = false;
+  } // returnVal === true && updateStateResults(catID, data.title, data.frequency)
+  // console.log(returnVal)
+
+
+  return returnVal;
+}
+function totalGenerator(itemValue, questions) {
+  let total = 0;
+  const valueType = (itemValue === null || itemValue === void 0 ? void 0 : itemValue._type) || null;
+  const value = (itemValue === null || itemValue === void 0 ? void 0 : itemValue.value) || 0;
+  let math = null;
+  let valueQuestionID = null; // CALCULATED VALUE
+
+  if (valueType === 'calculatedValue') {
+    var _itemValue$logicSourc, _questions$valueQuest;
+
+    math = itemValue === null || itemValue === void 0 ? void 0 : itemValue.mathOperation;
+    valueQuestionID = itemValue === null || itemValue === void 0 ? void 0 : (_itemValue$logicSourc = itemValue.logicSourceQuestion) === null || _itemValue$logicSourc === void 0 ? void 0 : _itemValue$logicSourc._ref;
+    const myQuestionAnswer = parseInt(((_questions$valueQuest = questions[valueQuestionID]) === null || _questions$valueQuest === void 0 ? void 0 : _questions$valueQuest.answer) || 0); // console.log({myQuestionAnswer})
+
+    if (math === 'multiplication') {
+      total = value * myQuestionAnswer;
+    } else if (math === 'addition') {
+      total = value + myQuestionAnswer;
+    } else if (math === 'division') {
+      total = value / myQuestionAnswer;
+    } else if (math === 'subtraction') {
+      total = value - myQuestionAnswer;
+    }
+  } // SIMPLE VALUE
+
+
+  if (valueType === 'simpleValue') {
+    // console.log('simpleValue')
+    total = total + value;
+  } // console.log({ valueType, valueQuestionID, math, value, total })
+
+
+  return total;
+}
+
+const operatorMagic = (questionVal, mathOperation, logicVal) => {
+  // console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`)
+  if (mathOperation === 'equals') {
+    return questionVal === logicVal ? 'show' : 'hide';
+  } else if (mathOperation === 'doesNotEqual') {
+    return questionVal !== logicVal ? 'show' : 'hide';
+  } else if (mathOperation === 'lessThan') {
+    return questionVal < logicVal ? 'show' : 'hide';
+  } else if (mathOperation === 'lessThanOrEquals') {
+    return questionVal <= logicVal ? 'show' : 'hide';
+  } else if (mathOperation === 'greaterThan') {
+    return questionVal > logicVal ? 'show' : 'hide';
+  } else if (mathOperation === 'greaterThanOrEquals') {
+    return questionVal >= logicVal ? 'show' : 'hide';
+  } else {
+    return 'hide';
+  }
+};
+
+function CalculateResults() {
   const {
     actions,
     state
-  } = (0,little_state_machine/* useStateMachine */.j_)({
-    updateAction: updateAction
+  } = useStateMachine({
+    updateAction
   });
   const {
     _key,
@@ -46368,25 +46535,25 @@ function LineItems({
   } = state.calculator;
 
   const showArray = () => {
-    var _data$optionLogics;
+    var _data, _data$optionLogics2;
 
     let showQuestion = [];
     let returnVal = false;
-    data === null || data === void 0 ? void 0 : (_data$optionLogics = data.optionLogics) === null || _data$optionLogics === void 0 ? void 0 : _data$optionLogics.map(logic => {
+    (_data = data) === null || _data === void 0 ? void 0 : (_data$optionLogics2 = _data.optionLogics) === null || _data$optionLogics2 === void 0 ? void 0 : _data$optionLogics2.map(logic => {
       // String Logic
       if (logic._type === 'optionLogic') {
-        var _state$calculator, _state$calculator$que;
+        var _questions$logic$logi3;
 
-        if ((state === null || state === void 0 ? void 0 : (_state$calculator = state.calculator) === null || _state$calculator === void 0 ? void 0 : (_state$calculator$que = _state$calculator.questions[logic.logicSourceQuestion._ref]) === null || _state$calculator$que === void 0 ? void 0 : _state$calculator$que.answer) === logic.logicSourceValue) {
+        if (((_questions$logic$logi3 = questions[logic.logicSourceQuestion._ref]) === null || _questions$logic$logi3 === void 0 ? void 0 : _questions$logic$logi3.answer) === logic.logicSourceValue) {
           showQuestion.push('show');
         } else {
           showQuestion.push('hide');
         } // Numeric Operational Logic
 
       } else if (logic._type === 'optionNumericLogic') {
-        var _state$calculator2, _state$calculator2$qu, _logic$logicSourceQue;
+        var _questions$logic$logi4, _logic$logicSourceQue2;
 
-        let questionVal = Number(state === null || state === void 0 ? void 0 : (_state$calculator2 = state.calculator) === null || _state$calculator2 === void 0 ? void 0 : (_state$calculator2$qu = _state$calculator2.questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue = logic.logicSourceQuestion) === null || _logic$logicSourceQue === void 0 ? void 0 : _logic$logicSourceQue._ref]) === null || _state$calculator2$qu === void 0 ? void 0 : _state$calculator2$qu.answer);
+        let questionVal = Number((_questions$logic$logi4 = questions[logic === null || logic === void 0 ? void 0 : (_logic$logicSourceQue2 = logic.logicSourceQuestion) === null || _logic$logicSourceQue2 === void 0 ? void 0 : _logic$logicSourceQue2._ref]) === null || _questions$logic$logi4 === void 0 ? void 0 : _questions$logic$logi4.answer);
         let logicVal = logic === null || logic === void 0 ? void 0 : logic.operatorValue;
         let mathOperation = logic === null || logic === void 0 ? void 0 : logic.mathOperation;
         showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal));
@@ -46431,20 +46598,18 @@ function LineItems({
   };
 
   const TotalGenerator = () => {
-    var _itemValue$, _itemValue$2;
-
     let total = 0;
-    const valueType = ((_itemValue$ = itemValue[0]) === null || _itemValue$ === void 0 ? void 0 : _itemValue$._type) || null;
-    const value = ((_itemValue$2 = itemValue[0]) === null || _itemValue$2 === void 0 ? void 0 : _itemValue$2.value) || 0;
+    const valueType = (itemValue === null || itemValue === void 0 ? void 0 : itemValue._type) || null;
+    const value = (itemValue === null || itemValue === void 0 ? void 0 : itemValue.value) || 0;
     let math = null;
     let valueQuestionID = null; // CALCULATED VALUE
 
     if (valueType === 'calculatedValue') {
-      var _itemValue$3, _itemValue$4, _itemValue$4$logicSou, _questions$valueQuest;
+      var _itemValue$logicSourc2, _questions$valueQuest2;
 
-      math = (_itemValue$3 = itemValue[0]) === null || _itemValue$3 === void 0 ? void 0 : _itemValue$3.mathOperation;
-      valueQuestionID = (_itemValue$4 = itemValue[0]) === null || _itemValue$4 === void 0 ? void 0 : (_itemValue$4$logicSou = _itemValue$4.logicSourceQuestion) === null || _itemValue$4$logicSou === void 0 ? void 0 : _itemValue$4$logicSou._ref;
-      const myQuestionAnswer = parseInt(((_questions$valueQuest = questions[valueQuestionID]) === null || _questions$valueQuest === void 0 ? void 0 : _questions$valueQuest.answer) || 0); // console.log({myQuestionAnswer})
+      math = itemValue === null || itemValue === void 0 ? void 0 : itemValue.mathOperation;
+      valueQuestionID = itemValue === null || itemValue === void 0 ? void 0 : (_itemValue$logicSourc2 = itemValue.logicSourceQuestion) === null || _itemValue$logicSourc2 === void 0 ? void 0 : _itemValue$logicSourc2._ref;
+      const myQuestionAnswer = parseInt(((_questions$valueQuest2 = questions[valueQuestionID]) === null || _questions$valueQuest2 === void 0 ? void 0 : _questions$valueQuest2.answer) || 0); // console.log({myQuestionAnswer})
 
       if (math === 'multiplication') {
         total = value * myQuestionAnswer;
@@ -46467,7 +46632,7 @@ function LineItems({
     return total;
   };
 
-  (0,react.useEffect)(() => {
+  useEffect(() => {
     // console.log('useEffect')
     // console.log({questions})
     // console.log(state.calculator.questions)
@@ -46480,10 +46645,10 @@ function LineItems({
     // console.log(state.calculator.results[catID])
     // console.log({_key})
     if (showArray() === true) {
-      actions.updateAction(line_items_objectSpread(line_items_objectSpread({}, state), {}, {
-        calculator: line_items_objectSpread(line_items_objectSpread({}, state.calculator), {}, {
-          results: line_items_objectSpread(line_items_objectSpread({}, state.calculator.results), {}, {
-            [catID]: line_items_objectSpread(line_items_objectSpread({}, state.calculator.results[catID]), {}, {
+      actions.updateAction(results_objectSpread(results_objectSpread({}, state), {}, {
+        calculator: results_objectSpread(results_objectSpread({}, state.calculator), {}, {
+          results: results_objectSpread(results_objectSpread({}, state.calculator.results), {}, {
+            [catID]: results_objectSpread(results_objectSpread({}, state.calculator.results[catID]), {}, {
               title: catTitle,
               [_key]: {
                 title: data.frontEndTitle,
@@ -46496,57 +46661,9 @@ function LineItems({
       }));
     }
   }, []);
-
-  if (showArray()) {
-    return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
-      mb: "6",
-      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-        alignItems: "flex-end",
-        mb: "2",
-        justifyContent: "space-between",
-        children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-          alignItems: "center",
-          flexDir: "column",
-          alignItems: "flex-start",
-          children: [/*#__PURE__*/jsx_runtime.jsx(Flex, {
-            flexDir: "column",
-            children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
-              size: "xl",
-              children: frontEndTitle
-            })
-          }), optional && /*#__PURE__*/jsx_runtime.jsx(Box, {
-            background: "#eee",
-            textTransform: "uppercase",
-            fontSize: "0.6em",
-            px: "1",
-            py: ".75",
-            fontWeight: "bold",
-            children: "Optional Fee"
-          })]
-        }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-          flexDir: "column",
-          alignItems: "flex-end",
-          children: [/*#__PURE__*/jsx_runtime.jsx(Text, {
-            fontSize: "2xl",
-            mb: "0",
-            children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
-              target: TotalGenerator(),
-              duration: 2
-            })
-          }), /*#__PURE__*/jsx_runtime.jsx(Badge, {
-            colorScheme: "green",
-            fontSize: "0.6em",
-            variant: "solid",
-            children: frequency.replace(/([A-Z])/g, ' $1').trim()
-          })]
-        })]
-      }), description && /*#__PURE__*/jsx_runtime.jsx(text_Text, {
-        blocks: description
-      })]
-    });
-  } else {
-    return null;
-  }
+  return /*#__PURE__*/_jsx("div", {
+    children: "CalculateResults"
+  });
 }
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/radio/dist/esm/use-radio-group.js
 function use_radio_group_extends() { use_radio_group_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return use_radio_group_extends.apply(this, arguments); }
@@ -47643,11 +47760,12 @@ if (assertion/* __DEV__ */.Ts) {
 
 
 
-function results_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function components_results_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function results_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { results_ownKeys(Object(source), true).forEach(function (key) { results_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { results_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function components_results_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { components_results_ownKeys(Object(source), true).forEach(function (key) { components_results_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { components_results_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function results_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function components_results_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -47663,29 +47781,82 @@ function Results({
     actions,
     state
   } = (0,little_state_machine/* useStateMachine */.j_)({
-    updateAction: updateAction
+    updateAction: updateAction_updateAction
   });
   const {
     questions,
     results,
     totalSemesters
   } = state.calculator;
-  const mainRef = (0,react.useRef)();
-  (0,react.useEffect)(() => {
-    setTimeout(() => {
-      mainRef.current.focus();
-    }, 1);
-  }, []);
+  const mainRef = (0,react.useRef)(); // useEffect(() => {
+  //   setTimeout(() => {
+  //     mainRef.current.focus();
+  //   }, 1)
+  // }, [])
 
   const updateTotalSemesters = val => {
     val = parseInt(val);
-    actions.updateAction(results_objectSpread(results_objectSpread({}, state), {}, {
-      calculator: results_objectSpread(results_objectSpread({}, state.calculator), {}, {
+    actions.updateAction(components_results_objectSpread(components_results_objectSpread({}, state), {}, {
+      calculator: components_results_objectSpread(components_results_objectSpread({}, state.calculator), {}, {
         totalSemesters: val
       }, state.calculator.results)
     }));
   };
 
+  const addFilterResults = val => {
+    console.log({
+      val
+    }); // actions.updateAction({
+    //   ...state,
+    //   calculator: {
+    //     ...state.calculator,
+    //     results: {
+    //       ...state.calculator.results,
+    //       [val._id]: {
+    //         ...state.calculator.results[val._id],
+    //         title: val.title,
+    //         // items: val.lineItems
+    //       }
+    //     }
+    //   }
+    // })
+  };
+
+  const filteredResults = categories === null || categories === void 0 ? void 0 : categories.map(val => {
+    return components_results_objectSpread(components_results_objectSpread({}, val), {}, {
+      lineItems: val.lineItems.map(item => {
+        return components_results_objectSpread(components_results_objectSpread({}, item), {}, {
+          total: totalGenerator(item === null || item === void 0 ? void 0 : item.itemValue[0], questions)
+        });
+      }).filter(val => showArray(val, questions) === true)
+    });
+  }).filter(val => val.lineItems.length > 0).filter(val => {
+    // actions.updateAction({
+    //   ...state,
+    //   calculator: {
+    //     ...state.calculator,
+    //     results: {
+    //       ...state.calculator.results,
+    //       [val._id]: {
+    //         ...state.calculator.results[val._id],
+    //         title: val.title,
+    //         // items: val.lineItems
+    //       }
+    //     }
+    //   }
+    // })
+    //addFilterResults(test)
+    return components_results_objectSpread({}, val);
+  }).map(val => {
+    var _val$lineItems;
+
+    return components_results_objectSpread(components_results_objectSpread({}, val), {}, {
+      total: val === null || val === void 0 ? void 0 : (_val$lineItems = val.lineItems) === null || _val$lineItems === void 0 ? void 0 : _val$lineItems.reduce((a, b) => a.total + b.total, 0)
+    });
+  });
+  console.log({
+    filteredResults
+  });
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
       mb: 12,
@@ -47694,8 +47865,8 @@ function Results({
         mb: 4,
         color: "gray.600",
         textTransform: "uppercase",
-        ref: mainRef,
-        tabIndex: "-1",
+        ref: mainRef // tabIndex="-1"
+        ,
         as: "h1",
         children: "My Results"
       }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Heading, {
@@ -47733,13 +47904,13 @@ function Results({
       })]
     }), /*#__PURE__*/jsx_runtime.jsx(Box, {
       mb: 40,
-      children: categories.map(category => /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+      children: filteredResults.map(category => /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
         mb: 8,
         pb: 8,
         borderBottom: "1px solid #eee",
         children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
           mb: 3,
-          size: "lg",
+          size: "xl",
           color: "gray.600",
           children: category.title
         }), /*#__PURE__*/jsx_runtime.jsx(Box, {
@@ -47747,11 +47918,14 @@ function Results({
           children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
             blocks: category.description
           })
-        }), category.lineItems && category.lineItems.length > 0 && category.lineItems.map(lineItem => /*#__PURE__*/jsx_runtime.jsx(LineItems, {
-          data: lineItem,
-          catID: category._id,
-          catTitle: category.title
-        }, lineItem._key))]
+        }), category.lineItems && category.lineItems !== undefined && category.lineItems.length > 0 && (category === null || category === void 0 ? void 0 : category.lineItems.map(lineItem => {
+          return /*#__PURE__*/jsx_runtime.jsx(LineItems, {
+            data: lineItem,
+            catID: category._id,
+            catTitle: category.title,
+            itemTotal: totalGenerator(lineItem === null || lineItem === void 0 ? void 0 : lineItem.itemValue[0], questions)
+          }, lineItem._key);
+        }).filter(val => showArray(val.props.data, questions) === true))]
       }, category._id))
     }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
       href: `/question/${Object.keys(questions)[0]}`,
@@ -47913,7 +48087,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 7385:
+/***/ 9184:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47924,7 +48098,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_tIgBX5pomzQrxPK3D9lb_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22d6027c2d0959657f8d9be8b19e69597a_22_2C_22previewModeSigningKey_22_3A_22232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374_22_2C_22previewModeEncryptionKey_22_3A_22c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_6M_AUURWKoBEyul3FSlVm_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22d451a2ded81839a1b0fcbbd6d660f3cb_22_2C_22previewModeSigningKey_22_3A_22b988d63659b052b055f0b0c268cd9eb11e98ca6abe1cd4057e5fff4fb42f1b95_22_2C_22previewModeEncryptionKey_22_3A_226ccea38b58e2895940277885d181fce21517824fee3a2dc9ef43f39a7a4c69eb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -47941,12 +48115,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/_tIgBX5pomzQrxPK3D9lb/_buildManifest.js","static/_tIgBX5pomzQrxPK3D9lb/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-bdc8373ad247030fafac.js"],"/_app":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-7abdcc2aa40ade4139bc.js"],"/_error":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-64e11f1f41c87634f100.js"],"/results":["static/chunks/webpack-e56996f7f074399e0d9f.js","static/chunks/framework-a5f6c4cae3f8699fe44c.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-13b443dd5b0641cc1447.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/6M-AUURWKoBEyul3FSlVm/_buildManifest.js","static/6M-AUURWKoBEyul3FSlVm/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-dde79184e4d0c3f5afa8.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-4b2ab3444924255038c1.js"],"/_app":["static/chunks/webpack-dde79184e4d0c3f5afa8.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-2247b67703f6b9692c9a.js"],"/_error":["static/chunks/webpack-dde79184e4d0c3f5afa8.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-dde79184e4d0c3f5afa8.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-b903e2c69ae1e4d308bd.js"],"/results":["static/chunks/webpack-dde79184e4d0c3f5afa8.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-1e664a81b1ec692d9261.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=_tIgBX5pomzQrxPK3D9lb&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22d6027c2d0959657f8d9be8b19e69597a%22%2C%22previewModeSigningKey%22%3A%22232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374%22%2C%22previewModeEncryptionKey%22%3A%22c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=6M-AUURWKoBEyul3FSlVm&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22d451a2ded81839a1b0fcbbd6d660f3cb%22%2C%22previewModeSigningKey%22%3A%22b988d63659b052b055f0b0c268cd9eb11e98ca6abe1cd4057e5fff4fb42f1b95%22%2C%22previewModeEncryptionKey%22%3A%226ccea38b58e2895940277885d181fce21517824fee3a2dc9ef43f39a7a4c69eb%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -47966,10 +48140,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(41)
+      const compMod = __webpack_require__(2129)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_tIgBX5pomzQrxPK3D9lb_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22d6027c2d0959657f8d9be8b19e69597a_22_2C_22previewModeSigningKey_22_3A_22232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374_22_2C_22previewModeEncryptionKey_22_3A_22c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_6M_AUURWKoBEyul3FSlVm_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22d451a2ded81839a1b0fcbbd6d660f3cb_22_2C_22previewModeSigningKey_22_3A_22b988d63659b052b055f0b0c268cd9eb11e98ca6abe1cd4057e5fff4fb42f1b95_22_2C_22previewModeEncryptionKey_22_3A_226ccea38b58e2895940277885d181fce21517824fee3a2dc9ef43f39a7a4c69eb_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -48017,11 +48191,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/results",
-        buildId: "_tIgBX5pomzQrxPK3D9lb",
-        escapedBuildId: "_tIgBX5pomzQrxPK3D9lb",
+        buildId: "6M-AUURWKoBEyul3FSlVm",
+        escapedBuildId: "6M\-AUURWKoBEyul3FSlVm",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"d6027c2d0959657f8d9be8b19e69597a",previewModeSigningKey:"232e628fd054324765adcb9e7a9c5cb273e5f558d2d0450e705c30a0b80c2374",previewModeEncryptionKey:"c6c9811a3ff0dd3d9adcc05f7854b8c884d5fb236772f8dd1ad3d0fe3ed8f08e"}
+        encodedPreviewProps: {previewModeId:"d451a2ded81839a1b0fcbbd6d660f3cb",previewModeSigningKey:"b988d63659b052b055f0b0c268cd9eb11e98ca6abe1cd4057e5fff4fb42f1b95",previewModeEncryptionKey:"6ccea38b58e2895940277885d181fce21517824fee3a2dc9ef43f39a7a4c69eb"}
       })
       
     
@@ -67086,7 +67260,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(7385);
+/******/ 	var __webpack_exports__ = __webpack_require__(9184);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
