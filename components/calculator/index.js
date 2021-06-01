@@ -51,14 +51,14 @@ export function Calculator({ question, questions, slug }) {
     setCurrentQuestionID(questions[currentQuestion]._id)
   }, [currentQuestion])
 
-  useEffect(() => {
-    if (seeResultsBtn === true) {
-      // console.log('seeResultsBtn')
-      setTimeout(() => {
-        resultRef.current.focus()
-      }, 1)
-    }
-  }, [seeResultsBtn])
+  // useEffect(() => {
+  //   if (seeResultsBtn === true) {
+  //     // console.log('seeResultsBtn')
+  //     setTimeout(() => {
+  //       resultRef.current.focus()
+  //     }, 1)
+  //   }
+  // }, [seeResultsBtn])
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     if (mathOperation === 'equals') {
@@ -143,20 +143,22 @@ export function Calculator({ question, questions, slug }) {
       i = currentQuestion
       setAtTheLastQuestion(true)
       setSeeResultsBtn(true)
+      router.push(`/results`)
+    } else {
+      actions.updateAction({
+        ...state,
+        calculator: {
+          ...state.calculator,
+          currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
+        }
+      })
+      router.push(
+        `/question/${
+          i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+        }`
+      )
     }
 
-    actions.updateAction({
-      ...state,
-      calculator: {
-        ...state.calculator,
-        currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
-      }
-    })
-    router.push(
-      `/question/${
-        i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
-      }`
-    )
   }
 
   // Button to advance the user to the previous question, not shown on the first question
@@ -231,7 +233,8 @@ export function Calculator({ question, questions, slug }) {
 
           <Stack direction="row" spacing={4} align="center" mb="12">
             {currentQuestion > 0 && (
-              <Button onClick={() => prevQuestion()} leftIcon={<HiChevronLeft />} variant="outline" tabIndex="3">
+              <Button onClick={() => prevQuestion()} leftIcon={<HiChevronLeft />} variant="outline" //tabIndex="3"
+              >
                 Previous Question
               </Button>
             )}
@@ -253,7 +256,7 @@ export function Calculator({ question, questions, slug }) {
               </Button>
             )}
 
-            {seeResultsBtn && (
+            {/*{ seeResultsBtn && (
               <Button
                 ref={resultRef}
                 onClick={() => seeResults()}
@@ -263,10 +266,11 @@ export function Calculator({ question, questions, slug }) {
                     : false
                 }
                 // tabIndex="5"
+                aria-live="polite"
                 >
                 See Results
               </Button>
-            )}
+            )}*/}
           </Stack>
         </motion.div>
       </Box>
