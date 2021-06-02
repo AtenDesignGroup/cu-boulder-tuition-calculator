@@ -25,6 +25,7 @@ export function Calculator({ question, questions, slug }) {
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
   const [seeResultsBtn, setSeeResultsBtn] = useState(false)
   const [atTheLastQuestion, setAtTheLastQuestion] = useState(false)
+  const [questionAnswered, setQuestionAnswered] = useState(false)
   const resultRef = useRef()
 
   // Animation Variants (Framer Motion)
@@ -47,10 +48,6 @@ export function Calculator({ question, questions, slug }) {
     transition: { duration: 2 }
   }
 
-  useEffect(() => {
-    setCurrentQuestionID(questions[currentQuestion]._id)
-  }, [currentQuestion])
-
   // useEffect(() => {
   //   if (seeResultsBtn === true) {
   //     // console.log('seeResultsBtn')
@@ -59,6 +56,54 @@ export function Calculator({ question, questions, slug }) {
   //     }, 1)
   //   }
   // }, [seeResultsBtn])
+
+  useEffect(() => {
+    setCurrentQuestionID(questions[currentQuestion]._id)
+  }, [currentQuestion])
+
+  useEffect(() => {
+    console.clear()
+    // Check to see if the question has been answered
+    setQuestionAnswered(isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? false : true)
+
+    // Question has been answered 👍🏻
+    if(questionAnswered === true){
+      console.log('👍🏻 question answered')
+
+      let i = currentQuestion
+      let showQuestion = 'hide'
+      let optionLogicConditional = 'or'
+      while (showQuestion === 'hide') {
+        i += 1
+        if (i >= questionLength) {
+          break
+        }
+        optionLogicConditional = questions[i]?.optionLogicConditional || 'or'
+        showQuestion = showQ(questions[i], optionLogicConditional, i)
+      }
+      // Logic to see if at the end of questions or not
+      if (i === undefined || i >= questionLength) {
+        console.log('🔚 you have reached the end of our questions')
+          i = currentQuestion
+          setAtTheLastQuestion(true)
+      } else {
+        setAtTheLastQuestion(false)
+        console.log('✅ another question')
+      }
+
+    // Question not answered 👎🏻
+    } else {
+      setAtTheLastQuestion(false)
+      console.log('👎🏻 question answered')
+    }
+
+    console.log({questionAnswered})
+    console.log({atTheLastQuestion})
+    // return () => {
+    //   // cleanup
+
+    // }
+  })
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     if (mathOperation === 'equals') {
@@ -124,6 +169,7 @@ export function Calculator({ question, questions, slug }) {
     return returnVal
   }
 
+  // Button to advance the user to the next question, not shown or disabled on the last question
   const nextQuestion = () => {
     let i = currentQuestion
     let showQuestion = 'hide'
@@ -243,7 +289,7 @@ export function Calculator({ question, questions, slug }) {
               <Button
                 onClick={() => nextQuestion()}
                 isDisabled={
-                  atTheLastQuestion ||
+
                   isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
                     ? true
                     : false
@@ -252,7 +298,7 @@ export function Calculator({ question, questions, slug }) {
                 variant="outline"
                 //tabIndex="4"
                 >
-                Next Question
+                {atTheLastQuestion ? 'See Results' : 'Next Question'}
               </Button>
             )}
 

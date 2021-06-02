@@ -34,7 +34,7 @@ export function LineItems({ data, itemTotal }) {
         <Flex alignItems="flex-end" mb="2" justifyContent="space-between">
           <Flex alignItems="center" flexDir="column" alignItems="flex-start">
             <Flex flexDir="column">
-              <Heading size="lg">{frontEndTitle}</Heading>
+              <Heading size="lg" as='h3'>{frontEndTitle}</Heading>
             </Flex>
             {optional && (
               <Box

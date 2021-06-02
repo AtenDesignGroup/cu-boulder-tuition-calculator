@@ -134,7 +134,7 @@ export function Results({ categories }) {
 
 
         {filteredResults.map(category => (
-          <Box key={category._id} mb={8} pb={2} borderBottom="1px solid #eee">
+          <Box key={category._id} mb={14} pb={2} borderBottom="1px solid #eee">
 
             <Heading mb={3} size="xl" color="gray.600">
               {category.title}
@@ -159,7 +159,7 @@ export function Results({ categories }) {
               .filter(val => showArray(val.props.data, questions) === true)
             }
             <Flex justifyContent="space-between">
-            <Heading textTransform='uppercase' size="sm">Sub Total</Heading>
+            <Heading textTransform='uppercase' size="sm" as='h3'>Sub Total</Heading>
             <Text fontSize="lg" mb='0' color="gray.600"><Counter target={category.total} duration={2} /></Text>
             </Flex>
           </Box>

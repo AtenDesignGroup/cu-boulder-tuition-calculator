@@ -1,16 +1,5 @@
-
-
 export function showArray(data, questions) {
-  // console.log(data.frontEndTitle)
-
   const {
-    _key,
-    description,
-    itemValue,
-    frontEndTitle,
-    frequency,
-    optionLogics,
-    optional,
     optionLogicConditional
   } = data
 

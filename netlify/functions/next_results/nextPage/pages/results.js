@@ -33341,7 +33341,7 @@ function Footer() {
       borderTop: "1px solid #eaeaea",
       justifyContent: "center",
       alignItems: "center",
-      paddingY: "2rem",
+      paddingY: "2",
       children: /*#__PURE__*/jsx_runtime.jsx(Text, {
         children: "Powered by Sanity.io"
       })
@@ -46343,7 +46343,7 @@ function LineItems({
   } = data; // console.log(showArray(data))
 
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
-    mb: "8",
+    mb: "10",
     children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       alignItems: "flex-end",
       mb: "2",
@@ -46356,6 +46356,7 @@ function LineItems({
           flexDir: "column",
           children: /*#__PURE__*/jsx_runtime.jsx(Heading, {
             size: "lg",
+            as: "h3",
             children: frontEndTitle
           })
         }), optional && /*#__PURE__*/jsx_runtime.jsx(Box, {
@@ -46401,15 +46402,7 @@ function results_defineProperty(obj, key, value) { if (key in obj) { Object.defi
 function showArray(data, questions) {
   var _data$optionLogics;
 
-  // console.log(data.frontEndTitle)
   const {
-    _key,
-    description,
-    itemValue,
-    frontEndTitle,
-    frequency,
-    optionLogics,
-    optional,
     optionLogicConditional
   } = data;
   let showQuestion = [];
@@ -46488,6 +46481,10 @@ function totalGenerator(itemValue, questions) {
 
 
   return total;
+}
+function toFixedNumber(num, digits, base) {
+  var pow = Math.pow(base || 10, digits);
+  return Math.round(num * pow) / pow;
 }
 
 const operatorMagic = (questionVal, mathOperation, logicVal) => {
@@ -47774,6 +47771,7 @@ function components_results_defineProperty(obj, key, value) { if (key in obj) { 
 
 
 
+
 function Results({
   categories
 }) {
@@ -47830,34 +47828,32 @@ function Results({
         });
       }).filter(val => showArray(val, questions) === true)
     });
-  }).filter(val => val.lineItems.length > 0).filter(val => {
-    // actions.updateAction({
-    //   ...state,
-    //   calculator: {
-    //     ...state.calculator,
-    //     results: {
-    //       ...state.calculator.results,
-    //       [val._id]: {
-    //         ...state.calculator.results[val._id],
-    //         title: val.title,
-    //         // items: val.lineItems
-    //       }
-    //     }
-    //   }
-    // })
-    //addFilterResults(test)
-    return components_results_objectSpread({}, val);
-  }).map(val => {
-    var _val$lineItems;
-
-    return components_results_objectSpread(components_results_objectSpread({}, val), {}, {
-      total: val === null || val === void 0 ? void 0 : (_val$lineItems = val.lineItems) === null || _val$lineItems === void 0 ? void 0 : _val$lineItems.reduce((a, b) => a.total + b.total, 0)
+  }).filter(val => val.lineItems.length > 0).map(val => {
+    const catTotals = [];
+    let catTotal = 0;
+    val.lineItems.map(item => {
+      console.log(item.frequency);
+      catTotals.push(item.frequency === 'perSemester' ? parseFloat(item.total) * totalSemesters : parseFloat(item.total));
+      catTotals.length > 0 ? catTotal = catTotals.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : catTotal = catTotals[0];
     });
+    return components_results_objectSpread(components_results_objectSpread({}, val), {}, {
+      total: catTotal
+    });
+  });
+  const grandTotals = [];
+  let grandTotal = 0;
+  filteredResults.map(item => {
+    grandTotals.push(parseFloat(item.total));
+    grandTotals.length > 0 ? grandTotal = grandTotals.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : grandTotal = grandTotals[0];
   });
   console.log({
     filteredResults
   });
+  console.log({
+    grandTotal
+  });
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+    mb: 12,
     children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
       mb: 12,
       children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
@@ -47876,6 +47872,26 @@ function Results({
           children: " for One Semester"
         }), totalSemesters === 2 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
           children: " for Two Semesters"
+        })]
+      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+        justifyContent: "space-between",
+        alignItems: "baseline",
+        mt: 4,
+        mb: 4,
+        children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+          textTransform: "uppercase",
+          size: "2xl",
+          as: "h2",
+          children: "Grand Total"
+        }), /*#__PURE__*/jsx_runtime.jsx(Text, {
+          fontSize: "3xl",
+          mb: "0",
+          fontWeight: "bold",
+          color: "gray.800",
+          children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
+            target: grandTotal,
+            duration: 2
+          })
         })]
       }), /*#__PURE__*/jsx_runtime.jsx(Flex, {
         alignItems: "center",
@@ -47903,10 +47919,10 @@ function Results({
         })
       })]
     }), /*#__PURE__*/jsx_runtime.jsx(Box, {
-      mb: 40,
+      mb: 20,
       children: filteredResults.map(category => /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
-        mb: 8,
-        pb: 8,
+        mb: 14,
+        pb: 2,
         borderBottom: "1px solid #eee",
         children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
           mb: 3,
@@ -47925,7 +47941,23 @@ function Results({
             catTitle: category.title,
             itemTotal: totalGenerator(lineItem === null || lineItem === void 0 ? void 0 : lineItem.itemValue[0], questions)
           }, lineItem._key);
-        }).filter(val => showArray(val.props.data, questions) === true))]
+        }).filter(val => showArray(val.props.data, questions) === true)), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+          justifyContent: "space-between",
+          children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+            textTransform: "uppercase",
+            size: "sm",
+            as: "h3",
+            children: "Sub Total"
+          }), /*#__PURE__*/jsx_runtime.jsx(Text, {
+            fontSize: "lg",
+            mb: "0",
+            color: "gray.600",
+            children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
+              target: category.total,
+              duration: 2
+            })
+          })]
+        })]
       }, category._id))
     }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
       href: `/question/${Object.keys(questions)[0]}`,
@@ -48087,7 +48119,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 5919:
+/***/ 642:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48098,7 +48130,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_UdsOn84AvaNugqL6kIPIr_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22ea8054cc6167c16ded512081b5333955_22_2C_22previewModeSigningKey_22_3A_22743fcd23a72ea2e936476e70430a1841bbbfae399570845a96ca320a69d0c096_22_2C_22previewModeEncryptionKey_22_3A_224effc8826f279671b675668f16cde66e03419f89e9524ab1bd6fa610b7aeedd0_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_OpmWVi9FIH4NlC9SYTbMO_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2264035e1b44cc15c0764df67198cc7aaf_22_2C_22previewModeSigningKey_22_3A_2236dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46_22_2C_22previewModeEncryptionKey_22_3A_222df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -48115,12 +48147,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/UdsOn84AvaNugqL6kIPIr/_buildManifest.js","static/UdsOn84AvaNugqL6kIPIr/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-8b3f21111fc614594d63.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-4b2ab3444924255038c1.js"],"/_app":["static/chunks/webpack-8b3f21111fc614594d63.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-2247b67703f6b9692c9a.js"],"/_error":["static/chunks/webpack-8b3f21111fc614594d63.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-8b3f21111fc614594d63.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-5a51fd25f7c0a0f12ead.js"],"/results":["static/chunks/webpack-8b3f21111fc614594d63.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-1e664a81b1ec692d9261.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/OpmWVi9FIH4NlC9SYTbMO/_buildManifest.js","static/OpmWVi9FIH4NlC9SYTbMO/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-31a9e2bcc8b494b3cb0a.js"],"/_app":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-2247b67703f6b9692c9a.js"],"/_error":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-e288a934698c6acc1c3e.js"],"/results":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-d50e8ac95d85a0e75ee7.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=UdsOn84AvaNugqL6kIPIr&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22ea8054cc6167c16ded512081b5333955%22%2C%22previewModeSigningKey%22%3A%22743fcd23a72ea2e936476e70430a1841bbbfae399570845a96ca320a69d0c096%22%2C%22previewModeEncryptionKey%22%3A%224effc8826f279671b675668f16cde66e03419f89e9524ab1bd6fa610b7aeedd0%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=OpmWVi9FIH4NlC9SYTbMO&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2264035e1b44cc15c0764df67198cc7aaf%22%2C%22previewModeSigningKey%22%3A%2236dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46%22%2C%22previewModeEncryptionKey%22%3A%222df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -48143,7 +48175,7 @@ var page_handler = __webpack_require__(9436);
       const compMod = __webpack_require__(2129)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_UdsOn84AvaNugqL6kIPIr_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22ea8054cc6167c16ded512081b5333955_22_2C_22previewModeSigningKey_22_3A_22743fcd23a72ea2e936476e70430a1841bbbfae399570845a96ca320a69d0c096_22_2C_22previewModeEncryptionKey_22_3A_224effc8826f279671b675668f16cde66e03419f89e9524ab1bd6fa610b7aeedd0_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_OpmWVi9FIH4NlC9SYTbMO_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2264035e1b44cc15c0764df67198cc7aaf_22_2C_22previewModeSigningKey_22_3A_2236dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46_22_2C_22previewModeEncryptionKey_22_3A_222df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -48191,11 +48223,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/results",
-        buildId: "UdsOn84AvaNugqL6kIPIr",
-        escapedBuildId: "UdsOn84AvaNugqL6kIPIr",
+        buildId: "OpmWVi9FIH4NlC9SYTbMO",
+        escapedBuildId: "OpmWVi9FIH4NlC9SYTbMO",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"ea8054cc6167c16ded512081b5333955",previewModeSigningKey:"743fcd23a72ea2e936476e70430a1841bbbfae399570845a96ca320a69d0c096",previewModeEncryptionKey:"4effc8826f279671b675668f16cde66e03419f89e9524ab1bd6fa610b7aeedd0"}
+        encodedPreviewProps: {previewModeId:"64035e1b44cc15c0764df67198cc7aaf",previewModeSigningKey:"36dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46",previewModeEncryptionKey:"2df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6"}
       })
       
     
@@ -67260,7 +67292,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(5919);
+/******/ 	var __webpack_exports__ = __webpack_require__(642);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
