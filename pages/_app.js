@@ -12,6 +12,7 @@ createStore(
   {
     calculator: {
       currentQuestion: 0,
+      lastQuestion: null,
       showResults: false,
       questions: [],
       results: [],

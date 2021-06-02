@@ -20,7 +20,7 @@ export function Calculator({ question, questions, slug }) {
   const { actions, state } = useStateMachine({ updateAction })
   // const { currentQuestion } = state.calculator
   const currentQuestion = parseInt(slug)
-  const { showResults } = state.calculator
+  const { showResults, lastQuestion } = state.calculator
   const questionLength = questions?.length - 1
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
   const [seeResultsBtn, setSeeResultsBtn] = useState(false)
@@ -62,14 +62,12 @@ export function Calculator({ question, questions, slug }) {
   }, [currentQuestion])
 
   useEffect(() => {
-    console.clear()
+    // console.clear()
     // Check to see if the question has been answered
     setQuestionAnswered(isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? false : true)
-
     // Question has been answered 👍🏻
     if(questionAnswered === true){
-      console.log('👍🏻 question answered')
-
+      // console.log('👍🏻 question answered')
       let i = currentQuestion
       let showQuestion = 'hide'
       let optionLogicConditional = 'or'
@@ -83,27 +81,42 @@ export function Calculator({ question, questions, slug }) {
       }
       // Logic to see if at the end of questions or not
       if (i === undefined || i >= questionLength) {
-        console.log('🔚 you have reached the end of our questions')
+        // console.log('🔚 you have reached the end of our questions')
           i = currentQuestion
           setAtTheLastQuestion(true)
       } else {
         setAtTheLastQuestion(false)
-        console.log('✅ another question')
+        // console.log('✅ another question')
       }
-
     // Question not answered 👎🏻
     } else {
       setAtTheLastQuestion(false)
-      console.log('👎🏻 question answered')
+      // console.log('👎🏻 question answered')
     }
-
-    console.log({questionAnswered})
-    console.log({atTheLastQuestion})
-    // return () => {
-    //   // cleanup
-
-    // }
+    // console.log({lastQuestion})
+    // console.log({questionAnswered})
+    // console.log({atTheLastQuestion})
   })
+
+  useEffect(() => {
+    if (atTheLastQuestion){
+      actions.updateAction({
+        ...state,
+        lastQuestion: currentQuestion
+      })
+    }
+    console.log({currentQuestion})
+    console.log({atTheLastQuestion})
+    console.log({lastQuestion})
+  }, [atTheLastQuestion])
+
+  const setLastQuestion = (q) => {
+    actions.updateAction({
+      ...state,
+      lastQuestion: q
+    })
+    return null
+  }
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     if (mathOperation === 'equals') {
@@ -288,12 +301,7 @@ export function Calculator({ question, questions, slug }) {
             {questionLength > currentQuestion && (
               <Button
                 onClick={() => nextQuestion()}
-                isDisabled={
-
-                  isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
-                    ? true
-                    : false
-                }
+                isDisabled={questionAnswered ? false : true}
                 rightIcon={<HiChevronRight />}
                 variant="outline"
                 //tabIndex="4"

@@ -16,7 +16,7 @@ export default function QuestionPage({ question, questions, siteSettings, slug, 
   }
 
   return (
-    <Layout siteSettings={siteSettings}>
+    <Layout siteSettings={siteSettings} position={position} totalQuestions={questions.length}>
      {questions && <Calculator slug={position} questions={questions} question={question} />}
     </Layout>
   )

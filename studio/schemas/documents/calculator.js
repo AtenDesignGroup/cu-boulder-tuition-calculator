@@ -24,6 +24,12 @@ export default {
       title: 'Description'
     },
     {
+      name: 'buttonTitle',
+      type: 'string',
+      title: 'Start Button Text',
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'questions',
       title: 'Questions',
       description: 'Adding Questions here will display them on Tuition Calculator.',

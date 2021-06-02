@@ -15,7 +15,7 @@ export default function ResultsPage({pageData}) {
   const { questions, categories } = tuitionCalculator
 
   return (
-    <Layout siteSettings={siteSettings}>
+    <Layout siteSettings={siteSettings} status={100}>
       <Results categories={categories} />
     </Layout>
   )

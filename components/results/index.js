@@ -96,7 +96,7 @@ export function Results({ categories }) {
           My Results
         </Heading>
 
-        <Heading mb={2} as="h2">
+        <Heading mb={2} as="h2" size='md'>
           Estimated costs
           {totalSemesters === 1 && <> for One Semester</>}
           {totalSemesters === 2 && <> for Two Semesters</>}

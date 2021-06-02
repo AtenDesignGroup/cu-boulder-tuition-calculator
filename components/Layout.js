@@ -1,6 +1,5 @@
 import { useRef } from 'react'
-import { useRouter } from 'next/router'
-
+import { isStringEmpty } from '@/utils/helpers'
 import { Head } from '@/components/head'
 import Footer from '@/components/footer'
 import { Debug } from '@/components/calculator/debug'
@@ -14,19 +13,21 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  useDisclosure
+  useDisclosure,
+  Progress
 } from '@chakra-ui/react'
 
-export function Layout({ children, siteSettings }) {
+export function Layout({ children, siteSettings, position, totalQuestions, status }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
-  const router = useRouter()
+
   return (
     <>
       <Head
         title={siteSettings?.seoSettings?.title || ''}
         description={siteSettings?.seoSettings?.description || ''}
       />
+      {isStringEmpty(status) ? <Progress value={(position + 1) / totalQuestions * 100} /> : <Progress value={status} /> }
       <Flex height="100vh" flexDir="column" maxWidth='890px' mx='auto' px='6' py='6'>
         {children}
 

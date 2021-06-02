@@ -14,6 +14,7 @@ export function Debug () {
       ...state,
       calculator: {
         currentQuestion: 0,
+        lastQuestion: null,
         showResults: false,
         questions: [],
         results: [],
