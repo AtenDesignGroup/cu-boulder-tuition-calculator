@@ -38,11 +38,16 @@ export function LineItems({ data, itemTotal }) {
   // console.log(showArray(data))
 
     return (
-      <Box mb="6">
-        <Flex alignItems="flex-end" mb="2" justifyContent="space-between">
+      <Box mb="6" className="printNoMargins">
+
+        <Flex alignItems="flex-end" mb="2" justifyContent="space-between" className="printNoMargins">
+
           <Flex alignItems="center" flexDir="column" alignItems="flex-start">
+
             <Flex alignItems="center">
+
               <Heading size="md" as='h3'>{frontEndTitle}</Heading>
+
               {description && (<>
                 <IconButton
                 variant="ghost"
@@ -50,6 +55,7 @@ export function LineItems({ data, itemTotal }) {
                 fontSize="20px"
                 onClick={onOpen}
                 icon={<InfoIcon />}
+                className="printVisibilityHide"
               />
                 <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
@@ -69,7 +75,7 @@ export function LineItems({ data, itemTotal }) {
               <Box
                 background="#eee"
                 textTransform="uppercase"
-                fontSize="0.6em"
+                fontSize="xx-small"
                 px="1"
                 py=".75"
                 fontWeight="bold"
@@ -79,11 +85,11 @@ export function LineItems({ data, itemTotal }) {
             )}
           </Flex>
 
-          <Flex flexDir="column" alignItems="flex-end">
-            <Text fontSize="lg" mb='0'>
+          <Flex flexDir="column" alignItems="flex-end" className="printPriceWrapper">
+            <Text fontSize="lg" mb='0' className="printPrice" order="1">
              <Counter target={itemTotal} duration={2} />
             </Text>
-            <Badge background="#2f8055" fontSize="0.6em" variant="solid">
+            <Badge background="#2f8055" fontSize="xx-small" variant="solid" className="printBadge" order="2">
               {frequency.replace(/([A-Z])/g, ' $1').trim()}
             </Badge>
           </Flex>

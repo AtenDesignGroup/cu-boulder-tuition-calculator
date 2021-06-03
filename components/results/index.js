@@ -4,9 +4,11 @@ import Link from 'next/link'
 import updateAction from '@/hooks/updateAction'
 import { LineItems } from '@/components/results/line-items'
 import { Text as BodyText } from '@/components/serializers/text'
+import ReactToPrint from "react-to-print"
 import { showArray, totalGenerator, toFixedNumber } from '@/utils/results'
 import { Heading, Box, Flex, Stack, Radio, RadioGroup, Text,
   IconButton,
+  Button,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -23,6 +25,13 @@ export function Results({ categories }) {
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
   const mainRef = useRef()
+  const componentRef = useRef()
+
+  const linkToPrint = () => {
+    return (
+        <button>Click To PrintOF Body</button>
+    )
+  }
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -97,28 +106,30 @@ export function Results({ categories }) {
   console.log({filteredResults})
   console.log({grandTotal})
   return (
-    <Box mb={12}>
-      <Box mb={12}>
+    <Box mb={12} className="printNoMargins">
+
+    <Box ref={componentRef}>
+      <Box mb={12} className="printNoMargins">
 
         <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase" ref={mainRef}
         // tabIndex="-1"
-        as="h1">
+        as="h1" className="printNoMargins">
           My Results
         </Heading>
 
-        <Heading mb={2} as="h2" size='md'>
+        <Heading mb={2} as="h2" size='md' className="printNoMargins">
           Estimated costs
           {totalSemesters === 1 && <> for One Semester</>}
           {totalSemesters === 2 && <> for Two Semesters</>}
         </Heading>
 
-        <Flex justifyContent="space-between" alignItems='baseline' mt={4} mb={4}>
+        <Flex justifyContent="space-between" alignItems='baseline' mt={4} mb={4} className="printNoMargins">
         <Heading textTransform='uppercase' size="2xl" as='h3'>Grand Total</Heading>
-        <Text fontSize="3xl" mb='0' fontWeight='bold' color="gray.800"><Counter target={grandTotal} duration={2} /></Text>
+        <Text fontSize="3xl" mb='0' fontWeight='bold' color="gray.800" className="printPrice"><Counter target={grandTotal} duration={2} /></Text>
         </Flex>
 
 
-        <Flex alignItems="center">
+        <Flex alignItems="center" className="printVisibilityHide">
           <RadioGroup
             name="totalSemestersView"
             onChange={updateTotalSemesters}
@@ -139,13 +150,13 @@ export function Results({ categories }) {
         </Flex>
       </Box>
 
-      <Box mb={20}>
+      <Box mb={20}  className="printNoMargins">
 
         {filteredResults.map(category => (
-          <Box key={category._id} mb={8} pb={2} borderBottom="1px solid #eee">
+          <Box key={category._id} mb={6} pb={2} borderBottom="1px solid #eee" className="printNoMargins">
 
-          <Flex alignItems="center" mb={3}>
-            <Heading  size="xl" color="gray.600">
+          <Flex alignItems="center" mb={3} className="printNoMargins">
+            <Heading size="xl" color="gray.600">
               {category.title}
             </Heading>
 
@@ -156,6 +167,7 @@ export function Results({ categories }) {
               fontSize="20px"
               onClick={onOpen}
               icon={<InfoIcon />}
+              className="printVisibilityHide"
             />
               <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
               <ModalOverlay />
@@ -196,14 +208,24 @@ export function Results({ categories }) {
           </Box>
         ))}
 
-
-
+      </Box>
 
       </Box>
 
-      <Link href={`/question/${Object.keys(questions)[0]}`}>
-        <a>Go back and edit your submission</a>
-      </Link>
+      <Box mb={6}>
+      <Button variant="outline">
+          <Link href={`/question/${Object.keys(questions)[0]}`}>
+          <a>Go back</a>
+          </Link>
+        </Button>{ ' ' }
+        and edit your submission</Box>
+
+        <ReactToPrint
+          trigger={() => {
+            return <Button variant="outline">Print Results</Button>;
+          }}
+          content={() => componentRef.current}
+        />
 
     </Box>
   )

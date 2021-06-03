@@ -9,3 +9,94 @@
   white-space: nowrap;
   position: absolute;
 }
+
+/* @media print {
+  header,
+  footer {
+    display: none;
+  }
+  body {
+    margin: 40px;
+  }
+} */
+
+/* @media all {
+  .page-break {
+    display: none;
+  }
+} */
+
+@media print {
+  html, body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+    font-size: 80%;
+
+    border: 1px solid white;
+    height: 99%;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+  }
+}
+
+@media print {
+  .page-break {
+    margin-top: 1rem;
+    display: block;
+    page-break-before: auto;
+  }
+}
+
+@media print {
+  h2 {
+    font-size: var(--chakra-fontSizes-2xl) !important;
+    margin-top: .5rem !important;
+  }
+  h3 {
+    font-size: var(--chakra-fontSizes-md) !important;
+  }
+  .printPrice {
+    font-size: var(--chakra-fontSizes-sm) !important;
+    order: 2 !important;
+  }
+  .printNoMargins {
+    margin-bottom: .7rem !important;
+  }
+  .printBadge {
+    font-size: .60rem !important;
+    order: 1  !important;
+    margin-right: .75rem  !important;
+  }
+  .printPriceWrapper {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+  .printPrice {
+    font-size: 1.2rem !important;
+  }
+  .printDisplayNone,
+  .printDisplayNone * {
+    display: none !important;
+  }
+  .printVisibilityHide,
+  .printVisibilityHide * {
+    visibility: hidden !important;
+  }
+  .printme,
+  .printme * {
+    visibility: visible !important;
+  }
+  .printme {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+
+
+@page {
+  size: auto;
+  margin: 20mm;
+}
