@@ -110,14 +110,6 @@ export function Calculator({ question, questions, slug }) {
     console.log({lastQuestion})
   }, [atTheLastQuestion])
 
-  const setLastQuestion = (q) => {
-    actions.updateAction({
-      ...state,
-      lastQuestion: q
-    })
-    return null
-  }
-
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     if (mathOperation === 'equals') {
       return questionVal === logicVal ? 'show' : 'hide'

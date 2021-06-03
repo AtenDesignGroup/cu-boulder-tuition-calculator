@@ -5,11 +5,21 @@ import updateAction from '@/hooks/updateAction'
 import { LineItems } from '@/components/results/line-items'
 import { Text as BodyText } from '@/components/serializers/text'
 import { showArray, totalGenerator, toFixedNumber } from '@/utils/results'
-import { Heading, Box, Flex, Stack, Radio, RadioGroup, Text } from '@chakra-ui/react'
+import { Heading, Box, Flex, Stack, Radio, RadioGroup, Text,
+  IconButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure} from '@chakra-ui/react'
 import { Counter } from '@/components/counter'
+import { MdInfo as InfoIcon } from 'react-icons/md'
 
 
 export function Results({ categories }) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
   const mainRef = useRef()
@@ -103,7 +113,7 @@ export function Results({ categories }) {
         </Heading>
 
         <Flex justifyContent="space-between" alignItems='baseline' mt={4} mb={4}>
-        <Heading textTransform='uppercase' size="2xl" as='h2'>Grand Total</Heading>
+        <Heading textTransform='uppercase' size="2xl" as='h3'>Grand Total</Heading>
         <Text fontSize="3xl" mb='0' fontWeight='bold' color="gray.800"><Counter target={grandTotal} duration={2} /></Text>
         </Flex>
 
@@ -131,18 +141,39 @@ export function Results({ categories }) {
 
       <Box mb={20}>
 
-
-
         {filteredResults.map(category => (
-          <Box key={category._id} mb={14} pb={2} borderBottom="1px solid #eee">
+          <Box key={category._id} mb={8} pb={2} borderBottom="1px solid #eee">
 
-            <Heading mb={3} size="xl" color="gray.600">
+          <Flex alignItems="center" mb={3}>
+            <Heading  size="xl" color="gray.600">
               {category.title}
             </Heading>
 
-            <Box mb="4">
+            {category?.description && (<>
+              <IconButton
+              variant="ghost"
+              aria-label={`${category.title} description`}
+              fontSize="20px"
+              onClick={onOpen}
+              icon={<InfoIcon />}
+            />
+              <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>{category.title}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                <BodyText blocks={category.description} />
+                </ModalBody>
+              </ModalContent>
+            </Modal>
+            </>
+            )}
+            </Flex>
+
+            {/*<Box mb="4">
               <BodyText blocks={category.description} />
-            </Box>
+            </Box>*/}
 
             {category.lineItems && category.lineItems !== undefined &&
               category.lineItems.length > 0 &&
@@ -159,7 +190,7 @@ export function Results({ categories }) {
               .filter(val => showArray(val.props.data, questions) === true)
             }
             <Flex justifyContent="space-between">
-            <Heading textTransform='uppercase' size="sm" as='h3'>Sub Total</Heading>
+            <Heading textTransform='uppercase' size="sm" as='h3' color="gray.600">Sub Total</Heading>
             <Text fontSize="lg" mb='0' color="gray.600"><Counter target={category.total} duration={2} /></Text>
             </Flex>
           </Box>

@@ -9,13 +9,21 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverBody,
-  PopoverCloseButton
+  PopoverCloseButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
 } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Counter } from '@/components/counter'
+import { MdInfo as InfoIcon } from 'react-icons/md'
 
 export function LineItems({ data, itemTotal }) {
-
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const {
     _key,
     description,
@@ -30,11 +38,32 @@ export function LineItems({ data, itemTotal }) {
   // console.log(showArray(data))
 
     return (
-      <Box mb="10">
+      <Box mb="6">
         <Flex alignItems="flex-end" mb="2" justifyContent="space-between">
           <Flex alignItems="center" flexDir="column" alignItems="flex-start">
-            <Flex flexDir="column">
-              <Heading size="lg" as='h3'>{frontEndTitle}</Heading>
+            <Flex alignItems="center">
+              <Heading size="md" as='h3'>{frontEndTitle}</Heading>
+              {description && (<>
+                <IconButton
+                variant="ghost"
+                aria-label={`${frontEndTitle} description`}
+                fontSize="20px"
+                onClick={onOpen}
+                icon={<InfoIcon />}
+              />
+                <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>{frontEndTitle}</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                  <BodyText blocks={description} />
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
+              </>
+              )}
+
             </Flex>
             {optional && (
               <Box
@@ -51,7 +80,7 @@ export function LineItems({ data, itemTotal }) {
           </Flex>
 
           <Flex flexDir="column" alignItems="flex-end">
-            <Text fontSize="2xl" mb='0'>
+            <Text fontSize="lg" mb='0'>
              <Counter target={itemTotal} duration={2} />
             </Text>
             <Badge background="#2f8055" fontSize="0.6em" variant="solid">
@@ -59,7 +88,7 @@ export function LineItems({ data, itemTotal }) {
             </Badge>
           </Flex>
         </Flex>
-        {description && <BodyText blocks={description} />}
+        {/*description && <BodyText blocks={description} />*/}
       </Box>
     )
 }

@@ -32817,6 +32817,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 (0,little_state_machine/* createStore */.MT)({
   calculator: {
     currentQuestion: 0,
+    lastQuestion: null,
     showResults: false,
     questions: [],
     results: [],
@@ -32881,7 +32882,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 1451:
+/***/ 6607:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33011,18 +33012,6 @@ async function getAllQuestions(preview) {
   const data = await getClient(preview).fetch(getAllQuestionsQuery);
   return data;
 }
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(7294);
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/system/dist/esm/forward-ref.js
-/**
- * All credit goes to Chance (Reach UI), Haz (Reakit) and (fluentui)
- * for creating the base type definitions upon which we improved on
- */
-
-function forwardRef(component) {
-  return /*#__PURE__*/react.forwardRef(component);
-}
-//# sourceMappingURL=forward-ref.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/styled-system/dist/esm/index.js + 27 modules
 var esm = __webpack_require__(9823);
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/object.js
@@ -33130,57 +33119,89 @@ domElements.forEach(tag => {
   chakra[tag] = chakra(tag);
 });
 //# sourceMappingURL=system.js.map
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(7294);
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/system/dist/esm/forward-ref.js
+/**
+ * All credit goes to Chance (Reach UI), Haz (Reakit) and (fluentui)
+ * for creating the base type definitions upon which we improved on
+ */
+
+function forwardRef(component) {
+  return /*#__PURE__*/react.forwardRef(component);
+}
+//# sourceMappingURL=forward-ref.js.map
 // EXTERNAL MODULE: ./node_modules/@chakra-ui/utils/dist/esm/assertion.js
 var assertion = __webpack_require__(3808);
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/flex.js
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/box.js
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function flex_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function box_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
 
 
 
 /**
- * React component used to create flexbox layouts.
+ * Box is the most abstract component on top of which other chakra
+ * components are built. It renders a `div` element by default.
  *
- * It renders a `div` with `display: flex` and
- * comes with helpful style shorthand.
- *
- * @see Docs https://chakra-ui.com/docs/layout/flex
+ * @see Docs https://chakra-ui.com/docs/layout/box
  */
-var Flex = /*#__PURE__*/forwardRef((props, ref) => {
-  var {
-    direction,
-    align,
-    justify,
-    wrap,
-    basis,
-    grow,
-    shrink
-  } = props,
-      rest = flex_objectWithoutPropertiesLoose(props, ["direction", "align", "justify", "wrap", "basis", "grow", "shrink"]);
+var Box = chakra("div");
 
-  var styles = {
+if (assertion/* __DEV__ */.Ts) {
+  Box.displayName = "Box";
+}
+/**
+ * As a constraint, you can't pass size related props
+ * Only `size` would be allowed
+ */
+
+
+var Square = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    size,
+    centerContent = true
+  } = props,
+      rest = box_objectWithoutPropertiesLoose(props, ["size", "centerContent"]);
+
+  var styles = centerContent ? {
     display: "flex",
-    flexDirection: direction,
-    alignItems: align,
-    justifyContent: justify,
-    flexWrap: wrap,
-    flexBasis: basis,
-    flexGrow: grow,
-    flexShrink: shrink
-  };
-  return /*#__PURE__*/react.createElement(chakra.div, _extends({
+    alignItems: "center",
+    justifyContent: "center"
+  } : {};
+  return /*#__PURE__*/react.createElement(Box, _extends({
     ref: ref,
-    __css: styles
+    boxSize: size,
+    __css: _extends({}, styles, {
+      flexShrink: 0,
+      flexGrow: 0
+    })
   }, rest));
 });
 
 if (assertion/* __DEV__ */.Ts) {
-  Flex.displayName = "Flex";
+  Square.displayName = "Square";
 }
-//# sourceMappingURL=flex.js.map
+
+var Circle = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    size
+  } = props,
+      rest = box_objectWithoutPropertiesLoose(props, ["size"]);
+
+  return /*#__PURE__*/react.createElement(Square, _extends({
+    size: size,
+    ref: ref,
+    borderRadius: "9999px"
+  }, rest));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Circle.displayName = "Circle";
+}
+//# sourceMappingURL=box.js.map
 // EXTERNAL MODULE: ./node_modules/lodash.mergewith/index.js
 var lodash_mergewith = __webpack_require__(8554);
 var lodash_mergewith_default = /*#__PURE__*/__webpack_require__.n(lodash_mergewith);
@@ -33378,335 +33399,6 @@ if (assertion/* __DEV__ */.Ts) {
   Heading.displayName = "Heading";
 }
 //# sourceMappingURL=heading.js.map
-;// CONCATENATED MODULE: ./utils/sanity.js
-
-
-function sanity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function sanity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_ownKeys(Object(source), true).forEach(function (key) { sanity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function sanity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-const sanity_config = {
-  /**
-   * Find your project ID and dataset in `sanity.json` in your studio project.
-   * These are considered “public”, but you can use environment variables
-   * if you want differ between local dev and production.
-   *
-   * https://nextjs.org/docs/basic-features/environment-variables
-   **/
-  dataset: "production",
-  projectId: "85juwyag",
-  useCdn: true,
-  token: process.env.SANITY_API_TOKEN // useCdn: process.env.NODE_ENV === 'production'
-
-  /**
-   * Set useCdn to `false` if your application require the freshest possible
-   * data always (potentially slightly slower and a bit more expensive).
-   * Authenticated request (like preview) will always bypass the CDN
-   **/
-
-};
-
-if (!sanity_config.projectId) {
-  throw Error('The Project ID is not set. Check your environment variables.');
-}
-
-if (!sanity_config.dataset) {
-  throw Error('The dataset name is not set. Check your environment variables.');
-}
-/**
- * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
- * Read more: https://www.sanity.io/docs/image-url
- **/
-
-
-const sanity_urlFor = source => createImageUrlBuilder(sanity_config).image(source); // Set up the live preview subsscription hook
-
-const sanity_usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(sanity_config); // Set up Portable Text serialization
-
-const PortableText = (0,next_sanity_cjs_production_min/* createPortableTextComponent */.Kz)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
-  // Serializers passed to @sanity/block-content-to-react
-  // (https://github.com/sanity-io/block-content-to-react)
-  serializers: {
-    types: {
-      ul: props => /*#__PURE__*/jsx_runtime.jsx("ul", {
-        className: "test",
-        children: "test"
-      })
-    }
-  }
-})); // Set up the client for fetching data in the getProps page functions
-
-const sanity_sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_config); // Set up a preview client with serverless authentication for drafts
-
-const sanity_previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
-  useCdn: true // useCdn: false
-
-})); // Helper function for easily switching between normal client and preview client
-
-const sanity_getClient = usePreview => usePreview ? sanity_previewClient : sanity_sanityClient;
-;// CONCATENATED MODULE: ./components/serializers/serializers.js
-
-
-
-
-const serializers = {
-  marks: {
-    link: ({
-      mark,
-      children
-    }) => {
-      const {
-        blank,
-        href
-      } = mark;
-
-      if (!href) {
-        return null;
-      }
-
-      return blank === true ? /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-        children: href.includes('https') || href.includes('http') ? /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          children: children
-        }) : /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          children: children
-        })
-      }) : /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-        children: href.includes('https') || href.includes('http') || href.includes('tel') || href.includes('mailto') ? /*#__PURE__*/jsx_runtime.jsx("a", {
-          href: href,
-          children: children
-        }) : /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-          href: href,
-          children: /*#__PURE__*/jsx_runtime.jsx("a", {
-            children: children
-          })
-        })
-      });
-    }
-  },
-  list: props => {
-    // console.log({ props })
-    switch (props.type) {
-      case 'number':
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ol", {
-            children: props.children
-          });
-        }
-
-      case 'bullet':
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ul", {
-            children: props.children
-          });
-        }
-
-      default:
-        {
-          return /*#__PURE__*/jsx_runtime.jsx("ul", {
-            children: props.children
-          });
-        }
-    }
-  }
-};
-/* harmony default export */ var serializers_serializers = (serializers);
-;// CONCATENATED MODULE: ./components/serializers/text.js
-
-
-
-function Text({
-  blocks
-}) {
-  var _blocks$;
-
-  // console.log({ blocks })
-  // TODO: Test this conditional logic out more to make sure it's SOLID
-  return blocks !== null && blocks !== void 0 && blocks.length && (_blocks$ = blocks[0]) !== null && _blocks$ !== void 0 && _blocks$.children.length ? /*#__PURE__*/jsx_runtime.jsx(PortableText, {
-    blocks: blocks,
-    serializers: serializers_serializers
-  }) : null;
-}
-// EXTERNAL MODULE: ./node_modules/next/head.js
-var head = __webpack_require__(9008);
-;// CONCATENATED MODULE: ./components/head.js
-
-
-
-
-const Head = ({
-  children,
-  title,
-  description
-}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
-    children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
-      charSet: "UTF-8"
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1, shrink-to-fit=no"
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      httpEquiv: "x-ua-compatible",
-      content: "ie=edge"
-    }), /*#__PURE__*/jsx_runtime.jsx("link", {
-      rel: "icon",
-      href: "/favicon.ico"
-    }), /*#__PURE__*/jsx_runtime.jsx("title", {
-      children: title || ''
-    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
-      name: "description",
-      content: description || ''
-    }), /*#__PURE__*/jsx_runtime.jsx("link", {
-      rel: "preconnect",
-      href: "https://cdn.sanity.io"
-    }), children]
-  })
-});
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/text.js
-function text_extends() { text_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return text_extends.apply(this, arguments); }
-
-function text_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-/**
- * Used to render texts or paragraphs.
- *
- * @see Docs https://chakra-ui.com/docs/typography/text
- */
-var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
-  var styles = useStyleConfig("Text", props);
-
-  var _omitThemingProps = system_utils_omitThemingProps(props),
-      rest = text_objectWithoutPropertiesLoose(_omitThemingProps, ["className", "align", "decoration", "casing"]);
-
-  var aliasedProps = (0,object/* filterUndefined */.YU)({
-    textAlign: props.align,
-    textDecoration: props.decoration,
-    textTransform: props.casing
-  });
-  return /*#__PURE__*/react.createElement(chakra.p, text_extends({
-    ref: ref,
-    className: (0,dom.cx)("chakra-text", props.className)
-  }, aliasedProps, rest, {
-    __css: styles
-  }));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  text_Text.displayName = "Text";
-}
-//# sourceMappingURL=text.js.map
-;// CONCATENATED MODULE: ./components/footer.js
-
-
-
-function Footer() {
-  return /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-    children: /*#__PURE__*/jsx_runtime.jsx(Flex, {
-      as: "footer",
-      width: "100%",
-      borderTop: "1px solid #eaeaea",
-      justifyContent: "center",
-      alignItems: "center",
-      paddingY: "2",
-      children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
-        children: "Powered by Sanity.io"
-      })
-    })
-  });
-}
-// EXTERNAL MODULE: ./node_modules/little-state-machine/dist/little-state-machine.js
-var little_state_machine = __webpack_require__(1240);
-;// CONCATENATED MODULE: ./hooks/updateAction.js
-function updateAction_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function updateAction_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { updateAction_ownKeys(Object(source), true).forEach(function (key) { updateAction_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { updateAction_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function updateAction_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function updateAction(state, payload) {
-  // console.log('state:', state)
-  // console.log('payload:', payload)
-  return updateAction_objectSpread(updateAction_objectSpread({}, state), payload);
-}
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/box.js
-function box_extends() { box_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return box_extends.apply(this, arguments); }
-
-function box_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-/**
- * Box is the most abstract component on top of which other chakra
- * components are built. It renders a `div` element by default.
- *
- * @see Docs https://chakra-ui.com/docs/layout/box
- */
-var Box = chakra("div");
-
-if (assertion/* __DEV__ */.Ts) {
-  Box.displayName = "Box";
-}
-/**
- * As a constraint, you can't pass size related props
- * Only `size` would be allowed
- */
-
-
-var Square = /*#__PURE__*/forwardRef((props, ref) => {
-  var {
-    size,
-    centerContent = true
-  } = props,
-      rest = box_objectWithoutPropertiesLoose(props, ["size", "centerContent"]);
-
-  var styles = centerContent ? {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  } : {};
-  return /*#__PURE__*/react.createElement(Box, box_extends({
-    ref: ref,
-    boxSize: size,
-    __css: box_extends({}, styles, {
-      flexShrink: 0,
-      flexGrow: 0
-    })
-  }, rest));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  Square.displayName = "Square";
-}
-
-var Circle = /*#__PURE__*/forwardRef((props, ref) => {
-  var {
-    size
-  } = props,
-      rest = box_objectWithoutPropertiesLoose(props, ["size"]);
-
-  return /*#__PURE__*/react.createElement(Square, box_extends({
-    size: size,
-    ref: ref,
-    borderRadius: "9999px"
-  }, rest));
-});
-
-if (assertion/* __DEV__ */.Ts) {
-  Circle.displayName = "Circle";
-}
-//# sourceMappingURL=box.js.map
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/react-utils/dist/esm/refs.js
 
 
@@ -34096,6 +33788,344 @@ if (assertion/* __DEV__ */.Ts) {
   ButtonSpinner.displayName = "ButtonSpinner";
 }
 //# sourceMappingURL=button.js.map
+;// CONCATENATED MODULE: ./utils/sanity.js
+
+
+function sanity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function sanity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { sanity_ownKeys(Object(source), true).forEach(function (key) { sanity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { sanity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function sanity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+const sanity_config = {
+  /**
+   * Find your project ID and dataset in `sanity.json` in your studio project.
+   * These are considered “public”, but you can use environment variables
+   * if you want differ between local dev and production.
+   *
+   * https://nextjs.org/docs/basic-features/environment-variables
+   **/
+  dataset: "production",
+  projectId: "85juwyag",
+  useCdn: true,
+  token: process.env.SANITY_API_TOKEN // useCdn: process.env.NODE_ENV === 'production'
+
+  /**
+   * Set useCdn to `false` if your application require the freshest possible
+   * data always (potentially slightly slower and a bit more expensive).
+   * Authenticated request (like preview) will always bypass the CDN
+   **/
+
+};
+
+if (!sanity_config.projectId) {
+  throw Error('The Project ID is not set. Check your environment variables.');
+}
+
+if (!sanity_config.dataset) {
+  throw Error('The dataset name is not set. Check your environment variables.');
+}
+/**
+ * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
+ * Read more: https://www.sanity.io/docs/image-url
+ **/
+
+
+const sanity_urlFor = source => createImageUrlBuilder(sanity_config).image(source); // Set up the live preview subsscription hook
+
+const sanity_usePreviewSubscription = (0,next_sanity_cjs_production_min/* createPreviewSubscriptionHook */.KF)(sanity_config); // Set up Portable Text serialization
+
+const PortableText = (0,next_sanity_cjs_production_min/* createPortableTextComponent */.Kz)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
+  // Serializers passed to @sanity/block-content-to-react
+  // (https://github.com/sanity-io/block-content-to-react)
+  serializers: {
+    types: {
+      ul: props => /*#__PURE__*/jsx_runtime.jsx("ul", {
+        className: "test",
+        children: "test"
+      })
+    }
+  }
+})); // Set up the client for fetching data in the getProps page functions
+
+const sanity_sanityClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_config); // Set up a preview client with serverless authentication for drafts
+
+const sanity_previewClient = (0,next_sanity_cjs_production_min/* createClient */.eI)(sanity_objectSpread(sanity_objectSpread({}, sanity_config), {}, {
+  useCdn: true // useCdn: false
+
+})); // Helper function for easily switching between normal client and preview client
+
+const sanity_getClient = usePreview => usePreview ? sanity_previewClient : sanity_sanityClient;
+;// CONCATENATED MODULE: ./components/serializers/serializers.js
+
+
+
+
+const serializers = {
+  marks: {
+    link: ({
+      mark,
+      children
+    }) => {
+      const {
+        blank,
+        href
+      } = mark;
+
+      if (!href) {
+        return null;
+      }
+
+      return blank === true ? /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+        children: href.includes('https') || href.includes('http') ? /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          children: children
+        }) : /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          children: children
+        })
+      }) : /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+        children: href.includes('https') || href.includes('http') || href.includes('tel') || href.includes('mailto') ? /*#__PURE__*/jsx_runtime.jsx("a", {
+          href: href,
+          children: children
+        }) : /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
+          href: href,
+          children: /*#__PURE__*/jsx_runtime.jsx("a", {
+            children: children
+          })
+        })
+      });
+    }
+  },
+  list: props => {
+    // console.log({ props })
+    switch (props.type) {
+      case 'number':
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ol", {
+            children: props.children
+          });
+        }
+
+      case 'bullet':
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ul", {
+            children: props.children
+          });
+        }
+
+      default:
+        {
+          return /*#__PURE__*/jsx_runtime.jsx("ul", {
+            children: props.children
+          });
+        }
+    }
+  }
+};
+/* harmony default export */ var serializers_serializers = (serializers);
+;// CONCATENATED MODULE: ./components/serializers/text.js
+
+
+
+function Text({
+  blocks
+}) {
+  var _blocks$;
+
+  // console.log({ blocks })
+  // TODO: Test this conditional logic out more to make sure it's SOLID
+  return blocks !== null && blocks !== void 0 && blocks.length && (_blocks$ = blocks[0]) !== null && _blocks$ !== void 0 && _blocks$.children.length ? /*#__PURE__*/jsx_runtime.jsx(PortableText, {
+    blocks: blocks,
+    serializers: serializers_serializers
+  }) : null;
+}
+;// CONCATENATED MODULE: ./utils/helpers.js
+
+
+
+const getUrlPathParams = () => {
+  const {
+    0: pathParams,
+    1: setPathParams
+  } = useState("");
+  useEffect(() => {
+    var _router$asPath, _router$pathname;
+
+    setPathParams(router === null || router === void 0 ? void 0 : (_router$asPath = router.asPath) === null || _router$asPath === void 0 ? void 0 : _router$asPath.slice(router === null || router === void 0 ? void 0 : (_router$pathname = router.pathname) === null || _router$pathname === void 0 ? void 0 : _router$pathname.length));
+  });
+  const router = useRouter();
+  return pathParams;
+};
+
+const isStringEmpty = val => {
+  if (val === undefined || val === null || val === '') {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
+// EXTERNAL MODULE: ./node_modules/next/head.js
+var head = __webpack_require__(9008);
+;// CONCATENATED MODULE: ./components/head.js
+
+
+
+
+const Head = ({
+  children,
+  title,
+  description
+}) => /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+  children: /*#__PURE__*/(0,jsx_runtime.jsxs)(head.default, {
+    children: [/*#__PURE__*/jsx_runtime.jsx("meta", {
+      charSet: "UTF-8"
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1, shrink-to-fit=no"
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      httpEquiv: "x-ua-compatible",
+      content: "ie=edge"
+    }), /*#__PURE__*/jsx_runtime.jsx("link", {
+      rel: "icon",
+      href: "/favicon.ico"
+    }), /*#__PURE__*/jsx_runtime.jsx("title", {
+      children: title || ''
+    }), /*#__PURE__*/jsx_runtime.jsx("meta", {
+      name: "description",
+      content: description || ''
+    }), /*#__PURE__*/jsx_runtime.jsx("link", {
+      rel: "preconnect",
+      href: "https://cdn.sanity.io"
+    }), children]
+  })
+});
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/flex.js
+function flex_extends() { flex_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return flex_extends.apply(this, arguments); }
+
+function flex_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+/**
+ * React component used to create flexbox layouts.
+ *
+ * It renders a `div` with `display: flex` and
+ * comes with helpful style shorthand.
+ *
+ * @see Docs https://chakra-ui.com/docs/layout/flex
+ */
+var Flex = /*#__PURE__*/forwardRef((props, ref) => {
+  var {
+    direction,
+    align,
+    justify,
+    wrap,
+    basis,
+    grow,
+    shrink
+  } = props,
+      rest = flex_objectWithoutPropertiesLoose(props, ["direction", "align", "justify", "wrap", "basis", "grow", "shrink"]);
+
+  var styles = {
+    display: "flex",
+    flexDirection: direction,
+    alignItems: align,
+    justifyContent: justify,
+    flexWrap: wrap,
+    flexBasis: basis,
+    flexGrow: grow,
+    flexShrink: shrink
+  };
+  return /*#__PURE__*/react.createElement(chakra.div, flex_extends({
+    ref: ref,
+    __css: styles
+  }, rest));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  Flex.displayName = "Flex";
+}
+//# sourceMappingURL=flex.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/text.js
+function text_extends() { text_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return text_extends.apply(this, arguments); }
+
+function text_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+/**
+ * Used to render texts or paragraphs.
+ *
+ * @see Docs https://chakra-ui.com/docs/typography/text
+ */
+var text_Text = /*#__PURE__*/forwardRef((props, ref) => {
+  var styles = useStyleConfig("Text", props);
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      rest = text_objectWithoutPropertiesLoose(_omitThemingProps, ["className", "align", "decoration", "casing"]);
+
+  var aliasedProps = (0,object/* filterUndefined */.YU)({
+    textAlign: props.align,
+    textDecoration: props.decoration,
+    textTransform: props.casing
+  });
+  return /*#__PURE__*/react.createElement(chakra.p, text_extends({
+    ref: ref,
+    className: (0,dom.cx)("chakra-text", props.className)
+  }, aliasedProps, rest, {
+    __css: styles
+  }));
+});
+
+if (assertion/* __DEV__ */.Ts) {
+  text_Text.displayName = "Text";
+}
+//# sourceMappingURL=text.js.map
+;// CONCATENATED MODULE: ./components/footer.js
+
+
+
+function Footer() {
+  return /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+    children: /*#__PURE__*/jsx_runtime.jsx(Flex, {
+      as: "footer",
+      width: "100%",
+      borderTop: "1px solid #eaeaea",
+      justifyContent: "center",
+      alignItems: "center",
+      pt: "6",
+      pb: "12",
+      mt: "auto",
+      children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+        children: "Powered by Sanity.io"
+      })
+    })
+  });
+}
+// EXTERNAL MODULE: ./node_modules/little-state-machine/dist/little-state-machine.js
+var little_state_machine = __webpack_require__(1240);
+;// CONCATENATED MODULE: ./hooks/updateAction.js
+function updateAction_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function updateAction_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { updateAction_ownKeys(Object(source), true).forEach(function (key) { updateAction_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { updateAction_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function updateAction_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function updateAction(state, payload) {
+  // console.log('state:', state)
+  // console.log('payload:', payload)
+  return updateAction_objectSpread(updateAction_objectSpread({}, state), payload);
+}
 ;// CONCATENATED MODULE: ./node_modules/@chakra-ui/layout/dist/esm/code.js
 function code_extends() { code_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return code_extends.apply(this, arguments); }
 
@@ -35524,6 +35554,7 @@ function Debug() {
     actions.updateAction(debug_objectSpread(debug_objectSpread({}, state), {}, {
       calculator: {
         currentQuestion: 0,
+        lastQuestion: null,
         showResults: false,
         questions: [],
         results: [],
@@ -35744,6 +35775,328 @@ function useDisclosure(props) {
   };
 }
 //# sourceMappingURL=use-disclosure.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/utils/dist/esm/number.js
+
+
+var minSafeInteger = Number.MIN_SAFE_INTEGER || -9007199254740991;
+var maxSafeInteger = Number.MAX_SAFE_INTEGER || 9007199254740991;
+
+function toNumber(value) {
+  var num = parseFloat(value);
+  return isNotNumber(num) ? 0 : num;
+}
+/**
+ * Converts a value to a specific precision (or decimal points).
+ *
+ * Returns a string representing a number in fixed-point notation.
+ *
+ * @param value the value to convert
+ * @param precision the precision or decimal points
+ */
+
+
+function toPrecision(value, precision) {
+  var nextValue = toNumber(value);
+  var scaleFactor = 10 ** (precision != null ? precision : 10);
+  nextValue = Math.round(nextValue * scaleFactor) / scaleFactor;
+  return precision ? nextValue.toFixed(precision) : nextValue.toString();
+}
+/**
+ * Counts the number of decimal places a number has
+ *
+ * @param value the decimal value to count
+ */
+
+function countDecimalPlaces(value) {
+  if (!Number.isFinite(value)) return 0;
+  var e = 1;
+  var p = 0;
+
+  while (Math.round(value * e) / e !== value) {
+    e *= 10;
+    p += 1;
+  }
+
+  return p;
+}
+/**
+ * Convert a value to percentage based on lower and upper bound values
+ *
+ * @param value the value in number
+ * @param min the minimum value
+ * @param max the maximum value
+ */
+
+function valueToPercent(value, min, max) {
+  return (value - min) * 100 / (max - min);
+}
+/**
+ * Calculate the value based on percentage, lower and upper bound values
+ *
+ * @param percent the percent value in decimals (e.g 0.6, 0.3)
+ * @param min the minimum value
+ * @param max the maximum value
+ */
+
+function percentToValue(percent, min, max) {
+  return (max - min) * percent + min;
+}
+/**
+ * Rounds a specific value to the next or previous step
+ *
+ * @param value the value to round
+ * @param from the number that stepping started from
+ * @param step the specified step
+ */
+
+function roundValueToStep(value, from, step) {
+  var nextValue = Math.round((value - from) / step) * step + from;
+  var precision = countDecimalPlaces(step);
+  return toPrecision(nextValue, precision);
+}
+/**
+ * Clamps a value to ensure it stays within the min and max range.
+ *
+ * @param value the value to clamp
+ * @param min the minimum value
+ * @param max the maximum value
+ */
+
+function clampValue(value, min, max) {
+  if (value == null) return value;
+  warn({
+    condition: max < min,
+    message: "clamp: max cannot be less than min"
+  });
+  return Math.min(Math.max(value, min), max);
+}
+//# sourceMappingURL=number.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/progress/dist/esm/progress.utils.js
+
+
+var progress_utils_spin = (0,emotion_react_cjs_prod.keyframes)({
+  "0%": {
+    strokeDasharray: "1, 400",
+    strokeDashoffset: "0"
+  },
+  "50%": {
+    strokeDasharray: "400, 400",
+    strokeDashoffset: "-100"
+  },
+  "100%": {
+    strokeDasharray: "400, 400",
+    strokeDashoffset: "-260"
+  }
+});
+var rotate = (0,emotion_react_cjs_prod.keyframes)({
+  "0%": {
+    transform: "rotate(0deg)"
+  },
+  "100%": {
+    transform: "rotate(360deg)"
+  }
+});
+var progress = (0,emotion_react_cjs_prod.keyframes)({
+  "0%": {
+    left: "-40%"
+  },
+  "100%": {
+    left: "100%"
+  }
+});
+var stripe = (0,emotion_react_cjs_prod.keyframes)({
+  from: {
+    backgroundPosition: "1rem 0"
+  },
+  to: {
+    backgroundPosition: "0 0"
+  }
+});
+
+/**
+ * Get the common `aria-*` attributes for both the linear and circular
+ * progress components.
+ */
+function getProgressProps(options) {
+  var {
+    value = 0,
+    min,
+    max,
+    valueText,
+    getValueText,
+    isIndeterminate
+  } = options;
+  var percent = valueToPercent(value, min, max);
+
+  var getAriaValueText = () => {
+    if (value == null) return undefined;
+    return (0,assertion/* isFunction */.mf)(getValueText) ? getValueText(value, percent) : valueText;
+  };
+
+  return {
+    bind: {
+      "data-indeterminate": isIndeterminate ? "" : undefined,
+      "aria-valuemax": max,
+      "aria-valuemin": min,
+      "aria-valuenow": isIndeterminate ? undefined : value,
+      "aria-valuetext": getAriaValueText(),
+      role: "progressbar"
+    },
+    percent,
+    value
+  };
+}
+//# sourceMappingURL=progress.utils.js.map
+;// CONCATENATED MODULE: ./node_modules/@chakra-ui/progress/dist/esm/progress.js
+function progress_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function progress_extends() { progress_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return progress_extends.apply(this, arguments); }
+
+
+
+
+
+
+/**
+ * ProgressLabel is used to show the numeric value of the progress.
+ * @see Docs https://chakra-ui.com/docs/feedback/progress
+ */
+var ProgressLabel = props => {
+  var styles = (0,providers/* useStyles */.yK)();
+
+  var labelStyles = progress_extends({
+    top: "50%",
+    left: "50%",
+    width: "100%",
+    textAlign: "center",
+    position: "absolute",
+    transform: "translate(-50%, -50%)"
+  }, styles.label);
+
+  return /*#__PURE__*/react.createElement(chakra.div, progress_extends({}, props, {
+    __css: labelStyles
+  }));
+};
+
+if (assertion/* __DEV__ */.Ts) {
+  ProgressLabel.displayName = "ProgressLabel";
+}
+
+/**
+ * ProgressFilledTrack (Linear)
+ *
+ * The progress component that visually indicates the current level of the progress bar.
+ * It applies `background-color` and changes its width.
+ *
+ * @see Docs https://chakra-ui.com/docs/components/progress
+ */
+var ProgressFilledTrack = props => {
+  var {
+    min,
+    max,
+    value,
+    isIndeterminate
+  } = props,
+      rest = progress_objectWithoutPropertiesLoose(props, ["min", "max", "value", "isIndeterminate"]);
+
+  var progress = getProgressProps({
+    value,
+    min,
+    max,
+    isIndeterminate
+  });
+  var styles = (0,providers/* useStyles */.yK)();
+
+  var trackStyles = progress_extends({
+    height: "100%"
+  }, styles.filledTrack);
+
+  return /*#__PURE__*/react.createElement(chakra.div, progress_extends({
+    style: progress_extends({
+      width: progress.percent + "%"
+    }, rest.style)
+  }, progress.bind, rest, {
+    __css: trackStyles
+  }));
+};
+
+/**
+ * Progress (Linear)
+ *
+ * Progress is used to display the progress status for a task that takes a long
+ * time or consists of several steps.
+ *
+ * It includes accessible attributes to help assistive technologies understand
+ * and speak the progress values.
+ *
+ * @see Docs https://chakra-ui.com/docs/components/progress
+ */
+var Progress = props => {
+  var _styles$track;
+
+  var _omitThemingProps = system_utils_omitThemingProps(props),
+      {
+    value,
+    min = 0,
+    max = 100,
+    hasStripe,
+    isAnimated,
+    children,
+    borderRadius: propBorderRadius,
+    isIndeterminate,
+    "aria-label": ariaLabel,
+    "aria-labelledby": ariaLabelledBy
+  } = _omitThemingProps,
+      rest = progress_objectWithoutPropertiesLoose(_omitThemingProps, ["value", "min", "max", "hasStripe", "isAnimated", "children", "borderRadius", "isIndeterminate", "aria-label", "aria-labelledby"]);
+
+  var styles = useMultiStyleConfig("Progress", props);
+  var borderRadius = propBorderRadius != null ? propBorderRadius : (_styles$track = styles.track) == null ? void 0 : _styles$track.borderRadius;
+  var stripAnimation = {
+    animation: stripe + " 1s linear infinite"
+  };
+  /**
+   * We should not use stripe if it is `indeterminate`
+   */
+
+  var shouldAddStripe = !isIndeterminate && hasStripe;
+  var shouldAnimateStripe = shouldAddStripe && isAnimated;
+  /**
+   * Generate styles for stripe and stripe animation
+   */
+
+  var css = progress_extends({}, shouldAnimateStripe && stripAnimation, isIndeterminate && {
+    position: "absolute",
+    willChange: "left",
+    minWidth: "50%",
+    animation: progress + " 1s ease infinite normal none running"
+  });
+
+  var trackStyles = progress_extends({
+    overflow: "hidden",
+    position: "relative"
+  }, styles.track);
+
+  return /*#__PURE__*/react.createElement(chakra.div, progress_extends({
+    borderRadius: borderRadius,
+    __css: trackStyles
+  }, rest), /*#__PURE__*/react.createElement(providers/* StylesProvider */.Fo, {
+    value: styles
+  }, /*#__PURE__*/react.createElement(ProgressFilledTrack, {
+    "aria-label": ariaLabel,
+    "aria-labelledby": ariaLabelledBy,
+    min: min,
+    max: max,
+    value: value,
+    isIndeterminate: isIndeterminate,
+    css: css,
+    borderRadius: borderRadius
+  }), children));
+};
+
+if (assertion/* __DEV__ */.Ts) {
+  Progress.displayName = "Progress";
+}
+//# sourceMappingURL=progress.js.map
 ;// CONCATENATED MODULE: ./node_modules/tslib/tslib.es6.js
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -38962,7 +39315,7 @@ var zero = function (_t) { return 0; };
 
 
 ;// CONCATENATED MODULE: ./node_modules/popmotion/dist/es/utils/progress.js
-var progress = function (from, to, value) {
+var progress_progress = function (from, to, value) {
     var toFromDifference = to - from;
     return toFromDifference === 0 ? 1 : (value - from) / toFromDifference;
 };
@@ -39352,7 +39705,7 @@ function createMixers(output, ease, customMixer) {
 function fastInterpolate(_a, _b) {
     var from = _a[0], to = _a[1];
     var mixer = _b[0];
-    return function (v) { return mixer(progress(from, to, v)); };
+    return function (v) { return mixer(progress_progress(from, to, v)); };
 }
 function slowInterpolate(input, mixers) {
     var inputLength = input.length;
@@ -39376,7 +39729,7 @@ function slowInterpolate(input, mixers) {
             }
             mixerIndex = i - 1;
         }
-        var progressInRange = progress(input[mixerIndex], input[mixerIndex + 1], v);
+        var progressInRange = progress_progress(input[mixerIndex], input[mixerIndex + 1], v);
         return mixers[mixerIndex](progressInRange);
     };
 }
@@ -41712,10 +42065,10 @@ function delta_calc_calcOrigin(source, target) {
     var sourceLength = calcLength(source);
     var targetLength = calcLength(target);
     if (targetLength > sourceLength) {
-        origin = progress(target.min, target.max - sourceLength, source.min);
+        origin = progress_progress(target.min, target.max - sourceLength, source.min);
     }
     else if (sourceLength > targetLength) {
-        origin = progress(source.min, source.max - targetLength, target.min);
+        origin = progress_progress(source.min, source.max - targetLength, target.min);
     }
     return clampProgress(origin);
 }
@@ -42116,7 +42469,7 @@ var VisualElementDragControls = /** @class */ (function () {
                 var _a = _this.visualElement.projection.target[axis], min = _a.min, max = _a.max;
                 _this.cursorProgress[axis] = cursorProgress
                     ? cursorProgress[axis]
-                    : progress(min, max, point[axis]);
+                    : progress_progress(min, max, point[axis]);
                 /**
                  * If we have external drag MotionValues, record their origin point. On pointermove
                  * we'll apply the pan gesture offset directly to this value.
@@ -46271,7 +46624,10 @@ if (assertion/* __DEV__ */.Ts) {
 
 function Layout({
   children,
-  siteSettings
+  siteSettings,
+  position,
+  totalQuestions,
+  status
 }) {
   var _siteSettings$seoSett, _siteSettings$seoSett2;
 
@@ -46281,11 +46637,14 @@ function Layout({
     onClose
   } = useDisclosure();
   const btnRef = (0,react.useRef)();
-  const router = (0,next_router.useRouter)();
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/jsx_runtime.jsx(Head, {
       title: (siteSettings === null || siteSettings === void 0 ? void 0 : (_siteSettings$seoSett = siteSettings.seoSettings) === null || _siteSettings$seoSett === void 0 ? void 0 : _siteSettings$seoSett.title) || '',
       description: (siteSettings === null || siteSettings === void 0 ? void 0 : (_siteSettings$seoSett2 = siteSettings.seoSettings) === null || _siteSettings$seoSett2 === void 0 ? void 0 : _siteSettings$seoSett2.description) || ''
+    }), isStringEmpty(status) ? /*#__PURE__*/jsx_runtime.jsx(Progress, {
+      value: (position + 1) / totalQuestions * 100
+    }) : /*#__PURE__*/jsx_runtime.jsx(Progress, {
+      value: status
     }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       height: "100vh",
       flexDir: "column",
@@ -46354,26 +46713,26 @@ function Home({
   const siteSettings = pageData[0] && pageData[0].siteSettings;
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator;
   const {
-    questions,
-    categories
+    questions
   } = tuitionCalculator;
   return /*#__PURE__*/jsx_runtime.jsx(Layout, {
     siteSettings: siteSettings,
-    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+    status: 0,
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
       mt: 24,
-      flexDir: "column",
       children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
-        mb: "2",
+        mb: 4,
         children: tuitionCalculator.title
       }), /*#__PURE__*/jsx_runtime.jsx(Text, {
         blocks: tuitionCalculator.description
-      }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-        href: `/question/${questions[0]._id}`,
-        children: /*#__PURE__*/jsx_runtime.jsx("a", {
-          style: {
-            textDecoration: 'underline'
-          },
-          children: "Get Started"
+      }), /*#__PURE__*/jsx_runtime.jsx(Button, {
+        variant: "outline",
+        mt: 6,
+        children: /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
+          href: `/question/${questions[0]._id}`,
+          children: /*#__PURE__*/jsx_runtime.jsx("a", {
+            children: tuitionCalculator.buttonTitle
+          })
         })
       })]
     })
@@ -46394,7 +46753,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 9456:
+/***/ 8303:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46405,7 +46764,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_OpmWVi9FIH4NlC9SYTbMO_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2264035e1b44cc15c0764df67198cc7aaf_22_2C_22previewModeSigningKey_22_3A_2236dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46_22_2C_22previewModeEncryptionKey_22_3A_222df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_HKRGMeVRr_h_crex5hfKv_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_222b71417bb8f9bfc44a5eef8f12fabec9_22_2C_22previewModeSigningKey_22_3A_223b03c108f327665e28567a23d4f323bc6eb89f2a1d9a8de3fdf966ba97625893_22_2C_22previewModeEncryptionKey_22_3A_22383b98037794e097978149acf68ce799ed0417782a44a1ec1e4397d6a79f29f4_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -46422,12 +46781,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/OpmWVi9FIH4NlC9SYTbMO/_buildManifest.js","static/OpmWVi9FIH4NlC9SYTbMO/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/pages/index-31a9e2bcc8b494b3cb0a.js"],"/_app":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-2247b67703f6b9692c9a.js"],"/_error":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-e288a934698c6acc1c3e.js"],"/results":["static/chunks/webpack-e2da8d4c65a2ae4afd7f.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-3db7b99b521bfc89ceeb.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-d50e8ac95d85a0e75ee7.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/HKRGMeVRr_h-crex5hfKv/_buildManifest.js","static/HKRGMeVRr_h-crex5hfKv/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-1ac26f5d3dc60b6f5f6e.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-e7b49f03b4a45a2eb6bd.js","static/chunks/pages/index-fca18914ccb9afd6c122.js"],"/_app":["static/chunks/webpack-1ac26f5d3dc60b6f5f6e.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-fd2e3dbc35b81df53046.js"],"/_error":["static/chunks/webpack-1ac26f5d3dc60b6f5f6e.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-1ac26f5d3dc60b6f5f6e.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-e7b49f03b4a45a2eb6bd.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-1613dd3e727dd0bfa103.js"],"/results":["static/chunks/webpack-1ac26f5d3dc60b6f5f6e.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-e7b49f03b4a45a2eb6bd.js","static/chunks/560-7c8c094636ffd7096f36.js","static/chunks/pages/results-66c0af25af9d0e86754a.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=OpmWVi9FIH4NlC9SYTbMO&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2264035e1b44cc15c0764df67198cc7aaf%22%2C%22previewModeSigningKey%22%3A%2236dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46%22%2C%22previewModeEncryptionKey%22%3A%222df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=HKRGMeVRr_h-crex5hfKv&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%222b71417bb8f9bfc44a5eef8f12fabec9%22%2C%22previewModeSigningKey%22%3A%223b03c108f327665e28567a23d4f323bc6eb89f2a1d9a8de3fdf966ba97625893%22%2C%22previewModeEncryptionKey%22%3A%22383b98037794e097978149acf68ce799ed0417782a44a1ec1e4397d6a79f29f4%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -46447,10 +46806,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(1451)
+      const compMod = __webpack_require__(6607)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_OpmWVi9FIH4NlC9SYTbMO_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2264035e1b44cc15c0764df67198cc7aaf_22_2C_22previewModeSigningKey_22_3A_2236dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46_22_2C_22previewModeEncryptionKey_22_3A_222df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_HKRGMeVRr_h_crex5hfKv_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_222b71417bb8f9bfc44a5eef8f12fabec9_22_2C_22previewModeSigningKey_22_3A_223b03c108f327665e28567a23d4f323bc6eb89f2a1d9a8de3fdf966ba97625893_22_2C_22previewModeEncryptionKey_22_3A_22383b98037794e097978149acf68ce799ed0417782a44a1ec1e4397d6a79f29f4_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -46498,11 +46857,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "OpmWVi9FIH4NlC9SYTbMO",
-        escapedBuildId: "OpmWVi9FIH4NlC9SYTbMO",
+        buildId: "HKRGMeVRr_h-crex5hfKv",
+        escapedBuildId: "HKRGMeVRr_h\-crex5hfKv",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"64035e1b44cc15c0764df67198cc7aaf",previewModeSigningKey:"36dbb8f1eff41a63736232325f7c2d1d657c27f98c1cfb2e39ef28c9c844ab46",previewModeEncryptionKey:"2df08d5f1e36fcdf6509db84754144dd1fd4a9ed9777db220572b12784db42c6"}
+        encodedPreviewProps: {previewModeId:"2b71417bb8f9bfc44a5eef8f12fabec9",previewModeSigningKey:"3b03c108f327665e28567a23d4f323bc6eb89f2a1d9a8de3fdf966ba97625893",previewModeEncryptionKey:"383b98037794e097978149acf68ce799ed0417782a44a1ec1e4397d6a79f29f4"}
       })
       
     
@@ -64437,7 +64796,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(9456);
+/******/ 	var __webpack_exports__ = __webpack_require__(8303);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
