@@ -32761,6 +32761,9 @@ const cuTheme = extendTheme({
       700: '#1c0081',
       800: '#10004f',
       900: '#060020'
+    },
+    blue: {
+      500: '#0277BD'
     }
   },
   breakpoints: theme_breakpoints,
@@ -32821,8 +32824,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     showResults: false,
     questions: [],
     results: [],
-    totalSemesters: 1,
-    totalCreditHours: 0
+    totalSemesters: 1
   }
 });
 
@@ -32882,7 +32884,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__.default {
 
 /***/ }),
 
-/***/ 6607:
+/***/ 9063:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34104,7 +34106,7 @@ function Footer() {
       justifyContent: "center",
       alignItems: "center",
       pt: "6",
-      pb: "12",
+      pb: "6",
       mt: "auto",
       children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
         children: "Powered by Sanity.io"
@@ -35558,8 +35560,7 @@ function Debug() {
         showResults: false,
         questions: [],
         results: [],
-        totalSemesters: 1,
-        totalCreditHours: 0
+        totalSemesters: 1
       }
     }));
     router.push(`/`);
@@ -35775,328 +35776,6 @@ function useDisclosure(props) {
   };
 }
 //# sourceMappingURL=use-disclosure.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/utils/dist/esm/number.js
-
-
-var minSafeInteger = Number.MIN_SAFE_INTEGER || -9007199254740991;
-var maxSafeInteger = Number.MAX_SAFE_INTEGER || 9007199254740991;
-
-function toNumber(value) {
-  var num = parseFloat(value);
-  return isNotNumber(num) ? 0 : num;
-}
-/**
- * Converts a value to a specific precision (or decimal points).
- *
- * Returns a string representing a number in fixed-point notation.
- *
- * @param value the value to convert
- * @param precision the precision or decimal points
- */
-
-
-function toPrecision(value, precision) {
-  var nextValue = toNumber(value);
-  var scaleFactor = 10 ** (precision != null ? precision : 10);
-  nextValue = Math.round(nextValue * scaleFactor) / scaleFactor;
-  return precision ? nextValue.toFixed(precision) : nextValue.toString();
-}
-/**
- * Counts the number of decimal places a number has
- *
- * @param value the decimal value to count
- */
-
-function countDecimalPlaces(value) {
-  if (!Number.isFinite(value)) return 0;
-  var e = 1;
-  var p = 0;
-
-  while (Math.round(value * e) / e !== value) {
-    e *= 10;
-    p += 1;
-  }
-
-  return p;
-}
-/**
- * Convert a value to percentage based on lower and upper bound values
- *
- * @param value the value in number
- * @param min the minimum value
- * @param max the maximum value
- */
-
-function valueToPercent(value, min, max) {
-  return (value - min) * 100 / (max - min);
-}
-/**
- * Calculate the value based on percentage, lower and upper bound values
- *
- * @param percent the percent value in decimals (e.g 0.6, 0.3)
- * @param min the minimum value
- * @param max the maximum value
- */
-
-function percentToValue(percent, min, max) {
-  return (max - min) * percent + min;
-}
-/**
- * Rounds a specific value to the next or previous step
- *
- * @param value the value to round
- * @param from the number that stepping started from
- * @param step the specified step
- */
-
-function roundValueToStep(value, from, step) {
-  var nextValue = Math.round((value - from) / step) * step + from;
-  var precision = countDecimalPlaces(step);
-  return toPrecision(nextValue, precision);
-}
-/**
- * Clamps a value to ensure it stays within the min and max range.
- *
- * @param value the value to clamp
- * @param min the minimum value
- * @param max the maximum value
- */
-
-function clampValue(value, min, max) {
-  if (value == null) return value;
-  warn({
-    condition: max < min,
-    message: "clamp: max cannot be less than min"
-  });
-  return Math.min(Math.max(value, min), max);
-}
-//# sourceMappingURL=number.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/progress/dist/esm/progress.utils.js
-
-
-var progress_utils_spin = (0,emotion_react_cjs_prod.keyframes)({
-  "0%": {
-    strokeDasharray: "1, 400",
-    strokeDashoffset: "0"
-  },
-  "50%": {
-    strokeDasharray: "400, 400",
-    strokeDashoffset: "-100"
-  },
-  "100%": {
-    strokeDasharray: "400, 400",
-    strokeDashoffset: "-260"
-  }
-});
-var rotate = (0,emotion_react_cjs_prod.keyframes)({
-  "0%": {
-    transform: "rotate(0deg)"
-  },
-  "100%": {
-    transform: "rotate(360deg)"
-  }
-});
-var progress = (0,emotion_react_cjs_prod.keyframes)({
-  "0%": {
-    left: "-40%"
-  },
-  "100%": {
-    left: "100%"
-  }
-});
-var stripe = (0,emotion_react_cjs_prod.keyframes)({
-  from: {
-    backgroundPosition: "1rem 0"
-  },
-  to: {
-    backgroundPosition: "0 0"
-  }
-});
-
-/**
- * Get the common `aria-*` attributes for both the linear and circular
- * progress components.
- */
-function getProgressProps(options) {
-  var {
-    value = 0,
-    min,
-    max,
-    valueText,
-    getValueText,
-    isIndeterminate
-  } = options;
-  var percent = valueToPercent(value, min, max);
-
-  var getAriaValueText = () => {
-    if (value == null) return undefined;
-    return (0,assertion/* isFunction */.mf)(getValueText) ? getValueText(value, percent) : valueText;
-  };
-
-  return {
-    bind: {
-      "data-indeterminate": isIndeterminate ? "" : undefined,
-      "aria-valuemax": max,
-      "aria-valuemin": min,
-      "aria-valuenow": isIndeterminate ? undefined : value,
-      "aria-valuetext": getAriaValueText(),
-      role: "progressbar"
-    },
-    percent,
-    value
-  };
-}
-//# sourceMappingURL=progress.utils.js.map
-;// CONCATENATED MODULE: ./node_modules/@chakra-ui/progress/dist/esm/progress.js
-function progress_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function progress_extends() { progress_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return progress_extends.apply(this, arguments); }
-
-
-
-
-
-
-/**
- * ProgressLabel is used to show the numeric value of the progress.
- * @see Docs https://chakra-ui.com/docs/feedback/progress
- */
-var ProgressLabel = props => {
-  var styles = (0,providers/* useStyles */.yK)();
-
-  var labelStyles = progress_extends({
-    top: "50%",
-    left: "50%",
-    width: "100%",
-    textAlign: "center",
-    position: "absolute",
-    transform: "translate(-50%, -50%)"
-  }, styles.label);
-
-  return /*#__PURE__*/react.createElement(chakra.div, progress_extends({}, props, {
-    __css: labelStyles
-  }));
-};
-
-if (assertion/* __DEV__ */.Ts) {
-  ProgressLabel.displayName = "ProgressLabel";
-}
-
-/**
- * ProgressFilledTrack (Linear)
- *
- * The progress component that visually indicates the current level of the progress bar.
- * It applies `background-color` and changes its width.
- *
- * @see Docs https://chakra-ui.com/docs/components/progress
- */
-var ProgressFilledTrack = props => {
-  var {
-    min,
-    max,
-    value,
-    isIndeterminate
-  } = props,
-      rest = progress_objectWithoutPropertiesLoose(props, ["min", "max", "value", "isIndeterminate"]);
-
-  var progress = getProgressProps({
-    value,
-    min,
-    max,
-    isIndeterminate
-  });
-  var styles = (0,providers/* useStyles */.yK)();
-
-  var trackStyles = progress_extends({
-    height: "100%"
-  }, styles.filledTrack);
-
-  return /*#__PURE__*/react.createElement(chakra.div, progress_extends({
-    style: progress_extends({
-      width: progress.percent + "%"
-    }, rest.style)
-  }, progress.bind, rest, {
-    __css: trackStyles
-  }));
-};
-
-/**
- * Progress (Linear)
- *
- * Progress is used to display the progress status for a task that takes a long
- * time or consists of several steps.
- *
- * It includes accessible attributes to help assistive technologies understand
- * and speak the progress values.
- *
- * @see Docs https://chakra-ui.com/docs/components/progress
- */
-var Progress = props => {
-  var _styles$track;
-
-  var _omitThemingProps = system_utils_omitThemingProps(props),
-      {
-    value,
-    min = 0,
-    max = 100,
-    hasStripe,
-    isAnimated,
-    children,
-    borderRadius: propBorderRadius,
-    isIndeterminate,
-    "aria-label": ariaLabel,
-    "aria-labelledby": ariaLabelledBy
-  } = _omitThemingProps,
-      rest = progress_objectWithoutPropertiesLoose(_omitThemingProps, ["value", "min", "max", "hasStripe", "isAnimated", "children", "borderRadius", "isIndeterminate", "aria-label", "aria-labelledby"]);
-
-  var styles = useMultiStyleConfig("Progress", props);
-  var borderRadius = propBorderRadius != null ? propBorderRadius : (_styles$track = styles.track) == null ? void 0 : _styles$track.borderRadius;
-  var stripAnimation = {
-    animation: stripe + " 1s linear infinite"
-  };
-  /**
-   * We should not use stripe if it is `indeterminate`
-   */
-
-  var shouldAddStripe = !isIndeterminate && hasStripe;
-  var shouldAnimateStripe = shouldAddStripe && isAnimated;
-  /**
-   * Generate styles for stripe and stripe animation
-   */
-
-  var css = progress_extends({}, shouldAnimateStripe && stripAnimation, isIndeterminate && {
-    position: "absolute",
-    willChange: "left",
-    minWidth: "50%",
-    animation: progress + " 1s ease infinite normal none running"
-  });
-
-  var trackStyles = progress_extends({
-    overflow: "hidden",
-    position: "relative"
-  }, styles.track);
-
-  return /*#__PURE__*/react.createElement(chakra.div, progress_extends({
-    borderRadius: borderRadius,
-    __css: trackStyles
-  }, rest), /*#__PURE__*/react.createElement(providers/* StylesProvider */.Fo, {
-    value: styles
-  }, /*#__PURE__*/react.createElement(ProgressFilledTrack, {
-    "aria-label": ariaLabel,
-    "aria-labelledby": ariaLabelledBy,
-    min: min,
-    max: max,
-    value: value,
-    isIndeterminate: isIndeterminate,
-    css: css,
-    borderRadius: borderRadius
-  }), children));
-};
-
-if (assertion/* __DEV__ */.Ts) {
-  Progress.displayName = "Progress";
-}
-//# sourceMappingURL=progress.js.map
 ;// CONCATENATED MODULE: ./node_modules/tslib/tslib.es6.js
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -39315,7 +38994,7 @@ var zero = function (_t) { return 0; };
 
 
 ;// CONCATENATED MODULE: ./node_modules/popmotion/dist/es/utils/progress.js
-var progress_progress = function (from, to, value) {
+var progress = function (from, to, value) {
     var toFromDifference = to - from;
     return toFromDifference === 0 ? 1 : (value - from) / toFromDifference;
 };
@@ -39705,7 +39384,7 @@ function createMixers(output, ease, customMixer) {
 function fastInterpolate(_a, _b) {
     var from = _a[0], to = _a[1];
     var mixer = _b[0];
-    return function (v) { return mixer(progress_progress(from, to, v)); };
+    return function (v) { return mixer(progress(from, to, v)); };
 }
 function slowInterpolate(input, mixers) {
     var inputLength = input.length;
@@ -39729,7 +39408,7 @@ function slowInterpolate(input, mixers) {
             }
             mixerIndex = i - 1;
         }
-        var progressInRange = progress_progress(input[mixerIndex], input[mixerIndex + 1], v);
+        var progressInRange = progress(input[mixerIndex], input[mixerIndex + 1], v);
         return mixers[mixerIndex](progressInRange);
     };
 }
@@ -42065,10 +41744,10 @@ function delta_calc_calcOrigin(source, target) {
     var sourceLength = calcLength(source);
     var targetLength = calcLength(target);
     if (targetLength > sourceLength) {
-        origin = progress_progress(target.min, target.max - sourceLength, source.min);
+        origin = progress(target.min, target.max - sourceLength, source.min);
     }
     else if (sourceLength > targetLength) {
-        origin = progress_progress(source.min, source.max - targetLength, target.min);
+        origin = progress(source.min, source.max - targetLength, target.min);
     }
     return clampProgress(origin);
 }
@@ -42469,7 +42148,7 @@ var VisualElementDragControls = /** @class */ (function () {
                 var _a = _this.visualElement.projection.target[axis], min = _a.min, max = _a.max;
                 _this.cursorProgress[axis] = cursorProgress
                     ? cursorProgress[axis]
-                    : progress_progress(min, max, point[axis]);
+                    : progress(min, max, point[axis]);
                 /**
                  * If we have external drag MotionValues, record their origin point. On pointermove
                  * we'll apply the pan gesture offset directly to this value.
@@ -46641,10 +46320,6 @@ function Layout({
     children: [/*#__PURE__*/jsx_runtime.jsx(Head, {
       title: (siteSettings === null || siteSettings === void 0 ? void 0 : (_siteSettings$seoSett = siteSettings.seoSettings) === null || _siteSettings$seoSett === void 0 ? void 0 : _siteSettings$seoSett.title) || '',
       description: (siteSettings === null || siteSettings === void 0 ? void 0 : (_siteSettings$seoSett2 = siteSettings.seoSettings) === null || _siteSettings$seoSett2 === void 0 ? void 0 : _siteSettings$seoSett2.description) || ''
-    }), isStringEmpty(status) ? /*#__PURE__*/jsx_runtime.jsx(Progress, {
-      value: (position + 1) / totalQuestions * 100
-    }) : /*#__PURE__*/jsx_runtime.jsx(Progress, {
-      value: status
     }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       height: "100vh",
       flexDir: "column",
@@ -46726,8 +46401,17 @@ function Home({
       }), /*#__PURE__*/jsx_runtime.jsx(Text, {
         blocks: tuitionCalculator.description
       }), /*#__PURE__*/jsx_runtime.jsx(Button, {
-        variant: "outline",
         mt: 6,
+        variant: "solid",
+        shadow: "md",
+        background: "#0277BD",
+        color: "#fff",
+        _hover: {
+          background: "#0277BD"
+        },
+        _active: {
+          background: "#0277BD"
+        },
         children: /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
           href: `/question/${questions[0]._id}`,
           children: /*#__PURE__*/jsx_runtime.jsx("a", {
@@ -46753,7 +46437,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 2418:
+/***/ 6043:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46764,7 +46448,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_qX3_4OY7y5bHBSRoIsxGU_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22fecdb6111114b4531b75ed4a83525878_22_2C_22previewModeSigningKey_22_3A_225406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a_22_2C_22previewModeEncryptionKey_22_3A_226e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_IOXiLafC_UythR4wFOWb_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22be956eb76fe5f0eec2fcfde365417387_22_2C_22previewModeSigningKey_22_3A_22b8e99eac02f657789ba0b4b1b09f95aebf6baba4892befee82fc0f3d913eae85_22_2C_22previewModeEncryptionKey_22_3A_22124b9f0eb7808e0b7727641cb195af75820d1acc53e8e3408457074a2a2b404b_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -46781,12 +46465,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/qX3_4OY7y5bHBSRoIsxGU/_buildManifest.js","static/qX3_4OY7y5bHBSRoIsxGU/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/pages/index-708e1f75761b4c152081.js"],"/_app":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/61a3f188b66810b01d88.css","static/chunks/pages/_app-794eb2e2970cf8adb925.js"],"/_error":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-05942383f743a3d2d5d5.js"],"/results":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/922-70664393d4d4d091808b.js","static/chunks/pages/results-c83cf28ea0da87761250.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/IOXiLafC_-UythR4wFOWb/_buildManifest.js","static/IOXiLafC_-UythR4wFOWb/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-cf50ca25f2e8dab69cff.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/pages/index-d45efffe88541beaa46a.js"],"/_app":["static/chunks/webpack-cf50ca25f2e8dab69cff.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/85743d65dc109aa140ae.css","static/chunks/pages/_app-ad743e157df6a83d8e7d.js"],"/_error":["static/chunks/webpack-cf50ca25f2e8dab69cff.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-cf50ca25f2e8dab69cff.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/1bfc9850-fbc6c72ee0162bef8cd8.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/127-086ef2ffada5d45af50d.js","static/chunks/pages/question/[_id]-469b3ae2c25a0152d4ee.js"],"/results":["static/chunks/webpack-cf50ca25f2e8dab69cff.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/1bfc9850-fbc6c72ee0162bef8cd8.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/781-e41a0dedd0bae41679d3.js","static/chunks/pages/results-1780f02ecfe313ad58cf.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=qX3_4OY7y5bHBSRoIsxGU&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22fecdb6111114b4531b75ed4a83525878%22%2C%22previewModeSigningKey%22%3A%225406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a%22%2C%22previewModeEncryptionKey%22%3A%226e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=IOXiLafC_-UythR4wFOWb&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22be956eb76fe5f0eec2fcfde365417387%22%2C%22previewModeSigningKey%22%3A%22b8e99eac02f657789ba0b4b1b09f95aebf6baba4892befee82fc0f3d913eae85%22%2C%22previewModeEncryptionKey%22%3A%22124b9f0eb7808e0b7727641cb195af75820d1acc53e8e3408457074a2a2b404b%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -46806,10 +46490,10 @@ var page_handler = __webpack_require__(9436);
       const appMod = __webpack_require__(4469)
       let App = appMod.default || appMod.then && appMod.then(mod => mod.default);
 
-      const compMod = __webpack_require__(6607)
+      const compMod = __webpack_require__(9063)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_qX3_4OY7y5bHBSRoIsxGU_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22fecdb6111114b4531b75ed4a83525878_22_2C_22previewModeSigningKey_22_3A_225406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a_22_2C_22previewModeEncryptionKey_22_3A_226e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_IOXiLafC_UythR4wFOWb_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22be956eb76fe5f0eec2fcfde365417387_22_2C_22previewModeSigningKey_22_3A_22b8e99eac02f657789ba0b4b1b09f95aebf6baba4892befee82fc0f3d913eae85_22_2C_22previewModeEncryptionKey_22_3A_22124b9f0eb7808e0b7727641cb195af75820d1acc53e8e3408457074a2a2b404b_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -46857,11 +46541,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "qX3_4OY7y5bHBSRoIsxGU",
-        escapedBuildId: "qX3_4OY7y5bHBSRoIsxGU",
+        buildId: "IOXiLafC_-UythR4wFOWb",
+        escapedBuildId: "IOXiLafC_\-UythR4wFOWb",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"fecdb6111114b4531b75ed4a83525878",previewModeSigningKey:"5406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a",previewModeEncryptionKey:"6e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836"}
+        encodedPreviewProps: {previewModeId:"be956eb76fe5f0eec2fcfde365417387",previewModeSigningKey:"b8e99eac02f657789ba0b4b1b09f95aebf6baba4892befee82fc0f3d913eae85",previewModeEncryptionKey:"124b9f0eb7808e0b7727641cb195af75820d1acc53e8e3408457074a2a2b404b"}
       })
       
     
@@ -64796,7 +64480,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(2418);
+/******/ 	var __webpack_exports__ = __webpack_require__(6043);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
