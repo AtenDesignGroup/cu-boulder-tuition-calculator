@@ -11,8 +11,10 @@ import { motion } from 'framer-motion'
 
 import { Question } from '@/components/calculator/question'
 
-import { Flex, Heading, Box, Stack, Button, Spinner } from '@chakra-ui/react'
-import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
+import { Flex, Heading, Box, Stack, Button, Spinner, Progress, Text } from '@chakra-ui/react'
+// import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
+import { FaCaretSquareLeft } from 'react-icons/fa'
+
 
 export function Calculator({ question, questions, slug }) {
   const router = useRouter()
@@ -105,9 +107,9 @@ export function Calculator({ question, questions, slug }) {
         lastQuestion: currentQuestion
       })
     }
-    console.log({currentQuestion})
-    console.log({atTheLastQuestion})
-    console.log({lastQuestion})
+    // console.log({currentQuestion})
+    // console.log({atTheLastQuestion})
+    // console.log({lastQuestion})
   }, [atTheLastQuestion])
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
@@ -282,9 +284,12 @@ export function Calculator({ question, questions, slug }) {
             questions={questions}
           />
 
-          <Stack direction="row" spacing={4} align="center" mb="12">
+          <Flex direction="row" alignItems="center">
             {currentQuestion > 0 && (
-              <Button onClick={() => prevQuestion()} leftIcon={<HiChevronLeft />} variant="outline" //tabIndex="3"
+              <Button onClick={() => prevQuestion()}
+              //leftIcon={<HiChevronLeft />}
+              variant="solid" shadow='md' background="#565A5C" color="#fff" _hover={{background: "#565A5C"}} _active={{background: "#565A5C"}}
+              mr="24px"
               >
                 Previous Question
               </Button>
@@ -294,9 +299,10 @@ export function Calculator({ question, questions, slug }) {
               <Button
                 onClick={() => nextQuestion()}
                 isDisabled={questionAnswered ? false : true}
-                rightIcon={<HiChevronRight />}
-                variant="outline"
+                //rightIcon={<HiChevronRight />}
+                variant="solid" shadow='md' background="blue.500" color="#fff" _hover={{background: "blue.500"}} _active={{background: "blue.500"}}
                 //tabIndex="4"
+                mr="24px"
                 >
                 {atTheLastQuestion ? 'See Results' : 'Next Question'}
               </Button>
@@ -317,7 +323,19 @@ export function Calculator({ question, questions, slug }) {
                 See Results
               </Button>
             )}*/}
-          </Stack>
+            <Box flex='1' width="100%">
+              <Text fontSize="xs" color="#565A5C" fontStyle="italic" mb="4px">my progress</Text>
+              <Progress colorScheme="blue" size="sm" value={(currentQuestion + 1) / questions.length * 100} />
+            </Box>
+
+          </Flex>
+
+          <Box mt="12">
+          <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="xs" colorScheme="blue">
+            <a href="/">Start Over</a>
+          </Button>
+          </Box>
+
         </motion.div>
       </Box>
     </Flex>

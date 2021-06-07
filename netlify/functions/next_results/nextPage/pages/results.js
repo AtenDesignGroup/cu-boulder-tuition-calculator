@@ -49632,10 +49632,12 @@ function LineItems({
 
   return /*#__PURE__*/jsx_runtime.jsx(Box, {
     mb: "6",
+    className: "printNoMargins",
     children: /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       alignItems: "flex-end",
       mb: "2",
       justifyContent: "space-between",
+      className: "printNoMargins",
       children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
         alignItems: "center",
         flexDir: "column",
@@ -49652,7 +49654,8 @@ function LineItems({
               "aria-label": `${frontEndTitle} description`,
               fontSize: "20px",
               onClick: onOpen,
-              icon: /*#__PURE__*/jsx_runtime.jsx(MdInfo, {})
+              icon: /*#__PURE__*/jsx_runtime.jsx(MdInfo, {}),
+              className: "printVisibilityHide"
             }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Modal, {
               size: "xl",
               isOpen: isOpen,
@@ -49672,7 +49675,7 @@ function LineItems({
         }), optional && /*#__PURE__*/jsx_runtime.jsx(Box, {
           background: "#eee",
           textTransform: "uppercase",
-          fontSize: "0.6em",
+          fontSize: "xx-small",
           px: "1",
           py: ".75",
           fontWeight: "bold",
@@ -49681,23 +49684,31 @@ function LineItems({
       }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
         flexDir: "column",
         alignItems: "flex-end",
+        className: "printPriceWrapper",
         children: [/*#__PURE__*/jsx_runtime.jsx(Text, {
           fontSize: "lg",
           mb: "0",
+          className: "printPrice",
+          order: "1",
           children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
             target: itemTotal,
             duration: 2
           })
         }), /*#__PURE__*/jsx_runtime.jsx(Badge, {
           background: "#2f8055",
-          fontSize: "0.6em",
+          fontSize: "xx-small",
           variant: "solid",
+          className: "printBadge",
+          order: "2",
           children: frequency.replace(/([A-Z])/g, ' $1').trim()
         })]
       })]
     })
   });
 }
+// EXTERNAL MODULE: ./node_modules/react-to-print/lib/index.js
+var lib = __webpack_require__(7116);
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 ;// CONCATENATED MODULE: ./utils/results.js
 
 
@@ -51081,6 +51092,7 @@ function components_results_defineProperty(obj, key, value) { if (key in obj) { 
 
 
 
+
 function Results({
   categories
 }) {
@@ -51100,11 +51112,19 @@ function Results({
     results,
     totalSemesters
   } = state.calculator;
-  const mainRef = (0,react.useRef)(); // useEffect(() => {
+  const mainRef = (0,react.useRef)();
+  const componentRef = (0,react.useRef)();
+
+  const linkToPrint = () => {
+    return /*#__PURE__*/jsx_runtime.jsx("button", {
+      children: "Click To PrintOF Body"
+    });
+  }; // useEffect(() => {
   //   setTimeout(() => {
   //     mainRef.current.focus();
   //   }, 1)
   // }, [])
+
 
   const updateTotalSemesters = val => {
     val = parseInt(val);
@@ -51168,138 +51188,166 @@ function Results({
   });
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
     mb: 12,
+    className: "printNoMargins",
     children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
-      mb: 12,
-      children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
-        size: "sm",
-        mb: 4,
-        color: "gray.600",
-        textTransform: "uppercase",
-        ref: mainRef // tabIndex="-1"
-        ,
-        as: "h1",
-        children: "My Results"
-      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Heading, {
-        mb: 2,
-        as: "h2",
-        size: "md",
-        children: ["Estimated costs", totalSemesters === 1 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-          children: " for One Semester"
-        }), totalSemesters === 2 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
-          children: " for Two Semesters"
-        })]
-      }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-        justifyContent: "space-between",
-        alignItems: "baseline",
-        mt: 4,
-        mb: 4,
+      ref: componentRef,
+      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+        mb: 12,
+        className: "printNoMargins",
         children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+          size: "sm",
+          mb: 4,
+          color: "gray.600",
           textTransform: "uppercase",
-          size: "2xl",
-          as: "h3",
-          children: "Grand Total"
-        }), /*#__PURE__*/jsx_runtime.jsx(Text, {
-          fontSize: "3xl",
-          mb: "0",
-          fontWeight: "bold",
-          color: "gray.800",
-          children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
-            target: grandTotal,
-            duration: 2
-          })
-        })]
-      }), /*#__PURE__*/jsx_runtime.jsx(Flex, {
-        alignItems: "center",
-        children: /*#__PURE__*/(0,jsx_runtime.jsxs)(RadioGroup, {
-          name: "totalSemestersView",
-          onChange: updateTotalSemesters,
-          value: totalSemesters.toString(),
-          defaultChecked: totalSemesters.toString(),
-          as: "fieldset",
-          children: [/*#__PURE__*/jsx_runtime.jsx("legend", {
-            className: "visuallyHidden",
-            children: "Choose number of semesters to view"
-          }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Stack, {
-            direction: "row",
-            children: [/*#__PURE__*/jsx_runtime.jsx(Radio, {
-              value: "1",
-              id: "one",
-              children: "View one semester"
-            }), /*#__PURE__*/jsx_runtime.jsx(Radio, {
-              value: "2",
-              id: "two",
-              children: "View two semesters"
-            })]
+          ref: mainRef // tabIndex="-1"
+          ,
+          as: "h1",
+          className: "printNoMargins",
+          children: "My Results"
+        }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Heading, {
+          mb: 2,
+          as: "h2",
+          size: "md",
+          className: "printNoMargins",
+          children: ["Estimated costs", totalSemesters === 1 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+            children: " for One Semester"
+          }), totalSemesters === 2 && /*#__PURE__*/jsx_runtime.jsx(jsx_runtime.Fragment, {
+            children: " for Two Semesters"
           })]
-        })
-      })]
-    }), /*#__PURE__*/jsx_runtime.jsx(Box, {
-      mb: 20,
-      children: filteredResults.map(category => /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
-        mb: 8,
-        pb: 2,
-        borderBottom: "1px solid #eee",
-        children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
-          alignItems: "center",
-          mb: 3,
-          children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
-            size: "xl",
-            color: "gray.600",
-            children: category.title
-          }), (category === null || category === void 0 ? void 0 : category.description) && /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-            children: [/*#__PURE__*/jsx_runtime.jsx(IconButton, {
-              variant: "ghost",
-              "aria-label": `${category.title} description`,
-              fontSize: "20px",
-              onClick: onOpen,
-              icon: /*#__PURE__*/jsx_runtime.jsx(MdInfo, {})
-            }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Modal, {
-              size: "xl",
-              isOpen: isOpen,
-              onClose: onClose,
-              isCentered: true,
-              children: [/*#__PURE__*/jsx_runtime.jsx(ModalOverlay, {}), /*#__PURE__*/(0,jsx_runtime.jsxs)(ModalContent, {
-                children: [/*#__PURE__*/jsx_runtime.jsx(ModalHeader, {
-                  children: category.title
-                }), /*#__PURE__*/jsx_runtime.jsx(ModalCloseButton, {}), /*#__PURE__*/jsx_runtime.jsx(ModalBody, {
-                  children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
-                    blocks: category.description
-                  })
-                })]
-              })]
-            })]
-          })]
-        }), category.lineItems && category.lineItems !== undefined && category.lineItems.length > 0 && (category === null || category === void 0 ? void 0 : category.lineItems.map(lineItem => {
-          return /*#__PURE__*/jsx_runtime.jsx(LineItems, {
-            data: lineItem,
-            catID: category._id,
-            catTitle: category.title,
-            itemTotal: totalGenerator(lineItem === null || lineItem === void 0 ? void 0 : lineItem.itemValue[0], questions)
-          }, lineItem._key);
-        }).filter(val => showArray(val.props.data, questions) === true)), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+        }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
           justifyContent: "space-between",
+          alignItems: "baseline",
+          mt: 4,
+          mb: 4,
+          className: "printNoMargins",
           children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
             textTransform: "uppercase",
-            size: "sm",
+            size: "2xl",
             as: "h3",
-            color: "gray.600",
-            children: "Sub Total"
+            children: "Grand Total"
           }), /*#__PURE__*/jsx_runtime.jsx(Text, {
-            fontSize: "lg",
+            fontSize: "3xl",
             mb: "0",
-            color: "gray.600",
+            fontWeight: "bold",
+            color: "gray.800",
+            className: "printPrice",
             children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
-              target: category.total,
+              target: grandTotal,
               duration: 2
             })
           })]
+        }), /*#__PURE__*/jsx_runtime.jsx(Flex, {
+          alignItems: "center",
+          className: "printVisibilityHide",
+          children: /*#__PURE__*/(0,jsx_runtime.jsxs)(RadioGroup, {
+            name: "totalSemestersView",
+            onChange: updateTotalSemesters,
+            value: totalSemesters.toString(),
+            defaultChecked: totalSemesters.toString(),
+            as: "fieldset",
+            children: [/*#__PURE__*/jsx_runtime.jsx("legend", {
+              className: "visuallyHidden",
+              children: "Choose number of semesters to view"
+            }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Stack, {
+              direction: "row",
+              children: [/*#__PURE__*/jsx_runtime.jsx(Radio, {
+                value: "1",
+                id: "one",
+                children: "View one semester"
+              }), /*#__PURE__*/jsx_runtime.jsx(Radio, {
+                value: "2",
+                id: "two",
+                children: "View two semesters"
+              })]
+            })]
+          })
         })]
-      }, category._id))
-    }), /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
-      href: `/question/${Object.keys(questions)[0]}`,
-      children: /*#__PURE__*/jsx_runtime.jsx("a", {
-        children: "Go back and edit your submission"
-      })
+      }), /*#__PURE__*/jsx_runtime.jsx(Box, {
+        mb: 20,
+        className: "printNoMargins",
+        children: filteredResults.map(category => /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+          mb: 6,
+          pb: 2,
+          borderBottom: "1px solid #eee",
+          className: "printNoMargins",
+          children: [/*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+            alignItems: "center",
+            mb: 3,
+            className: "printNoMargins",
+            children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+              size: "xl",
+              color: "gray.600",
+              children: category.title
+            }), (category === null || category === void 0 ? void 0 : category.description) && /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+              children: [/*#__PURE__*/jsx_runtime.jsx(IconButton, {
+                variant: "ghost",
+                "aria-label": `${category.title} description`,
+                fontSize: "20px",
+                onClick: onOpen,
+                icon: /*#__PURE__*/jsx_runtime.jsx(MdInfo, {}),
+                className: "printVisibilityHide"
+              }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Modal, {
+                size: "xl",
+                isOpen: isOpen,
+                onClose: onClose,
+                isCentered: true,
+                children: [/*#__PURE__*/jsx_runtime.jsx(ModalOverlay, {}), /*#__PURE__*/(0,jsx_runtime.jsxs)(ModalContent, {
+                  children: [/*#__PURE__*/jsx_runtime.jsx(ModalHeader, {
+                    children: category.title
+                  }), /*#__PURE__*/jsx_runtime.jsx(ModalCloseButton, {}), /*#__PURE__*/jsx_runtime.jsx(ModalBody, {
+                    children: /*#__PURE__*/jsx_runtime.jsx(text_Text, {
+                      blocks: category.description
+                    })
+                  })]
+                })]
+              })]
+            })]
+          }), category.lineItems && category.lineItems !== undefined && category.lineItems.length > 0 && (category === null || category === void 0 ? void 0 : category.lineItems.map(lineItem => {
+            return /*#__PURE__*/jsx_runtime.jsx(LineItems, {
+              data: lineItem,
+              catID: category._id,
+              catTitle: category.title,
+              itemTotal: totalGenerator(lineItem === null || lineItem === void 0 ? void 0 : lineItem.itemValue[0], questions)
+            }, lineItem._key);
+          }).filter(val => showArray(val.props.data, questions) === true)), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
+            justifyContent: "space-between",
+            children: [/*#__PURE__*/jsx_runtime.jsx(Heading, {
+              textTransform: "uppercase",
+              size: "sm",
+              as: "h3",
+              color: "gray.600",
+              children: "Sub Total"
+            }), /*#__PURE__*/jsx_runtime.jsx(Text, {
+              fontSize: "lg",
+              mb: "0",
+              color: "gray.600",
+              children: /*#__PURE__*/jsx_runtime.jsx(Counter, {
+                target: category.total,
+                duration: 2
+              })
+            })]
+          })]
+        }, category._id))
+      })]
+    }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Box, {
+      mb: 6,
+      children: [/*#__PURE__*/jsx_runtime.jsx(Button, {
+        variant: "outline",
+        children: /*#__PURE__*/jsx_runtime.jsx(next_link.default, {
+          href: `/question/${Object.keys(questions)[0]}`,
+          children: /*#__PURE__*/jsx_runtime.jsx("a", {
+            children: "Go back"
+          })
+        })
+      }), ' ', "and edit your submission"]
+    }), /*#__PURE__*/jsx_runtime.jsx((lib_default()), {
+      trigger: () => {
+        return /*#__PURE__*/jsx_runtime.jsx(Button, {
+          variant: "outline",
+          children: "Print Results"
+        });
+      },
+      content: () => componentRef.current
     })]
   });
 }
@@ -51456,7 +51504,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 4940:
+/***/ 8227:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51467,7 +51515,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_2uKLmUWBfHcNbc0jI5j4l_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_221ad09efd7e5bb94b4f933388bb3a8bd4_22_2C_22previewModeSigningKey_22_3A_2290fc11a13020b11009836865e5ba45f722c8c0c99f1df5733da2a50dff9254b7_22_2C_22previewModeEncryptionKey_22_3A_22201cf40aec6788ea3aaf4596f206b84b7727369363fbd7bf336c5f2ce7ec1d42_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_qX3_4OY7y5bHBSRoIsxGU_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22fecdb6111114b4531b75ed4a83525878_22_2C_22previewModeSigningKey_22_3A_225406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a_22_2C_22previewModeEncryptionKey_22_3A_226e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -51484,12 +51532,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/2uKLmUWBfHcNbc0jI5j4l/_buildManifest.js","static/2uKLmUWBfHcNbc0jI5j4l/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-c9fcce3c7da1f3fb8f19.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/pages/index-708e1f75761b4c152081.js"],"/_app":["static/chunks/webpack-c9fcce3c7da1f3fb8f19.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/63cb8f6c0475c81c4161.css","static/chunks/pages/_app-fd2e3dbc35b81df53046.js"],"/_error":["static/chunks/webpack-c9fcce3c7da1f3fb8f19.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-c9fcce3c7da1f3fb8f19.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-05942383f743a3d2d5d5.js"],"/results":["static/chunks/webpack-c9fcce3c7da1f3fb8f19.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/775-e62393f2d7c067b72481.js","static/chunks/pages/results-a55b727e5932f2dd2500.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/qX3_4OY7y5bHBSRoIsxGU/_buildManifest.js","static/qX3_4OY7y5bHBSRoIsxGU/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/pages/index-708e1f75761b4c152081.js"],"/_app":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/61a3f188b66810b01d88.css","static/chunks/pages/_app-794eb2e2970cf8adb925.js"],"/_error":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/937-9a94c39b11019bec166c.js","static/chunks/pages/question/[_id]-05942383f743a3d2d5d5.js"],"/results":["static/chunks/webpack-12dca7772ae5ef67f938.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-b678b4b6c486fc51f8db.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/48-d0703419800f55a83262.js","static/chunks/922-70664393d4d4d091808b.js","static/chunks/pages/results-c83cf28ea0da87761250.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=2uKLmUWBfHcNbc0jI5j4l&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%221ad09efd7e5bb94b4f933388bb3a8bd4%22%2C%22previewModeSigningKey%22%3A%2290fc11a13020b11009836865e5ba45f722c8c0c99f1df5733da2a50dff9254b7%22%2C%22previewModeEncryptionKey%22%3A%22201cf40aec6788ea3aaf4596f206b84b7727369363fbd7bf336c5f2ce7ec1d42%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2Fresults&absolutePagePath=private-next-pages%2Fresults.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=qX3_4OY7y5bHBSRoIsxGU&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%22fecdb6111114b4531b75ed4a83525878%22%2C%22previewModeSigningKey%22%3A%225406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a%22%2C%22previewModeEncryptionKey%22%3A%226e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -51512,7 +51560,7 @@ var page_handler = __webpack_require__(9436);
       const compMod = __webpack_require__(228)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_2uKLmUWBfHcNbc0jI5j4l_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_221ad09efd7e5bb94b4f933388bb3a8bd4_22_2C_22previewModeSigningKey_22_3A_2290fc11a13020b11009836865e5ba45f722c8c0c99f1df5733da2a50dff9254b7_22_2C_22previewModeEncryptionKey_22_3A_22201cf40aec6788ea3aaf4596f206b84b7727369363fbd7bf336c5f2ce7ec1d42_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2Fresults_absolutePagePath_private_next_pages_2Fresults_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_qX3_4OY7y5bHBSRoIsxGU_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_22fecdb6111114b4531b75ed4a83525878_22_2C_22previewModeSigningKey_22_3A_225406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a_22_2C_22previewModeEncryptionKey_22_3A_226e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -51560,11 +51608,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/results",
-        buildId: "2uKLmUWBfHcNbc0jI5j4l",
-        escapedBuildId: "2uKLmUWBfHcNbc0jI5j4l",
+        buildId: "qX3_4OY7y5bHBSRoIsxGU",
+        escapedBuildId: "qX3_4OY7y5bHBSRoIsxGU",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"1ad09efd7e5bb94b4f933388bb3a8bd4",previewModeSigningKey:"90fc11a13020b11009836865e5ba45f722c8c0c99f1df5733da2a50dff9254b7",previewModeEncryptionKey:"201cf40aec6788ea3aaf4596f206b84b7727369363fbd7bf336c5f2ce7ec1d42"}
+        encodedPreviewProps: {previewModeId:"fecdb6111114b4531b75ed4a83525878",previewModeSigningKey:"5406bc91ad546445d18f12f9a006af58e72bc5f291698ceaff2c5f6309ab929a",previewModeEncryptionKey:"6e3f029738ac78ac05d42e0166371648e19ff0d52f9d70adb5c3ff7236ed2836"}
       })
       
     
@@ -59058,7 +59106,6 @@ exports.renderToStaticNodeStream=function(a,b){return new fb(a,!0,b)};exports.re
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-var __webpack_unused_export__;
 /** @license React v17.0.1
  * react-dom.production.min.js
  *
@@ -59352,10 +59399,10 @@ gc=function(a){if(13===a.tag){var b=Hg(),c=Ig(a);Jg(a,c,b);ok(a,c)}};hc=function
 yb=function(a,b,c){switch(b){case "input":ab(a,c);b=c.name;if("radio"===c.type&&null!=b){for(c=a;c.parentNode;)c=c.parentNode;c=c.querySelectorAll("input[name="+JSON.stringify(""+b)+'][type="radio"]');for(b=0;b<c.length;b++){var d=c[b];if(d!==a&&d.form===a.form){var e=Db(d);if(!e)throw Error(y(90));Wa(d);ab(d,e)}}}break;case "textarea":ib(a,c);break;case "select":b=c.value,null!=b&&fb(a,!!c.multiple,b,!1)}};Gb=Wj;
 Hb=function(a,b,c,d,e){var f=X;X|=4;try{return gg(98,a.bind(null,b,c,d,e))}finally{X=f,0===X&&(wj(),ig())}};Ib=function(){0===(X&49)&&(Vj(),Oj())};Jb=function(a,b){var c=X;X|=2;try{return a(b)}finally{X=c,0===X&&(wj(),ig())}};function uk(a,b){var c=2<arguments.length&&void 0!==arguments[2]?arguments[2]:null;if(!rk(b))throw Error(y(200));return kk(a,b,null,c)}var vk={Events:[Cb,ue,Db,Eb,Fb,Oj,{current:!1}]},wk={findFiberByHostInstance:wc,bundleType:0,version:"17.0.1",rendererPackageName:"react-dom"};
 var xk={bundleType:wk.bundleType,version:wk.version,rendererPackageName:wk.rendererPackageName,rendererConfig:wk.rendererConfig,overrideHookState:null,overrideHookStateDeletePath:null,overrideHookStateRenamePath:null,overrideProps:null,overridePropsDeletePath:null,overridePropsRenamePath:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:ra.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=cc(a);return null===a?null:a.stateNode},findFiberByHostInstance:wk.findFiberByHostInstance||
-pk,findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null};if("undefined"!==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__){var yk=__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!yk.isDisabled&&yk.supportsFiber)try{Lf=yk.inject(xk),Mf=yk}catch(a){}}__webpack_unused_export__=vk;exports.createPortal=uk;
-__webpack_unused_export__=function(a){if(null==a)return null;if(1===a.nodeType)return a;var b=a._reactInternals;if(void 0===b){if("function"===typeof a.render)throw Error(y(188));throw Error(y(268,Object.keys(a)));}a=cc(b);a=null===a?null:a.stateNode;return a};__webpack_unused_export__=function(a,b){var c=X;if(0!==(c&48))return a(b);X|=1;try{if(a)return gg(99,a.bind(null,b))}finally{X=c,ig()}};__webpack_unused_export__=function(a,b,c){if(!rk(b))throw Error(y(200));return tk(null,a,b,!0,c)};
-__webpack_unused_export__=function(a,b,c){if(!rk(b))throw Error(y(200));return tk(null,a,b,!1,c)};__webpack_unused_export__=function(a){if(!rk(a))throw Error(y(40));return a._reactRootContainer?(Xj(function(){tk(null,null,a,!1,function(){a._reactRootContainer=null;a[ff]=null})}),!0):!1};__webpack_unused_export__=Wj;__webpack_unused_export__=function(a,b){return uk(a,b,2<arguments.length&&void 0!==arguments[2]?arguments[2]:null)};
-__webpack_unused_export__=function(a,b,c,d){if(!rk(c))throw Error(y(200));if(null==a||void 0===a._reactInternals)throw Error(y(38));return tk(a,b,c,!1,d)};__webpack_unused_export__="17.0.1";
+pk,findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null};if("undefined"!==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__){var yk=__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!yk.isDisabled&&yk.supportsFiber)try{Lf=yk.inject(xk),Mf=yk}catch(a){}}exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=vk;exports.createPortal=uk;
+exports.findDOMNode=function(a){if(null==a)return null;if(1===a.nodeType)return a;var b=a._reactInternals;if(void 0===b){if("function"===typeof a.render)throw Error(y(188));throw Error(y(268,Object.keys(a)));}a=cc(b);a=null===a?null:a.stateNode;return a};exports.flushSync=function(a,b){var c=X;if(0!==(c&48))return a(b);X|=1;try{if(a)return gg(99,a.bind(null,b))}finally{X=c,ig()}};exports.hydrate=function(a,b,c){if(!rk(b))throw Error(y(200));return tk(null,a,b,!0,c)};
+exports.render=function(a,b,c){if(!rk(b))throw Error(y(200));return tk(null,a,b,!1,c)};exports.unmountComponentAtNode=function(a){if(!rk(a))throw Error(y(40));return a._reactRootContainer?(Xj(function(){tk(null,null,a,!1,function(){a._reactRootContainer=null;a[ff]=null})}),!0):!1};exports.unstable_batchedUpdates=Wj;exports.unstable_createPortal=function(a,b){return uk(a,b,2<arguments.length&&void 0!==arguments[2]?arguments[2]:null)};
+exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!rk(c))throw Error(y(200));if(null==a||void 0===a._reactInternals)throw Error(y(38));return tk(a,b,c,!1,d)};exports.version="17.0.1";
 
 
 /***/ }),
@@ -62068,6 +62115,14 @@ exports.stylesheetSingleton = function () {
     };
 };
 
+
+/***/ }),
+
+/***/ 7116:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+/*! For license information please see index.js.LICENSE.txt */
+!function(e,t){ true?module.exports=t(__webpack_require__(7294),__webpack_require__(3935)):0}("undefined"!=typeof self?self:this,(function(e,t){return function(){"use strict";var n={655:function(e,t,n){n.r(t),n.d(t,{__extends:function(){return o},__assign:function(){return i},__rest:function(){return a},__decorate:function(){return l},__param:function(){return c},__metadata:function(){return u},__awaiter:function(){return s},__generator:function(){return f},__createBinding:function(){return d},__exportStar:function(){return p},__values:function(){return h},__read:function(){return y},__spread:function(){return v},__spreadArrays:function(){return b},__spreadArray:function(){return m},__await:function(){return w},__asyncGenerator:function(){return g},__asyncDelegator:function(){return _},__asyncValues:function(){return P},__makeTemplateObject:function(){return O},__importStar:function(){return x},__importDefault:function(){return j},__classPrivateFieldGet:function(){return T},__classPrivateFieldSet:function(){return E}});var r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])})(e,t)};function o(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)}var i=function(){return(i=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var o in t=arguments[n])Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o]);return e}).apply(this,arguments)};function a(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var o=0;for(r=Object.getOwnPropertySymbols(e);o<r.length;o++)t.indexOf(r[o])<0&&Object.prototype.propertyIsEnumerable.call(e,r[o])&&(n[r[o]]=e[r[o]])}return n}function l(e,t,n,r){var o,i=arguments.length,a=i<3?t:null===r?r=Object.getOwnPropertyDescriptor(t,n):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,n,r);else for(var l=e.length-1;l>=0;l--)(o=e[l])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a}function c(e,t){return function(n,r){t(n,r,e)}}function u(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)}function s(e,t,n,r){return new(n||(n=Promise))((function(o,i){function a(e){try{c(r.next(e))}catch(e){i(e)}}function l(e){try{c(r.throw(e))}catch(e){i(e)}}function c(e){var t;e.done?o(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(a,l)}c((r=r.apply(e,t||[])).next())}))}function f(e,t){var n,r,o,i,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:l(0),throw:l(1),return:l(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function l(i){return function(l){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return a.label++,{value:i[1],done:!1};case 5:a.label++,r=i[1],i=[0];continue;case 7:i=a.ops.pop(),a.trys.pop();continue;default:if(!((o=(o=a.trys).length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){a=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){a.label=i[1];break}if(6===i[0]&&a.label<o[1]){a.label=o[1],o=i;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(i);break}o[2]&&a.ops.pop(),a.trys.pop();continue}i=t.call(e,a)}catch(e){i=[6,e],r=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,l])}}}var d=Object.create?function(e,t,n,r){void 0===r&&(r=n),Object.defineProperty(e,r,{enumerable:!0,get:function(){return t[n]}})}:function(e,t,n,r){void 0===r&&(r=n),e[r]=t[n]};function p(e,t){for(var n in e)"default"===n||Object.prototype.hasOwnProperty.call(t,n)||d(t,e,n)}function h(e){var t="function"==typeof Symbol&&Symbol.iterator,n=t&&e[t],r=0;if(n)return n.call(e);if(e&&"number"==typeof e.length)return{next:function(){return e&&r>=e.length&&(e=void 0),{value:e&&e[r++],done:!e}}};throw new TypeError(t?"Object is not iterable.":"Symbol.iterator is not defined.")}function y(e,t){var n="function"==typeof Symbol&&e[Symbol.iterator];if(!n)return e;var r,o,i=n.call(e),a=[];try{for(;(void 0===t||t-- >0)&&!(r=i.next()).done;)a.push(r.value)}catch(e){o={error:e}}finally{try{r&&!r.done&&(n=i.return)&&n.call(i)}finally{if(o)throw o.error}}return a}function v(){for(var e=[],t=0;t<arguments.length;t++)e=e.concat(y(arguments[t]));return e}function b(){for(var e=0,t=0,n=arguments.length;t<n;t++)e+=arguments[t].length;var r=Array(e),o=0;for(t=0;t<n;t++)for(var i=arguments[t],a=0,l=i.length;a<l;a++,o++)r[o]=i[a];return r}function m(e,t){for(var n=0,r=t.length,o=e.length;n<r;n++,o++)e[o]=t[n];return e}function w(e){return this instanceof w?(this.v=e,this):new w(e)}function g(e,t,n){if(!Symbol.asyncIterator)throw new TypeError("Symbol.asyncIterator is not defined.");var r,o=n.apply(e,t||[]),i=[];return r={},a("next"),a("throw"),a("return"),r[Symbol.asyncIterator]=function(){return this},r;function a(e){o[e]&&(r[e]=function(t){return new Promise((function(n,r){i.push([e,t,n,r])>1||l(e,t)}))})}function l(e,t){try{(n=o[e](t)).value instanceof w?Promise.resolve(n.value.v).then(c,u):s(i[0][2],n)}catch(e){s(i[0][3],e)}var n}function c(e){l("next",e)}function u(e){l("throw",e)}function s(e,t){e(t),i.shift(),i.length&&l(i[0][0],i[0][1])}}function _(e){var t,n;return t={},r("next"),r("throw",(function(e){throw e})),r("return"),t[Symbol.iterator]=function(){return this},t;function r(r,o){t[r]=e[r]?function(t){return(n=!n)?{value:w(e[r](t)),done:"return"===r}:o?o(t):t}:o}}function P(e){if(!Symbol.asyncIterator)throw new TypeError("Symbol.asyncIterator is not defined.");var t,n=e[Symbol.asyncIterator];return n?n.call(e):(e=h(e),t={},r("next"),r("throw"),r("return"),t[Symbol.asyncIterator]=function(){return this},t);function r(n){t[n]=e[n]&&function(t){return new Promise((function(r,o){!function(e,t,n,r){Promise.resolve(r).then((function(t){e({value:t,done:n})}),t)}(r,o,(t=e[n](t)).done,t.value)}))}}}function O(e,t){return Object.defineProperty?Object.defineProperty(e,"raw",{value:t}):e.raw=t,e}var S=Object.create?function(e,t){Object.defineProperty(e,"default",{enumerable:!0,value:t})}:function(e,t){e.default=t};function x(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)"default"!==n&&Object.prototype.hasOwnProperty.call(e,n)&&d(t,e,n);return S(t,e),t}function j(e){return e&&e.__esModule?e:{default:e}}function T(e,t,n,r){if("a"===n&&!r)throw new TypeError("Private accessor was defined without a getter");if("function"==typeof t?e!==t||!r:!t.has(e))throw new TypeError("Cannot read private member from an object whose class did not declare it");return"m"===n?r:"a"===n?r.call(e):r?r.value:t.get(e)}function E(e,t,n,r,o){if("m"===r)throw new TypeError("Private method is not writable");if("a"===r&&!o)throw new TypeError("Private accessor was defined without a setter");if("function"==typeof t?e!==t||!o:!t.has(e))throw new TypeError("Cannot write private member to an object whose class did not declare it");return"a"===r?o.call(e,n):o?o.value=n:t.set(e,n),n}},297:function(t){t.exports=e},268:function(e){e.exports=t}},r={};function o(e){var t=r[e];if(void 0!==t)return t.exports;var i=r[e]={exports:{}};return n[e](i,i.exports,o),i.exports}o.d=function(e,t){for(var n in t)o.o(t,n)&&!o.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var i={};return function(){var e=i;Object.defineProperty(e,"__esModule",{value:!0}),e.useReactToPrint=e.PrintContextConsumer=void 0;var t=o(655),n=o(297),r=o(268),a=Object.prototype.hasOwnProperty.call(n,"createContext"),l=Object.prototype.hasOwnProperty.call(n,"useMemo")&&Object.prototype.hasOwnProperty.call(n,"useCallback"),c=a?n.createContext({}):null;e.PrintContextConsumer=c?c.Consumer:function(){return null};var u={copyStyles:!0,pageStyle:"@page { size: auto;  margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }",removeAfterPrint:!1,suppressErrors:!1},s=function(e){function o(){var n=null!==e&&e.apply(this,arguments)||this;return n.startPrint=function(e){var t=n.props,r=t.onAfterPrint,o=t.onPrintError,i=t.print,a=t.suppressErrors,l=t.documentTitle;setTimeout((function(){if(e.contentWindow){if(e.contentWindow.focus(),i)i(e).then(n.handleRemoveIframe).catch((function(e){o?o("print",e):a||console.error("An error was thrown by the specified `print` function",e)}));else if(e.contentWindow.print){var t=document.title;l&&(document.title=l),e.contentWindow.print(),l&&(document.title=t),r&&r()}else a||console.error("Printing for this browser is not currently possible: the browser does not have a `print` method available for iframes.");n.handleRemoveIframe()}else a||console.error("Printing failed because the `contentWindow` of the print iframe did not load. This is possibly an error with `react-to-print`. Please file an issue: https://github.com/gregnb/react-to-print/issues/")}),500)},n.triggerPrint=function(e){var t=n.props,r=t.onBeforePrint,o=t.onPrintError;if(r){var i=r();i&&"function"==typeof i.then?i.then((function(){n.startPrint(e)})).catch((function(e){o&&o("onBeforePrint",e)})):n.startPrint(e)}else n.startPrint(e)},n.handleClick=function(){var e=n.props,t=e.onBeforeGetContent,r=e.onPrintError;if(t){var o=t();o&&"function"==typeof o.then?o.then(n.handlePrint).catch((function(e){r&&r("onBeforeGetContent",e)})):n.handlePrint()}else n.handlePrint()},n.handlePrint=function(){var e=n.props,o=e.bodyClass,i=e.content,a=e.copyStyles,l=e.fonts,c=e.pageStyle,u=e.suppressErrors,s=i();if(void 0!==s)if(null!==s){var f=document.createElement("iframe");f.style.position="absolute",f.style.top="-1000px",f.style.left="-1000px",f.id="printWindow",f.title="Print Window";var d=r.findDOMNode(s);if(d){var p=d instanceof Text,h=document.querySelectorAll("link[rel='stylesheet']"),y=p?[]:d.querySelectorAll("img");n.linkTotal=h.length+y.length,n.linksLoaded=[],n.linksErrored=[],n.fontsLoaded=[],n.fontsErrored=[];var v=function(e,t){t?n.linksLoaded.push(e):(u||console.error('"react-to-print" was unable to load a linked node. It may be invalid. "react-to-print" will continue attempting to print the page. The linked node that errored was:',e),n.linksErrored.push(e)),n.linksLoaded.length+n.linksErrored.length+n.fontsLoaded.length+n.fontsErrored.length===n.linkTotal&&n.triggerPrint(f)};f.onload=function(){var e,r,i,s;f.onload=null;var h=f.contentDocument||(null===(r=f.contentWindow)||void 0===r?void 0:r.document);if(h){h.body.appendChild(d.cloneNode(!0)),l&&((null===(i=f.contentDocument)||void 0===i?void 0:i.fonts)&&(null===(s=f.contentWindow)||void 0===s?void 0:s.FontFace)?l.forEach((function(e){var t=new FontFace(e.family,e.source);f.contentDocument.fonts.add(t),t.loaded.then((function(e){n.fontsLoaded.push(e)})).catch((function(e){n.fontsErrored.push(t),u||console.error('"react-to-print" was unable to load a font. "react-to-print" will continue attempting to print the page. The font that failed to load is:',t,"The error from loading the font is:",e)}))})):u||console.error('"react-to-print" is not able to load custom fonts because the browser does not support the FontFace API'));var b="function"==typeof c?c():c;if("string"!=typeof b)u||console.error('"react-to-print" expected a "string" from `pageStyle` but received "'+typeof b+'". Styles from `pageStyle` will not be applied.');else{var m=h.createElement("style");m.appendChild(h.createTextNode(b)),h.head.appendChild(m)}if(o&&(e=h.body.classList).add.apply(e,t.__spreadArray([],t.__read(o.split(" ")))),!p){for(var w=h.querySelectorAll("canvas"),g=d.querySelectorAll("canvas"),_=0,P=w.length;_<P;++_){var O=(L=w[_]).getContext("2d");O&&O.drawImage(g[_],0,0)}for(_=0;_<y.length;_++){var S=y[_],x=S.getAttribute("src");if(x){var j=new Image;j.onload=v.bind(null,S,!0),j.onerror=v.bind(null,S,!1),j.src=x}else u||(console.warn('"react-to-print" encountered an <img> tag with an empty "src" attribute. It will not attempt to pre-load it. The <img> is:',S),v(S,!1))}var T="input",E=d.querySelectorAll(T),k=h.querySelectorAll(T);for(_=0;_<E.length;_++)k[_].value=E[_].value;var C="input[type=checkbox],input[type=radio]",A=d.querySelectorAll(C),I=h.querySelectorAll(C);for(_=0;_<A.length;_++)I[_].checked=A[_].checked;var R="select",q=d.querySelectorAll(R),M=h.querySelectorAll(R);for(_=0;_<q.length;_++)M[_].value=q[_].value}if(a)for(var W=document.querySelectorAll("style, link[rel='stylesheet']"),F=(_=0,W.length);_<F;++_){var L;if("STYLE"===(L=W[_]).tagName){var D=h.createElement(L.tagName),N=L.sheet;if(N){for(var B="",G=0,V=N.cssRules.length;G<V;++G)"string"==typeof N.cssRules[G].cssText&&(B+=N.cssRules[G].cssText+"\r\n");D.setAttribute("id","react-to-print-"+_),D.appendChild(h.createTextNode(B)),h.head.appendChild(D)}}else if(L.getAttribute("href")){D=h.createElement(L.tagName),G=0;for(var z=L.attributes.length;G<z;++G){var H=L.attributes[G];H&&D.setAttribute(H.nodeName,H.nodeValue||"")}D.onload=v.bind(null,D,!0),D.onerror=v.bind(null,D,!1),h.head.appendChild(D)}else u||console.warn('"react-to-print" encountered a <link> tag with an empty "href" attribute. In addition to being invalid HTML, this can cause problems in many browsers, and so the <link> was not loaded. The <link> is:',L),v(L,!0)}}0!==n.linkTotal&&a||n.triggerPrint(f)},n.handleRemoveIframe(!0),document.body.appendChild(f)}else u||console.error('"react-to-print" could not locate the DOM node corresponding with the `content` prop')}else u||console.error('There is nothing to print because the "content" prop returned "null". Please ensure "content" is renderable before allowing "react-to-print" to be called.');else u||console.error('For "react-to-print" to work only Class based components can be printed.')},n.handleRemoveIframe=function(e){var t=n.props.removeAfterPrint;if(e||t){var r=document.getElementById("printWindow");r&&document.body.removeChild(r)}},n}return t.__extends(o,e),o.prototype.render=function(){var e=this.props,t=e.children,r=e.suppressErrors,o=e.trigger;if(o)return n.cloneElement(o(),{onClick:this.handleClick});if(!c)return r||console.error('"react-to-print" requires React ^16.3.0 to be able to use "PrintContext"'),null;var i={handlePrint:this.handleClick};return n.createElement(c.Provider,{value:i},t)},o.defaultProps=u,o}(n.Component);e.default=s,e.useReactToPrint=l?function(e){var r=n.useMemo((function(){return new s(t.__assign(t.__assign({},u),e))}),[e]);return n.useCallback((function(){return r.handleClick()}),[r])}:function(e){e.suppressErrors||console.warn('"react-to-print" requires React ^16.8.0 to be able to use "useReactToPrint"')}}(),i}()}));
 
 /***/ }),
 
@@ -70629,7 +70684,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(4940);
+/******/ 	var __webpack_exports__ = __webpack_require__(8227);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

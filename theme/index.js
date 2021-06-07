@@ -21,6 +21,9 @@ const cuTheme = extendTheme({
       700: '#1c0081',
       800: '#10004f',
       900: '#060020'
+    },
+    blue: {
+      500: '#0277BD'
     }
   },
   breakpoints,

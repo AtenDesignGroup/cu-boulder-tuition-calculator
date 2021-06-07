@@ -18,8 +18,7 @@ export function Debug () {
         showResults: false,
         questions: [],
         results: [],
-        totalSemesters: 1,
-        totalCreditHours: 0
+        totalSemesters: 1
       }
     })
     router.push(`/`)

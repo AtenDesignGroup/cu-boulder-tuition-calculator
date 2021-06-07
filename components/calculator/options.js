@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { Text as BodyText } from '@/components/serializers/text'
-import { Heading, Box, Select, FormControl, FormLabel } from '@chakra-ui/react'
+import { Heading, Box, Select, FormControl, FormLabel} from '@chakra-ui/react'
 
 export function Options({ question, title, description }) {
   const { register, handleSubmit } = useForm()
@@ -76,6 +76,11 @@ export function Options({ question, title, description }) {
             placeholder="Select a value..."
             onChange={e => selectUpdate(e.currentTarget.value, question)}
             // tabIndex="2"
+
+            //rootProps={{}}
+            borderColor="#A2A4A3"
+            borderRadius="none"
+
           >
             {question?.optionSets[0].options.map(option => (
               <option value={option.value.current} key={option._key}>

@@ -1,3 +1,12 @@
+.chakra-select__icon-wrapper {
+  background: #CFB87C;
+  border: 1px solid #A2A4A3;
+  width: 2.5rem !important;
+  right: 0 !important;
+
+}
+
+
 .visuallyHidden {
   border: 0px;
   clip: rect(0px, 0px, 0px, 0px);

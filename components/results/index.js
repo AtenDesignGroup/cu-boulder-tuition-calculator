@@ -2,22 +2,24 @@ import { useRef, useEffect } from 'react'
 import { useStateMachine } from 'little-state-machine'
 import Link from 'next/link'
 import updateAction from '@/hooks/updateAction'
-import { LineItems } from '@/components/results/line-items'
+import { Category } from '@/components/results/category'
+
 import { Text as BodyText } from '@/components/serializers/text'
-import ReactToPrint from "react-to-print"
+import ReactToPrint from 'react-to-print'
 import { showArray, totalGenerator, toFixedNumber } from '@/utils/results'
-import { Heading, Box, Flex, Stack, Radio, RadioGroup, Text,
-  IconButton,
+import {
+  Heading,
+  Box,
+  Flex,
+  Stack,
+  Radio,
+  RadioGroup,
+  Text,
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure} from '@chakra-ui/react'
+  useDisclosure
+} from '@chakra-ui/react'
 import { Counter } from '@/components/counter'
-import { MdInfo as InfoIcon } from 'react-icons/md'
+import { FaPencilAlt, FaPrint, FaCaretSquareLeft } from 'react-icons/fa'
 
 
 export function Results({ categories }) {
@@ -28,9 +30,7 @@ export function Results({ categories }) {
   const componentRef = useRef()
 
   const linkToPrint = () => {
-    return (
-        <button>Click To PrintOF Body</button>
-    )
+    return <button>Click To PrintOF Body</button>
   }
 
   // useEffect(() => {
@@ -51,8 +51,8 @@ export function Results({ categories }) {
     })
   }
 
-  const addFilterResults = (val) => {
-    console.log({val})
+  const addFilterResults = val => {
+    // console.log({val})
     // actions.updateAction({
     //   ...state,
     //   calculator: {
@@ -69,164 +69,156 @@ export function Results({ categories }) {
     // })
   }
 
-  const filteredResults = categories?.map(val => {
-    return {
-      ...val,
-      lineItems: val.lineItems.map(item => {
-        return {
-          ...item,
-          total: totalGenerator(item?.itemValue[0], questions)
-        }
-      }).filter(val => showArray(val, questions) === true)
-    };
-  }).filter(val => val.lineItems.length > 0)
-  .map(val =>
-    {
-      const catTotals = [];
-      let catTotal = 0;
+  const filteredResults = categories
+    ?.map(val => {
+      return {
+        ...val,
+        lineItems: val.lineItems
+          .map(item => {
+            return {
+              ...item,
+              total: totalGenerator(item?.itemValue[0], questions)
+            }
+          })
+          .filter(val => showArray(val, questions) === true)
+      }
+    })
+    .filter(val => val.lineItems.length > 0)
+    .map(val => {
+      const catTotals = []
+      let catTotal = 0
       val.lineItems.map(item => {
-        console.log(item.frequency)
-        catTotals.push(item.frequency === 'perSemester' ? parseFloat(item.total) * totalSemesters : parseFloat(item.total));
-        catTotals.length > 0 ? catTotal = catTotals.reduce((a,b) => parseFloat(a) + parseFloat(b), 0) :  catTotal = catTotals[0]
+        // console.log(item.frequency)
+        catTotals.push(
+          item.frequency === 'perSemester'
+            ? parseFloat(item.total) * totalSemesters
+            : parseFloat(item.total)
+        )
+        catTotals.length > 0
+          ? (catTotal = catTotals.reduce((a, b) => parseFloat(a) + parseFloat(b), 0))
+          : (catTotal = catTotals[0])
       })
       return {
         ...val,
         total: catTotal
       }
-    }
-  )
+    })
+  // console.log({ filteredResults })
 
-  const grandTotals = [];
-  let grandTotal = 0;
+
+const test = Object.entries(filteredResults)
+.map((obj, key) =>
+
+  ({
+    [obj[1]._id]: obj[1]
+  })
+)
+
+
+  // console.clear()
+  // console.log({test})
+    // console.log(JSON.stringify(test.flat(2), 0, 2))
+
+  const grandTotals = []
+  let grandTotal = 0
   filteredResults.map(item => {
-    grandTotals.push(parseFloat(item.total));
-    grandTotals.length > 0 ? grandTotal = grandTotals.reduce((a,b) => parseFloat(a) + parseFloat(b), 0) :  grandTotal = grandTotals[0]
+    grandTotals.push(parseFloat(item.total))
+    grandTotals.length > 0
+      ? (grandTotal = grandTotals.reduce((a, b) => parseFloat(a) + parseFloat(b), 0))
+      : (grandTotal = grandTotals[0])
   })
 
-  console.log({filteredResults})
-  console.log({grandTotal})
+  // console.log({filteredResults})
+  // console.log({grandTotal})
   return (
     <Box mb={12} className="printNoMargins">
-
-    <Box ref={componentRef}>
-      <Box mb={12} className="printNoMargins">
-
-        <Heading size="sm" mb={4} color="gray.600" textTransform="uppercase" ref={mainRef}
-        // tabIndex="-1"
-        as="h1" className="printNoMargins">
-          My Results
-        </Heading>
-
-        <Heading mb={2} as="h2" size='md' className="printNoMargins">
-          Estimated costs
-          {totalSemesters === 1 && <> for One Semester</>}
-          {totalSemesters === 2 && <> for Two Semesters</>}
-        </Heading>
-
-        <Flex justifyContent="space-between" alignItems='baseline' mt={4} mb={4} className="printNoMargins">
-        <Heading textTransform='uppercase' size="2xl" as='h3'>Grand Total</Heading>
-        <Text fontSize="3xl" mb='0' fontWeight='bold' color="gray.800" className="printPrice"><Counter target={grandTotal} duration={2} /></Text>
-        </Flex>
-
-
-        <Flex alignItems="center" className="printVisibilityHide">
-          <RadioGroup
-            name="totalSemestersView"
-            onChange={updateTotalSemesters}
-            value={totalSemesters.toString()}
-            defaultChecked={totalSemesters.toString()}
-            as="fieldset"
+      <Box ref={componentRef}>
+        <Box mb={12} className="printNoMargins">
+          <Heading
+            size="sm"
+            mb={4}
+            color="gray.600"
+            ref={mainRef}
+            // tabIndex="-1"
+            as="h1"
+            className="printNoMargins"
           >
-            <legend className="visuallyHidden">Choose number of semesters to view</legend>
-            <Stack direction="row">
-              <Radio value="1" id="one">
-                View one semester
-              </Radio>
-              <Radio value="2" id="two">
-                View two semesters
-              </Radio>
-            </Stack>
-          </RadioGroup>
+          Estimate costs for:
+          </Heading>
+
+         {/* <Heading mb={2} as="h2" size="md" className="printNoMargins">
+            Estimated costs
+            {totalSemesters === 1 && <> for One Semester</>}
+            {totalSemesters === 2 && <> for Two Semesters</>}
+          </Heading> */}
+
+
+
+          <Flex alignItems="center" className="printVisibilityHide" mb={12}>
+            <RadioGroup
+              name="totalSemestersView"
+              onChange={updateTotalSemesters}
+              value={totalSemesters.toString()}
+              defaultChecked={totalSemesters.toString()}
+              as="fieldset"
+            >
+              <legend className="visuallyHidden">Choose number of semesters to view</legend>
+              <Stack direction="row">
+                <Radio value="1" id="one">
+                  One Semester
+                </Radio>
+                <Radio value="2" id="two">
+                  Two Semesters
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          </Flex>
+
+
+          <Flex
+          justifyContent="space-between"
+          alignItems="baseline"
+          mb={4}
+          className="printNoMargins"
+        >
+          <Heading size="lg" as="h3" mb="0">
+          Your total estimate
+          </Heading>
+          <Text fontSize="2xl" mb="0" fontWeight="bold" color="gray.800" className="printPrice">
+            <Counter target={grandTotal} duration={2} />
+          </Text>
         </Flex>
+
+
+        </Box>
+
+        <Box mb={20} className="printNoMargins" borderTop="2px solid #A2A4A3" pt={10}>
+          {filteredResults.map(category => (
+            <Category category={category} key={category._id} questions={questions} />
+          ))}
+        </Box>
       </Box>
 
-      <Box mb={20}  className="printNoMargins">
-
-        {filteredResults.map(category => (
-          <Box key={category._id} mb={6} pb={2} borderBottom="1px solid #eee" className="printNoMargins">
-
-          <Flex alignItems="center" mb={3} className="printNoMargins">
-            <Heading size="xl" color="gray.600">
-              {category.title}
-            </Heading>
-
-            {category?.description && (<>
-              <IconButton
-              variant="ghost"
-              aria-label={`${category.title} description`}
-              fontSize="20px"
-              onClick={onOpen}
-              icon={<InfoIcon />}
-              className="printVisibilityHide"
-            />
-              <Modal size="xl" isOpen={isOpen} onClose={onClose} isCentered>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>{category.title}</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                <BodyText blocks={category.description} />
-                </ModalBody>
-              </ModalContent>
-            </Modal>
-            </>
-            )}
-            </Flex>
-
-            {/*<Box mb="4">
-              <BodyText blocks={category.description} />
-            </Box>*/}
-
-            {category.lineItems && category.lineItems !== undefined &&
-              category.lineItems.length > 0 &&
-              category?.lineItems.map(lineItem => {
-
-                return (<LineItems
-                  key={lineItem._key}
-                  data={lineItem}
-                  catID={category._id}
-                  catTitle={category.title}
-                  itemTotal={totalGenerator(lineItem?.itemValue[0], questions)}
-                />)
-              })
-              .filter(val => showArray(val.props.data, questions) === true)
-            }
-            <Flex justifyContent="space-between">
-            <Heading textTransform='uppercase' size="sm" as='h3' color="gray.600">Sub Total</Heading>
-            <Text fontSize="lg" mb='0' color="gray.600"><Counter target={category.total} duration={2} /></Text>
-            </Flex>
-          </Box>
-        ))}
-
+      <Box mb="8px">
+          <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="xs" colorScheme="blue">
+            <a href={`/question/${Object.keys(questions)[0]}`}>Edit Questions</a>
+          </Button>
       </Box>
 
+      <Box mb="8px">
+          <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="xs" colorScheme="blue">
+            <a href="/">Start Over</a>
+          </Button>
       </Box>
 
-      <Box mb={6}>
-      <Button variant="outline">
-          <Link href={`/question/${Object.keys(questions)[0]}`}>
-          <a>Go back</a>
-          </Link>
-        </Button>{ ' ' }
-        and edit your submission</Box>
-
-        <ReactToPrint
-          trigger={() => {
-            return <Button variant="outline">Print Results</Button>;
-          }}
-          content={() => componentRef.current}
-        />
-
+      <ReactToPrint
+        trigger={() => {
+          return <Button leftIcon={<FaPrint />} variant="link" fontSize="xs" colorScheme="blue">Print Results</Button>
+        }}
+        content={() => componentRef.current}
+      />
     </Box>
   )
 }
+
+// FaPencilAlt, FaPrint, FaCaretSquareLeft

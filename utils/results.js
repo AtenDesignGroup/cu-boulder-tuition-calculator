@@ -86,6 +86,10 @@ export function toFixedNumber(num, digits, base){
   return Math.round(num*pow) / pow;
 }
 
+export function capitalize(s){
+  return (s && s[0].toUpperCase() + s.slice(1)) || "";
+}
+
 const operatorMagic = (questionVal, mathOperation, logicVal) => {
   // console.log(`questionVal: ${questionVal}, mathOperation: ${mathOperation}, logicVal: ${logicVal}`)
   if (mathOperation === 'equals') {
@@ -117,7 +121,7 @@ export function CalculateResults() {
     optional,
     optionLogicConditional
   } = data
-  const { questions, semesters, results, totalSemesters, totalCreditHours } = state.calculator
+  const { questions, semesters, results, totalSemesters } = state.calculator
 
   const showArray = () => {
     let showQuestion = []

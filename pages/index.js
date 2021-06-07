@@ -25,7 +25,7 @@ export default function Home({ pageData }) {
 
         <BodyText blocks={tuitionCalculator.description} />
 
-        <Button variant="outline" mt={6}>
+        <Button mt={6} variant="solid" shadow='md' background="#0277BD" color="#fff" _hover={{background: "#0277BD"}} _active={{background: "#0277BD"}}>
           <Link href={`/question/${questions[0]._id}`}>
             <a>{tuitionCalculator.buttonTitle}</a>
           </Link>
