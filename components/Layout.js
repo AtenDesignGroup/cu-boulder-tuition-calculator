@@ -31,8 +31,8 @@ export function Layout({ children, siteSettings, position, totalQuestions, statu
       <Flex height="100vh" flexDir="column" maxWidth='890px' mx='auto' px='6' py='6'>
         {children}
 
-        <Box position='fixed' bottom='0' left='0' width='100%' background='#fff' pb='4' pl='4'>
-        <Button ref={btnRef} colorScheme="blue" onClick={onOpen} display='inline-block' isFullWidth={false} variant="outline">
+        <Box position='fixed' bottom='0' left='0' width='100%' pb='4' pl='4' >
+        <Button ref={btnRef} colorScheme="blue" onClick={onOpen} display='inline-block' isFullWidth={false} variant="outline" size="sm">
           Debug
         </Button>
         </Box>

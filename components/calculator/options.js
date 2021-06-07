@@ -65,7 +65,7 @@ export function Options({ question, title, description }) {
           <FormLabel>
             <Heading mb="6" as="h1" ref={mainRef} tabIndex="-1">{title}</Heading>
           </FormLabel>
-          {description && <Box mb="4"
+          {description && <Box mb="8"
           // tabIndex="1"
           >
             <BodyText blocks={description} />

@@ -24,7 +24,10 @@ const cuTheme = extendTheme({
     },
     blue: {
       500: '#0277BD'
-    }
+    },
+    yellow: {
+      500: '#CFB87C'
+    },
   },
   breakpoints,
   fonts: {

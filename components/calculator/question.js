@@ -32,10 +32,9 @@ export function Question (props) {
   // console.log(state?.calculator?.questions[question?._id]?.answer)
   return (
 
-      <Box mb='12' mt='4'>
+      <Box mb='10' mt='4'>
         <Options question={question} title={question.title} description={question.description} />
       </Box>
-
 
   )
 }

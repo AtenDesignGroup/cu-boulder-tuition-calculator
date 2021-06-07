@@ -21,7 +21,7 @@ import { Counter } from '@/components/counter'
 export function Category({ category, questions }) {
   const { isOpen, onToggle } = useDisclosure()
   return (
-    <Box key={category._id} mb={8} pb={4} borderBottom="2px solid #A2A4A3" className="printNoMargins">
+    <Box key={category._id} mb={10} p="30px" backgroundColor="#F7F6F7" className="printNoMargins">
       <Flex alignItems="center" mb={3} className="printNoMargins"  justifyContent="space-between">
         <Flex>
         {category?.description && (

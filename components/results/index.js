@@ -16,11 +16,11 @@ import {
   RadioGroup,
   Text,
   Button,
+  Link as ChakraLink,
   useDisclosure
 } from '@chakra-ui/react'
 import { Counter } from '@/components/counter'
 import { FaPencilAlt, FaPrint, FaCaretSquareLeft } from 'react-icons/fa'
-
 
 export function Results({ categories }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -105,19 +105,13 @@ export function Results({ categories }) {
     })
   // console.log({ filteredResults })
 
-
-const test = Object.entries(filteredResults)
-.map((obj, key) =>
-
-  ({
+  const test = Object.entries(filteredResults).map((obj, key) => ({
     [obj[1]._id]: obj[1]
-  })
-)
-
+  }))
 
   // console.clear()
   // console.log({test})
-    // console.log(JSON.stringify(test.flat(2), 0, 2))
+  // console.log(JSON.stringify(test.flat(2), 0, 2))
 
   const grandTotals = []
   let grandTotal = 0
@@ -131,9 +125,9 @@ const test = Object.entries(filteredResults)
   // console.log({filteredResults})
   // console.log({grandTotal})
   return (
-    <Box mb={12} className="printNoMargins">
+    <Box mb={10} className="printNoMargins">
       <Box ref={componentRef}>
-        <Box mb={12} className="printNoMargins">
+        <Box mb={10} className="printNoMargins">
           <Heading
             size="sm"
             mb={4}
@@ -143,18 +137,16 @@ const test = Object.entries(filteredResults)
             as="h1"
             className="printNoMargins"
           >
-          Estimate costs for:
+            Estimate costs for:
           </Heading>
 
-         {/* <Heading mb={2} as="h2" size="md" className="printNoMargins">
+          {/* <Heading mb={2} as="h2" size="md" className="printNoMargins">
             Estimated costs
             {totalSemesters === 1 && <> for One Semester</>}
             {totalSemesters === 2 && <> for Two Semesters</>}
           </Heading> */}
 
-
-
-          <Flex alignItems="center" className="printVisibilityHide" mb={12}>
+          <Flex alignItems="center" className="printVisibilityHide" mb={10}>
             <RadioGroup
               name="totalSemestersView"
               onChange={updateTotalSemesters}
@@ -164,59 +156,70 @@ const test = Object.entries(filteredResults)
             >
               <legend className="visuallyHidden">Choose number of semesters to view</legend>
               <Stack direction="row">
-                <Radio value="1" id="one">
+                <Radio value="1" id="one" colorScheme="yellow">
                   One Semester
                 </Radio>
-                <Radio value="2" id="two">
+                <Radio value="2" id="two" colorScheme="yellow">
                   Two Semesters
                 </Radio>
               </Stack>
             </RadioGroup>
           </Flex>
 
-
           <Flex
-          justifyContent="space-between"
-          alignItems="baseline"
-          mb={4}
-          className="printNoMargins"
-        >
-          <Heading size="lg" as="h3" mb="0">
-          Your total estimate
-          </Heading>
-          <Text fontSize="2xl" mb="0" fontWeight="bold" color="gray.800" className="printPrice">
-            <Counter target={grandTotal} duration={2} />
-          </Text>
-        </Flex>
-
-
+            justifyContent="space-between"
+            alignItems="baseline"
+            className="printNoMargins"
+            backgroundColor="yellow.500"
+            p="30px"
+          >
+            <Heading size="lg" as="h3" mb="0">
+              Your total estimate
+            </Heading>
+            <Text fontSize="2xl" mb="0" fontWeight="bold" color="gray.800" className="printPrice">
+              <Counter target={grandTotal} duration={2} />{' '}
+              <ChakraLink href="#disclaimer" aria-label="View disclaimer" textDecoration="none">
+                *
+              </ChakraLink>
+            </Text>
+          </Flex>
         </Box>
 
-        <Box mb={20} className="printNoMargins" borderTop="2px solid #A2A4A3" pt={10}>
+        <Box mb={10} className="printNoMargins" pt={0}>
           {filteredResults.map(category => (
             <Category category={category} key={category._id} questions={questions} />
           ))}
         </Box>
       </Box>
 
-      <Box mb="8px">
-          <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="xs" colorScheme="blue">
+      <Box mb="8" id="disclaimer">
+            <Text fontStyle="italic"><strong>* Disclaimer:</strong> Commodo scelerisque posuere purus amet sit dolor quam cursus sed ac lectus tellus egestas fusce venenatis cras tempor curabitur lobortis nec convallis.</Text>
+      </Box>
+
+      <Flex alignItems="center" justifyContent="space-between">
+        <Box>
+          <ReactToPrint
+            trigger={() => {
+              return (
+                <Button leftIcon={<FaPrint />} variant="solid" fontSize="sm" colorScheme="blue" mr="24px">
+                  Print Results
+                </Button>
+              )
+            }}
+            content={() => componentRef.current}
+          />
+
+          <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
             <a href={`/question/${Object.keys(questions)[0]}`}>Edit Questions</a>
           </Button>
-      </Box>
+        </Box>
 
-      <Box mb="8px">
-          <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="xs" colorScheme="blue">
-            <a href="/">Start Over</a>
-          </Button>
-      </Box>
+        <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="sm" colorScheme="blue">
+          <a href="/">Start Over</a>
+        </Button>
 
-      <ReactToPrint
-        trigger={() => {
-          return <Button leftIcon={<FaPrint />} variant="link" fontSize="xs" colorScheme="blue">Print Results</Button>
-        }}
-        content={() => componentRef.current}
-      />
+      </Flex>
+
     </Box>
   )
 }

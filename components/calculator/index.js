@@ -13,8 +13,7 @@ import { Question } from '@/components/calculator/question'
 
 import { Flex, Heading, Box, Stack, Button, Spinner, Progress, Text } from '@chakra-ui/react'
 // import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
-import { FaCaretSquareLeft } from 'react-icons/fa'
-
+import { FaCaretSquareLeft, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
 
 export function Calculator({ question, questions, slug }) {
   const router = useRouter()
@@ -66,9 +65,11 @@ export function Calculator({ question, questions, slug }) {
   useEffect(() => {
     // console.clear()
     // Check to see if the question has been answered
-    setQuestionAnswered(isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? false : true)
+    setQuestionAnswered(
+      isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? false : true
+    )
     // Question has been answered 👍🏻
-    if(questionAnswered === true){
+    if (questionAnswered === true) {
       // console.log('👍🏻 question answered')
       let i = currentQuestion
       let showQuestion = 'hide'
@@ -84,13 +85,13 @@ export function Calculator({ question, questions, slug }) {
       // Logic to see if at the end of questions or not
       if (i === undefined || i >= questionLength) {
         // console.log('🔚 you have reached the end of our questions')
-          i = currentQuestion
-          setAtTheLastQuestion(true)
+        i = currentQuestion
+        setAtTheLastQuestion(true)
       } else {
         setAtTheLastQuestion(false)
         // console.log('✅ another question')
       }
-    // Question not answered 👎🏻
+      // Question not answered 👎🏻
     } else {
       setAtTheLastQuestion(false)
       // console.log('👎🏻 question answered')
@@ -101,7 +102,7 @@ export function Calculator({ question, questions, slug }) {
   })
 
   useEffect(() => {
-    if (atTheLastQuestion){
+    if (atTheLastQuestion) {
       actions.updateAction({
         ...state,
         lastQuestion: currentQuestion
@@ -211,7 +212,6 @@ export function Calculator({ question, questions, slug }) {
         }`
       )
     }
-
   }
 
   // Button to advance the user to the previous question, not shown on the first question
@@ -276,6 +276,17 @@ export function Calculator({ question, questions, slug }) {
           animate={'animate'}
           animate={currentQuestion === slug ? 'animate' : 'initial'}
         >
+          <Box flex="1" width="100%" mb="10">
+            <Text fontSize="xs" color="#565A5C" fontStyle="italic" mb="1">
+              My progress
+            </Text>
+            <Progress
+              colorScheme="blue"
+              size="sm"
+              value={((currentQuestion + 1) / questions.length) * 100}
+            />
+          </Box>
+
           <Question
             key={question._id}
             question={question}
@@ -286,10 +297,17 @@ export function Calculator({ question, questions, slug }) {
 
           <Flex direction="row" alignItems="center">
             {currentQuestion > 0 && (
-              <Button onClick={() => prevQuestion()}
-              //leftIcon={<HiChevronLeft />}
-              variant="solid" shadow='md' background="#565A5C" color="#fff" _hover={{background: "#565A5C"}} _active={{background: "#565A5C"}}
-              mr="24px"
+              <Button
+                onClick={() => prevQuestion()}
+                leftIcon={<FaArrowAltCircleLeft />}
+                variant="solid"
+                shadow="md"
+                background="#565A5C"
+                color="#fff"
+                _hover={{ background: '#565A5C' }}
+                _active={{ background: '#565A5C' }}
+                _disabled={{ background: '#A2A4A3' }}
+                mr="24px"
               >
                 Previous Question
               </Button>
@@ -299,11 +317,17 @@ export function Calculator({ question, questions, slug }) {
               <Button
                 onClick={() => nextQuestion()}
                 isDisabled={questionAnswered ? false : true}
-                //rightIcon={<HiChevronRight />}
-                variant="solid" shadow='md' background="blue.500" color="#fff" _hover={{background: "blue.500"}} _active={{background: "blue.500"}}
+                rightIcon={<FaArrowAltCircleRight />}
+                variant="solid"
+                shadow="md"
+                background="blue.500"
+                color="#fff"
+                _hover={{ background: 'blue.500' }}
+                _active={{ background: 'blue.500' }}
+                _disabled={{ background: '#A2A4A3' }}
                 //tabIndex="4"
                 mr="24px"
-                >
+              >
                 {atTheLastQuestion ? 'See Results' : 'Next Question'}
               </Button>
             )}
@@ -323,19 +347,18 @@ export function Calculator({ question, questions, slug }) {
                 See Results
               </Button>
             )}*/}
-            <Box flex='1' width="100%">
-              <Text fontSize="xs" color="#565A5C" fontStyle="italic" mb="4px">my progress</Text>
-              <Progress colorScheme="blue" size="sm" value={(currentQuestion + 1) / questions.length * 100} />
-            </Box>
-
           </Flex>
 
           <Box mt="12">
-          <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="xs" colorScheme="blue">
-            <a href="/">Start Over</a>
-          </Button>
+            <Button
+              leftIcon={<FaCaretSquareLeft />}
+              variant="link"
+              fontSize="xs"
+              colorScheme="blue"
+            >
+              <a href="/">Start Over</a>
+            </Button>
           </Box>
-
         </motion.div>
       </Box>
     </Flex>
