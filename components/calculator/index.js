@@ -197,6 +197,13 @@ export function Calculator({ question, questions, slug }) {
       i = currentQuestion
       setAtTheLastQuestion(true)
       setSeeResultsBtn(true)
+      actions.updateAction({
+        ...state,
+        calculator: {
+          ...state.calculator,
+          showResults: true
+        }
+      })
       router.push(`/results`)
     } else {
       actions.updateAction({
@@ -349,16 +356,28 @@ export function Calculator({ question, questions, slug }) {
             )}*/}
           </Flex>
 
-          <Box mt="12">
+          <Flex mt="12" alignItems="center">
             <Button
               leftIcon={<FaCaretSquareLeft />}
               variant="link"
               fontSize="xs"
               colorScheme="blue"
+              mr="24px"
             >
               <a href="/">Start Over</a>
             </Button>
-          </Box>
+
+            {showResults &&
+            <Button
+            //leftIcon={<FaCaretSquareLeft />}
+            variant="link"
+            fontSize="xs"
+            colorScheme="blue"
+          >
+            <a href="/results">Back to Results</a>
+          </Button>}
+
+          </Flex>
         </motion.div>
       </Box>
     </Flex>

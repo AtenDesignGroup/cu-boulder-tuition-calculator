@@ -223,5 +223,3 @@ export function Results({ categories }) {
     </Box>
   )
 }
-
-// FaPencilAlt, FaPrint, FaCaretSquareLeft
