@@ -55,9 +55,9 @@ export function LineItems({ data, itemTotal }) {
         className="printNoMargins"
         width="100%"
       >
-        <Flex alignItems="center" flexDir="column" alignItems="flex-start">
-          <Flex alignItems="center" width="100%">
-            <Heading size="md" as="h3" flex="none">
+        <Flex alignItems="center" flexDir="column" alignItems="flex-start" width="100%" position="relative"
+        _after={{content: "''", position: "absolute", width: "100%", height: "1px", background: "#ccc", left: "0", right: "0", top: "0", bottom:"0", margin: "auto", zIndex: "0"}}>
+            <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr="24px">
               {frontEndTitle}
             </Heading>
 
@@ -74,9 +74,6 @@ export function LineItems({ data, itemTotal }) {
                 Optional Fee
               </Text>
             )}
-
-            <Flex width="100%" background="#ccc" height="1px" mx="24px" />
-          </Flex>
         </Flex>
 
         <Flex flexDir="row" alignItems="center" className="printPriceWrapper">
@@ -87,7 +84,7 @@ export function LineItems({ data, itemTotal }) {
             </Text>
           </Box>
 
-          <Box minW="98px" order="3" ml="24px" textAlign="right">
+          <Box minW="78px" order="3" ml="26px" textAlign="right" ml="24px">
           <Text
             color="#565A5C"
             fontSize="xs"
@@ -95,7 +92,6 @@ export function LineItems({ data, itemTotal }) {
             className="printBadge"
             order="2"
             my="0"
-            ml="24px"
           >
             {capitalize(frequency.replace(/([A-Z])/g, ' $1').trim())}
           </Text>
@@ -120,7 +116,7 @@ export function LineItems({ data, itemTotal }) {
           </Box>
         </Flex>
       </Flex>
-      {/*description && <BodyText blocks={description} />*/}
+
       {description && (
         <Collapse in={isOpen} animateOpacity>
           <Box p="40px" mt="0" px="20px" pt="24px" pb="12px" bg="#FFF" border="1px solid #A2A4A3">

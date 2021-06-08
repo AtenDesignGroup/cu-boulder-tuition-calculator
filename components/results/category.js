@@ -23,10 +23,13 @@ export function Category({ category, questions }) {
   return (
     <Box key={category._id} mb={10} p="30px" backgroundColor="#F7F6F7" className="printNoMargins">
       <Flex alignItems="center" mb={3} className="printNoMargins"  justifyContent="space-between">
-        <Flex>
+        <Flex alignItems="center">
+
+        <Box minW="60px">
         {category?.description && (
-          <Button leftIcon={<InfoIcon />} color={isOpen ? "#A82E26" : "blue.500"} variant="link" onClick={onToggle} pr="24px" fontSize="xs">{isOpen ? 'Close' : 'Info'}</Button>
+          <Button leftIcon={<InfoIcon />} color={isOpen ? "#A82E26" : "blue.500"} variant="link" onClick={onToggle}  fontSize="xs">{isOpen ? 'Close' : 'Info'}</Button>
         )}
+        </Box>
 
           <Heading size="xl" color="gray.600">
           {category.title}
