@@ -49,52 +49,71 @@ export function LineItems({ data, itemTotal }) {
   return (
     <Box mb="6" className="printNoMargins" width="100%">
       <Flex
-        alignItems="center"
+        direction={{ base: 'column', md: 'row' }}
+        alignItems={{ base: 'flex-start', md: 'center' }}
         mb="5"
+        pb={{base: "3", md: "0"}}
         justifyContent="space-between"
         className="printNoMargins"
         width="100%"
+        borderBottom={{base: "solid 1px #ccc", md: "none"}}
       >
-        <Flex alignItems="center" flexDir="column" alignItems="flex-start" width="100%" position="relative"
-        _after={{content: "''", position: "absolute", width: "100%", height: "1px", background: "#ccc", left: "0", right: "0", top: "0", bottom:"0", margin: "auto", zIndex: "0"}}>
-            <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr="24px">
-              {frontEndTitle}
-            </Heading>
+        <Flex
+          flexDir="column"
+          alignItems="flex-start"
+          width="100%"
+          position="relative"
+          _after={{ md: {
+            content: "''",
+            position: 'absolute',
+            width: '100%',
+            height: '1px',
+            background: '#ccc',
+            left: '0',
+            right: '0',
+            top: '0',
+            bottom: '0',
+            margin: 'auto',
+            zIndex: '0'
+          }}}
+        >
+          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr="24px">
+            {frontEndTitle}
+          </Heading>
 
-            {optional && (
-              <Text
-                //background="#eee"
-                textTransform="uppercase"
-                fontSize="xx-small"
-                fontWeight="bold"
-                mb="0"
-                ml="24px"
-                color="#565A5C"
-              >
-                Optional Fee
-              </Text>
-            )}
+          {optional && (
+            <Text
+              //background="#eee"
+              textTransform="uppercase"
+              fontSize="xx-small"
+              fontWeight="bold"
+              mb="0"
+              ml="24px"
+              color="#565A5C"
+            >
+              Optional Fee
+            </Text>
+          )}
         </Flex>
 
         <Flex flexDir="row" alignItems="center" className="printPriceWrapper">
-
-          <Box order="3" ml="24px" textAlign="right">
+          <Box order="3" ml={{base: "0", md: "24px"}} textAlign="right">
             <Text fontSize="md" fontWeight="bold" mb="0" className="printPrice" order="1">
               <Counter target={itemTotal} duration={2} />
             </Text>
           </Box>
 
           <Box minW="78px" order="3" ml="26px" textAlign="right" ml="24px">
-          <Text
-            color="#565A5C"
-            fontSize="xs"
-            variant="solid"
-            className="printBadge"
-            order="2"
-            my="0"
-          >
-            {capitalize(frequency.replace(/([A-Z])/g, ' $1').trim())}
-          </Text>
+            <Text
+              color="#565A5C"
+              fontSize="xs"
+              variant="solid"
+              className="printBadge"
+              order="2"
+              my="0"
+            >
+              {capitalize(frequency.replace(/([A-Z])/g, ' $1').trim())}
+            </Text>
           </Box>
 
           <Box minW="52px" order="3" textAlign="right" ml="24px">
@@ -119,7 +138,7 @@ export function LineItems({ data, itemTotal }) {
 
       {description && (
         <Collapse in={isOpen} animateOpacity>
-          <Box p="40px" mt="0" px="20px" pt="24px" pb="12px" bg="#FFF" border="1px solid #A2A4A3">
+          <Box px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3">
             <BodyText blocks={description} />
           </Box>
         </Collapse>

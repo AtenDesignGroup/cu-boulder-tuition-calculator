@@ -172,16 +172,19 @@ export function Results({ categories }) {
             className="printNoMargins"
             backgroundColor="yellow.500"
             p="30px"
+            flexDirection={{base: 'column', md: 'row'}}
           >
-            <Heading size="lg" as="h3" mb="0">
+            <Heading size="lg" as="h3" mb={{base: '1', md: '0'}}>
               Your total estimate
             </Heading>
+
             <Text fontSize="2xl" mb="0" fontWeight="bold" color="gray.800" className="printPrice">
               <Counter target={grandTotal} duration={2} />{' '}
               <ChakraLink href="#disclaimer" aria-label="View disclaimer" textDecoration="none">
                 *
               </ChakraLink>
             </Text>
+
           </Flex>
         </Box>
 
@@ -196,12 +199,16 @@ export function Results({ categories }) {
             <Text fontStyle="italic"><strong>* Disclaimer:</strong> Commodo scelerisque posuere purus amet sit dolor quam cursus sed ac lectus tellus egestas fusce venenatis cras tempor curabitur lobortis nec convallis.</Text>
       </Box>
 
-      <Flex alignItems="center" justifyContent="space-between">
-        <Box>
+      <Flex
+      direction={{ base: 'column', md: 'row' }}
+      alignItems={{ base: 'flex-start', md: 'center' }}
+      justifyContent={{ md: "space-between"}}>
+        <Flex direction={{ base: 'column', md: 'row' }}
+        alignItems={{ base: 'flex-start', md: 'center' }} mb={{base: '6', md: '0'}}>
           <ReactToPrint
             trigger={() => {
               return (
-                <Button leftIcon={<FaPrint />} variant="solid" fontSize="sm" colorScheme="blue" mr="24px">
+                <Button leftIcon={<FaPrint />} variant="solid" fontSize="sm" colorScheme="blue" mr={{base: "24px"}} mb={{base: '6', md: '0'}}>
                   Print Results
                 </Button>
               )
@@ -212,7 +219,7 @@ export function Results({ categories }) {
           <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
             <a href={`/question/${Object.keys(questions)[0]}`}>Edit Questions</a>
           </Button>
-        </Box>
+        </Flex>
 
         <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="sm" colorScheme="blue">
           <a href="/">Start Over</a>

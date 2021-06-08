@@ -13,7 +13,7 @@ import { Question } from '@/components/calculator/question'
 
 import { Flex, Heading, Box, Stack, Button, Spinner, Progress, Text } from '@chakra-ui/react'
 // import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
-import { FaCaretSquareLeft, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
+import { FaCaretSquareLeft, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaCaretSquareRight } from 'react-icons/fa'
 
 export function Calculator({ question, questions, slug }) {
   const router = useRouter()
@@ -273,7 +273,7 @@ export function Calculator({ question, questions, slug }) {
     return <Spinner size="md" />
   }
   return (
-    <Flex paddingY={'5rem'} flex="1" flexDir="column" width="100%" maxW="860px" mx="auto" px="8">
+    <Flex flex="1" flexDir="column" width="100%">
       <Box mt="10">
         <motion.div
           key={slug}
@@ -302,7 +302,7 @@ export function Calculator({ question, questions, slug }) {
             questions={questions}
           />
 
-          <Flex direction="row" alignItems="center">
+          <Flex direction={{base: "column", md: "row"}}  alignItems={{base: "flex-start", md: "center"}} >
             {currentQuestion > 0 && (
               <Button
                 onClick={() => prevQuestion()}
@@ -314,7 +314,8 @@ export function Calculator({ question, questions, slug }) {
                 _hover={{ background: '#565A5C' }}
                 _active={{ background: '#565A5C' }}
                 _disabled={{ background: '#A2A4A3' }}
-                mr="24px"
+                mr={{ base: "0", md: "24px"}}
+                mb={{ base: "24px", md: "0"}}
               >
                 Previous Question
               </Button>
@@ -339,28 +340,13 @@ export function Calculator({ question, questions, slug }) {
               </Button>
             )}
 
-            {/*{ seeResultsBtn && (
-              <Button
-                ref={resultRef}
-                onClick={() => seeResults()}
-                isDisabled={
-                  isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer)
-                    ? true
-                    : false
-                }
-                // tabIndex="5"
-                aria-live="polite"
-                >
-                See Results
-              </Button>
-            )}*/}
           </Flex>
 
           <Flex mt="12" alignItems="center">
             <Button
               leftIcon={<FaCaretSquareLeft />}
               variant="link"
-              fontSize="xs"
+              fontSize="sm"
               colorScheme="blue"
               mr="24px"
             >
@@ -369,9 +355,9 @@ export function Calculator({ question, questions, slug }) {
 
             {showResults &&
             <Button
-            //leftIcon={<FaCaretSquareLeft />}
+            rightIcon={<FaCaretSquareRight />}
             variant="link"
-            fontSize="xs"
+            fontSize="sm"
             colorScheme="blue"
           >
             <a href="/results">Back to Results</a>

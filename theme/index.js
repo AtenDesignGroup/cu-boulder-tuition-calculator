@@ -1,12 +1,12 @@
 import { extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 
-const breakpoints = ['360px', '768px', '980px', '1044px', '1440px']
-breakpoints.xs = breakpoints[0]
-breakpoints.sm = breakpoints[1]
-breakpoints.md = breakpoints[2]
-breakpoints.lg = breakpoints[3]
-breakpoints.xl = breakpoints[4]
+// const breakpoints = ['360px', '768px', '920px', '1150px']
+// breakpoints.sm = breakpoints[0]
+// breakpoints.md = breakpoints[1]
+// breakpoints.lg = breakpoints[2]
+// breakpoints.xl = breakpoints[3]
+
 
 const cuTheme = extendTheme({
   colors: {
@@ -29,7 +29,7 @@ const cuTheme = extendTheme({
       500: '#CFB87C'
     },
   },
-  breakpoints,
+  // breakpoints,
   fonts: {
     heading: `"Roboto Condensed",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
     body: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`

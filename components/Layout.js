@@ -28,7 +28,7 @@ export function Layout({ children, siteSettings, position, totalQuestions, statu
         description={siteSettings?.seoSettings?.description || ''}
       />
     {/* isStringEmpty(status) ? <Progress value={(position + 1) / totalQuestions * 100} /> : <Progress value={status} /> */}
-      <Flex height="100vh" flexDir="column" maxWidth='890px' mx='auto' px='6' py='6'>
+      <Flex height="100vh" flexDir="column" maxWidth='1120px' mx='auto' px='15px' py='50'>
         {children}
 
         <Box position='fixed' bottom='0' left='0' width='100%' pb='4' pl='4' >

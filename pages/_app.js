@@ -5,6 +5,7 @@ import cuTheme from '@/theme/index'
 
 import "@fontsource/roboto/400.css"
 import "@fontsource/roboto/700.css"
+import "@fontsource/roboto-condensed/400.css"
 import "@fontsource/roboto-condensed/700.css"
 import '@/styles/globals.css'
 
