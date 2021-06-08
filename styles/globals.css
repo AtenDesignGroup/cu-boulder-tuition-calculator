@@ -3,7 +3,11 @@
   border: 1px solid #A2A4A3;
   width: 2.5rem !important;
   right: 0 !important;
+}
 
+.itemOuterWrapper  .itemInnerWrapper:nth-last-child(2),
+.itemOuterWrapper  .itemInnerWrapper:nth-last-child(1) {
+  border-bottom: none !important;
 }
 
 

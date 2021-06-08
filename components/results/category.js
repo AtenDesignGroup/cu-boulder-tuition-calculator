@@ -27,8 +27,8 @@ import { Counter } from '@/components/counter'
 export function Category({ category, questions }) {
   const { isOpen, onToggle } = useDisclosure()
   return (
-    <Box key={category._id} mb={10} p="30px" backgroundColor="#F7F6F7" className="printNoMargins">
-      <Flex direction={{base: "column", md: "row"}}  alignItems={{base: "flex-start", md: "center"}} mb={3} className="printNoMargins" justifyContent="space-between" >
+    <Box key={category._id} mb={10} p="30px" backgroundColor="#F7F6F7" className="printNoMargins itemOuterWrapper">
+      <Flex direction={{base: "column", md: "row"}}  alignItems={{base: "flex-start", md: "center"}} mb={4} className="printNoMargins" justifyContent="space-between" borderBottom={{base: "solid 1px #ccc", md: "none"}} pb={{base: '3', md: "0"}}>
 
         <Heading size="xl" fontWeight="400" mb={{ base: "1", md: "0"}} suppressHydrationWarning>
           {category.title}

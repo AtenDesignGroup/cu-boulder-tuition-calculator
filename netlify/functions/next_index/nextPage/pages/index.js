@@ -32741,13 +32741,12 @@ function mergeThemeCustomizer(source, override, key, object) {
 //# sourceMappingURL=extend-theme.js.map
 ;// CONCATENATED MODULE: ./theme/index.js
 
+ // const breakpoints = ['360px', '768px', '920px', '1150px']
+// breakpoints.sm = breakpoints[0]
+// breakpoints.md = breakpoints[1]
+// breakpoints.lg = breakpoints[2]
+// breakpoints.xl = breakpoints[3]
 
-const theme_breakpoints = ['360px', '768px', '980px', '1044px', '1440px'];
-theme_breakpoints.xs = theme_breakpoints[0];
-theme_breakpoints.sm = theme_breakpoints[1];
-theme_breakpoints.md = theme_breakpoints[2];
-theme_breakpoints.lg = theme_breakpoints[3];
-theme_breakpoints.xl = theme_breakpoints[4];
 const cuTheme = extendTheme({
   colors: {
     brand: {
@@ -32769,7 +32768,7 @@ const cuTheme = extendTheme({
       500: '#CFB87C'
     }
   },
-  breakpoints: theme_breakpoints,
+  // breakpoints,
   fonts: {
     heading: `"Roboto Condensed",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`,
     body: `"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif`
@@ -32812,6 +32811,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -46326,10 +46326,10 @@ function Layout({
     }), /*#__PURE__*/(0,jsx_runtime.jsxs)(Flex, {
       height: "100vh",
       flexDir: "column",
-      maxWidth: "890px",
+      maxWidth: "1120px",
       mx: "auto",
-      px: "6",
-      py: "6",
+      px: "15px",
+      py: "50",
       children: [children, /*#__PURE__*/jsx_runtime.jsx(Box, {
         position: "fixed",
         bottom: "0",
@@ -46440,7 +46440,7 @@ async function getStaticProps({
 
 /***/ }),
 
-/***/ 9357:
+/***/ 8701:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46451,7 +46451,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, {
   "_app": function() { return /* binding */ _app; },
   "config": function() { return /* binding */ config; },
-  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_aHk04RXFlWSH3JkNw52oq_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2272211b6e82f0ecaf524529b8fa2ed440_22_2C_22previewModeSigningKey_22_3A_227449b908ccb8152a0760711793cd46103b7e5cbee13bbc597d86222117946524_22_2C_22previewModeEncryptionKey_22_3A_220ccb0c389e913b86b48a4131ed1164c6c3c4560d0b1c63acd1a67c18fd5707e5_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
+  "default": function() { return /* binding */ next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_8MdP_6snyMn6eMqrPnKBr_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2204fa3686be8ae406971feef0c8be6b76_22_2C_22previewModeSigningKey_22_3A_224a1c148d30873772500dae96167c5ece36f02ce868265ddac63cc27d1f9e581d_22_2C_22previewModeEncryptionKey_22_3A_2233c2cf69da60326d86b1e6c6dc6c1d237d0d852b4f14ad3b6abc0c6164cb84b4_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_; },
   "getServerSideProps": function() { return /* binding */ getServerSideProps; },
   "getStaticPaths": function() { return /* binding */ getStaticPaths; },
   "getStaticProps": function() { return /* binding */ getStaticProps; },
@@ -46468,12 +46468,12 @@ var node_polyfill_fetch = __webpack_require__(3660);
 ;// CONCATENATED MODULE: ./.next/routes-manifest.json
 var routes_manifest_namespaceObject = {"Dg":[]};
 ;// CONCATENATED MODULE: ./.next/build-manifest.json
-var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/aHk04RXFlWSH3JkNw52oq/_buildManifest.js","static/aHk04RXFlWSH3JkNw52oq/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-fa280c6415fe533675ca.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/pages/index-8846087fc17e9e07ea31.js"],"/_app":["static/chunks/webpack-fa280c6415fe533675ca.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/585-55ee5948ba624e0829c3.js","static/css/85743d65dc109aa140ae.css","static/chunks/pages/_app-38eabbde7e7b3fcc2362.js"],"/_error":["static/chunks/webpack-fa280c6415fe533675ca.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-fa280c6415fe533675ca.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/1bfc9850-f8b52a473ac92faa9fd9.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/127-086ef2ffada5d45af50d.js","static/chunks/pages/question/[_id]-06c71adf19a5284ea7b3.js"],"/results":["static/chunks/webpack-fa280c6415fe533675ca.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/1bfc9850-f8b52a473ac92faa9fd9.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/757-2f23025f74e4134c603e.js","static/chunks/pages/results-9ba938feeafdaf9de10a.js"]},"ampFirstPages":[]}');
+var build_manifest_namespaceObject = JSON.parse('{"polyfillFiles":["static/chunks/polyfills-8683bd742a84c1edd48c.js"],"devFiles":[],"ampDevFiles":[],"lowPriorityFiles":["static/8MdP_6snyMn6eMqrPnKBr/_buildManifest.js","static/8MdP_6snyMn6eMqrPnKBr/_ssgManifest.js"],"pages":{"/":["static/chunks/webpack-c0a2cd5abd3863c05693.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/pages/index-8697281b26e7615f8a18.js"],"/_app":["static/chunks/webpack-c0a2cd5abd3863c05693.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/637-dad4ccb236c8c6c2c21f.js","static/css/37e045db8f2d1634b904.css","static/chunks/pages/_app-e9c9abf2f0a3d835fb92.js"],"/_error":["static/chunks/webpack-c0a2cd5abd3863c05693.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/pages/_error-665b5196943f42649efa.js"],"/question/[_id]":["static/chunks/webpack-c0a2cd5abd3863c05693.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/1bfc9850-4857265890a94ade61bb.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/127-086ef2ffada5d45af50d.js","static/chunks/pages/question/[_id]-fa7ebc1a23482ef3efde.js"],"/results":["static/chunks/webpack-c0a2cd5abd3863c05693.js","static/chunks/framework-6861a4fa00703dce3942.js","static/chunks/commons-c541812d831d88af5b2f.js","static/chunks/main-3583e3f12e5ba69075ce.js","static/chunks/d64684d8-627ad47cb15e37500c05.js","static/chunks/1bfc9850-4857265890a94ade61bb.js","static/chunks/252f366e-d886845671708311374f.js","static/chunks/196-e1f579b5d6db0e68b18d.js","static/chunks/884-d42304444d310a85e2b4.js","static/chunks/757-2f23025f74e4134c603e.js","static/chunks/pages/results-ea0ef7adc117504ee7fe.js"]},"ampFirstPages":[]}');
 ;// CONCATENATED MODULE: ./.next/react-loadable-manifest.json
 var react_loadable_manifest_namespaceObject = JSON.parse('{"../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store":{"id":4820,"files":["static/chunks/743.0942c2a48c401a403512.js"]}}');
 // EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/page-handler.js
 var page_handler = __webpack_require__(9436);
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=aHk04RXFlWSH3JkNw52oq&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2272211b6e82f0ecaf524529b8fa2ed440%22%2C%22previewModeSigningKey%22%3A%227449b908ccb8152a0760711793cd46103b7e5cbee13bbc597d86222117946524%22%2C%22previewModeEncryptionKey%22%3A%220ccb0c389e913b86b48a4131ed1164c6c3c4560d0b1c63acd1a67c18fd5707e5%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?page=%2F&absolutePagePath=private-next-pages%2Findex.js&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=private-next-pages%2F_document.js&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolute404Path=&distDir=private-dot-next&buildId=8MdP_6snyMn6eMqrPnKBr&assetPrefix=&generateEtags=true&poweredByHeader=true&canonicalBase=&basePath=&runtimeConfig=&previewProps=%7B%22previewModeId%22%3A%2204fa3686be8ae406971feef0c8be6b76%22%2C%22previewModeSigningKey%22%3A%224a1c148d30873772500dae96167c5ece36f02ce868265ddac63cc27d1f9e581d%22%2C%22previewModeEncryptionKey%22%3A%2233c2cf69da60326d86b1e6c6dc6c1d237d0d852b4f14ad3b6abc0c6164cb84b4%22%7D&loadedEnvFiles=W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ%3D%3D&i18n=!
 
       
       
@@ -46496,7 +46496,7 @@ var page_handler = __webpack_require__(9436);
       const compMod = __webpack_require__(9063)
 
       const Component = compMod.default || compMod.then && compMod.then(mod => mod.default)
-      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_aHk04RXFlWSH3JkNw52oq_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2272211b6e82f0ecaf524529b8fa2ed440_22_2C_22previewModeSigningKey_22_3A_227449b908ccb8152a0760711793cd46103b7e5cbee13bbc597d86222117946524_22_2C_22previewModeEncryptionKey_22_3A_220ccb0c389e913b86b48a4131ed1164c6c3c4560d0b1c63acd1a67c18fd5707e5_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
+      /* harmony default export */ var next_serverless_loaderpage_2F_absolutePagePath_private_next_pages_2Findex_js_absoluteAppPath_private_next_pages_2F_app_js_absoluteDocumentPath_private_next_pages_2F_document_js_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_absolute404Path_distDir_private_dot_next_buildId_8MdP_6snyMn6eMqrPnKBr_assetPrefix_generateEtags_true_poweredByHeader_true_canonicalBase_basePath_runtimeConfig_previewProps_7B_22previewModeId_22_3A_2204fa3686be8ae406971feef0c8be6b76_22_2C_22previewModeSigningKey_22_3A_224a1c148d30873772500dae96167c5ece36f02ce868265ddac63cc27d1f9e581d_22_2C_22previewModeEncryptionKey_22_3A_2233c2cf69da60326d86b1e6c6dc6c1d237d0d852b4f14ad3b6abc0c6164cb84b4_22_7D_loadedEnvFiles_W3sicGF0aCI6Ii5lbnYubG9jYWwiLCJjb250ZW50cyI6Ik5FWFRfUFVCTElDX1NBTklUWV9QUk9KRUNUX0lEPVwiODVqdXd5YWdcIlxuTkVYVF9QVUJMSUNfU0FOSVRZX0RBVEFTRVQ9XCJwcm9kdWN0aW9uXCJcbiMgU2FuaXR5IFRva2VuIC0gV2Vic2l0ZSBQcmV2aWV3IChSZWFkK1dyaXRlKVxuU0FOSVRZX0FQSV9UT0tFTj1cInNrazhvTzllUEJsZmNTc3JxQzAyaTNaamJVQXNsWmg5cXRwNGRTeE5VeHZydGlaN2VNeG9wMUhVUzRmQU5xOXR6ODBSdEhNdjZQVDBCRTlrNERqb2dsRmZzYkxtNmhvd2llQjZGTDBGWHNlMFNjWWVlY203Qk9oeFd3V3Z4ajZjQzR2VjBRTXgzdWFKMlJDWWppY3Njc3FMZVdKczZXdWg1Wk42aFFzNkgybGdXZmNlaGRnQlwiXG5TQU5JVFlfUFJFVklFV19TRUNSRVQ9XCJcIiJ9XQ_3D_3D_i18n_ = (Component);
       const getStaticProps = compMod['getStaticProp' + 's'] || compMod.then && compMod.then(mod => mod['getStaticProp' + 's'])
       const getStaticPaths = compMod['getStaticPath' + 's'] || compMod.then && compMod.then(mod => mod['getStaticPath' + 's'])
       const getServerSideProps = compMod['getServerSideProp' + 's'] || compMod.then && compMod.then(mod => mod['getServerSideProp' + 's'])
@@ -46544,11 +46544,11 @@ var page_handler = __webpack_require__(9436);
         rewrites: combinedRewrites,
         i18n: undefined,
         page: "/",
-        buildId: "aHk04RXFlWSH3JkNw52oq",
-        escapedBuildId: "aHk04RXFlWSH3JkNw52oq",
+        buildId: "8MdP_6snyMn6eMqrPnKBr",
+        escapedBuildId: "8MdP_6snyMn6eMqrPnKBr",
         basePath: "",
         pageIsDynamic: false,
-        encodedPreviewProps: {previewModeId:"72211b6e82f0ecaf524529b8fa2ed440",previewModeSigningKey:"7449b908ccb8152a0760711793cd46103b7e5cbee13bbc597d86222117946524",previewModeEncryptionKey:"0ccb0c389e913b86b48a4131ed1164c6c3c4560d0b1c63acd1a67c18fd5707e5"}
+        encodedPreviewProps: {previewModeId:"04fa3686be8ae406971feef0c8be6b76",previewModeSigningKey:"4a1c148d30873772500dae96167c5ece36f02ce868265ddac63cc27d1f9e581d",previewModeEncryptionKey:"33c2cf69da60326d86b1e6c6dc6c1d237d0d852b4f14ad3b6abc0c6164cb84b4"}
       })
       
     
@@ -51052,7 +51052,7 @@ exports.FetchError = FetchError;
 
 /***/ }),
 
-/***/ 8701:
+/***/ 1566:
 /***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
@@ -51441,7 +51441,7 @@ var node_1 = __importDefault(__webpack_require__(4936));
 var type_1 = __importDefault(__webpack_require__(9979));
 var text_1 = __importDefault(__webpack_require__(7923));
 var matcher_1 = __importDefault(__webpack_require__(80));
-var back_1 = __importDefault(__webpack_require__(8701));
+var back_1 = __importDefault(__webpack_require__(1566));
 var comment_1 = __importDefault(__webpack_require__(1271));
 var kBlockElements = new Map();
 kBlockElements.set('DIV', true);
@@ -64483,7 +64483,7 @@ module.exports = require("zlib");;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(9357);
+/******/ 	var __webpack_exports__ = __webpack_require__(8701);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

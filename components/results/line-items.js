@@ -47,14 +47,14 @@ export function LineItems({ data, itemTotal }) {
   // console.log(showArray(data))
 
   return (
-    <Box mb="6" className="printNoMargins" width="100%">
+    <>
       <Flex
         direction={{ base: 'column', md: 'row' }}
         alignItems={{ base: 'flex-start', md: 'center' }}
-        mb="5"
+        mb="6"
         pb={{base: "3", md: "0"}}
         justifyContent="space-between"
-        className="printNoMargins"
+        className="printNoMargins itemInnerWrapper"
         width="100%"
         borderBottom={{base: "solid 1px #ccc", md: "none"}}
       >
@@ -63,6 +63,7 @@ export function LineItems({ data, itemTotal }) {
           alignItems="flex-start"
           width="100%"
           position="relative"
+          mb={{base: "1", md: "0"}}
           _after={{ md: {
             content: "''",
             position: 'absolute',
@@ -77,7 +78,7 @@ export function LineItems({ data, itemTotal }) {
             zIndex: '0'
           }}}
         >
-          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr="24px">
+          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}}>
             {frontEndTitle}
           </Heading>
 
@@ -143,6 +144,6 @@ export function LineItems({ data, itemTotal }) {
           </Box>
         </Collapse>
       )}
-    </Box>
+    </>
   )
 }
