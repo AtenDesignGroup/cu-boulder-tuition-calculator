@@ -3,23 +3,6 @@ import {
   Box,
   Text,
   Flex,
-  Badge,
-  IconButton,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
-  PopoverCloseButton,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  Fade,
-  ScaleFade,
-  Slide,
-  SlideFade,
   useDisclosure,
   Collapse,
   Button
@@ -59,11 +42,13 @@ export function LineItems({ data, itemTotal }) {
         borderBottom={{base: "solid 1px #ccc", md: "none"}}
       >
         <Flex
-          flexDir="column"
-          alignItems="flex-start"
+          flexDir={{base: "column", lg: "row"}}
+          alignItems={{base: "start", lg: "center"}}
+          justifyContent="start"
           width="100%"
           position="relative"
           mb={{base: "1", md: "0"}}
+          flexWrap="wrap"
           _after={{ md: {
             content: "''",
             position: 'absolute',
@@ -84,13 +69,14 @@ export function LineItems({ data, itemTotal }) {
 
           {optional && (
             <Text
-              //background="#eee"
+              background="#F7F6F7" zIndex="1"
+              pr={{md: "24px"}}
+              display="block"
               textTransform="uppercase"
               fontSize="xx-small"
-              fontWeight="bold"
-              mb="0"
-              ml="24px"
               color="#565A5C"
+              mt={{base: "2", lg: "0"}}
+              mb="0"
             >
               Optional Fee
             </Text>

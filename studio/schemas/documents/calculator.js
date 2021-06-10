@@ -56,6 +56,12 @@ export default {
             type: 'category'
           }]
         }]
+    },
+    {
+      name: 'disclaimer',
+      type: 'bodyPortableText',
+      rows: 3,
+      title: 'Disclaimer'
     }
   ]
 }

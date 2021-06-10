@@ -5,6 +5,7 @@ import { getTuitionCalculator } from '@/lib/sanity-api'
 import { Box, Heading, Button } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Layout } from '@/components/layout'
+import { FaArrowAltCircleRight } from 'react-icons/fa'
 
 export default function Home({ pageData }) {
   const router = useRouter()
@@ -17,6 +18,10 @@ export default function Home({ pageData }) {
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
   const { questions } = tuitionCalculator
 
+  function GetStarted() {
+    router.push(`/question/${questions[0]._id}`)
+  }
+
   return (
     <Layout siteSettings={siteSettings} status={0}>
       <Box mt={24}>
@@ -25,10 +30,8 @@ export default function Home({ pageData }) {
 
         <BodyText blocks={tuitionCalculator.description} />
 
-        <Button mt={6} variant="solid" shadow='md' background="#0277BD" color="#fff" _hover={{background: "#0277BD"}} _active={{background: "#0277BD"}}>
-          <Link href={`/question/${questions[0]._id}`}>
-            <a>{tuitionCalculator.buttonTitle}</a>
-          </Link>
+        <Button mt={6} variant="solid" shadow='md' background="#0277BD" color="#fff" _hover={{background: "#0277BD"}} _active={{background: "#0277BD"}} rightIcon={<FaArrowAltCircleRight />} onClick={() => GetStarted()}>
+          {tuitionCalculator.buttonTitle}
         </Button>
 
       </Box>

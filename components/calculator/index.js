@@ -269,6 +269,23 @@ export function Calculator({ question, questions, slug }) {
     router.push(`/results`)
   }
   // console.log({ question, questions, slug, currentQuestion })
+
+  const StartOver = () => {
+    // console.clear()
+    actions.updateAction({
+      ...state,
+      calculator: {
+        currentQuestion: 0,
+        lastQuestion: null,
+        showResults: false,
+        questions: [],
+        results: [],
+        totalSemesters: 1
+      }
+    })
+    router.push(`/`)
+  }
+
   if (!question) {
     return <Spinner size="md" />
   }
@@ -313,7 +330,7 @@ export function Calculator({ question, questions, slug }) {
                 color="#fff"
                 _hover={{ background: '#565A5C' }}
                 _active={{ background: '#565A5C' }}
-                _disabled={{ background: '#A2A4A3' }}
+                _disabled={{ background: '#A2A4A3', shadow: 'none', cursor: 'not-allowed' }}
                 mr={{ base: "0", md: "24px"}}
                 mb={{ base: "24px", md: "0"}}
               >
@@ -330,9 +347,9 @@ export function Calculator({ question, questions, slug }) {
                 shadow="md"
                 background="blue.500"
                 color="#fff"
-                _hover={{ background: 'blue.500' }}
+                _hover={{ background: 'blue.600' }}
                 _active={{ background: 'blue.500' }}
-                _disabled={{ background: '#A2A4A3' }}
+                _disabled={{ background: '#A2A4A3', shadow: 'none', cursor: 'not-allowed'   }}
                 //tabIndex="4"
                 mr="24px"
               >
@@ -349,9 +366,8 @@ export function Calculator({ question, questions, slug }) {
               fontSize="sm"
               colorScheme="blue"
               mr="24px"
-            >
-              <a href="/">Start Over</a>
-            </Button>
+              onClick={() => StartOver()}
+            >Start Over</Button>
 
             {showResults &&
             <Button

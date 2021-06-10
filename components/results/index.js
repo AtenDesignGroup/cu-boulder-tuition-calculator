@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { useStateMachine } from 'little-state-machine'
 import Link from 'next/link'
 import updateAction from '@/hooks/updateAction'
@@ -6,7 +7,7 @@ import { Category } from '@/components/results/category'
 
 import { Text as BodyText } from '@/components/serializers/text'
 import ReactToPrint from 'react-to-print'
-import { showArray, totalGenerator, toFixedNumber } from '@/utils/results'
+import { showArray, totalGenerator } from '@/utils/results'
 import {
   Heading,
   Box,
@@ -23,7 +24,7 @@ import { Counter } from '@/components/counter'
 import { FaPencilAlt, FaPrint, FaCaretSquareLeft } from 'react-icons/fa'
 
 export function Results({ categories }) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const router = useRouter()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
   const mainRef = useRef()
@@ -32,12 +33,6 @@ export function Results({ categories }) {
   const linkToPrint = () => {
     return <button>Click To PrintOF Body</button>
   }
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     mainRef.current.focus();
-  //   }, 1)
-  // }, [])
 
   const updateTotalSemesters = val => {
     val = parseInt(val)
@@ -49,24 +44,6 @@ export function Results({ categories }) {
         ...state.calculator.results
       }
     })
-  }
-
-  const addFilterResults = val => {
-    // console.log({val})
-    // actions.updateAction({
-    //   ...state,
-    //   calculator: {
-    //     ...state.calculator,
-    //     results: {
-    //       ...state.calculator.results,
-    //       [val._id]: {
-    //         ...state.calculator.results[val._id],
-    //         title: val.title,
-    //         // items: val.lineItems
-    //       }
-    //     }
-    //   }
-    // })
   }
 
   const filteredResults = categories
@@ -103,15 +80,6 @@ export function Results({ categories }) {
         total: catTotal
       }
     })
-  // console.log({ filteredResults })
-
-  const test = Object.entries(filteredResults).map((obj, key) => ({
-    [obj[1]._id]: obj[1]
-  }))
-
-  // console.clear()
-  // console.log({test})
-  // console.log(JSON.stringify(test.flat(2), 0, 2))
 
   const grandTotals = []
   let grandTotal = 0
@@ -122,8 +90,22 @@ export function Results({ categories }) {
       : (grandTotal = grandTotals[0])
   })
 
-  // console.log({filteredResults})
-  // console.log({grandTotal})
+  const StartOver = () => {
+    // console.clear()
+    actions.updateAction({
+      ...state,
+      calculator: {
+        currentQuestion: 0,
+        lastQuestion: null,
+        showResults: false,
+        questions: [],
+        results: [],
+        totalSemesters: 1
+      }
+    })
+    router.push(`/`)
+  }
+
   return (
     <Box mb={10} className="printNoMargins">
       <Box ref={componentRef}>
@@ -139,12 +121,6 @@ export function Results({ categories }) {
           >
             Estimate costs for:
           </Heading>
-
-          {/* <Heading mb={2} as="h2" size="md" className="printNoMargins">
-            Estimated costs
-            {totalSemesters === 1 && <> for One Semester</>}
-            {totalSemesters === 2 && <> for Two Semesters</>}
-          </Heading> */}
 
           <Flex alignItems="center" className="printVisibilityHide" mb={10}>
             <RadioGroup
@@ -172,9 +148,9 @@ export function Results({ categories }) {
             className="printNoMargins"
             backgroundColor="yellow.500"
             p="30px"
-            flexDirection={{base: 'column', md: 'row'}}
+            flexDirection={{ base: 'column', md: 'row' }}
           >
-            <Heading size="lg" as="h3" mb={{base: '1', md: '0'}}>
+            <Heading size="lg" as="h3" mb={{ base: '1', md: '0' }}>
               Your total estimate
             </Heading>
 
@@ -184,7 +160,6 @@ export function Results({ categories }) {
                 *
               </ChakraLink>
             </Text>
-
           </Flex>
         </Box>
 
@@ -196,37 +171,58 @@ export function Results({ categories }) {
       </Box>
 
       <Box mb="8" id="disclaimer">
-            <Text fontStyle="italic"><strong>* Disclaimer:</strong> Commodo scelerisque posuere purus amet sit dolor quam cursus sed ac lectus tellus egestas fusce venenatis cras tempor curabitur lobortis nec convallis.</Text>
+        <Text fontStyle="italic">
+          <strong>* Disclaimer:</strong> Commodo scelerisque posuere purus amet sit dolor quam
+          cursus sed ac lectus tellus egestas fusce venenatis cras tempor curabitur lobortis nec
+          convallis.
+        </Text>
       </Box>
 
       <Flex
-      direction={{ base: 'column', md: 'row' }}
-      alignItems={{ base: 'flex-start', md: 'center' }}
-      justifyContent={{ md: "space-between"}}>
-        <Flex direction={{ base: 'column', md: 'row' }}
-        alignItems={{ base: 'flex-start', md: 'center' }} mb={{base: '6', md: '0'}}>
+        direction={{ base: 'column', md: 'row' }}
+        alignItems={{ base: 'flex-start', md: 'center' }}
+        justifyContent={{ md: 'space-between' }}
+      >
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          alignItems={{ base: 'flex-start', md: 'center' }}
+          mb={{ base: '6', md: '0' }}
+        >
           <ReactToPrint
             trigger={() => {
               return (
-                <Button leftIcon={<FaPrint />} variant="solid" fontSize="sm" colorScheme="blue" mr={{base: "24px"}} mb={{base: '6', md: '0'}}>
+                <Button
+                  leftIcon={<FaPrint />}
+                  variant="solid"
+                  fontSize="sm"
+                  colorScheme="blue"
+                  mr={{ base: '24px' }}
+                  mb={{ base: '6', md: '0' }}
+                >
                   Print Results
                 </Button>
               )
             }}
             content={() => componentRef.current}
           />
-
-          <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
+          {(questions && Object.keys(questions).length > 0) && (
+            <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
             <a href={`/question/${Object.keys(questions)[0]}`}>Edit Questions</a>
           </Button>
+          )}
+
         </Flex>
 
-        <Button leftIcon={<FaCaretSquareLeft />} variant="link" fontSize="sm" colorScheme="blue">
-          <a href="/">Start Over</a>
+        <Button
+          leftIcon={<FaCaretSquareLeft />}
+          variant="link"
+          fontSize="sm"
+          colorScheme="blue"
+          onClick={() => StartOver()}
+        >
+          Start Over
         </Button>
-
       </Flex>
-
     </Box>
   )
 }
