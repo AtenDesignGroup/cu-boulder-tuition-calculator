@@ -14,10 +14,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-  Progress
+  Alert,
+  AlertIcon
 } from '@chakra-ui/react'
 
-export function Layout({ children, siteSettings, position, totalQuestions, status }) {
+export function Layout({ children, siteSettings, dev, position, totalQuestions, status }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
@@ -27,36 +28,61 @@ export function Layout({ children, siteSettings, position, totalQuestions, statu
         title={siteSettings?.seoSettings?.title || ''}
         description={siteSettings?.seoSettings?.description || ''}
       />
-    {/* isStringEmpty(status) ? <Progress value={(position + 1) / totalQuestions * 100} /> : <Progress value={status} /> */}
-      <Flex height="100vh" flexDir="column" maxWidth='1120px' mx='auto' px='15px' py='50'>
+      {dev && (
+        <Alert status="warning" w="100%" position="fixed" top="0">
+          <AlertIcon />
+          You are currently using the dev app.
+        </Alert>
+      )}
+      <Flex
+        height="100vh"
+        flexDir="column"
+        maxWidth="1120px"
+        mx="auto"
+        px="15px"
+        pt="3rem"
+        mt={dev ? '48px' : '0'}
+      >
         {children}
 
-        <Box position='fixed' bottom='0' left='0' width='100%' pb='4' pl='4' >
-        <Button ref={btnRef} colorScheme="blue" onClick={onOpen} display='inline-block' isFullWidth={false} variant="outline" size="sm">
-          Debug
-        </Button>
-        </Box>
+        {dev && (
+          <Box position="fixed" bottom="0" left="0" width="100%" pb="4" pl="4">
+            <Button
+              ref={btnRef}
+              colorScheme="blue"
+              onClick={onOpen}
+              display="inline-block"
+              isFullWidth={false}
+              variant="outline"
+              size="sm"
+            >
+              Debug
+            </Button>
+          </Box>
+        )}
 
         <Footer />
       </Flex>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-        size="sm"
-        blockScrollOnMount={false}
-      >
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Debug App</DrawerHeader>
-            <DrawerBody>
-              <Debug />
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+      {dev && (
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+          finalFocusRef={btnRef}
+          size="sm"
+          blockScrollOnMount={false}
+        >
+          <DrawerOverlay>
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Debug App</DrawerHeader>
+              <DrawerBody>
+                <Debug />
+              </DrawerBody>
+            </DrawerContent>
+          </DrawerOverlay>
+        </Drawer>
+      )}
     </>
   )
 }

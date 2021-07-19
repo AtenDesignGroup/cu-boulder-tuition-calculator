@@ -17,14 +17,10 @@ export function LineItems({ data, itemTotal }) {
   const { isOpen, onToggle } = useDisclosure()
 
   const {
-    _key,
     description,
-    itemValue,
     frontEndTitle,
     frequency,
-    optionLogics,
     optional,
-    optionLogicConditional
   } = data
 
   // console.log(showArray(data))
@@ -63,7 +59,7 @@ export function LineItems({ data, itemTotal }) {
             zIndex: '0'
           }}}
         >
-          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}}>
+          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}} suppressHydrationWarning={true}>
             {frontEndTitle}
           </Heading>
 
@@ -77,6 +73,7 @@ export function LineItems({ data, itemTotal }) {
               color="#565A5C"
               mt={{base: "2", lg: "0"}}
               mb="0"
+              suppressHydrationWarning={true}
             >
               Optional Fee
             </Text>
@@ -85,8 +82,8 @@ export function LineItems({ data, itemTotal }) {
 
         <Flex flexDir="row" alignItems="center" className="printPriceWrapper">
           <Box order="3" ml={{base: "0", md: "24px"}} textAlign="right">
-            <Text fontSize="md" fontWeight="bold" mb="0" className="printPrice" order="1">
-              <Counter target={itemTotal} duration={2} />
+            <Text fontSize="md" fontWeight="bold" mb="0" className="printPrice" order="1" suppressHydrationWarning={true}>
+              <Counter target={itemTotal} duration={0} />
             </Text>
           </Box>
 
@@ -98,6 +95,7 @@ export function LineItems({ data, itemTotal }) {
               className="printBadge"
               order="2"
               my="0"
+              suppressHydrationWarning={true}
             >
               {capitalize(frequency.replace(/([A-Z])/g, ' $1').trim())}
             </Text>
@@ -107,7 +105,7 @@ export function LineItems({ data, itemTotal }) {
             {description && (
               <Button
                 leftIcon={<InfoIcon />}
-                color={isOpen ? '#A82E26' : 'blue.500'}
+                color={isOpen ? '#A82E26' : 'blue.600'}
                 variant="link"
                 onClick={onToggle}
                 size="xs"
@@ -115,6 +113,8 @@ export function LineItems({ data, itemTotal }) {
                 pr="0"
                 mr="0"
                 alignItems="end"
+                aria-expanded={isOpen ? true : false}
+                aria-label={`${frontEndTitle} info`}
               >
                 {isOpen ? 'Close' : 'Info'}
               </Button>

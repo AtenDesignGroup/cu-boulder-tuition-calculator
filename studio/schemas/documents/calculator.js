@@ -8,7 +8,7 @@ export default {
   type: 'document',
   title: 'calculator',
   icon: FcCalculator,
-  __experimental_actions: ['update', 'publish'],
+  // __experimental_actions: ['update', 'publish'],
   liveEdit: false,
   fields: [
     {

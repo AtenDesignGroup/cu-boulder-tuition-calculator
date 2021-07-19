@@ -21,7 +21,12 @@ export function Debug () {
         totalSemesters: 1
       }
     })
-    router.push(`/`)
+
+    if(dev){
+      router.push(`/dev`)
+    } else {
+      router.push(`/`)
+    }
   }
 
   return (

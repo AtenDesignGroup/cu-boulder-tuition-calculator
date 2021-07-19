@@ -23,7 +23,8 @@ const cuTheme = extendTheme({
       900: '#060020'
     },
     blue: {
-      500: '#0277BD'
+      500: '#0277BD',
+      600: '#005180'
     },
     yellow: {
       500: '#CFB87C'

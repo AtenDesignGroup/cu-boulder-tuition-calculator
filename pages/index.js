@@ -1,7 +1,8 @@
 import Error from 'next/error'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import * as ga from '@/lib/ga'
 import { getTuitionCalculator } from '@/lib/sanity-api'
+
 import { Box, Heading, Button } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Layout } from '@/components/layout'
@@ -19,6 +20,13 @@ export default function Home({ pageData }) {
   const { questions } = tuitionCalculator
 
   function GetStarted() {
+    ga.event({
+      action: 'button',
+      params : {
+        'event_category' : 'click',
+        'event_label' : 'get_started'
+      }
+    })
     router.push(`/question/${questions[0]._id}`)
   }
 

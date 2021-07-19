@@ -14,7 +14,7 @@
 /* button, input[type=button]:hover {
   background-color:#0277bd !important;
 } */
-button:disabled, [type=button]:hover:disabled {
+button[aria-disabled='true'], [type=button][aria-disabled='true']:hover:disabled {
   background: #A2A4A3 !important;
 }
 

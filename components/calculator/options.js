@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { Text as BodyText } from '@/components/serializers/text'
-import { Heading, Box, Select, FormControl, FormLabel} from '@chakra-ui/react'
+import { Heading, Box, Select, FormControl, FormLabel } from '@chakra-ui/react'
 
 export function Options({ question, title, description }) {
   const { register, handleSubmit } = useForm()
@@ -14,7 +14,7 @@ export function Options({ question, title, description }) {
 
   useEffect(() => {
     setTimeout(() => {
-      mainRef.current.focus();
+      mainRef.current.focus()
     }, 1)
   }, [])
 
@@ -57,30 +57,30 @@ export function Options({ question, title, description }) {
   return (
     <>
       {optionSetsLength === 1 ? (
-        <FormControl
-          id={question?.optionSets[0]._key}
-          key={question?.optionSets[0]._key}
-          mb="6"
-        >
+        <FormControl id={question?.optionSets[0]._key} key={question?.optionSets[0]._key} mb="6">
           <FormLabel>
-            <Heading mb="6" as="h1" ref={mainRef} tabIndex="-1">{title}</Heading>
+            <Heading mb="6" as="h1" ref={mainRef} tabIndex="-1">
+              {title}
+            </Heading>
           </FormLabel>
-          {description && <Box mb="8"
-          // tabIndex="1"
-          >
-            <BodyText blocks={description} />
-          </Box>}
+          {description && (
+            <Box
+              mb="8"
+              // tabIndex="1"
+            >
+              <BodyText blocks={description} />
+            </Box>
+          )}
           <Select
             {...register(`${question._id}`)}
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
-            placeholder="Select a value..."
+            placeholder="Make a selection"
             onChange={e => selectUpdate(e.currentTarget.value, question)}
             // tabIndex="2"
 
             //rootProps={{}}
             borderColor="#A2A4A3"
             borderRadius="none"
-
           >
             {question?.optionSets[0].options.map(option => (
               <option value={option.value.current} key={option._key}>
@@ -103,7 +103,7 @@ export function Options({ question, title, description }) {
                 <Select
                   {...register(`${question._id}`)}
                   value={`${state?.calculator?.questions[question?._id]?.answer}`}
-                  placeholder="Select a value..."
+                  placeholder="Make a selection"
                   onChange={e => selectUpdate(e.currentTarget.value, question)}
                 >
                   {optionSet.options.map(option => (

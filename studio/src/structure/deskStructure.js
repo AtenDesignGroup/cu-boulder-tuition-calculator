@@ -42,6 +42,18 @@ export default () =>
             .documentId('tuitionCalculator')
             .title('Tuition Calculator')
         ),
+
+        S.listItem()
+        .title('Tuition Calculator (dev app)')
+        .icon(FcCalculator)
+        .schemaType('calculator')
+        .child(
+          S.editor()
+            .schemaType('calculator')
+            .documentId('tuitionCalculatorDev')
+            .title('⚠️ Tuition Calculator (dev app)')
+        ),
+
       S.listItem()
         .title('Questions')
         .icon(FcQuestions)

@@ -359,7 +359,7 @@ export function Calculator({ question, questions, slug }) {
 
           </Flex>
 
-          <Flex mt="12" alignItems="center">
+          <Flex mt="12" alignItems="center" suppressHydrationWarning={true}>
             <Button
               leftIcon={<FaCaretSquareLeft />}
               variant="link"
@@ -369,7 +369,7 @@ export function Calculator({ question, questions, slug }) {
               onClick={() => StartOver()}
             >Start Over</Button>
 
-            {showResults &&
+            {(showResults && !atTheLastQuestion) &&
             <Button
             rightIcon={<FaCaretSquareRight />}
             variant="link"

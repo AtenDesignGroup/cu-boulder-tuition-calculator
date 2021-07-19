@@ -16,7 +16,7 @@ export default function ResultsPage({pageData}) {
 
   return (
     <Layout siteSettings={siteSettings} status={100}>
-      <Results categories={categories} />
+      <Results categories={categories} tuitionCalculator={tuitionCalculator} />
     </Layout>
   )
 }
