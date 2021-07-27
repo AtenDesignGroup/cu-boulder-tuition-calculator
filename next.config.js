@@ -1,18 +1,18 @@
 
 module.exports = {
   target: 'serverless',
-  async redirects() {
+  async redirects () {
     return [
       {
         source: '/question',
         destination: '/',
-        permanent: true,
+        permanent: true
       },
       {
         source: '/_error',
         destination: '/',
-        permanent: true,
-      },
+        permanent: true
+      }
     ]
   }
 }
