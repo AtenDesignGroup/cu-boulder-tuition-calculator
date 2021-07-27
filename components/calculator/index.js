@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
@@ -27,7 +28,6 @@ export function Calculator({ question, questions, slug }) {
   const [seeResultsBtn, setSeeResultsBtn] = useState(false)
   const [atTheLastQuestion, setAtTheLastQuestion] = useState(false)
   const [questionAnswered, setQuestionAnswered] = useState(false)
-  const resultRef = useRef()
 
   // Animation Variants (Framer Motion)
   const variants = {
@@ -49,89 +49,7 @@ export function Calculator({ question, questions, slug }) {
     transition: { duration: 2 }
   }
 
-  // useEffect(() => {
-  //   if (seeResultsBtn === true) {
-  //     // console.log('seeResultsBtn')
-  //     setTimeout(() => {
-  //       resultRef.current.focus()
-  //     }, 1)
-  //   }
-  // }, [seeResultsBtn])
-
-  useEffect(() => {
-    setCurrentQuestionID(questions[currentQuestion]._id)
-  }, [currentQuestion])
-
-  useEffect(() => {
-    // console.clear()
-    // Check to see if the question has been answered
-    setQuestionAnswered(
-      isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? false : true
-    )
-    // Question has been answered 👍🏻
-    if (questionAnswered === true) {
-      // console.log('👍🏻 question answered')
-      let i = currentQuestion
-      let showQuestion = 'hide'
-      let optionLogicConditional = 'or'
-      while (showQuestion === 'hide') {
-        i += 1
-        if (i >= questionLength) {
-          break
-        }
-        optionLogicConditional = questions[i]?.optionLogicConditional || 'or'
-        showQuestion = showQ(questions[i], optionLogicConditional, i)
-      }
-      // Logic to see if at the end of questions or not
-      if (i === undefined || i >= questionLength) {
-        // console.log('🔚 you have reached the end of our questions')
-        i = currentQuestion
-        setAtTheLastQuestion(true)
-      } else {
-        setAtTheLastQuestion(false)
-        // console.log('✅ another question')
-      }
-      // Question not answered 👎🏻
-    } else {
-      setAtTheLastQuestion(false)
-      // console.log('👎🏻 question answered')
-    }
-    // console.log({lastQuestion})
-    // console.log({questionAnswered})
-    // console.log({atTheLastQuestion})
-  })
-
-  useEffect(() => {
-    if (atTheLastQuestion) {
-      actions.updateAction({
-        ...state,
-        lastQuestion: currentQuestion
-      })
-    }
-    // console.log({currentQuestion})
-    // console.log({atTheLastQuestion})
-    // console.log({lastQuestion})
-  }, [atTheLastQuestion])
-
-  const operatorMagic = (questionVal, mathOperation, logicVal) => {
-    if (mathOperation === 'equals') {
-      return questionVal === logicVal ? 'show' : 'hide'
-    } else if (mathOperation === 'doesNotEqual') {
-      return questionVal !== logicVal ? 'show' : 'hide'
-    } else if (mathOperation === 'lessThan') {
-      return questionVal < logicVal ? 'show' : 'hide'
-    } else if (mathOperation === 'lessThanOrEquals') {
-      return questionVal <= logicVal ? 'show' : 'hide'
-    } else if (mathOperation === 'greaterThan') {
-      return questionVal > logicVal ? 'show' : 'hide'
-    } else if (mathOperation === 'greaterThanOrEquals') {
-      return questionVal >= logicVal ? 'show' : 'hide'
-    } else {
-      return 'hide'
-    }
-  }
-
-  const showQ = (q, optionLogicConditional, i) => {
+  const showQ = useCallback((q, optionLogicConditional, i) => {
     let showQuestion = []
     let returnVal = ''
     if (i >= questionLength || (showQuestion !== undefined && !showQuestion.length > 1)) {
@@ -175,7 +93,82 @@ export function Calculator({ question, questions, slug }) {
       showQuestion.includes('show') ? (returnVal = 'show') : (returnVal = 'hide')
     }
     return returnVal
+  }, [questionLength, state])
+
+  useEffect(() => {
+    setCurrentQuestionID(questions[currentQuestion]._id)
+  }, [questions, currentQuestion])
+
+  useEffect(() => {
+    // console.clear()
+    // Check to see if the question has been answered
+    setQuestionAnswered(
+      isStringEmpty(state?.calculator?.questions[currentQuestionID]?.answer) ? false : true
+    )
+    // Question has been answered 👍🏻
+    if (questionAnswered === true) {
+      // console.log('👍🏻 question answered')
+      let i = currentQuestion
+      let showQuestion = 'hide'
+      let optionLogicConditional = 'or'
+      while (showQuestion === 'hide') {
+        i += 1
+        if (i >= questionLength) {
+          break
+        }
+        optionLogicConditional = questions[i]?.optionLogicConditional || 'or'
+        showQuestion = showQ(questions[i], optionLogicConditional, i)
+      }
+      // Logic to see if at the end of questions or not
+      if (i === undefined || i >= questionLength) {
+        // console.log('🔚 you have reached the end of our questions')
+        i = currentQuestion
+        setAtTheLastQuestion(true)
+      } else {
+        setAtTheLastQuestion(false)
+        // console.log('✅ another question')
+      }
+      // Question not answered 👎🏻
+    } else {
+      setAtTheLastQuestion(false)
+      // console.log('👎🏻 question answered')
+    }
+    // console.log({lastQuestion})
+    // console.log({questionAnswered})
+    // console.log({atTheLastQuestion})
+  }, [state.calculator.questions, currentQuestionID, questionAnswered, currentQuestion, questionLength, questions, showQ])
+
+  useEffect(() => {
+    if (atTheLastQuestion) {
+      actions.updateAction({
+        ...state,
+        lastQuestion: currentQuestion
+      })
+    }
+    // console.log({currentQuestion})
+    // console.log({atTheLastQuestion})
+    // console.log({lastQuestion})
+  }, [actions, state, currentQuestion, atTheLastQuestion])
+
+  const operatorMagic = (questionVal, mathOperation, logicVal) => {
+    if (mathOperation === 'equals') {
+      return questionVal === logicVal ? 'show' : 'hide'
+    } else if (mathOperation === 'doesNotEqual') {
+      return questionVal !== logicVal ? 'show' : 'hide'
+    } else if (mathOperation === 'lessThan') {
+      return questionVal < logicVal ? 'show' : 'hide'
+    } else if (mathOperation === 'lessThanOrEquals') {
+      return questionVal <= logicVal ? 'show' : 'hide'
+    } else if (mathOperation === 'greaterThan') {
+      return questionVal > logicVal ? 'show' : 'hide'
+    } else if (mathOperation === 'greaterThanOrEquals') {
+      return questionVal >= logicVal ? 'show' : 'hide'
+    } else {
+      return 'hide'
+    }
   }
+
+
 
   // Button to advance the user to the next question, not shown or disabled on the last question
   const nextQuestion = () => {
@@ -297,7 +290,6 @@ export function Calculator({ question, questions, slug }) {
           variants={variants}
           exit="removed"
           initial="initial"
-          animate={'animate'}
           animate={currentQuestion === slug ? 'animate' : 'initial'}
         >
           <Box flex="1" width="100%" mb="10">
@@ -376,7 +368,7 @@ export function Calculator({ question, questions, slug }) {
             fontSize="sm"
             colorScheme="blue"
           >
-            <a href="/results">Back to Results</a>
+            <Link href="/results"><a>Back to Results</a></Link>
           </Button>}
 
           </Flex>

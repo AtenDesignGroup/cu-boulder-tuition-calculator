@@ -18,7 +18,7 @@ export default function Home({ pageData }) {
   const siteSettings = pageData[0] && pageData[0].siteSettings
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
   const { questions } = tuitionCalculator
-
+  // console.log(pageData[0])
   function GetStarted() {
     ga.event({
       action: 'button',

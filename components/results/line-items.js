@@ -87,7 +87,7 @@ export function LineItems({ data, itemTotal }) {
             </Text>
           </Box>
 
-          <Box minW="78px" order="3" ml="26px" textAlign="right" ml="24px">
+          <Box minW="78px" order="3" textAlign="right" ml="24px">
             <Text
               color="#565A5C"
               fontSize="xs"
