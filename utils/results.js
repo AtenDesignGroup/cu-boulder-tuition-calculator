@@ -251,7 +251,7 @@ export function CalculateResults() {
         }
       })
     }
-  }, [])
+  })
   return (
     <div>
       CalculateResults

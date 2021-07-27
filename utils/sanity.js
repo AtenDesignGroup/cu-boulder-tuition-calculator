@@ -15,8 +15,10 @@ const config = {
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  apiVersion: 'v1',
   useCdn: true,
-  token: process.env.SANITY_API_TOKEN,
+  token: '',
+  // token: process.env.SANITY_API_TOKEN,
   // useCdn: process.env.NODE_ENV === 'production'
   /**
    * Set useCdn to `false` if your application require the freshest possible
@@ -46,15 +48,7 @@ export const PortableText = createPortableTextComponent({
   ...config,
   // Serializers passed to @sanity/block-content-to-react
   // (https://github.com/sanity-io/block-content-to-react)
-  serializers: {
-    types: {
-      ul: props => (
-        <ul className='test'>
-          test
-        </ul>
-      )
-    }
-  }
+  serializers: {},
 })
 
 // Set up the client for fetching data in the getProps page functions
@@ -63,6 +57,7 @@ export const sanityClient = createClient(config)
 
 export const previewClient = createClient({
   ...config,
+  apiVersion: 'v1',
   useCdn: true
   // useCdn: false
 })

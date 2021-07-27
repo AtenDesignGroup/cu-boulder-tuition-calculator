@@ -1,3 +1,4 @@
+import Error from 'next/error'
 import { useRouter } from 'next/router'
 import { Layout } from '@/components/layout'
 import { Results } from '@/components/results'
@@ -12,7 +13,7 @@ export default function ResultsPage({pageData}) {
   }
   const siteSettings = pageData[0] && pageData[0].siteSettings
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
-  const { questions, categories } = tuitionCalculator
+  const { categories } = tuitionCalculator
 
   return (
     <Layout siteSettings={siteSettings} status={100}>
