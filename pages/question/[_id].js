@@ -38,7 +38,7 @@ export const getStaticProps = async ({ params }) => {
       slug,
       position
     },
-    revalidate: 30,
+    revalidate: 10,
   }
 }
 

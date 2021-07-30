@@ -26,6 +26,6 @@ export async function getStaticProps ({ preview = false }) {
   const pageData = await getTuitionCalculatorDev(preview)
   return {
     props: { pageData, preview },
-    revalidate: 60
+    revalidate: 10
   }
 }

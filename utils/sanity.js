@@ -57,8 +57,8 @@ export const sanityClient = createClient(config)
 
 export const previewClient = createClient({
   ...config,
-  apiVersion: 'v1',
-  useCdn: true
+  // apiVersion: 'v1',
+  useCdn: false
   // useCdn: false
 })
 
