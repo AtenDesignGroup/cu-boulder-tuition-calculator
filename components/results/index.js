@@ -110,27 +110,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
     <Box mb={10} className="printNoMargins">
       <Box ref={componentRef}>
         <Box mb={10} className="printNoMargins">
-          <Flex alignItems="center" className="printVisibilityHide" mb={10}>
-            <RadioGroup
-              name="totalSemestersView"
-              onChange={updateTotalSemesters}
-              value={totalSemesters.toString()}
-              defaultChecked={totalSemesters.toString()}
-              as="fieldset"
-            >
-              <FormLabel fontWeight="bold" as="legend">
-                Estimate costs for:
-              </FormLabel>
-              <Stack direction="row">
-                <Radio value="1" id="one" colorScheme="yellow">
-                  One Semester
-                </Radio>
-                <Radio value="2" id="two" colorScheme="yellow">
-                  Two Semesters
-                </Radio>
-              </Stack>
-            </RadioGroup>
-          </Flex>
+
 
           <Flex
             justifyContent="space-between"
@@ -158,6 +138,29 @@ export function Results({ categories, tuitionCalculator, dev }) {
               </ChakraLink>
             </Text>
           </Flex>
+
+          <Flex alignItems="center" className="printVisibilityHide" my={10}>
+            <RadioGroup
+              name="totalSemestersView"
+              onChange={updateTotalSemesters}
+              value={totalSemesters.toString()}
+              defaultChecked={totalSemesters.toString()}
+              as="fieldset"
+            >
+              <FormLabel fontWeight="bold" as="legend">
+                Estimate costs for:
+              </FormLabel>
+              <Stack direction="row">
+                <Radio value="1" id="one" colorScheme="yellow">
+                  One Semester
+                </Radio>
+                <Radio value="2" id="two" colorScheme="yellow">
+                  Two Semesters
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          </Flex>
+
         </Box>
 
         <Box mb={10} className="printNoMargins" pt={0}>
