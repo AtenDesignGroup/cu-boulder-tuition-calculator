@@ -1,0 +1,13 @@
+{
+  "name": "netlify-local-plugins",
+  "description": "This directory contains Build plugins that have been automatically installed by Netlify.",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Netlify",
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/plugin-nextjs": "3.7.1",
+    "netlify-plugin-cache-nextjs": "1.4.0",
+    "netlify-plugin-next-dynamic": "1.0.9"
+  }
+}
