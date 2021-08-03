@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   target: 'serverless',
-  exportPathMap: 'out',
+  // exportPathMap: 'out',
   async redirects() {
     return [
       {

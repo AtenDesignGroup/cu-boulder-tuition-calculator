@@ -47,6 +47,6 @@ export async function getStaticPaths () {
   const pages = pageData?.tuitionCalculator?.questions?.map((q) => ({ params: { _id: q._id } }))
   return {
     paths: pages || null,
-    fallback: false
+    fallback: true
   }
 }

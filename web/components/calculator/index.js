@@ -16,7 +16,7 @@ import { Flex, Heading, Box, Stack, Button, Spinner, Progress, Text } from '@cha
 // import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
 import { FaCaretSquareLeft, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaCaretSquareRight } from 'react-icons/fa'
 
-export function Calculator({ question, questions, slug }) {
+export function Calculator({ question, questions, slug, dev }) {
   const router = useRouter()
   // console.log({questions})
   const { actions, state } = useStateMachine({ updateAction })
@@ -197,7 +197,7 @@ export function Calculator({ question, questions, slug }) {
           showResults: true
         }
       })
-      router.push(`/results`)
+      dev ? router.push(`/dev/results`) : router.push(`/results`)
     } else {
       actions.updateAction({
         ...state,
@@ -206,6 +206,12 @@ export function Calculator({ question, questions, slug }) {
           currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
         }
       })
+      dev ?
+      router.push(
+        `/dev/question/${
+          i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+        }`
+      ) :
       router.push(
         `/question/${
           i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
@@ -242,6 +248,12 @@ export function Calculator({ question, questions, slug }) {
         currentQuestion: i === undefined || i > questionLength ? currentQuestion : i
       }
     })
+    dev ?
+    router.push(
+      `/dev/question/${
+        i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+      }`
+    ) :
     router.push(
       `/question/${
         i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
@@ -259,7 +271,7 @@ export function Calculator({ question, questions, slug }) {
         showResults: true
       }
     })
-    router.push(`/results`)
+    dev ? router.push(`/dev/results`) : router.push(`/results`)
   }
   // console.log({ question, questions, slug, currentQuestion })
 
@@ -276,7 +288,7 @@ export function Calculator({ question, questions, slug }) {
         totalSemesters: 1
       }
     })
-    router.push(`/`)
+    dev ? router.push(`/dev`) : router.push(`/`)
   }
 
   if (!question) {
