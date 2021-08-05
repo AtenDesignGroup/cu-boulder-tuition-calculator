@@ -77,7 +77,7 @@ export function Layout({ children, siteSettings, dev, position, totalQuestions, 
               <DrawerCloseButton />
               <DrawerHeader>Debug App</DrawerHeader>
               <DrawerBody>
-                <Debug />
+                <Debug dev="true"/>
               </DrawerBody>
             </DrawerContent>
           </DrawerOverlay>

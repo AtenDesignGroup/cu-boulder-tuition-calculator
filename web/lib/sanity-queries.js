@@ -55,6 +55,37 @@ export const getTuitionCalculatorQuery = groq`
   "siteSettings": *[_type == "siteSettings"][0],
 }`
 
+
+export const getTuitionHomeQuery = groq`
+ *[_type in ["siteSettings", "calculator"]]{
+  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{
+    title,
+    description,
+    buttonTitle,
+    questions[0] {
+      _type == 'reference' => ^-> {
+        _id
+      }
+    }
+  },
+  "siteSettings": *[_type == "siteSettings"][0],
+}`
+
+export const getTuitionHomeDevQuery = groq`
+ *[_type in ["siteSettings", "calculator"]]{
+  "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculatorDev"][0]{
+    title,
+    description,
+    buttonTitle,
+    questions[0] {
+      _type == 'reference' => ^-> {
+        _id
+      }
+    }
+  },
+  "siteSettings": *[_type == "siteSettings"][0],
+}`
+
 export const getAllQuestionsQuery = groq`
 *[_type in ["calculator", "siteSettings"]][0]{
   "tuitionCalculator": *[_type=="calculator" && _id=="tuitionCalculator"][0]{

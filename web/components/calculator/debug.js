@@ -3,7 +3,7 @@ import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { Heading, Box, Code, Button, Flex } from '@chakra-ui/react'
 import { HiTrash } from "react-icons/hi";
-export function Debug () {
+export function Debug ({dev}) {
   const router = useRouter()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions } = state.calculator

@@ -1,6 +1,6 @@
 import Error from 'next/error'
 import { useRouter } from 'next/router'
-import { getTuitionCalculatorDev } from '@/lib/sanity-api'
+import { getTuitionHomeDev } from '@/lib/sanity-api'
 import { Box, Heading, Button } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Layout } from '@/components/layout'
@@ -18,30 +18,39 @@ export default function Home({ pageData }) {
   const { questions } = tuitionCalculator
 
   function GetStarted() {
-    router.push(`/dev/question/${questions[0]._id}`)
+    router.push(`/dev/question/${questions._id}`)
   }
 
   return (
     <Layout siteSettings={siteSettings} status={0} dev={true}>
       <Box mt={24}>
-
         <Heading mb={4}>{tuitionCalculator.title}</Heading>
 
         <BodyText blocks={tuitionCalculator.description} />
-
-        <Button mt={6} variant="solid" shadow='md' background="#0277BD" color="#fff" _hover={{background: "#0277BD"}} _active={{background: "#0277BD"}} rightIcon={<FaArrowAltCircleRight />} onClick={() => GetStarted()}>
-          {tuitionCalculator.buttonTitle}
-        </Button>
-
+        {questions?._id && (
+          <Button
+            mt={6}
+            variant="solid"
+            shadow="md"
+            background="#0277BD"
+            color="#fff"
+            _hover={{ background: '#0277BD' }}
+            _active={{ background: '#0277BD' }}
+            rightIcon={<FaArrowAltCircleRight />}
+            onClick={() => GetStarted()}
+          >
+            {tuitionCalculator.buttonTitle}
+          </Button>
+        )}
       </Box>
     </Layout>
   )
 }
 
 export async function getStaticProps({ preview = false }) {
-  const pageData = await getTuitionCalculatorDev(preview)
+  const pageData = await getTuitionHomeDev(preview)
   return {
     props: { pageData, preview },
-    revalidate: 10
+    revalidate: 10,
   }
 }

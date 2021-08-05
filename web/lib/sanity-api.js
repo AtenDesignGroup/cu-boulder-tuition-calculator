@@ -11,7 +11,9 @@ import {
   getTuitionCalculatorQuery,
   getTuitionCalculatorDevQuery,
   getAllQuestionsQuery,
-  getAllQuestionsDevQuery
+  getAllQuestionsDevQuery,
+  getTuitionHomeQuery,
+  getTuitionHomeDevQuery
 } from './sanity-queries'
 
 const config = {
@@ -67,5 +69,15 @@ export async function getAllQuestions(preview) {
 
 export async function getAllQuestionsDev(preview) {
   const data = await getClient(preview).fetch(getAllQuestionsDevQuery)
+  return data
+}
+
+export async function getTuitionHome (preview) {
+  const data = await getClient(preview).fetch(getTuitionHomeQuery)
+  return data
+}
+
+export async function getTuitionHomeDev (preview) {
+  const data = await getClient(preview).fetch(getTuitionHomeDevQuery)
   return data
 }
