@@ -54,45 +54,7 @@ export function Options({ question, title, description }) {
       }
     })
   }
-  // console.log(questionLogic(question.optionSets))
-  // console.log(questionLogic(question.optionSets))
-  // console.log(question.optionSets[0])
-  // console.log(question?.optionSets[1])
-  // console.log(questionLogic(question?.optionSets[1]))
-
-
-  const OptionShowLogic = () => {
-    let showQuestion = false
-    // Find the length of the Option Sets
-    // if 0 or undefined then return null
-    if(question?.optionSets?.length < 1){
-      showQuestion = false
-    } else if (question?.optionSets?.length === 1){
-      // if 1 return it
-      showQuestion = true
-    } else {
-
-      // if multiple then loop through each until you find the *first* one that ==== true
-      // showQuestion =
-      // question?.optionLogics &&
-      // question?.optionLogics?.map( logic =>
-      //   console.log(state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer === logic.logicSourceValue)
-      //   )
-    }
-    let result = Array.isArray(showQuestion)
-    ? !showQuestion.some(element => element === false)
-    : showQuestion
-  // return result
-  // console.log({result})
-  }
-  // question?.optionSets.map(option => console.log(option))
-  OptionShowLogic()
-
-  // console.log(question?.optionLogics)
-  // question?.optionLogics?.map(option => <OptionContainer option={option} key={option._id} />)
-
-
-
+  // console.log({optionSetsLength})
   return (
     <>
 
@@ -106,6 +68,7 @@ export function Options({ question, title, description }) {
           {description && (
             <Box
               mb="8"
+              // tabIndex="1"
             >
               <BodyText blocks={description} />
             </Box>
@@ -128,28 +91,9 @@ export function Options({ question, title, description }) {
       ) : (
         question?.optionSets.map(
           optionSet =>
-            questionLogic(optionSet) && (<>test
-              <FormControl id={optionSet._key} key={optionSet._key} mb="6">
-                <FormLabel>
-                  <Heading mb="6">{title}</Heading>
-                </FormLabel>
-                <Box mb="4">
-                  <BodyText blocks={description} />
-                </Box>
-                <Select
-                  {...register(`${question._id}`)}
-                  value={`${state?.calculator?.questions[question?._id]?.answer}`}
-                  placeholder="Make a selection"
-                  onChange={e => selectUpdate(e.currentTarget.value, question)}
-                >
-                  {optionSet.options.map(option => (
-                    <option value={option.value.current} key={option._key}>
-                      {option.title}
-                    </option>
-                  ))}
-                </Select>
-              </FormControl>
-            </>)
+            questionLogic(optionSet) && (
+
+            )
         )
       )}
     </>

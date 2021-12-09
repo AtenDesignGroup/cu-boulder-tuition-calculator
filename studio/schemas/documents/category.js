@@ -1,5 +1,4 @@
 import React from 'react'
-// const Icon = () => <span style={{fontSize: '1.5rem'}}>{'?'}</span>
 import {FcFolder} from 'react-icons/fc'
 
 export default {
@@ -25,7 +24,7 @@ export default {
       name: 'lineItems',
       title: 'Line Items',
       type: 'array',
-      of: [ { type: 'lineItem' } ],
+      of: [ {type: 'lineItem'} ]
       // options: {
       //   canDuplicate: 'title'
       // }
