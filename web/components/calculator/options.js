@@ -6,6 +6,7 @@ import { Text as BodyText } from '@/components/serializers/text'
 import { Heading, Box, Select, FormControl, FormLabel } from '@chakra-ui/react'
 
 export function Options({ question, title, description }) {
+  // console.log({ question, title, description })
   const { register, handleSubmit } = useForm()
   const { actions, state } = useStateMachine({ updateAction })
   const { currentQuestion } = state.calculator

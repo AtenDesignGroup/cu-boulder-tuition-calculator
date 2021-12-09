@@ -23,7 +23,7 @@ export function Calculator({ question, questions, slug, dev }) {
   // const { currentQuestion } = state.calculator
   const currentQuestion = parseInt(slug)
   const { showResults, lastQuestion } = state.calculator
-  const questionLength = questions?.length - 1
+  const questionLength = questions?.length  // - 1
   const [currentQuestionID, setCurrentQuestionID] = useState(questions[currentQuestion]._id)
   const [seeResultsBtn, setSeeResultsBtn] = useState(false)
   const [atTheLastQuestion, setAtTheLastQuestion] = useState(false)
@@ -52,6 +52,8 @@ export function Calculator({ question, questions, slug, dev }) {
   const showQ = useCallback((q, optionLogicConditional, i) => {
     let showQuestion = []
     let returnVal = ''
+    // console.log({questionLength})
+
     if (i >= questionLength || (showQuestion !== undefined && !showQuestion.length > 1)) {
       return 'hide'
     }
@@ -138,17 +140,17 @@ export function Calculator({ question, questions, slug, dev }) {
     // console.log({atTheLastQuestion})
   }, [state.calculator.questions, currentQuestionID, questionAnswered, currentQuestion, questionLength, questions, showQ])
 
-  useEffect(() => {
-    if (atTheLastQuestion) {
-      actions.updateAction({
-        ...state,
-        lastQuestion: currentQuestion
-      })
-    }
-    // console.log({currentQuestion})
-    // console.log({atTheLastQuestion})
-    // console.log({lastQuestion})
-  }, [actions, state, currentQuestion, atTheLastQuestion])
+  // useEffect(() => {
+  //   if (atTheLastQuestion) {
+  //     actions.updateAction({
+  //       ...state,
+  //       lastQuestion: currentQuestion
+  //     })
+  //   }
+  //   // console.log({currentQuestion})
+  //   // console.log({atTheLastQuestion})
+  //   // console.log({lastQuestion})
+  // }, [actions, state, currentQuestion, atTheLastQuestion])
 
   const operatorMagic = (questionVal, mathOperation, logicVal) => {
     if (mathOperation === 'equals') {
