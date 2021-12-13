@@ -68,14 +68,13 @@ export function LineItems({ data, itemTotal }) {
               background="#F7F6F7" zIndex="1"
               pr={{md: "24px"}}
               display="block"
-              textTransform="uppercase"
               fontSize="xx-small"
               color="#565A5C"
               mt={{base: "2", lg: "0"}}
               mb="0"
               suppressHydrationWarning={true}
             >
-              Optional Fee
+            Included in COA
             </Text>
           )}
         </Flex>

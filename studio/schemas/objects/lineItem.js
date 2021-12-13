@@ -1,4 +1,4 @@
-import { FcMoneyTransfer as Icon } from 'react-icons/fc'
+import {FcMoneyTransfer as Icon} from 'react-icons/fc'
 
 const OptionalVal = val => {
   if (val === true) {
@@ -30,7 +30,7 @@ export default {
   type: 'object',
   icon: Icon,
   // options: {collapsible: true, collapsed: false},
-  options: { columns: 2 },
+  options: {columns: 2},
   initialValue: () => ({
     optionLogicConditional: 'or'
   }),
@@ -50,7 +50,7 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      title: `Is this an Optional cost?`,
+      title: `Included in COA`,
       name: 'optional',
       type: 'boolean'
     },
@@ -65,7 +65,7 @@ export default {
       name: 'itemValue',
       type: 'array',
       description: 'Choose either a simple value or a calculated value.',
-      of: [{ type: 'simpleValue' }, { type: 'calculatedValue' }],
+      of: [{type: 'simpleValue'}, {type: 'calculatedValue'}],
       validation: Rule =>
         Rule.required()
           .min(1)
@@ -78,9 +78,9 @@ export default {
       validation: Rule => Rule.required(),
       options: {
         list: [
-          { title: 'One-time', value: 'oneTime' },
-          { title: 'Per Semester', value: 'perSemester' },
-          { title: 'Per Year', value: 'perYear' }
+          {title: 'One-time', value: 'oneTime'},
+          {title: 'Per Semester', value: 'perSemester'},
+          {title: 'Per Year', value: 'perYear'}
         ]
       }
     },
@@ -90,7 +90,7 @@ export default {
       type: 'array',
       description:
         'If used, the item would apply if all true. If you do not add any logic, the item will always apply to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
-      of: [{ type: 'optionLogic' }, { type: 'optionNumericLogic' }]
+      of: [{type: 'optionLogic'}, {type: 'optionNumericLogic'}]
     },
     {
       title: 'Logic Conditional',
@@ -99,8 +99,8 @@ export default {
       validation: Rule => Rule.required(),
       options: {
         list: [
-          { title: 'AND - All show logic conditons need to be true', value: 'and' },
-          { title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or' }
+          {title: 'AND - All show logic conditons need to be true', value: 'and'},
+          {title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or'}
         ]
       }
     }
@@ -114,8 +114,8 @@ export default {
       frequency: 'frequency',
       logic: 'optionLogics'
     },
-    prepare(selection) {
-      const { title, frontEndTitle, value, optional, frequency, logic } = selection
+    prepare (selection) {
+      const {title, frontEndTitle, value, optional, frequency, logic} = selection
       return {
         title: title,
         subtitle: `${OptionalVal(optional)} $${value || 0} - ${LogicVal(
