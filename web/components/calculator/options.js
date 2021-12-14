@@ -15,7 +15,7 @@ export function Options({ question, title, description }) {
 
   useEffect(() => {
     setTimeout(() => {
-      mainRef.current.focus()
+      mainRef?.current?.focus()
     }, 1)
   }, [])
 

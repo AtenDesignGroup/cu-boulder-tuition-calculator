@@ -52,7 +52,6 @@ export function Calculator({ question, questions, slug, dev }) {
   const showQ = useCallback((q, optionLogicConditional, i) => {
     let showQuestion = []
     let returnVal = ''
-    // console.log({questionLength})
 
     if (i >= questionLength || (showQuestion !== undefined && !showQuestion.length > 1)) {
       return 'hide'
@@ -296,6 +295,7 @@ export function Calculator({ question, questions, slug, dev }) {
   if (!question) {
     return <Spinner size="md" />
   }
+
   return (
     <Flex flex="1" flexDir="column" width="100%">
       <Box mt="10">

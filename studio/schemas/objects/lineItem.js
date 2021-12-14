@@ -30,7 +30,7 @@ export default {
   type: 'object',
   icon: Icon,
   // options: {collapsible: true, collapsed: false},
-  options: {columns: 2},
+  // options: {columns: 2},
   initialValue: () => ({
     optionLogicConditional: 'or'
   }),
