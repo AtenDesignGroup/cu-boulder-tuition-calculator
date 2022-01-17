@@ -121,7 +121,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
             flexDirection={{ base: 'column', md: 'row' }}
           >
             <Heading size="lg" as="h1" mb={{ base: '1', md: '0' }}>
-              Your total estimate
+              Your CU Boulder Cost Estimate
             </Heading>
 
             <Text
