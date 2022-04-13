@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useStateMachine } from 'little-state-machine'
-import Link from 'next/link'
+import NextLink from "next/link"
 import updateAction from '@/hooks/updateAction'
 import { Category } from '@/components/results/category'
 
@@ -17,14 +17,23 @@ import {
   Text,
   Button,
   FormLabel,
+  useDisclosure,
+  Collapse,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Link,
   Link as ChakraLink,
 } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Counter } from '@/components/counter'
-import { FaPencilAlt, FaPrint, FaCaretSquareLeft } from 'react-icons/fa'
+import { FaPencilAlt, FaPrint, FaCaretSquareLeft, FaQuestionCircle, FaCheckCircle } from 'react-icons/fa'
 
 export function Results({ categories, tuitionCalculator, dev }) {
   const router = useRouter()
+  const { isOpen, onToggle } = useDisclosure()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
   const mainRef = useRef()
@@ -109,7 +118,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
   return (
     <Box mb={10} className="printNoMargins">
       <Box ref={componentRef}>
-        <Box mb={10} className="printNoMargins">
+        <Box mb={6} className="printNoMargins">
 
 
           <Flex
@@ -139,7 +148,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
             </Text>
           </Flex>
 
-          <Flex alignItems="center" className="printVisibilityHide" my={10}>
+          <Flex alignItems="center" className="printVisibilityHide" mt={10}>
             <RadioGroup
               name="totalSemestersView"
               onChange={updateTotalSemesters}
@@ -163,6 +172,48 @@ export function Results({ categories, tuitionCalculator, dev }) {
 
         </Box>
 
+
+        <Box mb={6}>
+
+          <Button
+                leftIcon={<FaQuestionCircle />}
+                color={isOpen ? '#A82E26' : 'blue.600'}
+                variant="link"
+                onClick={onToggle}
+                size="xs"
+                py="12px"
+                pr="0"
+                mr="0"
+                alignItems="end"
+                aria-expanded={isOpen ? true : false}
+                aria-label={`Your Selections`}
+                mb={2}
+              >
+                {isOpen ? 'Hide Your Selections' : 'View Your Selections'}
+              </Button>
+
+          <Collapse in={isOpen} animateOpacity>
+          <Box px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3">
+          <OrderedList spacing={2} ml={1} mt={2}>
+          {Object.values(questions).map(question =>
+          <ListItem key={question.questionID} display='flex' alignItems='baseline'>
+          <ListIcon as={FaCheckCircle} color='green.500' />
+
+            <Text fontSize='sm' color='gray.600'>{question.title}:</Text>
+            <Text fontSize='sm' ml={2} color='gray.800' fontWeight='bold'>{question.answerLabel}</Text>
+
+            <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
+            <NextLink href={`/question/${question.questionID}`} passHref><Link >edit</Link></NextLink>
+            </Button>
+
+          </ListItem>
+            )}
+        </OrderedList>
+          </Box>
+        </Collapse>
+        </Box>
+
+
         <Box mb={10} className="printNoMargins" pt={0}>
           {filteredResults.map((category) => (
             <Category category={category} key={category._id} questions={questions} />
@@ -180,6 +231,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
         alignItems={{ base: 'flex-start', md: 'center' }}
         justifyContent={{ md: 'space-between' }}
       >
+
         <Flex
           direction={{ base: 'column', md: 'row' }}
           alignItems={{ base: 'flex-start', md: 'center' }}
@@ -204,12 +256,12 @@ export function Results({ categories, tuitionCalculator, dev }) {
           />
           {questions && Object.keys(questions).length > 0 && dev && (
             <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
-              <a href={`/dev/question/${Object.keys(questions)[0]}`}>Edit Answers</a>
+              <NextLink href={`/dev/question/${Object.keys(questions)[0]}`} passHref><Link>Edit Answers</Link></NextLink>
             </Button>
           )}
           {questions && Object.keys(questions).length > 0 && !dev && (
             <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
-              <a href={`/question/${Object.keys(questions)[0]}`}>Edit Answers</a>
+              <NextLink href={`/question/${Object.keys(questions)[0]}`} passHref><Link>Edit Answers</Link></NextLink>
             </Button>
           )}
         </Flex>

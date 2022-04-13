@@ -39,7 +39,9 @@ export function Options({ question, title, description }) {
     return result
   }
   // Update State when a Select value has been updated
-  const selectUpdate = (val, question) => {
+  const selectUpdate = (questionNumber, val, e, question) => {
+    let index = e.nativeEvent.target.selectedIndex;
+    let label = e.nativeEvent.target[index].text;
     actions.updateAction({
       ...state,
       calculator: {
@@ -48,7 +50,10 @@ export function Options({ question, title, description }) {
           ...state.calculator.questions,
           [question._id]: {
             title: question.title,
-            answer: val ? val : null
+            answer: val ? val : null,
+            answerLabel: label ? label: null,
+            currentQuestion: currentQuestion,
+            questionID: question._id
           }
         }
       }
@@ -76,7 +81,7 @@ export function Options({ question, title, description }) {
             {...register(`${question._id}`)}
             value={`${state?.calculator?.questions[question?._id]?.answer}`}
             placeholder="Make a selection"
-            onChange={e => selectUpdate(e.currentTarget.value, question)}
+            onChange={e => selectUpdate(currentQuestion, e.currentTarget.value, e, question)}
             // tabIndex="2"
 
             //rootProps={{}}
@@ -105,7 +110,7 @@ export function Options({ question, title, description }) {
                   {...register(`${question._id}`)}
                   value={`${state?.calculator?.questions[question?._id]?.answer}`}
                   placeholder="Make a selection"
-                  onChange={e => selectUpdate(e.currentTarget.value, question)}
+                  onChange={e => selectUpdate(currentQuestion, e.currentTarget.value, e, question)}
                 >
                   {optionSet.options.map(option => (
                     <option value={option.value.current} key={option._key}>
