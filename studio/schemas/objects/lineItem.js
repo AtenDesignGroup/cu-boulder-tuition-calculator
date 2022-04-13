@@ -2,7 +2,7 @@ import {FcMoneyTransfer as Icon} from 'react-icons/fc'
 
 const OptionalVal = val => {
   if (val === true) {
-    return 'Optional, '
+    return 'COA, '
   } else {
     return ''
   }
