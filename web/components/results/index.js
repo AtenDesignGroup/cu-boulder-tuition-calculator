@@ -29,7 +29,7 @@ import {
 } from '@chakra-ui/react'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Counter } from '@/components/counter'
-import { FaPencilAlt, FaPrint, FaCaretSquareLeft, FaQuestionCircle, FaCheckCircle } from 'react-icons/fa'
+import { FaPencilAlt, FaPrint, FaCaretSquareLeft, FaQuestionCircle, FaCheckCircle, FaInfoCircle } from 'react-icons/fa'
 
 export function Results({ categories, tuitionCalculator, dev }) {
   const router = useRouter()
@@ -176,11 +176,11 @@ export function Results({ categories, tuitionCalculator, dev }) {
         <Box mb={6}>
 
           <Button
-                leftIcon={<FaQuestionCircle />}
+                leftIcon={<FaInfoCircle />}
                 color={isOpen ? '#A82E26' : 'blue.600'}
                 variant="link"
                 onClick={onToggle}
-                size="xs"
+                size="sm"
                 py="12px"
                 pr="0"
                 mr="0"
@@ -193,14 +193,14 @@ export function Results({ categories, tuitionCalculator, dev }) {
               </Button>
 
           <Collapse in={isOpen} animateOpacity>
-          <Box px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3">
-          <OrderedList spacing={2} ml={1} mt={2}>
+          <Box px="24px" pt="20px" pb="20px" pl={6} bg="#fff" border="1px solid #A2A4A3">
+          <OrderedList spacing={4} ml={1} mt={2}>
           {Object.values(questions).map(question =>
           <ListItem key={question.questionID} display='flex' alignItems='baseline'>
           <ListIcon as={FaCheckCircle} color='green.500' />
 
-            <Text fontSize='sm' color='gray.600'>{question.title}:</Text>
-            <Text fontSize='sm' ml={2} color='gray.800' fontWeight='bold'>{question.answerLabel}</Text>
+            <Text fontSize='md' color='gray.600' mb={0}>{question.title}:</Text>
+            <Text fontSize='md' ml={2} color='gray.800' fontWeight='bold' mb={0}>{question.answerLabel}</Text>
 
             <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
             <NextLink href={`/question/${question.questionID}`} passHref><Link >edit</Link></NextLink>
