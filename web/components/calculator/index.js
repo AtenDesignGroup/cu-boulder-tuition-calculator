@@ -382,7 +382,7 @@ export function Calculator({ question, questions, slug, dev }) {
             fontSize="sm"
             colorScheme="blue"
           >
-            <Link href="/results"><a>Back to Results</a></Link>
+            {dev ? <Link href="/dev/results"><a>Back to Results</a></Link> :  <Link href="/results"><a>Back to Results</a></Link>}
           </Button>}
 
           </Flex>
