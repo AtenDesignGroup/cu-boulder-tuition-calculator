@@ -6,7 +6,7 @@ import updateAction from '@/hooks/updateAction'
 import { Category } from '@/components/results/category'
 
 import ReactToPrint from 'react-to-print'
-import { showArray, totalGenerator } from '@/utils/results'
+import { showArray, showGroup, showLineItems, totalGenerator } from '@/utils/results'
 import {
   Heading,
   Box,
@@ -32,11 +32,12 @@ import { Counter } from '@/components/counter'
 import { FaPencilAlt, FaPrint, FaCaretSquareLeft, FaQuestionCircle, FaCheckCircle, FaInfoCircle } from 'react-icons/fa'
 
 export function Results({ categories, tuitionCalculator, dev }) {
+  // console.log({categories})
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
-  const mainRef = useRef()
+  // const mainRef = useRef()
   const componentRef = useRef()
 
   const updateTotalSemesters = (val) => {
@@ -50,6 +51,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
       },
     })
   }
+  // console.log({categories})
 
   const filteredResults = categories
     ?.map((val) => {
@@ -57,20 +59,25 @@ export function Results({ categories, tuitionCalculator, dev }) {
         ...val,
         lineItems: val.lineItems
           .map((item) => {
+            // console.log({item})
             return {
-              ...item,
+              _key: item?._key,
+              frontEndTitle: item?.frontEndTitle,
+              description: item?.description,
+              frequency: item?.frequency,
+              optionLogicConditional: item?.optionLogicConditional,
+              optional: item?.optional,
               total: totalGenerator(item?.itemValue[0], questions),
+              groupLogic: item?.optionGroupLogics?.map((val) => showGroup(val, questions) === true),
             }
-          })
-          .filter((val) => showArray(val, questions) === true),
+          }).filter(val => showLineItems(val) === true)
       }
     })
-    .filter((val) => val.lineItems.length > 0)
+    .filter(val => val?.lineItems?.length > 0)
     .map((val) => {
       const catTotals = []
       let catTotal = 0
       val.lineItems.map((item) => {
-        // console.log(item.frequency)
         catTotals.push(
           item.frequency === 'perSemester'
             ? parseFloat(item.total) * totalSemesters
@@ -85,6 +92,47 @@ export function Results({ categories, tuitionCalculator, dev }) {
         total: catTotal,
       }
     })
+
+  //  console.log({filteredResults})
+
+
+
+
+  // const filteredResults = categories
+  //   ?.map((val) => {
+  //     return {
+  //       ...val,
+  //       lineItems: val.lineItems
+  //         .map((item) => {
+  //           return {
+  //             ...item,
+  //             total: totalGenerator(item?.itemValue[0], questions),
+  //           }
+  //         })
+  //         .filter((val) => showArray(val, questions) === true),
+  //     }
+  //   })
+  //   .filter((val) => val.lineItems.length > 0)
+  //   .map((val) => {
+  //     const catTotals = []
+  //     let catTotal = 0
+  //     val.lineItems.map((item) => {
+  //       catTotals.push(
+  //         item.frequency === 'perSemester'
+  //           ? parseFloat(item.total) * totalSemesters
+  //           : parseFloat(item.total)
+  //       )
+  //       catTotals.length > 0
+  //         ? (catTotal = catTotals.reduce((a, b) => parseFloat(a) + parseFloat(b), 0))
+  //         : (catTotal = catTotals[0])
+  //     })
+  //     return {
+  //       ...val,
+  //       total: catTotal,
+  //     }
+  //   })
+
+  //   console.log({filteredResults})
 
   const grandTotals = []
   let grandTotal = 0
@@ -176,41 +224,41 @@ export function Results({ categories, tuitionCalculator, dev }) {
         <Box mb={6}>
 
           <Button
-                leftIcon={<FaInfoCircle />}
-                color={isOpen ? '#A82E26' : 'blue.600'}
-                variant="link"
-                onClick={onToggle}
-                size="sm"
-                py="12px"
-                pr="0"
-                mr="0"
-                alignItems="end"
-                aria-expanded={isOpen ? true : false}
-                aria-label={`Your Selections`}
-                mb={2}
-              >
-                {isOpen ? 'Hide Your Selections' : 'View Your Selections'}
-              </Button>
+            leftIcon={<FaInfoCircle />}
+            color={isOpen ? '#A82E26' : 'blue.600'}
+            variant="link"
+            onClick={onToggle}
+            size="sm"
+            py="12px"
+            pr="0"
+            mr="0"
+            alignItems="end"
+            aria-expanded={isOpen ? true : false}
+            aria-label={`Your Selections`}
+            mb={2}
+          >
+            {isOpen ? 'Hide Your Selections' : 'View Your Selections'}
+          </Button>
 
           <Collapse in={isOpen} animateOpacity>
-          <Box px="24px" pt="20px" pb="20px" pl={6} bg="#fff" border="1px solid #A2A4A3">
-          <OrderedList spacing={4} ml={1} mt={2}>
-          {Object.values(questions).map(question =>
-          <ListItem key={question.questionID} display='flex' alignItems='baseline'>
-          <ListIcon as={FaCheckCircle} color='green.500' />
+            <Box px="24px" pt="20px" pb="20px" pl={6} bg="#fff" border="1px solid #A2A4A3">
+              <OrderedList spacing={4} ml={1} mt={2}>
+                {Object.values(questions).map(question =>
+                  <ListItem key={question.questionID} display='flex' alignItems='baseline'>
+                    <ListIcon as={FaCheckCircle} color='green.500' />
 
-            <Text fontSize='md' color='gray.600' mb={0}>{question.title}:</Text>
-            <Text fontSize='md' ml={2} color='gray.800' fontWeight='bold' mb={0}>{question.answerLabel}</Text>
+                    <Text fontSize='md' color='gray.600' mb={0}>{question.title}:</Text>
+                    <Text fontSize='md' ml={2} color='gray.800' fontWeight='bold' mb={0}>{question.answerLabel}</Text>
 
-            <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
-            <NextLink href={`/question/${question.questionID}`} passHref><Link >edit</Link></NextLink>
-            </Button>
+                    <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
+                      {dev ? <NextLink href={`/dev/question/${question.questionID}`} passHref><Link >edit</Link></NextLink> : <NextLink href={`/dev/question/${question.questionID}`} passHref><Link >edit</Link></NextLink> }
+                    </Button>
 
-          </ListItem>
-            )}
-        </OrderedList>
-          </Box>
-        </Collapse>
+                  </ListItem>
+                )}
+              </OrderedList>
+            </Box>
+          </Collapse>
         </Box>
 
 

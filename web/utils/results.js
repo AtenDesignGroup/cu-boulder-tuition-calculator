@@ -1,3 +1,72 @@
+export function showGroup(data, questions) {
+  const {
+    optionLogicConditional
+  } = data
+  let showQuestion = []
+  let returnVal = false
+  data?.optionLogics?.map(logic => {
+    // String Logic
+    if (logic._type === 'optionLogic') {
+      if (
+        questions[logic.logicSourceQuestion._ref]?.answer === logic.logicSourceValue
+      ) {
+        showQuestion.push('show')
+      } else {
+        showQuestion.push('hide')
+      }
+      // Numeric Operational Logic
+    } else if (logic._type === 'optionNumericLogic') {
+      let questionVal = Number(
+        questions[logic?.logicSourceQuestion?._ref]?.answer,
+      )
+      let logicVal = logic?.operatorValue
+      let mathOperation = logic?.mathOperation
+      showQuestion.push(operatorMagic(questionVal, mathOperation, logicVal))
+    } else {
+      showQuestion.push('hide')
+    }
+    return showQuestion
+  })[0]
+
+  if(!optionLogicConditional) {
+    returnVal = false
+  } else if (showQuestion.length < 1) {
+    returnVal = true
+  } else if (optionLogicConditional === null || !optionLogicConditional) {
+    returnVal = true
+  } else if (optionLogicConditional === 'and') {
+    showQuestion.includes('hide') ? (returnVal = false) : (returnVal = true)
+  } else if (optionLogicConditional === 'or') {
+    showQuestion.includes('show') ? (returnVal = true) : (returnVal = false)
+  }
+  return returnVal
+}
+
+export function showLineItems(data) {
+  // console.log({data})
+  const {
+    optionLogicConditional,
+    groupLogic
+  } = data
+
+  let returnVal = false
+
+  if(!optionLogicConditional) {
+    returnVal = false
+  } else if (!groupLogic || groupLogic?.length < 1) {
+    returnVal = false
+  } else if (optionLogicConditional === null || !optionLogicConditional) {
+    returnVal = false
+  } else if (optionLogicConditional === 'and') {
+    groupLogic.includes(false) ? (returnVal = false) : (returnVal = true)
+  } else if (optionLogicConditional === 'or') {
+    groupLogic.includes(true) ? (returnVal = true) : (returnVal = false)
+  }
+  return returnVal
+}
+
+
+
 export function showArray(data, questions) {
   const {
     optionLogicConditional
