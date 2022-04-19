@@ -223,42 +223,36 @@ export function Results({ categories, tuitionCalculator, dev }) {
 
         <Box mb={6}>
 
-          <Button
-            leftIcon={<FaInfoCircle />}
-            color={isOpen ? '#A82E26' : 'blue.600'}
-            variant="link"
-            onClick={onToggle}
-            size="sm"
-            py="12px"
-            pr="0"
-            mr="0"
-            alignItems="end"
-            aria-expanded={isOpen ? true : false}
-            aria-label={`Your Selections`}
-            mb={2}
-          >
-            {isOpen ? 'Hide Your Selections' : 'View Your Selections'}
-          </Button>
+        <Button
+          leftIcon={<FaInfoCircle />}
+          variant="solid"
+          fontSize="sm"
+          onClick={onToggle}
+          colorScheme="blue"
+          mr={{ base: '24px' }}
+          mb="6"
+        >
+          {isOpen ? 'Hide Your Selections' : 'View and Edit Your Selections'}
+        </Button>
+        <Collapse in={isOpen} animateOpacity>
+          <Box px="24px" pt="20px" pb="20px" pl={6} bg="#fff" border="1px solid #A2A4A3">
+            <OrderedList spacing={4} ml={1} mt={2}>
+              {Object.values(questions).map(question =>
+                <ListItem key={question.questionID} display='flex' alignItems='baseline'>
+                  <ListIcon as={FaCheckCircle} color='green.500' />
 
-          <Collapse in={isOpen} animateOpacity>
-            <Box px="24px" pt="20px" pb="20px" pl={6} bg="#fff" border="1px solid #A2A4A3">
-              <OrderedList spacing={4} ml={1} mt={2}>
-                {Object.values(questions).map(question =>
-                  <ListItem key={question.questionID} display='flex' alignItems='baseline'>
-                    <ListIcon as={FaCheckCircle} color='green.500' />
+                  <Text fontSize='md' color='gray.600' mb={0}>{question.title}:</Text>
+                  <Text fontSize='md' ml={2} color='gray.800' fontWeight='bold' mb={0}>{question.answerLabel}</Text>
 
-                    <Text fontSize='md' color='gray.600' mb={0}>{question.title}:</Text>
-                    <Text fontSize='md' ml={2} color='gray.800' fontWeight='bold' mb={0}>{question.answerLabel}</Text>
+                  <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
+                    <NextLink href={`/question/${question.questionID}`} passHref><Link >edit</Link></NextLink>
+                  </Button>
 
-                    <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
-                      {dev ? <NextLink href={`/dev/question/${question.questionID}`} passHref><Link >edit</Link></NextLink> : <NextLink href={`/dev/question/${question.questionID}`} passHref><Link >edit</Link></NextLink> }
-                    </Button>
-
-                  </ListItem>
-                )}
-              </OrderedList>
-            </Box>
-          </Collapse>
+                </ListItem>
+              )}
+            </OrderedList>
+          </Box>
+        </Collapse>
         </Box>
 
 
