@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
-
+import NextLink from "next/link"
 import { useStateMachine } from 'little-state-machine'
 import updateAction from '@/hooks/updateAction'
 import { isStringEmpty } from '@/utils/helpers'
@@ -12,7 +11,7 @@ import { motion } from 'framer-motion'
 
 import { Question } from '@/components/calculator/question'
 
-import { Flex, Heading, Box, Stack, Button, Spinner, Progress, Text } from '@chakra-ui/react'
+import { Flex, Heading, Box, Stack, Button, Spinner, Progress, Text, Link } from '@chakra-ui/react'
 // import { HiChevronRight, HiChevronLeft } from 'react-icons/hi'
 import { FaCaretSquareLeft, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaCaretSquareRight } from 'react-icons/fa'
 
@@ -208,16 +207,14 @@ export function Calculator({ question, questions, slug, dev }) {
         }
       })
       dev ?
-      router.push(
-        `/dev/question/${
-          i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
-        }`
-      ) :
-      router.push(
-        `/question/${
-          i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
-        }`
-      )
+        router.push(
+          `/dev/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+          }`
+        ) :
+        router.push(
+          `/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+          }`
+        )
     }
   }
 
@@ -250,16 +247,14 @@ export function Calculator({ question, questions, slug, dev }) {
       }
     })
     dev ?
-    router.push(
-      `/dev/question/${
-        i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
-      }`
-    ) :
-    router.push(
-      `/question/${
-        i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
-      }`
-    )
+      router.push(
+        `/dev/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+        }`
+      ) :
+      router.push(
+        `/question/${i === undefined || i > questionLength ? questions[currentQuestion]._id : questions[i]._id
+        }`
+      )
   }
 
   // Button function to show the Results, only seen on the last question
@@ -325,7 +320,7 @@ export function Calculator({ question, questions, slug, dev }) {
             questions={questions}
           />
 
-          <Flex direction={{base: "column", md: "row"}}  alignItems={{base: "flex-start", md: "center"}} >
+          <Flex direction={{ base: "column", md: "row" }} alignItems={{ base: "flex-start", md: "center" }} >
             {currentQuestion > 0 && (
               <Button
                 onClick={() => prevQuestion()}
@@ -337,8 +332,8 @@ export function Calculator({ question, questions, slug, dev }) {
                 _hover={{ background: '#565A5C' }}
                 _active={{ background: '#565A5C' }}
                 _disabled={{ background: '#A2A4A3', shadow: 'none', cursor: 'not-allowed' }}
-                mr={{ base: "0", md: "24px"}}
-                mb={{ base: "24px", md: "0"}}
+                mr={{ base: "0", md: "24px" }}
+                mb={{ base: "24px", md: "0" }}
               >
                 Previous Question
               </Button>
@@ -355,7 +350,7 @@ export function Calculator({ question, questions, slug, dev }) {
                 color="#fff"
                 _hover={{ background: 'blue.600' }}
                 _active={{ background: 'blue.500' }}
-                _disabled={{ background: '#A2A4A3', shadow: 'none', cursor: 'not-allowed'   }}
+                _disabled={{ background: '#A2A4A3', shadow: 'none', cursor: 'not-allowed' }}
                 //tabIndex="4"
                 mr="24px"
               >
@@ -375,15 +370,20 @@ export function Calculator({ question, questions, slug, dev }) {
               onClick={() => StartOver()}
             >Start Over</Button>
 
-            {(showResults && !atTheLastQuestion) &&
-            <Button
-            rightIcon={<FaCaretSquareRight />}
-            variant="link"
-            fontSize="sm"
-            colorScheme="blue"
-          >
-            <Link href="/results"><a>Back to Results</a></Link>
-          </Button>}
+            {(showResults && !atTheLastQuestion && !dev) &&
+              <NextLink href={`/results`} passHref>
+                <Link fontSize="sm" colorScheme="blue" display="flex" fontWeight="bold" color="blue.500" alignItems="center" ml={3}>
+                  Back to Results
+                </Link>
+              </NextLink>
+            }
+            {(showResults && !atTheLastQuestion && dev) &&
+              <NextLink href={`/dev/results`} passHref>
+                <Link fontSize="sm" colorScheme="blue" display="flex" fontWeight="bold" color="blue.500" alignItems="center" ml={3}>
+                  Back to Results
+                </Link>
+              </NextLink>
+            }
 
           </Flex>
         </motion.div>

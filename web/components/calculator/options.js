@@ -50,6 +50,7 @@ export function Options({ question, title, description }) {
           ...state.calculator.questions,
           [question._id]: {
             title: question.title,
+            shortTitle: question?.shortTitle,
             answer: val ? val : null,
             answerLabel: label ? label: null,
             currentQuestion: currentQuestion,

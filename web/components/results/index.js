@@ -114,7 +114,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
       router.push(`/`)
     }
   }
-
+  console.log({questions})
   return (
     <Box mb={10} className="printNoMargins">
       <Box ref={componentRef}>
@@ -183,6 +183,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
             colorScheme="blue"
             mr={{ base: '24px' }}
             mb="6"
+            aria-expanded={isOpen ? 'true' : 'false'}
           >
             {isOpen ? 'Hide Your Selections' : 'View and Edit Your Selections'}
           </Button>
@@ -190,16 +191,16 @@ export function Results({ categories, tuitionCalculator, dev }) {
             <Box px="24px" pt="20px" pb="20px" pl={6} bg="#fff" border="1px solid #A2A4A3">
               <OrderedList spacing={4} ml={1} mt={2}>
                 {Object.values(questions).map(question =>
-                  <ListItem key={question.questionID} display='flex' alignItems='baseline'>
+                  <ListItem key={question.questionID} display='flex' alignItems='baseline' flexWrap="wrap">
                     <ListIcon as={FaCheckCircle} color='green.500' />
-
                     <Text fontSize='md' color='gray.600' mb={0}>{question.title}:</Text>
                     <Text fontSize='md' ml={2} color='gray.800' fontWeight='bold' mb={0}>{question.answerLabel}</Text>
-
-                    <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue" ml={3} display='flex' alignItems='baseline'>
-                      <NextLink href={`/question/${question.questionID}`} passHref><Link >edit</Link></NextLink>
-                    </Button>
-
+                    <NextLink href={`${dev ? '/dev/' : '/'}question/${question.questionID}`} passHref>
+                    <Link fontSize="sm" colorScheme="blue" display="flex" fontWeight="bold" color="blue.500" alignItems="center" ml={3} aria-label={`Edit ${question?.shortTitle}`}>
+                      <Box marginRight="6px" aria-hidden="true"><FaPencilAlt /> </Box>
+                      edit
+                    </Link>
+                    </NextLink>
                   </ListItem>
                 )}
               </OrderedList>
@@ -249,14 +250,21 @@ export function Results({ categories, tuitionCalculator, dev }) {
             content={() => componentRef.current}
           />
           {questions && Object.keys(questions).length > 0 && dev && (
-            <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
-              <NextLink href={`/dev/question/${Object.keys(questions)[0]}`} passHref><Link>Edit Answers</Link></NextLink>
-            </Button>
+            <NextLink href={`/dev/question/${Object.keys(questions)[0]}`} passHref>
+            <Link fontSize="sm" colorScheme="blue" display="flex" fontWeight="bold" color="blue.500" alignItems="center">
+              <Box marginRight="6px" aria-hidden="true"><FaPencilAlt /> </Box>
+              Edit Answers
+            </Link>
+          </NextLink>
+
           )}
           {questions && Object.keys(questions).length > 0 && !dev && (
-            <Button leftIcon={<FaPencilAlt />} variant="link" fontSize="sm" colorScheme="blue">
-              <NextLink href={`/question/${Object.keys(questions)[0]}`} passHref><Link>Edit Answers</Link></NextLink>
-            </Button>
+              <NextLink href={`/question/${Object.keys(questions)[0]}`} passHref>
+                <Link fontSize="sm" colorScheme="blue" display="flex" fontWeight="bold" color="blue.500" alignItems="center">
+                  <Box marginRight="6px" aria-hidden="true"><FaPencilAlt /> </Box>
+                  Edit Answers
+                </Link>
+              </NextLink>
           )}
         </Flex>
 

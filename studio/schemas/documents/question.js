@@ -1,5 +1,3 @@
-import React from 'react'
-// const Icon = () => <span style={{fontSize: '1.5rem'}}>{'?'}</span>
 import {FcQuestions} from 'react-icons/fc'
 
 export default {
@@ -19,10 +17,17 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'shortTitle',
+      type: 'string',
+      title: 'Short Title',
+      validation: Rule => Rule.required(),
+      description: 'This currently is displayed in the Results screen next to the edit links for each question.'
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'This is used to setup the page URL and should not be changed after it is initiall setup or it might break links.',
+      description: 'This is used to setup the page URL and should not be changed after it is initial setup or it might break links.',
       options: {
         source: 'title',
         maxLength: 96

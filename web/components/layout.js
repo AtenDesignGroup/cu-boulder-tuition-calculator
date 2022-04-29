@@ -29,7 +29,7 @@ export function Layout({ children, siteSettings, dev, position, totalQuestions, 
         description={siteSettings?.seoSettings?.description || ''}
       />
       {dev && (
-        <Alert status="warning" w="100%" position="fixed" top="0">
+        <Alert status="warning" w="100%" position="fixed" top="0" zIndex="100">
           <AlertIcon />
           You are currently using the dev app.
         </Alert>
