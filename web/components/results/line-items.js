@@ -23,7 +23,7 @@ export function LineItems({ data, itemTotal }) {
     optional,
   } = data
 
-  // console.log(showArray(data))
+  // console.log({itemTotal})
 
   return (
     <>

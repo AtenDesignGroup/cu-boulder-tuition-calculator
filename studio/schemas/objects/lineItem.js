@@ -88,10 +88,18 @@ export default {
       name: 'optionLogics',
       title: 'Logic',
       type: 'array',
-      description:
-        'If used, the item would apply if all true. If you do not add any logic, the item will always apply to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
+      description: 'If used, the item would apply if all true. If you do not add any logic, the item will always apply to everyone. NOTE! This always uses AND logic, so every logic condition needs to be true.',
       of: [{type: 'optionLogic'}, {type: 'optionNumericLogic'}]
     },
+
+    {
+      name: 'optionGroupLogics',
+      title: 'Group Logic',
+      type: 'array',
+      description: 'This groups logic together applying the same logic condition (either using AND or OR).',
+      of: [{type: 'optionGroupLogics'}]
+    },
+
     {
       title: 'Logic Conditional',
       name: 'optionLogicConditional',
@@ -99,8 +107,8 @@ export default {
       validation: Rule => Rule.required(),
       options: {
         list: [
-          {title: 'AND - All show logic conditons need to be true', value: 'and'},
-          {title: 'OR - Only ONE of the show logic conditons need to be true', value: 'or'}
+          {title: 'AND - All show logic conditions need to be true', value: 'and'},
+          {title: 'OR - Only ONE of the show logic conditions need to be true', value: 'or'}
         ]
       }
     }

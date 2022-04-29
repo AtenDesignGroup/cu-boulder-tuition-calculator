@@ -6,7 +6,7 @@ import updateAction from '@/hooks/updateAction'
 import { Category } from '@/components/results/category'
 
 import ReactToPrint from 'react-to-print'
-import { showArray, totalGenerator } from '@/utils/results'
+import { showArray, showGroup, showLineItems, totalGenerator } from '@/utils/results'
 import {
   Heading,
   Box,
@@ -32,11 +32,12 @@ import { Counter } from '@/components/counter'
 import { FaPencilAlt, FaPrint, FaCaretSquareLeft, FaQuestionCircle, FaCheckCircle, FaInfoCircle } from 'react-icons/fa'
 
 export function Results({ categories, tuitionCalculator, dev }) {
+  // console.log({categories})
   const router = useRouter()
   const { isOpen, onToggle } = useDisclosure()
   const { actions, state } = useStateMachine({ updateAction })
   const { questions, results, totalSemesters } = state.calculator
-  const mainRef = useRef()
+  // const mainRef = useRef()
   const componentRef = useRef()
 
   const updateTotalSemesters = (val) => {
@@ -50,6 +51,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
       },
     })
   }
+  // console.log({categories})
 
   const filteredResults = categories
     ?.map((val) => {
@@ -57,20 +59,25 @@ export function Results({ categories, tuitionCalculator, dev }) {
         ...val,
         lineItems: val.lineItems
           .map((item) => {
+            // console.log({item})
             return {
-              ...item,
+              _key: item?._key,
+              frontEndTitle: item?.frontEndTitle,
+              description: item?.description,
+              frequency: item?.frequency,
+              optionLogicConditional: item?.optionLogicConditional,
+              optional: item?.optional,
               total: totalGenerator(item?.itemValue[0], questions),
+              groupLogic: item?.optionGroupLogics?.map((val) => showGroup(val, questions) === true),
             }
-          })
-          .filter((val) => showArray(val, questions) === true),
+          }).filter(val => showLineItems(val) === true)
       }
     })
-    .filter((val) => val.lineItems.length > 0)
+    .filter(val => val?.lineItems?.length > 0)
     .map((val) => {
       const catTotals = []
       let catTotal = 0
       val.lineItems.map((item) => {
-        // console.log(item.frequency)
         catTotals.push(
           item.frequency === 'perSemester'
             ? parseFloat(item.total) * totalSemesters
@@ -85,6 +92,47 @@ export function Results({ categories, tuitionCalculator, dev }) {
         total: catTotal,
       }
     })
+
+  //  console.log({filteredResults})
+
+
+
+
+  // const filteredResults = categories
+  //   ?.map((val) => {
+  //     return {
+  //       ...val,
+  //       lineItems: val.lineItems
+  //         .map((item) => {
+  //           return {
+  //             ...item,
+  //             total: totalGenerator(item?.itemValue[0], questions),
+  //           }
+  //         })
+  //         .filter((val) => showArray(val, questions) === true),
+  //     }
+  //   })
+  //   .filter((val) => val.lineItems.length > 0)
+  //   .map((val) => {
+  //     const catTotals = []
+  //     let catTotal = 0
+  //     val.lineItems.map((item) => {
+  //       catTotals.push(
+  //         item.frequency === 'perSemester'
+  //           ? parseFloat(item.total) * totalSemesters
+  //           : parseFloat(item.total)
+  //       )
+  //       catTotals.length > 0
+  //         ? (catTotal = catTotals.reduce((a, b) => parseFloat(a) + parseFloat(b), 0))
+  //         : (catTotal = catTotals[0])
+  //     })
+  //     return {
+  //       ...val,
+  //       total: catTotal,
+  //     }
+  //   })
+
+  //   console.log({filteredResults})
 
   const grandTotals = []
   let grandTotal = 0
