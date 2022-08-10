@@ -37,16 +37,19 @@ export function Options({ question, title, description }) {
     let result = false;
     if(q?.optionLogicConditional === 'or') {
       result = Array.isArray(showQuestion)
-      ? !showQuestion.includes(element => element === true)
+      ? !showQuestion.some(element => element === true)
       : showQuestion
     } else if(q?.optionLogicConditional === 'and'){
       result = Array.isArray(showQuestion)
-      ? !showQuestion.some(element => element === false)
+      ? !showQuestion.every(element => element === true)
       : showQuestion
     } else {
       result = false
     }
 
+    // console.log(q?.optionLogicConditional)
+    // console.log({result})
+    // console.log({showQuestion})
     return result
   }
   // Update State when a Select value has been updated
@@ -71,7 +74,7 @@ export function Options({ question, title, description }) {
       }
     })
   }
-
+  // console.log({question})
   return (
     <>
       {optionSetsLength === 1 ? (
