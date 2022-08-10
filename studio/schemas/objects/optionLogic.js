@@ -17,6 +17,20 @@ export default {
       to: [{type: 'question'}],
       validation: Rule => Rule.required()
     },
+    // {
+    //   name: 'logicSourceSelection',
+    //   type: 'string',
+    //   title: 'Selection Value',
+    //   description: 'When this question equals this value (make sure you use the Machine Value), show these options. You can only enter one value.',
+    //   // validation: Rule => Rule.required(),
+    //   hidden: ({parent}) => {
+    //     if (parent?.logicSourceQuestion) {
+    //       return false
+    //     } else {
+    //       return true
+    //     }
+    //   }
+    // },
     {
       name: 'logicSourceValue',
       type: 'string',

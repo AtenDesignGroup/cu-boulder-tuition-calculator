@@ -16,6 +16,7 @@ import { Counter } from '@/components/counter'
 export function Category({ category, questions }) {
   const { isOpen, onToggle } = useDisclosure()
 // suppressHydrationWarning
+
   return (
     <Box key={category._id} mb={10} p="30px" backgroundColor="#F7F6F7" className="printNoMargins itemOuterWrapper">
       <Flex direction={{base: "column", md: "row"}}  alignItems={{base: "flex-start", md: "center"}} mb={4} className="printNoMargins" justifyContent="space-between" borderBottom={{base: "solid 1px #ccc", md: "none"}} pb={{base: '3', md: "0"}}>
@@ -64,7 +65,8 @@ export function Category({ category, questions }) {
                 data={lineItem}
                 catID={category._id}
                 catTitle={category.title}
-                itemTotal={totalGenerator(lineItem?.itemValue[0], questions)}
+                // itemTotal={totalGenerator(lineItem, questions)}
+                itemTotal={lineItem?.total}
               />
             )
           })

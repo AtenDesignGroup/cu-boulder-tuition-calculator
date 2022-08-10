@@ -17,8 +17,8 @@ export default function Home({ pageData }) {
 
   const siteSettings = pageData[0] && pageData[0].siteSettings
   const tuitionCalculator = pageData[0] && pageData[0].tuitionCalculator
-  const { questions } = tuitionCalculator
-  console.log(questions._id)
+  const { questions } = tuitionCalculator;
+
   function GetStarted() {
     ga.event({
       action: 'button',
@@ -61,6 +61,6 @@ export async function getStaticProps({ preview = false }) {
   const pageData = await getTuitionHome(preview)
   return {
     props: { pageData, preview },
-    revalidate: 10,
+    revalidate: 2,
   }
 }

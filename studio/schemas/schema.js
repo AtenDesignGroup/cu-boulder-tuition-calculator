@@ -27,10 +27,11 @@ import option from './objects/option'
 import optionLogic from './objects/optionLogic'
 import category from './documents/category'
 import lineItem from './objects/lineItem'
+import groupLineItem from './objects/groupLineItem'
 import simpleValue from './objects/simpleValue'
 import calculatedValue from './objects/calculatedValue'
 import optionNumericLogic from './objects/optionNumericLogic'
-
+import optionGroupLogics from './objects/optionGroupLogics'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -59,8 +60,10 @@ export default createSchema({
     optionSet,
     optionLogic,
     lineItem,
+    groupLineItem,
     simpleValue,
     calculatedValue,
-    optionNumericLogic
+    optionNumericLogic,
+    optionGroupLogics
   ])
 })

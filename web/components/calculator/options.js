@@ -31,11 +31,22 @@ export function Options({ question, title, description }) {
           logic =>
             state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer ===
             logic.logicSourceValue
+
         )
     }
-    let result = Array.isArray(showQuestion)
+    let result = false;
+    if(q?.optionLogicConditional === 'or') {
+      result = Array.isArray(showQuestion)
+      ? !showQuestion.includes(element => element === true)
+      : showQuestion
+    } else if(q?.optionLogicConditional === 'and'){
+      result = Array.isArray(showQuestion)
       ? !showQuestion.some(element => element === false)
       : showQuestion
+    } else {
+      result = false
+    }
+
     return result
   }
   // Update State when a Select value has been updated
@@ -97,6 +108,7 @@ export function Options({ question, title, description }) {
           </Select>
         </FormControl>
       ) : (
+        // Multiple Option Sets
         question?.optionSets.map(
           optionSet =>
             questionLogic(optionSet) && (
