@@ -62,7 +62,7 @@ export function LineItems({ data, itemTotal, dev }) {
             zIndex: '0'
           }}}
         >
-          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}} suppressHydrationWarning={true}>
+          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}} suppressHydrationWarning={true}  onClick={() => {navigator.clipboard.writeText(title)}}>
             {frontEndTitle}
           </Heading>
 
@@ -127,8 +127,6 @@ export function LineItems({ data, itemTotal, dev }) {
         {dev && <Flex flex='none' width='100%' marginTop='1'>  <small style={{fontSize: '12px', color: '#6b6b6b'}}>{title}</small></Flex>}
 
       </Flex>
-
-
 
       {description && (
         <Collapse in={isOpen} animateOpacity>
