@@ -13,7 +13,7 @@ import { MdInfo as InfoIcon } from 'react-icons/md'
 import { Text as BodyText } from '@/components/serializers/text'
 import { Counter } from '@/components/counter'
 
-export function Category({ category, questions }) {
+export function Category({ category, questions, dev}) {
   const { isOpen, onToggle } = useDisclosure()
 // suppressHydrationWarning
 
@@ -67,6 +67,7 @@ export function Category({ category, questions }) {
                 catTitle={category.title}
                 // itemTotal={totalGenerator(lineItem, questions)}
                 itemTotal={lineItem?.total}
+                dev={dev}
               />
             )
           })

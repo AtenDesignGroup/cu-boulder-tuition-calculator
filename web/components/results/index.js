@@ -211,7 +211,7 @@ export function Results({ categories, tuitionCalculator, dev }) {
 
         <Box mb={10} className="printNoMargins" pt={0}>
           {filteredResults.map((category) => (
-            <Category category={category} key={category._id} questions={questions} />
+            <Category category={category} key={category._id} questions={questions} dev={dev} />
           ))}
         </Box>
       </Box>
