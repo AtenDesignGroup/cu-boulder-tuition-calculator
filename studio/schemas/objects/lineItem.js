@@ -123,7 +123,8 @@ export default {
       logic: 'optionLogics'
     },
     prepare (selection) {
-      const {title, frontEndTitle, value, optional, frequency, logic} = selection
+      // frontEndTitle
+      const {title, value, optional, frequency, logic} = selection
       return {
         title: title,
         subtitle: `${OptionalVal(optional)} $${value || 0} - ${LogicVal(

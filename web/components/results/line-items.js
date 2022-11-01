@@ -13,7 +13,7 @@ import { MdInfo as InfoIcon } from 'react-icons/md'
 
 import { capitalize } from '@/utils/results'
 
-export function LineItems({ data, itemTotal }) {
+export function LineItems({ data, itemTotal, dev }) {
   const { isOpen, onToggle } = useDisclosure()
 
   const {
@@ -21,6 +21,7 @@ export function LineItems({ data, itemTotal }) {
     frontEndTitle,
     frequency,
     optional,
+    title
   } = data
 
   // console.log({itemTotal})
@@ -36,8 +37,10 @@ export function LineItems({ data, itemTotal }) {
         className="printNoMargins itemInnerWrapper"
         width="100%"
         borderBottom={{base: "solid 1px #ccc", md: "none"}}
+        flexWrap={{ base: 'wrap'}}
       >
         <Flex
+         flex={{base: '1'}}
           flexDir={{base: "column", lg: "row"}}
           alignItems={{base: "start", lg: "center"}}
           justifyContent="start"
@@ -59,7 +62,7 @@ export function LineItems({ data, itemTotal }) {
             zIndex: '0'
           }}}
         >
-          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}} suppressHydrationWarning={true}>
+          <Heading size="md" as="h3" background="#F7F6F7" zIndex="1" pr={{md: "24px"}} suppressHydrationWarning={true}  onClick={() => {navigator.clipboard.writeText(title)}}>
             {frontEndTitle}
           </Heading>
 
@@ -120,6 +123,9 @@ export function LineItems({ data, itemTotal }) {
             )}
           </Box>
         </Flex>
+
+        {dev && <Flex flex='none' width='100%' marginTop='1'>  <small style={{fontSize: '12px', color: '#6b6b6b'}}>{title}</small></Flex>}
+
       </Flex>
 
       {description && (

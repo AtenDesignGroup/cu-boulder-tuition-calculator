@@ -29,29 +29,29 @@ export function Options({ question, title, description }) {
         q?.optionLogics &&
         q?.optionLogics?.map(
           logic =>
-            state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer ===
-            logic.logicSourceValue
-
+          state?.calculator?.questions[logic.logicSourceQuestion._ref]?.answer ===
+          logic.logicSourceValue
         )
     }
     let result = false;
     if(q?.optionLogicConditional === 'or') {
       result = Array.isArray(showQuestion)
-      ? !showQuestion.some(element => element === true)
+      ? showQuestion.some(element => element === true)
       : showQuestion
     } else if(q?.optionLogicConditional === 'and'){
       result = Array.isArray(showQuestion)
-      ? !showQuestion.every(element => element === true)
+      ? !showQuestion.some(element => element === false)
       : showQuestion
-    } else {
-      result = false
     }
 
-    // console.log(q?.optionLogicConditional)
-    // console.log({result})
-    // console.log({showQuestion})
-    return result
+    return {
+      ...q,
+      show: result
+    }
   }
+
+  const options = question?.optionSets.map(optionSet => questionLogic(optionSet)).filter(q => q.show)
+
   // Update State when a Select value has been updated
   const selectUpdate = (questionNumber, val, e, question) => {
     let index = e.nativeEvent.target.selectedIndex;
@@ -74,7 +74,7 @@ export function Options({ question, title, description }) {
       }
     })
   }
-  // console.log({question})
+
   return (
     <>
       {optionSetsLength === 1 ? (
@@ -111,11 +111,12 @@ export function Options({ question, title, description }) {
           </Select>
         </FormControl>
       ) : (
-        // Multiple Option Sets
-        question?.optionSets.map(
+        // Multiple Option Sets - questionLogic(optionSet)
+        options?.map(
           optionSet =>
-            questionLogic(optionSet) && (
+            true && (
               <FormControl id={optionSet._key} key={optionSet._key} mb="6">
+
                 <FormLabel>
                   <Heading mb="6">{title}</Heading>
                 </FormLabel>
