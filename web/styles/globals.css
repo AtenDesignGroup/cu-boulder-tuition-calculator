@@ -1,23 +1,30 @@
 .chakra-select__icon-wrapper {
-  background: #CFB87C;
-  border: 1px solid #A2A4A3;
+  background: #cfb87c;
+  border: 1px solid #a2a4a3;
   width: 2.5rem !important;
   right: 0 !important;
 }
 
-.itemOuterWrapper  .itemInnerWrapper:nth-last-child(2),
-.itemOuterWrapper  .itemInnerWrapper:nth-last-child(1) {
+.itemOuterWrapper .itemInnerWrapper:nth-last-child(2),
+.itemOuterWrapper .itemInnerWrapper:nth-last-child(1) {
   border-bottom: none !important;
 }
-
 
 /* button, input[type=button]:hover {
   background-color:#0277bd !important;
 } */
-button[aria-disabled='true'], [type=button][aria-disabled='true']:hover:disabled {
-  background: #A2A4A3 !important;
+button[aria-disabled='true'],
+[type='button'][aria-disabled='true']:hover:disabled {
+  background: #a2a4a3 !important;
 }
 
+.description a {
+  color: #005180;
+  text-decoration: underline;
+}
+.description a:hover {
+  text-decoration: none;
+}
 
 .visuallyHidden {
   border: 0px;
@@ -48,7 +55,8 @@ button[aria-disabled='true'], [type=button][aria-disabled='true']:hover:disabled
 } */
 
 @media print {
-  html, body {
+  html,
+  body {
     height: initial !important;
     overflow: initial !important;
     -webkit-print-color-adjust: exact;
@@ -72,7 +80,7 @@ button[aria-disabled='true'], [type=button][aria-disabled='true']:hover:disabled
 @media print {
   h2 {
     font-size: var(--chakra-fontSizes-2xl) !important;
-    margin-top: .5rem !important;
+    margin-top: 0.5rem !important;
   }
   h3 {
     font-size: var(--chakra-fontSizes-md) !important;
@@ -82,12 +90,12 @@ button[aria-disabled='true'], [type=button][aria-disabled='true']:hover:disabled
     order: 2 !important;
   }
   .printNoMargins {
-    margin-bottom: .7rem !important;
+    margin-bottom: 0.7rem !important;
   }
   .printBadge {
-    font-size: .60rem !important;
-    order: 1  !important;
-    margin-right: .75rem  !important;
+    font-size: 0.6rem !important;
+    order: 1 !important;
+    margin-right: 0.75rem !important;
   }
   .printPriceWrapper {
     flex-direction: row !important;
@@ -114,8 +122,6 @@ button[aria-disabled='true'], [type=button][aria-disabled='true']:hover:disabled
     top: 0;
   }
 }
-
-
 
 @page {
   size: auto;
