@@ -25,8 +25,8 @@ export function LineItems({ data, itemTotal, dev }) {
   } = data
 
 
-  function Description(description) {
-    if(description?.description?.length === 1 && description?.description[0]?.children[0]?.text === ''){
+  function Description({description}) {
+    if(description?.length === 1 && description[0]?.children[0]?.text === ''){
       return null
     } else {
       return (
@@ -39,8 +39,8 @@ export function LineItems({ data, itemTotal, dev }) {
     }
   }
 
-  function DescriptionButton(description) {
-    if(description?.description?.length === 1 && description?.description[0]?.children[0]?.text === ''){
+  function DescriptionButton({description}) {
+    if(description?.length === 1 && description[0]?.children[0]?.text === ''){
       return null
     } else {
       return (

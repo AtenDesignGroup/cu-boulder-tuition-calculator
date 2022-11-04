@@ -17,6 +17,44 @@ export function Category({ category, questions, dev}) {
   const { isOpen, onToggle } = useDisclosure()
 // suppressHydrationWarning
 
+function Description({description}) {
+  if(description?.length === 1 && description[0]?.children[0]?.text === ''){
+    return null
+  } else {
+    return (
+      <Collapse in={isOpen} animateOpacity>
+          <Box px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3" className='description'>
+            <BodyText blocks={description} />
+          </Box>
+        </Collapse>
+    )
+  }
+}
+
+function DescriptionButton({description, title}) {
+  if(description?.length === 1 && description[0]?.children[0]?.text === ''){
+    return null
+  } else {
+    return (
+      <Button
+        leftIcon={<InfoIcon />}
+        color={isOpen ? '#A82E26' : 'blue.600'}
+        variant="link"
+        onClick={onToggle}
+        size="xs"
+        py="12px"
+        pr="0"
+        mr="0"
+        alignItems="end"
+        aria-expanded={isOpen ? true : false}
+        aria-label={`${title} info`}
+        >
+        {isOpen ? 'Close' : 'Info'}
+        </Button>
+    )
+  }
+}
+
   return (
     <Box key={category._id} mb={10} p="30px" backgroundColor="#F7F6F7" className="printNoMargins itemOuterWrapper">
       <Flex direction={{base: "column", md: "row"}}  alignItems={{base: "flex-start", md: "center"}} mb={4} className="printNoMargins" justifyContent="space-between" borderBottom={{base: "solid 1px #ccc", md: "none"}} pb={{base: '3', md: "0"}}>
@@ -32,17 +70,18 @@ export function Category({ category, questions, dev}) {
 
           <Box minW="52px" order="3" textAlign="right" ml="24px">
             {category?.description && (
-              <Button
-                leftIcon={<InfoIcon />}
-                color={isOpen ? '#A82E26' : 'blue.600'}
-                variant="link"
-                onClick={onToggle}
-                fontSize="xs"
-                aria-expanded={isOpen ? true : false}
-                aria-label={`${category.title} info`}
-              >
-                {isOpen ? 'Close' : 'Info'}
-              </Button>
+              // <Button
+              //   leftIcon={<InfoIcon />}
+              //   color={isOpen ? '#A82E26' : 'blue.600'}
+              //   variant="link"
+              //   onClick={onToggle}
+              //   fontSize="xs"
+              //   aria-expanded={isOpen ? true : false}
+              //   aria-label={`${category.title} info`}
+              // >
+              //   {isOpen ? 'Close' : 'Info'}
+              // </Button>
+              <DescriptionButton description={category?.description} title={category?.title} />
             )}
           </Box>
 
@@ -50,12 +89,9 @@ export function Category({ category, questions, dev}) {
       </Flex>
 
       {category?.description && (
-        <Collapse in={isOpen} animateOpacity>
-          <Box mb="6" px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3">
-            <BodyText blocks={category?.description} />
-          </Box>
-        </Collapse>
+        <Description description={category?.description} />
       )}
+
       { ' ' }
       {category.lineItems
           .map(lineItem => {
