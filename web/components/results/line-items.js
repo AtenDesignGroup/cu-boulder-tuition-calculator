@@ -24,7 +24,44 @@ export function LineItems({ data, itemTotal, dev }) {
     title
   } = data
 
-  // console.log({itemTotal})
+
+  function Description(description) {
+    if(description?.description?.length === 1 && description?.description[0]?.children[0]?.text === ''){
+      return null
+    } else {
+      return (
+        <Collapse in={isOpen} animateOpacity>
+            <Box px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3" className='description'>
+              <BodyText blocks={description} />
+            </Box>
+          </Collapse>
+      )
+    }
+  }
+
+  function DescriptionButton(description) {
+    if(description?.description?.length === 1 && description?.description[0]?.children[0]?.text === ''){
+      return null
+    } else {
+      return (
+        <Button
+          leftIcon={<InfoIcon />}
+          color={isOpen ? '#A82E26' : 'blue.600'}
+          variant="link"
+          onClick={onToggle}
+          size="xs"
+          py="12px"
+          pr="0"
+          mr="0"
+          alignItems="end"
+          aria-expanded={isOpen ? true : false}
+          aria-label={`${frontEndTitle} info`}
+          >
+          {isOpen ? 'Close' : 'Info'}
+          </Button>
+      )
+    }
+  }
 
   return (
     <>
@@ -104,22 +141,8 @@ export function LineItems({ data, itemTotal, dev }) {
           </Box>
 
           <Box minW="52px" order="3" textAlign="right" ml="24px">
-            {description && (
-              <Button
-                leftIcon={<InfoIcon />}
-                color={isOpen ? '#A82E26' : 'blue.600'}
-                variant="link"
-                onClick={onToggle}
-                size="xs"
-                py="12px"
-                pr="0"
-                mr="0"
-                alignItems="end"
-                aria-expanded={isOpen ? true : false}
-                aria-label={`${frontEndTitle} info`}
-              >
-                {isOpen ? 'Close' : 'Info'}
-              </Button>
+          {description && (
+              <DescriptionButton description={description} />
             )}
           </Box>
         </Flex>
@@ -129,11 +152,7 @@ export function LineItems({ data, itemTotal, dev }) {
       </Flex>
 
       {description && (
-        <Collapse in={isOpen} animateOpacity>
-          <Box px="24px" pt="20px" pb="10px" bg="#fff" border="1px solid #A2A4A3">
-            <BodyText blocks={description} />
-          </Box>
-        </Collapse>
+        <Description description={description} />
       )}
     </>
   )
